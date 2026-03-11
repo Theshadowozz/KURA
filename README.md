@@ -1,4 +1,4 @@
-# 🌏 SEA Lingo AI
+# 🌏 KURA AI
 
 Tools bahasa berbasis AI untuk kawasan Southeast Asia. Dibuat untuk Hackathon.
 
@@ -22,8 +22,8 @@ Tools bahasa berbasis AI untuk kawasan Southeast Asia. Dibuat untuk Hackathon.
 
 ### 1. Clone repo
 ```bash
-git clone https://github.com/USERNAME/sea-lingo-ai.git
-cd sea-lingo-ai
+git clone https://github.com/USERNAME/KURA.git
+cd KURA
 ```
 
 ### 2. Setup Backend
@@ -83,3 +83,7 @@ Buka **http://localhost:5173** — pastikan backend juga sedang jalan.
 
 ## 👤 Tim
 - Syahreza (Developer)
+- Rifqi (Backend)
+- Rayhan (Backend)
+- Nabiilah (Data Analyst)
+- Tiara (Data Analyst)
