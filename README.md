@@ -1,11 +1,11 @@
 # 🌏 KURA AI
 
-Tools bahasa berbasis AI untuk kawasan Southeast Asia. Dibuat untuk Hackathon.
+An AI-based language tool for the Southeast Asia region, developed for a hackathon.
 
 ## Fitur
-1. **Chatbot Bahasa** — Tanya jawab seputar bahasa-bahasa di SEA
-2. **Komunikasi 2 Arah** — Terjemahkan teks antar bahasa + dengarkan suaranya (seperti Google Translate conversation mode)
-3. **Peta Bahasa Daerah** — Klik negara di peta SEA, dengar sapaan dalam bahasa daerah secara random
+1. Language Chatbot — Q&A about languages in Southeast Asia (SEA).
+2. Two-Way Communication — Translate text between languages and listen to the audio (similar to Google Translate conversation mode).
+3. Regional Language Map — Click a country on the Southeast Asia map and hear a random greeting in a local language.
 
 ## Tech Stack
 - **Frontend:** React 18 + Vite
@@ -30,19 +30,19 @@ cd KURA
 ```bash
 cd backend
 
-# Salin file env
+# Copy file env
 cp .env.example .env
 
-# Edit .env, isi GROQ_API_KEY dengan key kamu
+# Edit .env, isi GROQ_API_KEY with you key
 # GROQ_API_KEY=gsk_xxxxx
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Jalankan server
+# Running server
 uvicorn main:app --reload --port 8000
 ```
-Backend akan berjalan di `http://localhost:8000`
+The backend will run on `http://localhost:8000`
 
 ### 3. Setup Frontend
 ```bash
@@ -51,13 +51,13 @@ cd frontend
 # Install dependencies
 npm install
 
-# Jalankan dev server
+# Running dev server
 npm run dev
 ```
-Frontend akan berjalan di `http://localhost:5173`
+The Frontend will run on `http://localhost:5173`
 
 ### 4. Buka di browser
-Buka **http://localhost:5173** — pastikan backend juga sedang jalan.
+Open **http://localhost:5173** — Make sure the backend is also running..
 
 ---
 
@@ -67,14 +67,14 @@ Buka **http://localhost:5173** — pastikan backend juga sedang jalan.
 │   ├── main.py            # FastAPI server
 │   ├── requirements.txt   # Python dependencies
 │   ├── .env.example       # Template environment variables
-│   └── .env               # (tidak di-upload) API key kamu
+│   └── .env               # (tidak di-upload) your API KEY
 ├── frontend/
 │   ├── src/
-│   │   ├── App.jsx        # Komponen utama React
+│   │   ├── App.jsx        # Main Components in React
 │   │   ├── styles.css     # Styling (dark/light mode)
 │   │   └── main.jsx       # Entry point
 │   ├── public/
-│   │   └── image.png      # Gambar peta SEA
+│   │   └── image.png      # Picture map SEA
 │   ├── package.json
 │   └── .env.example       # Template env frontend
 ├── .gitignore
@@ -82,7 +82,7 @@ Buka **http://localhost:5173** — pastikan backend juga sedang jalan.
 ```
 
 ## 👤 Tim
-- Syahreza (Developer)
+- Syahreza (Frontend)
 - Rifqi (Backend)
 - Rayhan (Backend)
 - Nabiilah (Data Analyst)
