@@ -2,6 +2,8 @@
 
 An AI-powered language tool for the Southeast Asia region, developed for a hackathon.
 
+LINK VIDEO DEMO : 
+
 ## Features
 1. **Language Chatbot** — Q&A about languages in Southeast Asia (SEA).  
 2. **Two-Way Communication** — Translate text between languages and listen to the audio (similar to Google Translate conversation mode).  
