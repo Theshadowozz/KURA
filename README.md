@@ -1,6 +1,7 @@
 🌏 KURA AI
 
 An AI-powered language tool for the Southeast Asia region, developed for a hackathon.
+
 LINK VIDEO DEMO : 
 
 Features
