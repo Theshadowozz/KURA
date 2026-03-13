@@ -1,89 +1,95 @@
-# 🌏 KURA AI
+🌏 KURA AI
 
-An AI-based language tool for the Southeast Asia region, developed for a hackathon.
+An AI-powered language tool for the Southeast Asia region, developed for a hackathon.
+LINK VIDEO DEMO : 
 
-## Fitur
+Features
+
 1. Language Chatbot — Q&A about languages in Southeast Asia (SEA).
 2. Two-Way Communication — Translate text between languages and listen to the audio (similar to Google Translate conversation mode).
 3. Regional Language Map — Click a country on the Southeast Asia map and hear a random greeting in a local language.
 
-## Tech Stack
-- **Frontend:** React 18 + Vite
-- **Backend:** FastAPI + Groq (LLM) + gTTS (Text-to-Speech)
+Tech Stack
 
----
+Frontend: React 18 + Vite
 
-## 🚀 Cara Menjalankan
+Backend: FastAPI + Groq (LLM) + gTTS (Text-to-Speech)
 
-### Prasyarat
-- **Node.js** v18+ → [download](https://nodejs.org/)
-- **Python** 3.10+ → [download](https://www.python.org/)
-- **Groq API Key** (gratis) → [daftar di sini](https://console.groq.com/)
+🚀 How to Run
+Prerequisites
 
-### 1. Clone repo
-```bash
+Node.js v18+ → https://nodejs.org/
+
+Python 3.10+ → https://www.python.org/
+
+Groq API Key (free) → https://console.groq.com/
+
+1. Clone the Repository
 git clone https://github.com/USERNAME/KURA.git
 cd KURA
-```
-
-### 2. Setup Backend
-```bash
+2. Backend Setup
 cd backend
 
-# Copy file env
+# Copy the environment file
 cp .env.example .env
 
-# Edit .env, isi GROQ_API_KEY with you key
+# Edit .env and add your GROQ_API_KEY
 # GROQ_API_KEY=gsk_xxxxx
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Running server
+# Run the server
 uvicorn main:app --reload --port 8000
-```
-The backend will run on `http://localhost:8000`
 
-### 3. Setup Frontend
-```bash
+The backend will run at:
+http://localhost:8000
+
+3. Frontend Setup
 cd frontend
 
 # Install dependencies
 npm install
 
-# Running dev server
+# Run the development server
 npm run dev
-```
-The Frontend will run on `http://localhost:5173`
 
-### 4. Buka di browser
-Open **http://localhost:5173** — Make sure the backend is also running..
+The frontend will run at:
+http://localhost:5173
 
----
+4. Open in Browser
 
-## 📁 Struktur Folder
-```
+Open:
+
+http://localhost:5173
+
+Make sure the backend server is also running.
+
+📁 Folder Structure
 ├── backend/
 │   ├── main.py            # FastAPI server
 │   ├── requirements.txt   # Python dependencies
-│   ├── .env.example       # Template environment variables
-│   └── .env               # (tidak di-upload) your API KEY
+│   ├── .env.example       # Environment variable template
+│   └── .env               # (not uploaded) your API key
 ├── frontend/
 │   ├── src/
-│   │   ├── App.jsx        # Main Components in React
+│   │   ├── App.jsx        # Main React component
 │   │   ├── styles.css     # Styling (dark/light mode)
 │   │   └── main.jsx       # Entry point
 │   ├── public/
-│   │   └── image.png      # Picture map SEA
+│   │   └── image.png      # Southeast Asia map image
 │   ├── package.json
-│   └── .env.example       # Template env frontend
+│   └── .env.example       # Frontend environment template
 ├── .gitignore
 └── README.md
-```
+👤 Team
 
-## 👤 Tim
-- Syahreza (Frontend)
-- Rifqi (Backend)
-- Rayhan (Backend)
-- Nabiilah (Data Analyst)
-- Tiara (Data Analyst)
+Syahreza — Frontend Developer
+
+Rifqi — Backend Developer
+
+Rayhan — Backend Developer
+
+Nabiilah — Data Analyst
+
+Tiara — Data Analyst
