@@ -1,0 +1,277 @@
+================================================================================
+  KURA AI — UPDATE LOG
+  Version: 2.0  |  Date: 2026-04-30  |  Team: GRIDFX
+================================================================================
+
+--------------------------------------------------------------------------------
+1. STREAMING CHAT RESPONSE
+--------------------------------------------------------------------------------
+Status  : NEW FEATURE
+Files   : backend/main.py, frontend/src/App.jsx, frontend/src/styles.css
+
+Backend:
+  - Tambah endpoint POST /chat/stream menggunakan FastAPI StreamingResponse
+  - Menggunakan Server-Sent Events (SSE) format untuk mengirim token AI
+    satu per satu secara real-time
+  - Header Cache-Control dan X-Accel-Buffering diset untuk mencegah buffering
+
+Frontend:
+  - Fungsi sendChat() diperbarui menggunakan fetch + ReadableStream reader
+  - Bubble assistant muncul langsung kosong, teks mengalir token per token
+  - Accumulated content diupdate ke state React setiap chunk masuk
+  - Tombol "Typing..." bubble lama dihapus
+
+CSS:
+  - Tambah class .bubble.assistant.streaming dengan animasi kursor berkedip
+  - Karakter kursor "▋" muncul di akhir teks selama streaming berlangsung
+  - Kursor hilang otomatis setelah streaming selesai
+  - Keyframe @keyframes blink-cursor (0.75s step-end infinite)
+
+
+--------------------------------------------------------------------------------
+2. SEA MAP — 22 LANGUAGE DOTS
+--------------------------------------------------------------------------------
+Status  : IMPROVEMENT
+Files   : frontend/src/App.jsx
+
+Sebelumnya:
+  - 11 titik di peta, masing-masing mewakili satu negara
+  - Setiap titik berisi array languages[] dengan beberapa bahasa
+  - Bahasa dipilih secara acak saat titik diklik
+
+Sesudahnya:
+  - 22 titik di peta, masing-masing mewakili satu bahasa daerah spesifik
+  - Setiap titik memiliki field baru: country (nama negara induk)
+  - Posisi (top%, left%) disesuaikan per bahasa daerah
+  - Daftar 22 bahasa: Shan, Karen (Myanmar), Lao, Hmong (Laos),
+    Lanna, Isan (Thailand), Tay, Cham, Khmer Krom (Vietnam),
+    Ilocano, Cebuano (Philippines), Iban, Kadazan-Dusun (Malaysia),
+    Teochew, Hokkien (Singapore), Dusun, Tutong (Brunei),
+    Minangkabau, Sunda, Javanese (Indonesia), Tetum, Mambae (Timor Leste)
+
+Map result card:
+  - h3 menampilkan nama bahasa (bukan negara)
+  - Subtitle baru menampilkan nama negara di bawah nama bahasa
+  - Hint text diperbarui: "Click another language dot to explore"
+  - Deskripsi panel: "Click a language dot" (bukan "Click a country")
+
+Hero stat:
+  - Diperbarui dari "11 SEA Countries" menjadi "22 Regional Languages"
+
+
+--------------------------------------------------------------------------------
+3. CULTURAL INFO CARD DI PETA
+--------------------------------------------------------------------------------
+Status  : NEW FEATURE
+Files   : backend/main.py, frontend/src/App.jsx, frontend/src/styles.css
+
+Backend (main.py):
+  - Model MapAudioResponse ditambah 4 field baru:
+      speakers     : jumlah penutur bahasa
+      status       : status bahasa (Safe / Vulnerable / Endangered)
+🟢 Safe (Aman)
+Bahasa masih digunakan secara luas oleh semua generasi, diajarkan di sekolah, dan hadir di media. Contoh dalam dataset: Javanese (~82 juta penutur) dan Cebuano (~27 juta penutur).
+🟡 Vulnerable / Safe but Declining
+Bahasa masih digunakan, tapi generasi muda mulai beralih ke bahasa nasional atau bahasa yang lebih dominan. Jumlah penutur aktif berkurang dari waktu ke waktu. Contoh: Minangkabau, Iban, Lao.
+🔴 Endangered (Terancam Punah)
+Bahasa hanya digunakan oleh sebagian kecil komunitas, seringkali orang tua atau lansia. Anak-anak tidak lagi belajar bahasa ini sebagai bahasa pertama. Contoh: Mambae, Tutong, beberapa bahasa di Timor Leste dan Brunei.
+
+      cultural_fact: satu fakta budaya dari field cultural_notes di JSON
+      family       : rumpun bahasa (misal: Austronesian)
+  - Endpoint /map-audio mengambil data tambahan dari sea_languages_knowledge.json
+    setelah generate audio, menggunakan case-insensitive matching
+  - Pengambilan cultural_fact: kalimat pertama dari field cultural_notes
+  - Enrichment bersifat non-critical (error diabaikan agar audio tetap berfungsi)
+
+Frontend (App.jsx):
+  - handleMapClick menyimpan speakers, status, cultural_fact, family ke mapResult state
+  - Map result card diperbarui dengan 4 lapis informasi:
+      a. Header   : nama bahasa + negara + badge status berwarna
+      b. Meta row : chips jumlah penutur (👥) dan rumpun bahasa (🌐)
+      c. Greeting : label "GREETING" + teks salam dalam bahasa asli
+      d. Fact     : kotak ungu berisi fakta budaya (💡)
+
+CSS (styles.css):
+  - .map-status-badge dengan 3 varian warna:
+      .safe   : hijau (rgba 80,200,120)
+      .warn   : kuning (rgba 255,180,50)
+      .danger : merah (rgba 255,80,80)
+  - .map-result-meta untuk chips row (speakers + family)
+  - .map-meta-chip styling
+  - .map-result-greeting + .map-greeting-label (uppercase label kecil)
+  - .map-cultural-fact dengan background ungu transparan
+  - .map-cultural-icon + paragraph styling
+  - .map-result-top diperbarui: align-items flex-start, gap 12px
+
+
+--------------------------------------------------------------------------------
+4. MOBILE RESPONSIVENESS
+--------------------------------------------------------------------------------
+Status  : NEW FEATURE
+Files   : frontend/src/App.jsx, frontend/src/styles.css
+
+Tiga breakpoint ditambahkan:
+
+[ Tablet — max-width: 900px ]
+  - Hero section stack vertikal (flex-direction: column)
+  - Hero card full width
+  - Tabs allow wrapping
+  - Map dot labels: font-size dikurangi ke 8px
+  - Phrasebook search bar (dihapus, tercatat untuk referensi)
+
+[ Mobile — max-width: 640px ]
+  General:
+    - App padding: 32px 24px → 16px 12px
+    - Panel padding: 24px → 16px, border-radius 24px → 16px
+    - Panel header h2: 24px → 18px
+
+  Hero:
+    - h1 font-size: 36px → 24px
+    - subtitle font-size dikurangi ke 14px
+
+  Tabs:
+    - Layout berubah dari flex ke grid 2 kolom
+    - Semua 4 tab (dikurangi ke 3) muat tanpa scroll horizontal
+
+  Chat panel:
+    - chat-messages max-height: 380px → 300px
+    - bubble max-width: 75% → 88%
+    - Input dan tombol ukuran dikompres
+
+  Talk panel:
+    - Language bar tetap horizontal (select kiri ⇄ select kanan)
+    - convo-inputs berubah dari flex-row ke flex-column
+    - Setiap sisi input dibungkus .convo-input-section baru
+    - Label bahasa (.convo-input-label) muncul di atas setiap input
+      pada mobile, tersembunyi di desktop
+    - Tombol send dan mic tetap inline dengan input (tidak stack)
+    - convo-bubble max-width: 70% → 82%
+    - convo-messages max-height dikurangi ke 280px
+
+  Map panel:
+    - map-image-wrapper padding: 16px → 8px
+    - Dot size: 12px → 9px (core dan pulse)
+    - map-dot-btn click area: 48px → 36px
+    - Semua label dot DISEMBUNYIKAN (display: none) — terlalu ramai
+    - Label dot AKTIF tetap ditampilkan (opacity: 1)
+    - Result card padding dikompres
+    - Cultural fact font-size dikurangi ke 12px
+
+[ Small Phone — max-width: 380px ]
+  - h1 font-size: 20px
+  - Tabs berubah ke 1 kolom penuh
+
+JSX changes (App.jsx):
+  - convo-input-group dibungkus dengan div.convo-input-section
+  - Tambah span.convo-input-label menampilkan nama bahasa aktif
+    (misal: "INDONESIA" / "ENGLISH")
+
+
+--------------------------------------------------------------------------------
+5. CLEAR CONVERSATION — TALK PANEL
+--------------------------------------------------------------------------------
+Status  : NEW FEATURE
+Files   : frontend/src/App.jsx, frontend/src/styles.css
+
+Frontend:
+  - Tombol "🗑 Clear" ditambahkan di bagian atas Talk panel
+  - Hanya muncul jika talkConvo.length > 0 (tidak muncul saat kosong)
+  - Disabled selama talkLoading = true
+  - onClick: setTalkConvo([]) — reset percakapan ke kosong
+  - Menggunakan class .btn-new-chat yang sudah ada (konsisten dengan
+    tombol "+ New Chat" di Language Chatbot)
+
+CSS:
+  - Tambah .convo-clear-bar: display flex, justify-content flex-end
+  - Padding: 10px 20px 0 (di atas message area)
+
+
+--------------------------------------------------------------------------------
+6. SINKRONISASI DENGAN REPORT (ROLLBACK PHRASEBOOK)
+--------------------------------------------------------------------------------
+Status  : ROLLBACK
+Files   : frontend/src/App.jsx, frontend/src/styles.css
+
+Alasan:
+  - Tab Phrasebook sempat diimplementasikan sebagai fitur ke-4
+  - Keputusan: dikembalikan ke 3 fitur sesuai laporan hackathon resmi
+
+Yang dihapus dari App.jsx:
+  - Tab "phrasebook" dari array tabs[]
+  - Konstanta PHRASEBOOK_LANGUAGES (22 entries)
+  - Konstanta PHRASE_CATEGORIES (3 entries)
+  - State: pbLang, pbCategory, pbData, pbLoading, pbPlayingKey, pbSearch
+  - Fungsi: loadPhrasebook(), handlePbLangSelect(), playPhrase(), getPhraseCards()
+  - useEffect untuk auto-load phrasebook
+  - useRef pbLoadedRef
+  - Seluruh JSX section {activeTab === "phrasebook"}
+
+Yang dihapus dari styles.css (~300 baris):
+  - .pb-lang-scroll, .pb-lang-pill, .pb-pill-flag
+  - .pb-lang-info, .pb-lang-info-left, .pb-lang-info-right
+  - .pb-lang-name, .pb-lang-local
+  - .pb-badge, .pb-badge-country, .pb-badge-speakers, .pb-badge-status
+  - .pb-cat-tabs, .pb-cat-tab
+  - .pb-search-wrap, .pb-search
+  - .pb-grid, .pb-card, .pb-card-phrase, .pb-card-meaning, .pb-card-play
+  - .pb-card-playing-icon, .pb-loading, .pb-spinner, .pb-empty
+  - Semua pb-* rules di dalam media queries
+
+
+--------------------------------------------------------------------------------
+RINGKASAN FILE YANG DIUBAH
+--------------------------------------------------------------------------------
+
+  backend/main.py
+    + Import StreamingResponse dari fastapi.responses
+    + Model MapAudioResponse: +speakers, +status, +cultural_fact, +family
+    + Model SpeakRequest, SpeakResponse, PhrasebookResponse (tetap ada)
+    + Endpoint POST /chat/stream (SSE streaming)
+    + Endpoint GET /phrasebook/{language} (tetap ada di backend)
+    + Endpoint POST /speak (tetap ada di backend)
+    ~ Endpoint POST /map-audio: enrichment data budaya dari knowledge base
+
+  frontend/src/App.jsx
+    ~ tabs[]: 4 tab → 3 tab (Phrasebook dihapus)
+    - Konstanta PHRASEBOOK_LANGUAGES, PHRASE_CATEGORIES dihapus
+    + seaCountries: 11 entries → 22 entries dengan field country
+    ~ hero stat: "11 SEA Countries" → "22 Regional Languages"
+    + Phrasebook state & functions (lalu dihapus)
+    + sendChat(): fetch biasa → fetch streaming + ReadableStream
+    + handleMapClick(): simpan speakers/status/cultural_fact/family
+    ~ Map result card: 4 lapis info (header, meta, greeting, cultural fact)
+    + convo-input-section wrapper + convo-input-label untuk mobile
+    + Clear button di Talk panel
+
+  frontend/src/styles.css
+    + .bubble.assistant.streaming + @keyframes blink-cursor
+    + .map-status-badge (.safe, .warn, .danger)
+    + .map-result-meta, .map-meta-chip
+    + .map-result-greeting, .map-greeting-label
+    + .map-cultural-fact, .map-cultural-icon
+    + .convo-clear-bar
+    + .convo-input-section, .convo-input-label
+    + @media (max-width: 900px) — tablet breakpoint
+    + @media (max-width: 640px) — mobile breakpoint (lengkap)
+    + @media (max-width: 380px) — small phone breakpoint
+    - Seluruh CSS phrasebook (~300 baris) dihapus
+
+
+--------------------------------------------------------------------------------
+BACKEND ENDPOINTS — CURRENT STATE
+--------------------------------------------------------------------------------
+
+  GET  /health                   Health check
+  POST /chat                     Chat (non-streaming, fallback)
+  POST /chat/stream              Chat streaming via SSE          [NEW]
+  POST /translate-speak          Translate text + generate audio
+  POST /process-voice            Voice-to-text + translate + audio
+  POST /map-audio                Generate greeting audio + cultural info [UPDATED]
+  GET  /phrasebook/{language}    Phrasebook data per language    [NEW, backend only]
+  POST /speak                    TTS only, no translation        [NEW, backend only]
+  POST /learn                    Add vocabulary to knowledge base
+
+
+================================================================================
+  END OF UPDATE LOG
+================================================================================
