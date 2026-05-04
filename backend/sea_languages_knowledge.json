@@ -1,0 +1,394 @@
+{
+  "meta": {
+    "version": "1.1",
+    "description": "Curated SEA language knowledge base for quiz and phrasebook. Empty phrasebooks are intentionally excluded from quiz generation until verified entries are added.",
+    "last_updated": "2026-05-04",
+    "languages_count": 22
+  },
+  "languages": {
+    "Shan": {
+      "local_name": "Tai Yai / Shan",
+      "country": "Myanmar",
+      "speakers": "about 3 million",
+      "status": "regional language",
+      "greetings": {
+        "hello": "Sawn yam",
+        "good_morning": "Na gat li",
+        "goodbye": "Pai teh",
+        "thank_you": "Kawp jai"
+      },
+      "vocabulary": {
+        "yes": "Ang",
+        "no": "Am"
+      },
+      "common_phrases": [
+        { "english": "How are you?", "translation": "Jung hao aa" },
+        { "english": "Welcome", "translation": "Hap tawn" }
+      ]
+    },
+    "Karen": {
+      "local_name": "Karen",
+      "country": "Myanmar",
+      "speakers": "unknown",
+      "status": "regional language group",
+      "greetings": {},
+      "vocabulary": {},
+      "common_phrases": []
+    },
+    "Lao": {
+      "local_name": "Phasa Lao",
+      "country": "Laos",
+      "speakers": "about 30 million including L1/L2 speakers",
+      "status": "national and regional language",
+      "greetings": {
+        "welcome": "Nyin dee ton hap",
+        "hello": "Sabaidee",
+        "good_morning": "Sabaidee ton sao",
+        "good_afternoon": "Sabaidee yarm laeng",
+        "good_evening": "Sabaidee yarm laeng",
+        "goodbye": "Sok dee der",
+        "thank_you": "Khawp jai",
+        "you_are_welcome": "Baw pen nyang"
+      },
+      "vocabulary": {
+        "yes": "Dai",
+        "no": "Baw",
+        "good": "Dee"
+      },
+      "common_phrases": [
+        { "english": "I do not understand", "translation": "Baw khao jai" },
+        { "english": "Please", "translation": "Kaluna" }
+      ]
+    },
+    "Hmong": {
+      "local_name": "Hmong Daw / White Hmong",
+      "country": "Laos",
+      "speakers": "several million across Southeast Asia and diaspora",
+      "status": "regional language",
+      "greetings": {
+        "welcome": "Zoo siab txais tos",
+        "hello": "Nyob zoo",
+        "good_morning": "Nyob zoo",
+        "good_afternoon": "Nyob zoo",
+        "good_evening": "Nyob zoo",
+        "goodbye": "Sib ntsib dua",
+        "thank_you": "Ua tsaug",
+        "you_are_welcome": "Tsis ua licas"
+      },
+      "vocabulary": {
+        "yes": "Yog",
+        "no": "Tsis",
+        "eat": "Noj"
+      },
+      "common_phrases": [
+        { "english": "I understand", "translation": "Kuv totaub" },
+        { "english": "I do not know", "translation": "Kuv tsis paub" }
+      ]
+    },
+    "Lanna": {
+      "local_name": "Kam Mueang / Northern Thai",
+      "country": "Thailand",
+      "speakers": "several million",
+      "status": "regional language",
+      "greetings": {
+        "hello": "Sawadee jao",
+        "thank_you": "Khop jao"
+      },
+      "vocabulary": {
+        "yes": "Chai",
+        "no": "Mai chai",
+        "water": "Nam",
+        "food": "Ahan"
+      },
+      "common_phrases": [
+        { "english": "I do not understand", "translation": "Mai kao jai" }
+      ]
+    },
+    "Isan": {
+      "local_name": "Isan",
+      "country": "Thailand",
+      "speakers": "unknown",
+      "status": "regional language",
+      "greetings": {},
+      "vocabulary": {},
+      "common_phrases": []
+    },
+    "Tay": {
+      "local_name": "Tay",
+      "country": "Vietnam",
+      "speakers": "unknown",
+      "status": "regional language",
+      "greetings": {},
+      "vocabulary": {},
+      "common_phrases": []
+    },
+    "Khmer Krom": {
+      "local_name": "Khmer Krom",
+      "country": "Vietnam",
+      "speakers": "unknown",
+      "status": "regional language",
+      "greetings": {},
+      "vocabulary": {},
+      "common_phrases": []
+    },
+    "Cham": {
+      "local_name": "Cham",
+      "country": "Vietnam",
+      "speakers": "unknown",
+      "status": "regional language",
+      "greetings": {},
+      "vocabulary": {},
+      "common_phrases": []
+    },
+    "Ilocano": {
+      "local_name": "Iloko / Ilocano",
+      "country": "Philippines",
+      "speakers": "about 10 million",
+      "status": "regional language",
+      "greetings": {
+        "welcome": "Naragsak nga Isasanbay",
+        "hello": "Kablaaw",
+        "good_morning": "Naimbag a bigat",
+        "good_afternoon": "Naimbag a malem",
+        "good_evening": "Naimbag a sardam",
+        "goodbye": "Pakada",
+        "thank_you": "Agyamanak",
+        "you_are_welcome": "Awan ania man"
+      },
+      "vocabulary": {
+        "yes": "Wen",
+        "fire": "Uram"
+      },
+      "common_phrases": [
+        { "english": "I do not understand", "translation": "Diak maawatan" },
+        { "english": "Stop!", "translation": "Sardeng!" }
+      ]
+    },
+    "Cebuano": {
+      "local_name": "Binisaya / Cebuano",
+      "country": "Philippines",
+      "speakers": "about 20 million",
+      "status": "regional language",
+      "greetings": {
+        "welcome": "Maayong pag-abot",
+        "hello": "Hello",
+        "good_morning": "Maayong buntag",
+        "good_afternoon": "Maayong hapon",
+        "good_evening": "Maayong gabii",
+        "goodbye": "Babay",
+        "thank_you": "Salamat",
+        "you_are_welcome": "Walay sapayan"
+      },
+      "vocabulary": {
+        "yes": "Oo",
+        "no": "Wala"
+      },
+      "common_phrases": [
+        { "english": "I understand", "translation": "Nakasabot ko" },
+        { "english": "I do not understand", "translation": "Wala ko kasabot" }
+      ]
+    },
+    "Iban": {
+      "local_name": "Iban",
+      "country": "Malaysia",
+      "speakers": "about 700,000",
+      "status": "regional language",
+      "greetings": {
+        "welcome": "Selamat datai",
+        "good_morning": "Selamat pagi",
+        "good_afternoon": "Selamat tengah hari",
+        "good_evening": "Selamat lamai",
+        "goodbye": "Betemu baru ila",
+        "thank_you": "Terima kasih",
+        "you_are_welcome": "Sama-sama"
+      },
+      "vocabulary": {},
+      "common_phrases": [
+        { "english": "How are you?", "translation": "Nama berita?" },
+        { "english": "I do not understand", "translation": "Aku enda mereti" }
+      ]
+    },
+    "Kadazan-Dusun": {
+      "local_name": "Kadazan-Dusun",
+      "country": "Malaysia",
+      "speakers": "unknown",
+      "status": "regional language",
+      "greetings": {
+        "welcome": "Kopisanangan do kinorikatan",
+        "hello": "Kopisanangan",
+        "good_morning": "Kopisanangan dongkosuabon",
+        "good_afternoon": "Kopisanangan dangadau",
+        "good_evening": "Kopisanangan doungosodop",
+        "thank_you": "Pounsikou",
+        "you_are_welcome": "Miagal"
+      },
+      "vocabulary": {
+        "yes": "Ohoo",
+        "no": "Amu"
+      },
+      "common_phrases": [
+        { "english": "How are you?", "translation": "Nunu habar nu?" },
+        { "english": "Sorry", "translation": "Siou" }
+      ]
+    },
+    "Teochew": {
+      "local_name": "Teochew",
+      "country": "Singapore",
+      "speakers": "several million globally",
+      "status": "heritage language",
+      "greetings": {
+        "hello": "Leu ho",
+        "good_morning": "Ja",
+        "goodbye": "Bai bai",
+        "thank_you": "Joi sia",
+        "you_are_welcome": "Miang ket-ki"
+      },
+      "vocabulary": {},
+      "common_phrases": [
+        { "english": "I do not know", "translation": "Ua mzai" },
+        { "english": "How are you?", "translation": "Jai sen ion?" }
+      ]
+    },
+    "Hokkien": {
+      "local_name": "Hokkien",
+      "country": "Singapore",
+      "speakers": "unknown",
+      "status": "heritage language",
+      "greetings": {},
+      "vocabulary": {},
+      "common_phrases": []
+    },
+    "Dusun": {
+      "local_name": "Central Dusun",
+      "country": "Brunei",
+      "speakers": "unknown",
+      "status": "regional language",
+      "greetings": {
+        "welcome": "Kopisanangan do kinorikatan",
+        "hello": "Kopisanangan",
+        "good_morning": "Kopisanangan dongkosuabon",
+        "good_afternoon": "Kopisanangan dangadau",
+        "good_evening": "Kopisanangan doungosodop",
+        "thank_you": "Pounsikou",
+        "you_are_welcome": "Miagal"
+      },
+      "vocabulary": {
+        "yes": "Ohoo",
+        "no": "Amu"
+      },
+      "common_phrases": [
+        { "english": "How are you?", "translation": "Nunu habar nu?" },
+        { "english": "I do not understand", "translation": "Au oku karati" }
+      ]
+    },
+    "Tutong": {
+      "local_name": "Tutong",
+      "country": "Brunei",
+      "speakers": "unknown",
+      "status": "regional language",
+      "greetings": {},
+      "vocabulary": {},
+      "common_phrases": []
+    },
+    "Minangkabau": {
+      "local_name": "Baso Minang",
+      "country": "Indonesia",
+      "speakers": "about 5 million",
+      "status": "regional language",
+      "greetings": {
+        "hello": "Assalamualaikum",
+        "good_evening": "Salamaik patang",
+        "goodbye": "Salamaik jalan",
+        "thank_you": "Tarimo kasih",
+        "you_are_welcome": "Samo-samo"
+      },
+      "vocabulary": {
+        "yes": "Iyo",
+        "no": "Indak"
+      },
+      "common_phrases": [
+        { "english": "How are you?", "translation": "Ba'a kaba?" },
+        { "english": "Sorry", "translation": "Ambo mintak maaf" }
+      ]
+    },
+    "Sunda": {
+      "local_name": "Basa Sunda",
+      "country": "Indonesia",
+      "speakers": "about 30 million",
+      "status": "regional language",
+      "greetings": {
+        "welcome": "Wilujeng sumping",
+        "hello": "Sampurasun",
+        "response": "Rampes",
+        "good_morning": "Wilujeng enjing",
+        "good_afternoon": "Wilujeng siang",
+        "good_evening": "Wilujeng wengi",
+        "goodbye": "Dugi patepang deui",
+        "thank_you": "Nuhun",
+        "you_are_welcome": "Sami-sami"
+      },
+      "vocabulary": {},
+      "common_phrases": [
+        { "english": "How are you?", "translation": "Kumaha kabarna?" },
+        { "english": "Excuse me", "translation": "Punten" }
+      ]
+    },
+    "Jawa": {
+      "local_name": "Basa Jawa",
+      "country": "Indonesia",
+      "speakers": "about 80 million",
+      "status": "regional language",
+      "greetings": {
+        "welcome": "Sugeng rawuh",
+        "hello": "Halo",
+        "good_morning": "Sugeng enjing",
+        "good_afternoon": "Sugeng siang",
+        "good_evening": "Sugeng sonten",
+        "goodbye": "Kepanggih malih benjang",
+        "thank_you": "Matur nuwun",
+        "you_are_welcome": "Sami-sami"
+      },
+      "vocabulary": {
+        "yes": "Inggih"
+      },
+      "common_phrases": [
+        { "english": "I do not understand", "translation": "Kula boten mangertos" },
+        { "english": "Excuse me", "translation": "Nuwun sewu" }
+      ]
+    },
+    "Tetum": {
+      "local_name": "Lia-Tetun",
+      "country": "Timor Leste",
+      "speakers": "about 1 million",
+      "status": "official and regional language",
+      "greetings": {
+        "welcome": "Ksolok bodik mai",
+        "hello": "Elo",
+        "good_morning": "Bondia",
+        "good_afternoon": "Botarde",
+        "good_evening": "Bonoite",
+        "goodbye": "Adeus",
+        "thank_you": "Obrigadu",
+        "you_are_welcome": "La iha buat ida"
+      },
+      "vocabulary": {
+        "yes": "Sin",
+        "no": "Lae",
+        "fire": "Ahi"
+      },
+      "common_phrases": [
+        { "english": "I understand", "translation": "Ha'u komprende" },
+        { "english": "I do not understand", "translation": "Ha'u la comprende" }
+      ]
+    },
+    "Mambae": {
+      "local_name": "Mambae",
+      "country": "Timor Leste",
+      "speakers": "unknown",
+      "status": "regional language",
+      "greetings": {},
+      "vocabulary": {},
+      "common_phrases": []
+    }
+  }
+}

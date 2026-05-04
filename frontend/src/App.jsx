@@ -3,85 +3,6 @@ import { useState, useRef } from "react";
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8000";
 
 const tabs = [
-<<<<<<< Updated upstream
-  { id: "chat", label: "Chatbot Bahasa" },
-  { id: "talk", label: "Komunikasi 2 Arah" },
-  { id: "map", label: "Peta SEA" },
-];
-
-const seaCountries = [
-  {
-    id: "myanmar",
-    name: "Myanmar",
-    top: 25,
-    left: 15,
-    languages: ["Shan", "Karen"],
-  },
-  { id: "laos", name: "Laos", top: 30, left: 27, languages: ["Lao", "Hmong"] },
-  {
-    id: "thailand",
-    name: "Thailand",
-    top: 38,
-    left: 25,
-    languages: ["Isan", "Lanna"],
-  },
-  {
-    id: "vietnam",
-    name: "Vietnam",
-    top: 44,
-    left: 36,
-    languages: ["Tay", "Khmer Krom"],
-  },
-  {
-    id: "cambodia",
-    name: "Kamboja",
-    top: 45,
-    left: 30,
-    languages: ["Khmer", "Cham"],
-  },
-  {
-    id: "philippines",
-    name: "Filipina",
-    top: 39,
-    left: 57,
-    languages: ["Cebuano", "Ilocano"],
-  },
-  {
-    id: "malaysia_p",
-    name: "Malaysia",
-    top: 61,
-    left: 25,
-    languages: ["Iban", "Kadazan-Dusun"],
-  },
-  {
-    id: "singapore",
-    name: "Singapura",
-    top: 67,
-    left: 29,
-    languages: ["Teochew", "Hokkien"],
-  },
-  {
-    id: "brunei",
-    name: "Brunei",
-    top: 61,
-    left: 46,
-    languages: ["Dusun", "Tutong"],
-  },
-  {
-    id: "indonesia",
-    name: "Indonesia",
-    top: 84,
-    left: 35,
-    languages: ["Jawa", "Sunda"],
-  },
-  {
-    id: "timor",
-    name: "Timor Leste",
-    top: 88,
-    left: 65,
-    languages: ["Tetum", "Mambae"],
-  },
-=======
   { id: "chat", label: "Language Chatbot" },
   { id: "talk", label: "Two-Way Communication" },
   { id: "map", label: "SEA Map" },
@@ -129,6 +50,23 @@ const QUIZ_VOCAB = {
   friend: "friend",
   family: "family"
 };
+
+const QUIZ_CURATED_LANGUAGES = new Set([
+  "Shan",
+  "Lao",
+  "Hmong",
+  "Lanna",
+  "Ilocano",
+  "Cebuano",
+  "Iban",
+  "Kadazan-Dusun",
+  "Teochew",
+  "Dusun",
+  "Minangkabau",
+  "Sunda",
+  "Jawa",
+  "Tetum"
+]);
 
 const shuffleArray = (items) => {
   const next = [...items];
@@ -227,11 +165,14 @@ const seaCountries = [
   { id: "shan",         name: "Shan",          country: "Myanmar",      top: 22, left: 19, languages: ["Shan"] },
   { id: "karen",        name: "Karen",          country: "Myanmar",      top: 30, left: 16, languages: ["Karen"] },
   // Laos
-  { id: "lao",          name: "Lao",            country: "Laos",         top: 44, left: 29, languages: ["Lao"] },
-  { id: "hmong",        name: "Hmong",          country: "Laos",         top: 43, left: 33, languages: ["Hmong"] },
+  { id: "lao",          name: "Lao",            country: "Laos",         top: 30, left: 26, languages: ["Lao"] },
+  { id: "hmong",        name: "Hmong",          country: "Laos",         top: 38, left: 33, languages: ["Hmong"] },
   // Thailand
   { id: "lanna",        name: "Lanna",          country: "Thailand",     top: 35, left: 22, languages: ["Lanna"] },
   { id: "isan",         name: "Isan",           country: "Thailand",     top: 40, left: 25, languages: ["Isan"] },
+  // Cambodia
+  { id: "khmer",        name: "Khmer",          country: "Cambodia",     top: 45, left: 31, languages: ["Khmer"] },
+  { id: "kuy",          name: "Kuy",            country: "Cambodia",     top: 42, left: 29, languages: ["Kuy"] },
   // Vietnam
   { id: "tay",          name: "Tay",            country: "Vietnam",      top: 25, left: 30, languages: ["Tay"] },
   { id: "cham",         name: "Cham",           country: "Vietnam",      top: 43, left: 36, languages: ["Cham"] },
@@ -255,15 +196,16 @@ const seaCountries = [
   // Timor Leste
   { id: "tetum",        name: "Tetum",          country: "Timor Leste",  top: 89, left: 63, languages: ["Tetum"] },
   { id: "mambae",       name: "Mambae",         country: "Timor Leste",  top: 87, left: 66, languages: ["Mambae"] },
->>>>>>> Stashed changes
 ];
 
-const QUIZ_LANGUAGE_POOL = seaCountries.map((item) => ({
-  id: item.id,
-  label: item.name,
-  language: item.languages[0],
-  country: item.country
-}));
+const QUIZ_LANGUAGE_POOL = seaCountries
+  .map((item) => ({
+    id: item.id,
+    label: item.name,
+    language: item.languages[0],
+    country: item.country
+  }))
+  .filter((item) => QUIZ_CURATED_LANGUAGES.has(item.language));
 
 const QUIZ_COUNTRY_GROUPS = QUIZ_LANGUAGE_POOL.reduce((acc, item) => {
   if (!acc[item.country]) acc[item.country] = [];
@@ -318,7 +260,7 @@ export default function App() {
     {
       role: "assistant",
       content:
-        "Halo! Aku asisten bahasa SEA. Tanyakan apa saja soal terjemahan atau ungkapan.",
+        "Hello! I'm a SEA language assistant. Ask me anything about translations or local expressions.",
     },
   ]);
   const [chatInput, setChatInput] = useState("");
@@ -372,7 +314,7 @@ export default function App() {
       setRecordingSide(side);
       setRecordingMode(mode);
     } catch (err) {
-      alert("Akses mikrofon ditolak atau tidak tersedia.");
+      alert("Microphone access denied or unavailable.");
     }
   };
 
@@ -424,7 +366,7 @@ export default function App() {
         {
           side,
           original: "Audio",
-          translation: "Tidak bisa terhubung.",
+          translation: "Could not connect.",
           audio: null,
         },
       ]);
@@ -478,7 +420,14 @@ export default function App() {
       });
       const data = await response.json();
       if (response.ok) {
-        setMapResult({ lang: randomLang, text: data.text });
+        setMapResult({
+          lang: randomLang,
+          text: data.text,
+          meaning: data.meaning,
+          greetings: data.greetings?.length
+            ? data.greetings
+            : [{ text: data.text, meaning: data.meaning }]
+        });
         const audio = new Audio(`data:audio/mp3;base64,${data.audio_base64}`);
         mapAudioRef.current = audio;
         audio.play();
@@ -488,7 +437,7 @@ export default function App() {
       }
     } catch (err) {
       if (err.name !== "AbortError") {
-        setMapResult({ lang: randomLang, text: "Gagal memuat audio." });
+        setMapResult({ lang: randomLang, text: "Failed to load audio." });
       }
     } finally {
       if (!abortController.signal.aborted) {
@@ -497,8 +446,6 @@ export default function App() {
     }
   };
 
-<<<<<<< Updated upstream
-=======
   const getPhrasebook = async (language) => {
     const cache = phrasebookCacheRef.current;
     if (cache.has(language)) return cache.get(language);
@@ -543,7 +490,7 @@ export default function App() {
     }
 
     while (optionSet.size < 4) {
-      optionSet.add("Tidak tersedia");
+      optionSet.add("Not available");
     }
 
     return shuffleArray(Array.from(optionSet)).slice(0, 4);
@@ -608,8 +555,11 @@ export default function App() {
         fallbackValues
       });
 
+      const categoryLabel =
+        choice.category === "greetings" ? "greeting or phrase" : "word";
+
       setQuizQuestion({
-        text: `What is "${prompt}" in ${languageItem.label}?`,
+        text: `Choose the ${languageItem.label} ${categoryLabel} that means "${prompt}".`,
         answer,
         choices
       });
@@ -704,7 +654,6 @@ export default function App() {
   const isOverLimit = chatInput.length > MAX_CHAT_CHARS;
   const isNearLimit = charsLeft <= 50 && !isOverLimit;
 
->>>>>>> Stashed changes
   const sendChat = async () => {
     if (!chatInput.trim()) return;
     const nextMessages = [
@@ -731,14 +680,14 @@ export default function App() {
           ...nextMessages,
           {
             role: "assistant",
-            content: data.error || data.detail || "Terjadi kesalahan.",
+            content: data.error || data.detail || "An error occurred.",
           },
         ]);
       }
     } catch (error) {
       setMessages([
         ...nextMessages,
-        { role: "assistant", content: "Tidak bisa terhubung ke server." },
+        { role: "assistant", content: "Could not connect to server." },
       ]);
     } finally {
       setChatLoading(false);
@@ -791,7 +740,7 @@ export default function App() {
         {
           side,
           original: text.trim(),
-          translation: "Tidak bisa terhubung.",
+          translation: "Could not connect.",
           audio: null,
         },
       ]);
@@ -826,30 +775,20 @@ export default function App() {
             </button>
           </div>
           <h1>
-            Tools bahasa berbasis AI untuk kawasan <span>SEA</span>
+            AI-powered language tools for <span>SEA</span>
           </h1>
           <p className="subtitle">
-<<<<<<< Updated upstream
-            Chatbot bahasa, komunikasi dua arah dengan suara AI, dan peta bahasa
-            daerah.
-=======
             Language chatbot, two-way AI voice communication, regional language map, and a quiz.
->>>>>>> Stashed changes
           </p>
         </div>
         <div className="hero-card">
           <div className="hero-stat">
-            <span>11</span>
-            <p>Negara SEA</p>
+            <span>22</span>
+            <p>Regional Languages</p>
           </div>
           <div className="hero-stat">
-<<<<<<< Updated upstream
-            <span>3</span>
-            <p>Fitur utama</p>
-=======
             <span>4</span>
             <p>Main Features</p>
->>>>>>> Stashed changes
           </div>
         </div>
       </header>
@@ -870,8 +809,8 @@ export default function App() {
         {activeTab === "chat" && (
           <section className="panel">
             <div className="panel-header">
-              <h2>Chatbot Bahasa</h2>
-              <p>Pahami makna, terjemahkan, dan belajar ungkapan lokal.</p>
+              <h2>Language Chatbot</h2>
+              <p>Understand meanings, translate, and learn local expressions.</p>
             </div>
             <div className="chat-box">
               <div className="chat-messages">
@@ -884,7 +823,7 @@ export default function App() {
                   </div>
                 ))}
                 {chatLoading && (
-                  <div className="bubble assistant">Sedang mengetik...</div>
+                  <div className="bubble assistant">Typing...</div>
                 )}
               </div>
               <div className="chat-input">
@@ -894,10 +833,10 @@ export default function App() {
                   onKeyDown={(event) => {
                     if (event.key === "Enter" && !chatLoading) sendChat();
                   }}
-                  placeholder="Tanyakan terjemahan, makna, atau contoh kalimat..."
+                  placeholder="Ask about translations, meanings, or example sentences..."
                 />
                 <button onClick={sendChat} disabled={chatLoading}>
-                  Kirim
+                  Send
                 </button>
               </div>
             </div>
@@ -909,7 +848,7 @@ export default function App() {
             <div className="convo-messages">
               {talkConvo.length === 0 && (
                 <div className="convo-empty">
-                  Mulai percakapan dengan mengetik di bawah
+                  Start a conversation by typing below
                 </div>
               )}
               {talkConvo.map((msg, i) => (
@@ -940,7 +879,7 @@ export default function App() {
               {talkLoading && (
                 <div className="convo-row left">
                   <div className="convo-bubble left">
-                    <p className="convo-original">Menerjemahkan...</p>
+                    <p className="convo-original">Translating...</p>
                   </div>
                 </div>
               )}
@@ -979,7 +918,7 @@ export default function App() {
             <div className="convo-inputs">
               <div className="convo-input-group left">
                 <input
-                  placeholder={`Ketik dalam ${talkLangLeft}...`}
+                  placeholder={`Type in ${talkLangLeft}...`}
                   value={talkInputLeft}
                   onChange={(e) => setTalkInputLeft(e.target.value)}
                   onKeyDown={(e) => {
@@ -991,7 +930,7 @@ export default function App() {
                   className="convo-send left"
                   onClick={() => handleTalkSend("left")}
                   disabled={talkLoading || recordingSide === 'left'}
-                  title="Kirim Teks"
+                  title="Send Text"
                 >
                   <svg
                     width="20"
@@ -1023,7 +962,7 @@ export default function App() {
               </div>
               <div className="convo-input-group right">
                 <input
-                  placeholder={`Ketik dalam ${talkLangRight}...`}
+                  placeholder={`Type in ${talkLangRight}...`}
                   value={talkInputRight}
                   onChange={(e) => setTalkInputRight(e.target.value)}
                   onKeyDown={(e) => {
@@ -1035,7 +974,7 @@ export default function App() {
                   className="convo-send right"
                   onClick={() => handleTalkSend("right")}
                   disabled={talkLoading || recordingSide === 'right'}
-                  title="Kirim Teks"
+                  title="Send Text"
                 >
                   <svg
                     width="20"
@@ -1072,10 +1011,9 @@ export default function App() {
         {activeTab === "map" && (
           <section className="panel">
             <div className="panel-header">
-              <h2>🗺️ Peta Bahasa Daerah SEA</h2>
+              <h2>🗺️ SEA Regional Language Map</h2>
               <p>
-                Klik titik negara pada peta untuk mendengar sapaan dalam bahasa
-                daerah.
+                Click a language dot on the map to hear a greeting in that regional language.
               </p>
             </div>
             <div className="map-container">
@@ -1094,7 +1032,7 @@ export default function App() {
                     onClick={() => handleMapClick(c)}
                     aria-label={c.name}
                   >
-                    <span className="map-dot-ring" />
+                    <span className="map-dot-pulse" />
                     <span className="map-dot-core" />
                     <span className="map-dot-label">{c.name}</span>
                   </button>
@@ -1104,14 +1042,14 @@ export default function App() {
               <div className="map-info-bar">
                 {!selectedCountry && !mapPlaying && (
                   <p className="map-hint">
-                    Klik titik negara di peta untuk mendengar sapaan daerah
+                    Click a country dot on the map to hear a regional greeting
                   </p>
                 )}
                 {mapPlaying && (
                   <div className="map-playing">
                     <span className="map-playing-icon">🔊</span>
                     <p>
-                      Memuat suara dari <strong>{selectedCountry?.name}</strong>
+                      Loading audio from <strong>{selectedCountry?.name}</strong>
                       ...
                     </p>
                   </div>
@@ -1122,9 +1060,18 @@ export default function App() {
                       <h3>{selectedCountry.name}</h3>
                       <span className="map-result-lang">{mapResult.lang}</span>
                     </div>
-                    <p className="map-result-text">"{mapResult.text}"</p>
+                    <div className="map-result-greetings">
+                      {mapResult.greetings.map((greeting) => (
+                        <div className="map-result-greeting" key={`${greeting.text}-${greeting.meaning || ""}`}>
+                          <p className="map-result-text">"{greeting.text}"</p>
+                          {greeting.meaning && (
+                            <p className="map-result-meaning">{greeting.meaning}</p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
                     <p className="map-result-hint">
-                      Klik lagi untuk dengar bahasa daerah lainnya
+                      Click another dot to explore more
                     </p>
                   </div>
                 )}
@@ -1190,7 +1137,7 @@ export default function App() {
                       <button
                         className="quiz-btn ghost"
                         onClick={nextQuizQuestion}
-                        disabled={!quizCountry || quizLoading || quizSpinning}
+                        disabled={!quizCountry || quizLoading || quizSpinning || !quizResult}
                       >
                           Next Question
                       </button>
@@ -1210,7 +1157,7 @@ export default function App() {
                 <div className="quiz-mascot-card">
                   <img
                     src={quizMascot}
-                    alt="Maskot kuis"
+                    alt="Quiz mascot"
                     className="quiz-mascot"
                   />
                   <p className="quiz-mascot-text">
@@ -1228,7 +1175,7 @@ export default function App() {
       </main>
 
       <footer className="footer">
-        <p>© 2026 Kura AI. Dibuat untuk Hackathon.</p>
+        <p>© 2026 Kura AI. Built for Hackathon.</p>
       </footer>
     </div>
   );

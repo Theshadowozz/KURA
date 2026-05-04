@@ -703,76 +703,158 @@ button.primary {
   transform: translate(-50%, -50%);
   background: none;
   border: none;
+  width: 30px;
+  height: 30px;
   padding: 0;
   cursor: pointer;
   z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
+  isolation: isolate;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.map-dot-btn::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 18%, var(--map-dot-fill) 45%, transparent 72%);
+  opacity: 0.18;
+  filter: blur(1px);
+  animation: dotBreathe 2.8s ease-in-out infinite;
+  z-index: -1;
 }
 
 .map-dot-core {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
-  background: var(--map-dot-fill);
-  border: 2px solid var(--map-dot-stroke);
-  box-shadow: 0 0 8px var(--map-dot-glow);
-  transition: all 0.25s ease;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.98) 0 13%, rgba(255, 255, 255, 0.45) 14% 24%, transparent 25%),
+    linear-gradient(135deg, var(--map-dot-stroke), var(--map-dot-fill) 58%, #3d2fd1);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.16),
+    0 0 14px var(--map-dot-glow),
+    0 5px 12px rgba(0, 0, 0, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   position: absolute;
+  animation: dotFloat 3.2s ease-in-out infinite;
 }
 
-.map-dot-ring {
+.map-dot-pulse {
   position: absolute;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  border: 2px solid var(--map-dot-fill);
-  opacity: 0;
-  transition: all 0.25s ease;
+  border: 1px solid var(--map-dot-stroke);
+  background: color-mix(in srgb, var(--map-dot-fill) 20%, transparent);
+  box-shadow: 0 0 20px var(--map-dot-glow);
+  opacity: 0.42;
+  animation: dotRipple 2.4s ease-out infinite;
+  pointer-events: none;
+}
+
+.map-dot-btn:hover,
+.map-dot-btn:focus-visible {
+  transform: translate(-50%, -50%) scale(1.12);
+  filter: saturate(1.15);
 }
 
 .map-dot-btn:hover .map-dot-core {
-  width: 18px;
-  height: 18px;
-  box-shadow: 0 0 16px var(--map-dot-glow);
+  animation: none;
+  transform: scale(1.22);
+  box-shadow:
+    0 0 0 4px rgba(255, 255, 255, 0.2),
+    0 0 22px var(--map-dot-glow),
+    0 8px 16px rgba(0, 0, 0, 0.32);
 }
 
 .map-dot-btn.active .map-dot-core {
-  width: 18px;
-  height: 18px;
-  box-shadow: 0 0 20px var(--map-dot-glow);
+  animation: none;
+  transform: scale(1.28);
+  box-shadow:
+    0 0 0 5px rgba(255, 255, 255, 0.22),
+    0 0 28px var(--map-dot-glow),
+    0 10px 18px rgba(0, 0, 0, 0.36);
 }
 
-.map-dot-btn.active .map-dot-ring {
-  opacity: 1;
-  animation: dotPulse 1.5s ease-out infinite;
+.map-dot-btn.active .map-dot-pulse {
+  opacity: 0.8;
+  border-width: 2px;
+  animation: dotActivePulse 1.35s ease-out infinite;
 }
 
-@keyframes dotPulse {
-  0% { width: 14px; height: 14px; opacity: 0.8; }
-  100% { width: 44px; height: 44px; opacity: 0; }
+@keyframes dotBreathe {
+  0%, 100% {
+    transform: scale(0.85);
+    opacity: 0.14;
+  }
+  50% {
+    transform: scale(1.55);
+    opacity: 0.28;
+  }
+}
+
+@keyframes dotFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1px);
+  }
+}
+
+@keyframes dotRipple {
+  0% {
+    transform: scale(0.65);
+    opacity: 0.55;
+  }
+  80%, 100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+@keyframes dotActivePulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(2.45);
+    opacity: 0;
+  }
 }
 
 /* --- Label --- */
 .map-dot-label {
   position: absolute;
-  top: calc(100% + 4px);
+  top: calc(100% + 2px);
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(2px);
   white-space: nowrap;
   font-size: 10px;
-  font-weight: 600;
-  color: var(--map-label);
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  font-weight: 700;
+  line-height: 1;
+  color: #ffffff;
+  background: rgba(12, 20, 37, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+  padding: 5px 8px;
+  backdrop-filter: blur(8px);
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .map-dot-btn:hover .map-dot-label,
 .map-dot-btn.active .map-dot-label {
   opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 @keyframes pulse {
@@ -849,8 +931,6 @@ button.primary {
 .map-result-hint {
   font-size: 12px;
   color: var(--text-faint);
-<<<<<<< Updated upstream
-=======
   margin-top: 10px;
 }
 
@@ -903,8 +983,20 @@ button.primary {
 }
 
 /* --- Map: greeting block --- */
-.map-result-greeting {
+.map-result-greetings {
+  display: grid;
+  gap: 10px;
   margin-bottom: 12px;
+}
+
+.map-result-greeting {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.map-result-greeting:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 .map-greeting-label {
@@ -923,6 +1015,12 @@ button.primary {
   color: var(--text);
   font-style: italic;
   margin: 0;
+}
+
+.map-result-meaning {
+  font-size: 13px;
+  color: var(--text-faint);
+  margin: 6px 0 0;
 }
 
 /* --- Map: cultural fact --- */
@@ -1077,15 +1175,20 @@ button.primary {
 
 .quiz-footer {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 2px;
 }
 
 .quiz-result {
   font-size: 13px;
   color: var(--text-sub);
+  margin: 0;
+}
+
+.quiz-footer .quiz-btn {
+  align-self: flex-start;
 }
 
 .quiz-result.correct {
@@ -1193,7 +1296,6 @@ button.primary {
 @keyframes blink-cursor {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0; }
->>>>>>> Stashed changes
 }
 
 .footer {
@@ -1231,9 +1333,7 @@ button.primary {
     flex-wrap: wrap;
     gap: 8px;
   }
-<<<<<<< Updated upstream
-  
-=======
+
 
   /* Map: dot labels always visible at tablet (22 dots, tight space) */
   .map-dot-label {
@@ -1291,8 +1391,6 @@ button.primary {
     grid-template-columns: 1fr 1fr;
     gap: 8px;
   }
-
->>>>>>> Stashed changes
   .tabs button {
     flex: 1 1 calc(50% - 8px);
     font-size: 14px;
@@ -1343,8 +1441,6 @@ button.primary {
   .voice-buttons button {
     flex: 1;
   }
-<<<<<<< Updated upstream
-=======
 
   .map-result-text {
     font-size: 14px;
@@ -1390,6 +1486,4 @@ button.primary {
     font-size: 12px;
     padding: 7px 8px;
   }
-
->>>>>>> Stashed changes
 }
