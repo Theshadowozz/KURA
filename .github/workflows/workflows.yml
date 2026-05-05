@@ -20,12 +20,12 @@ jobs:
       - name: Set environment variables
         run: |
           cat > .env << 'EOF'
-          VITE_PUBLIC_API_BASE_URL_DEFAULT=${{ vars.VITE_API_BASE_DEFAULT }}
-          VITE_PUBLIC_API_BASE_URL_DEV=${{ vars.VITE_API_BASE_DEV }}
+          VITE_API_BASE=${{ vars.VITE_API_BASE_DEFAULT }}
           EOF
 
       - name: Build React.js app
         run: |
+          cd frontend
           npm run build
 
       - name: Push build dist
