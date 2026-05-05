@@ -1,394 +1,1199 @@
 {
   "meta": {
-    "version": "1.1",
-    "description": "Curated SEA language knowledge base for quiz and phrasebook. Empty phrasebooks are intentionally excluded from quiz generation until verified entries are added.",
-    "last_updated": "2026-05-04",
+    "version": "2.0",
+    "description": "SEA Regional Language Knowledge Base for Kura AI — covers 22 regional languages across 11 ASEAN countries",
+    "last_updated": "2026-04-30",
     "languages_count": 22
   },
   "languages": {
-    "Shan": {
-      "local_name": "Tai Yai / Shan",
-      "country": "Myanmar",
-      "speakers": "about 3 million",
-      "status": "regional language",
-      "greetings": {
-        "hello": "Sawn yam",
-        "good_morning": "Na gat li",
-        "goodbye": "Pai teh",
-        "thank_you": "Kawp jai"
-      },
-      "vocabulary": {
-        "yes": "Ang",
-        "no": "Am"
-      },
-      "common_phrases": [
-        { "english": "How are you?", "translation": "Jung hao aa" },
-        { "english": "Welcome", "translation": "Hap tawn" }
-      ]
-    },
-    "Karen": {
-      "local_name": "Karen",
-      "country": "Myanmar",
-      "speakers": "unknown",
-      "status": "regional language group",
-      "greetings": {},
-      "vocabulary": {},
-      "common_phrases": []
-    },
-    "Lao": {
-      "local_name": "Phasa Lao",
-      "country": "Laos",
-      "speakers": "about 30 million including L1/L2 speakers",
-      "status": "national and regional language",
-      "greetings": {
-        "welcome": "Nyin dee ton hap",
-        "hello": "Sabaidee",
-        "good_morning": "Sabaidee ton sao",
-        "good_afternoon": "Sabaidee yarm laeng",
-        "good_evening": "Sabaidee yarm laeng",
-        "goodbye": "Sok dee der",
-        "thank_you": "Khawp jai",
-        "you_are_welcome": "Baw pen nyang"
-      },
-      "vocabulary": {
-        "yes": "Dai",
-        "no": "Baw",
-        "good": "Dee"
-      },
-      "common_phrases": [
-        { "english": "I do not understand", "translation": "Baw khao jai" },
-        { "english": "Please", "translation": "Kaluna" }
-      ]
-    },
-    "Hmong": {
-      "local_name": "Hmong Daw / White Hmong",
-      "country": "Laos",
-      "speakers": "several million across Southeast Asia and diaspora",
-      "status": "regional language",
-      "greetings": {
-        "welcome": "Zoo siab txais tos",
-        "hello": "Nyob zoo",
-        "good_morning": "Nyob zoo",
-        "good_afternoon": "Nyob zoo",
-        "good_evening": "Nyob zoo",
-        "goodbye": "Sib ntsib dua",
-        "thank_you": "Ua tsaug",
-        "you_are_welcome": "Tsis ua licas"
-      },
-      "vocabulary": {
-        "yes": "Yog",
-        "no": "Tsis",
-        "eat": "Noj"
-      },
-      "common_phrases": [
-        { "english": "I understand", "translation": "Kuv totaub" },
-        { "english": "I do not know", "translation": "Kuv tsis paub" }
-      ]
-    },
-    "Lanna": {
-      "local_name": "Kam Mueang / Northern Thai",
-      "country": "Thailand",
-      "speakers": "several million",
-      "status": "regional language",
-      "greetings": {
-        "hello": "Sawadee jao",
-        "thank_you": "Khop jao"
-      },
-      "vocabulary": {
-        "yes": "Chai",
-        "no": "Mai chai",
-        "water": "Nam",
-        "food": "Ahan"
-      },
-      "common_phrases": [
-        { "english": "I do not understand", "translation": "Mai kao jai" }
-      ]
-    },
-    "Isan": {
-      "local_name": "Isan",
-      "country": "Thailand",
-      "speakers": "unknown",
-      "status": "regional language",
-      "greetings": {},
-      "vocabulary": {},
-      "common_phrases": []
-    },
-    "Tay": {
-      "local_name": "Tay",
-      "country": "Vietnam",
-      "speakers": "unknown",
-      "status": "regional language",
-      "greetings": {},
-      "vocabulary": {},
-      "common_phrases": []
-    },
-    "Khmer Krom": {
-      "local_name": "Khmer Krom",
-      "country": "Vietnam",
-      "speakers": "unknown",
-      "status": "regional language",
-      "greetings": {},
-      "vocabulary": {},
-      "common_phrases": []
-    },
-    "Cham": {
-      "local_name": "Cham",
-      "country": "Vietnam",
-      "speakers": "unknown",
-      "status": "regional language",
-      "greetings": {},
-      "vocabulary": {},
-      "common_phrases": []
-    },
-    "Ilocano": {
-      "local_name": "Iloko / Ilocano",
-      "country": "Philippines",
-      "speakers": "about 10 million",
-      "status": "regional language",
-      "greetings": {
-        "welcome": "Naragsak nga Isasanbay",
-        "hello": "Kablaaw",
-        "good_morning": "Naimbag a bigat",
-        "good_afternoon": "Naimbag a malem",
-        "good_evening": "Naimbag a sardam",
-        "goodbye": "Pakada",
-        "thank_you": "Agyamanak",
-        "you_are_welcome": "Awan ania man"
-      },
-      "vocabulary": {
-        "yes": "Wen",
-        "fire": "Uram"
-      },
-      "common_phrases": [
-        { "english": "I do not understand", "translation": "Diak maawatan" },
-        { "english": "Stop!", "translation": "Sardeng!" }
-      ]
-    },
-    "Cebuano": {
-      "local_name": "Binisaya / Cebuano",
-      "country": "Philippines",
-      "speakers": "about 20 million",
-      "status": "regional language",
-      "greetings": {
-        "welcome": "Maayong pag-abot",
-        "hello": "Hello",
-        "good_morning": "Maayong buntag",
-        "good_afternoon": "Maayong hapon",
-        "good_evening": "Maayong gabii",
-        "goodbye": "Babay",
-        "thank_you": "Salamat",
-        "you_are_welcome": "Walay sapayan"
-      },
-      "vocabulary": {
-        "yes": "Oo",
-        "no": "Wala"
-      },
-      "common_phrases": [
-        { "english": "I understand", "translation": "Nakasabot ko" },
-        { "english": "I do not understand", "translation": "Wala ko kasabot" }
-      ]
-    },
-    "Iban": {
-      "local_name": "Iban",
-      "country": "Malaysia",
-      "speakers": "about 700,000",
-      "status": "regional language",
-      "greetings": {
-        "welcome": "Selamat datai",
-        "good_morning": "Selamat pagi",
-        "good_afternoon": "Selamat tengah hari",
-        "good_evening": "Selamat lamai",
-        "goodbye": "Betemu baru ila",
-        "thank_you": "Terima kasih",
-        "you_are_welcome": "Sama-sama"
-      },
-      "vocabulary": {},
-      "common_phrases": [
-        { "english": "How are you?", "translation": "Nama berita?" },
-        { "english": "I do not understand", "translation": "Aku enda mereti" }
-      ]
-    },
-    "Kadazan-Dusun": {
-      "local_name": "Kadazan-Dusun",
-      "country": "Malaysia",
-      "speakers": "unknown",
-      "status": "regional language",
-      "greetings": {
-        "welcome": "Kopisanangan do kinorikatan",
-        "hello": "Kopisanangan",
-        "good_morning": "Kopisanangan dongkosuabon",
-        "good_afternoon": "Kopisanangan dangadau",
-        "good_evening": "Kopisanangan doungosodop",
-        "thank_you": "Pounsikou",
-        "you_are_welcome": "Miagal"
-      },
-      "vocabulary": {
-        "yes": "Ohoo",
-        "no": "Amu"
-      },
-      "common_phrases": [
-        { "english": "How are you?", "translation": "Nunu habar nu?" },
-        { "english": "Sorry", "translation": "Siou" }
-      ]
-    },
-    "Teochew": {
-      "local_name": "Teochew",
-      "country": "Singapore",
-      "speakers": "several million globally",
-      "status": "heritage language",
-      "greetings": {
-        "hello": "Leu ho",
-        "good_morning": "Ja",
-        "goodbye": "Bai bai",
-        "thank_you": "Joi sia",
-        "you_are_welcome": "Miang ket-ki"
-      },
-      "vocabulary": {},
-      "common_phrases": [
-        { "english": "I do not know", "translation": "Ua mzai" },
-        { "english": "How are you?", "translation": "Jai sen ion?" }
-      ]
-    },
-    "Hokkien": {
-      "local_name": "Hokkien",
-      "country": "Singapore",
-      "speakers": "unknown",
-      "status": "heritage language",
-      "greetings": {},
-      "vocabulary": {},
-      "common_phrases": []
-    },
-    "Dusun": {
-      "local_name": "Central Dusun",
-      "country": "Brunei",
-      "speakers": "unknown",
-      "status": "regional language",
-      "greetings": {
-        "welcome": "Kopisanangan do kinorikatan",
-        "hello": "Kopisanangan",
-        "good_morning": "Kopisanangan dongkosuabon",
-        "good_afternoon": "Kopisanangan dangadau",
-        "good_evening": "Kopisanangan doungosodop",
-        "thank_you": "Pounsikou",
-        "you_are_welcome": "Miagal"
-      },
-      "vocabulary": {
-        "yes": "Ohoo",
-        "no": "Amu"
-      },
-      "common_phrases": [
-        { "english": "How are you?", "translation": "Nunu habar nu?" },
-        { "english": "I do not understand", "translation": "Au oku karati" }
-      ]
-    },
-    "Tutong": {
-      "local_name": "Tutong",
-      "country": "Brunei",
-      "speakers": "unknown",
-      "status": "regional language",
-      "greetings": {},
-      "vocabulary": {},
-      "common_phrases": []
-    },
     "Minangkabau": {
       "local_name": "Baso Minang",
       "country": "Indonesia",
-      "speakers": "about 5 million",
-      "status": "regional language",
+      "region": "West Sumatra (Sumatera Barat)",
+      "family": "Austronesian — Malayo-Polynesian",
+      "speakers": "~6 million",
+      "status": "Vulnerable",
+      "script": "Latin (formerly Arabic-based Jawi)",
       "greetings": {
-        "hello": "Assalamualaikum",
-        "good_evening": "Salamaik patang",
-        "goodbye": "Salamaik jalan",
+        "hello": "Apa kaba?",
+        "welcome": "Salamaik datang",
+        "good_morning": "Salamaik pagi",
+        "good_afternoon": "Salamaik siang",
+        "goodbye": "Salamaik tinggau",
         "thank_you": "Tarimo kasih",
         "you_are_welcome": "Samo-samo"
       },
       "vocabulary": {
+        "I_me": "Ambo",
+        "you": "Awak / Ang",
+        "we": "Awak sadonyo",
         "yes": "Iyo",
-        "no": "Indak"
+        "no": "Indak",
+        "water": "Aia",
+        "food": "Makanan",
+        "eat": "Makan",
+        "drink": "Minum",
+        "house": "Rumah / Rumah Gadang",
+        "beautiful": "Rancak",
+        "good": "Elok",
+        "big": "Gadang",
+        "small": "Ketek",
+        "person": "Urang",
+        "sky": "Langik",
+        "earth": "Tanah",
+        "fire": "Api",
+        "friend": "Kawan",
+        "family": "Kaluarga"
       },
       "common_phrases": [
-        { "english": "How are you?", "translation": "Ba'a kaba?" },
-        { "english": "Sorry", "translation": "Ambo mintak maaf" }
-      ]
-    },
-    "Sunda": {
-      "local_name": "Basa Sunda",
-      "country": "Indonesia",
-      "speakers": "about 30 million",
-      "status": "regional language",
-      "greetings": {
-        "welcome": "Wilujeng sumping",
-        "hello": "Sampurasun",
-        "response": "Rampes",
-        "good_morning": "Wilujeng enjing",
-        "good_afternoon": "Wilujeng siang",
-        "good_evening": "Wilujeng wengi",
-        "goodbye": "Dugi patepang deui",
-        "thank_you": "Nuhun",
-        "you_are_welcome": "Sami-sami"
-      },
-      "vocabulary": {},
-      "common_phrases": [
-        { "english": "How are you?", "translation": "Kumaha kabarna?" },
-        { "english": "Excuse me", "translation": "Punten" }
+        "Apa kaba? — How are you?",
+        "Kaba baik — I'm fine",
+        "Dari mano ang? — Where are you from?",
+        "Namonyo siapo? — What is your name?",
+        "Ambo indak mangarati — I don't understand",
+        "Tolong ulang lai — Please repeat that",
+        "Bara haragonyo? — How much does it cost?",
+        "Urang awak — Fellow Minangkabau person (expression of solidarity)"
+      ],
+      "grammar_notes": "Minangkabau uses Subject-Verb-Object order. Politeness is expressed through vocabulary choice rather than grammatical inflection. The language has a rich oral tradition through 'petatah-petitih' (proverbs).",
+      "cultural_notes": "Minangkabau is the world's largest matrilineal society. Land and property pass through the female line. The iconic Rumah Gadang (big house) has distinctive curved rooftops. Famous for the Rendang dish and the Merantau (migration) tradition.",
+      "threats": [
+        "Dominance of Indonesian (Bahasa Indonesia) in education and media",
+        "Urbanisation causing younger generations to shift to Indonesian",
+        "Limited digital content in Minangkabau language",
+        "Declining use within families"
+      ],
+      "preservation_efforts": [
+        "Local schools in West Sumatra teach Minangkabau as a subject",
+        "Minangkabau cultural festivals (e.g., Tabuik)",
+        "Online communities and YouTube channels in Minang language",
+        "Petatah-petitih (proverb) documentation projects"
       ]
     },
     "Jawa": {
       "local_name": "Basa Jawa",
       "country": "Indonesia",
-      "speakers": "about 80 million",
-      "status": "regional language",
+      "region": "Java Island (Central & East Java, Yogyakarta)",
+      "family": "Austronesian — Malayo-Polynesian",
+      "speakers": "~82 million",
+      "status": "Safe but declining among youth",
+      "script": "Latin and Javanese script (Aksara Jawa / Hanacaraka)",
       "greetings": {
-        "welcome": "Sugeng rawuh",
-        "hello": "Halo",
+        "hello_informal": "Halo",
+        "hello_formal": "Sugeng rawuh",
         "good_morning": "Sugeng enjing",
         "good_afternoon": "Sugeng siang",
         "good_evening": "Sugeng sonten",
-        "goodbye": "Kepanggih malih benjang",
+        "goodbye": "Sugeng tindak / Pamit",
         "thank_you": "Matur nuwun",
         "you_are_welcome": "Sami-sami"
       },
       "vocabulary": {
-        "yes": "Inggih"
+        "I_me_informal": "Aku",
+        "I_me_formal": "Kula",
+        "you_informal": "Kowe",
+        "you_formal": "Panjenengan",
+        "yes": "Inggih (formal) / Iya (informal)",
+        "no": "Mboten (formal) / Ora (informal)",
+        "water": "Banyu / Toya",
+        "food": "Pangan",
+        "eat": "Mangan (informal) / Dhahar (formal)",
+        "drink": "Ngombe (informal) / Ngunjuk (formal)",
+        "house": "Omah / Griya",
+        "beautiful": "Ayu / Bagus",
+        "good": "Apik / Sae",
+        "big": "Gedhe",
+        "small": "Cilik",
+        "fire": "Geni / Latu",
+        "friend": "Konco / Kanca",
+        "family": "Keluarga / Kulawarga"
+      },
+      "speech_levels": {
+        "Ngoko": "Informal — used with close friends and family or younger people",
+        "Madya": "Semi-formal — polite but not overly formal",
+        "Krama": "Formal — used with elders, superiors, and strangers"
       },
       "common_phrases": [
-        { "english": "I do not understand", "translation": "Kula boten mangertos" },
-        { "english": "Excuse me", "translation": "Nuwun sewu" }
+        "Piye kabare? — How are you? (informal)",
+        "Kabare sae? — How are you? (formal)",
+        "Saking pundi? — Where are you from? (formal)",
+        "Jenenge sopo? — What is your name? (informal)",
+        "Kula mboten mangertos — I don't understand",
+        "Matur nuwun sanget — Thank you very much",
+        "Nyuwun sewu — Excuse me / I beg your pardon"
+      ],
+      "grammar_notes": "Javanese has a complex speech level system (Unggah-ungguh) that reflects social hierarchy. The same sentence can be expressed entirely differently depending on the relationship between speakers. Verb forms and pronouns change with speech level.",
+      "cultural_notes": "Javanese culture is deeply influenced by Hindu-Buddhist and Islamic traditions. Concepts like 'rukun' (harmony) and 'hormat' (respect) are central. The Wayang (shadow puppet) tradition is a UNESCO heritage. Batik cloth originated from Javanese culture.",
+      "threats": [
+        "Indonesian language dominance in all formal settings",
+        "Youth preferring Indonesian or English",
+        "Simplified Javanese being used, eroding the speech level system",
+        "Limited Javanese media content"
+      ],
+      "preservation_efforts": [
+        "Javanese language education in Central Java and Yogyakarta schools",
+        "Wayang and Gamelan traditions kept alive through cultural centers",
+        "Javanese literature and manuscript digitisation projects",
+        "Aksara Jawa script revival programs"
+      ]
+    },
+    "Sunda": {
+      "local_name": "Basa Sunda",
+      "country": "Indonesia",
+      "region": "West Java (Jawa Barat), Banten",
+      "family": "Austronesian — Malayo-Polynesian",
+      "speakers": "~42 million",
+      "status": "Vulnerable",
+      "script": "Latin (formerly Sundanese script / Aksara Sunda)",
+      "greetings": {
+        "hello_traditional": "Sampurasun",
+        "response": "Rampes",
+        "welcome": "Wilujeng sumping",
+        "good_morning": "Wilujeng enjing",
+        "good_afternoon": "Wilujeng siang",
+        "goodbye": "Wilujeng angkat",
+        "thank_you": "Hatur nuhun",
+        "you_are_welcome": "Sami-sami"
+      },
+      "vocabulary": {
+        "I_me_informal": "Aing / Kuring",
+        "I_me_formal": "Abdi",
+        "you_informal": "Maneh",
+        "you_formal": "Anjeun / Salira",
+        "yes": "Muhun (formal) / Enya (informal)",
+        "no": "Henteu / Moal",
+        "water": "Cai",
+        "eat": "Dahar (formal) / Makan (informal)",
+        "drink": "Nginum",
+        "house": "Imah / Bumi",
+        "beautiful": "Geulis (female) / Kasep (male)",
+        "good": "Alus / Sae",
+        "big": "Gede",
+        "small": "Leutik",
+        "friend": "Babaturan / Rerencangan",
+        "family": "Kulawarga"
+      },
+      "common_phrases": [
+        "Kumaha damang? — How are you? (formal)",
+        "Kumaha ieu? — How are you? (informal)",
+        "Ti mana? — Where are you from?",
+        "Saha nami anjeun? — What is your name?",
+        "Abdi teu ngartos — I don't understand",
+        "Hapunten — Excuse me / Sorry"
+      ],
+      "grammar_notes": "Sundanese also has speech levels (Undak Usuk Basa): Kasar (rough), Sedeng (middle), and Lemes (refined). The 'Sampurasun — Rampes' greeting is unique and deeply cultural.",
+      "cultural_notes": "Sundanese people are known for the Angklung (bamboo musical instrument, UNESCO heritage) and Jaipongan dance. The Sunda Wiwitan (indigenous belief) and strong Islamic traditions coexist in Sundanese culture.",
+      "threats": [
+        "Rapid urbanisation in the Greater Jakarta area absorbing Sundanese regions",
+        "Bahasa Indonesia replacing Sundanese in daily communication",
+        "Young generation rarely uses the formal Lemes speech level",
+        "Sundanese script rarely used or taught"
+      ],
+      "preservation_efforts": [
+        "Sundanese language taught in West Java schools",
+        "Angklung international promotion by UNESCO",
+        "Sundanese cultural festivals and Sisingaan performances",
+        "Digital Sundanese dictionary and media content"
+      ]
+    },
+    "Shan": {
+      "local_name": "Tai Yai / ဝ",
+      "country": "Myanmar",
+      "region": "Shan State (Eastern Myanmar)",
+      "family": "Tai-Kadai",
+      "speakers": "~6 million",
+      "status": "Vulnerable",
+      "script": "Shan script (Tham script variant)",
+      "greetings": {
+        "hello": "Sabai dee bor?",
+        "i_am_fine": "Sabai dee",
+        "welcome": "Yin dee ton hap",
+        "goodbye": "La gon",
+        "thank_you": "Khawp jai"
+      },
+      "vocabulary": {
+        "I_me": "Khoi / Au",
+        "you": "Mung",
+        "yes": "Maan",
+        "no": "Bor",
+        "water": "Nam",
+        "eat": "Kin khao",
+        "house": "Ban / Heuan",
+        "good": "Dee",
+        "big": "Nyai",
+        "small": "Noi",
+        "friend": "Pheuan",
+        "person": "Khon"
+      },
+      "common_phrases": [
+        "Sabai dee bor? — How are you?",
+        "Sabai dee — I'm fine",
+        "Jao maa tae sai? — Where are you from?",
+        "Jao seu nyang? — What is your name?",
+        "Bor khao jai — I don't understand",
+        "Khawp jai lai lai — Thank you very much"
+      ],
+      "grammar_notes": "Shan is a tonal language with 5 tones. It is closely related to Thai and Lao. Word order is Subject-Verb-Object. Nouns are not inflected for number or gender.",
+      "cultural_notes": "The Shan people have a rich Buddhist tradition. The Shan New Year (Poi Sang Long) features young boys being ordained as novice monks. Shan literature and poetry have a long history. Shan State is known for its mountainous landscape and diverse ethnic groups.",
+      "threats": [
+        "Burmese (Myanmar) language dominance in education and government",
+        "Political conflict in Shan State displacing communities",
+        "Limited formal education in Shan language",
+        "Young people migrating to cities and adopting Burmese"
+      ],
+      "preservation_efforts": [
+        "Shan language schools run by community organisations",
+        "Shan literature festivals and poetry competitions",
+        "Cross-border cultural connections with Tai peoples in Thailand and China",
+        "Digital Shan language resources and apps"
+      ]
+    },
+    "Karen": {
+      "local_name": "Pga K'Nyau / Karen",
+      "country": "Myanmar / Thailand (border regions)",
+      "region": "Karen State (Myanmar), Mae Hong Son (Thailand)",
+      "family": "Sino-Tibetan — Karenic",
+      "speakers": "~3 million (Sgaw Karen, the most spoken variety)",
+      "status": "Vulnerable",
+      "script": "Karen script (Sgaw Karen uses a script derived from Burmese)",
+      "greetings": {
+        "hello": "Naw ka pwa?",
+        "i_am_fine": "Ka pwa",
+        "welcome": "Bwa bwa la",
+        "goodbye": "Ya wa",
+        "thank_you": "Thu lay blu"
+      },
+      "vocabulary": {
+        "I_me": "Ya",
+        "you": "Naw (female speaker) / Taw (male speaker)",
+        "yes": "Doh",
+        "no": "Baw",
+        "water": "Ti",
+        "eat": "Aw",
+        "house": "Hta",
+        "good": "Pwa",
+        "big": "Dlo",
+        "small": "Li",
+        "friend": "Mu chi",
+        "village": "Klo"
+      },
+      "common_phrases": [
+        "Naw ka pwa? — How are you? (to a female)",
+        "Taw ka pwa? — How are you? (to a male)",
+        "Ka pwa — I'm fine",
+        "Baw thu — I don't know",
+        "Thu lay blu — Thank you"
+      ],
+      "grammar_notes": "Karen languages use a Subject-Object-Verb order, unlike most SEA languages. There are many Karen dialects — Sgaw and Pwo are the most spoken. Pronouns differ based on the speaker's gender.",
+      "cultural_notes": "Karen people are predominantly Christian (Baptist) or Buddhist. The Karen New Year is celebrated in December. They are known for intricate hand-woven textiles. The Karen long-neck women (Kayan) are a sub-group famous globally.",
+      "threats": [
+        "Decades of conflict in Myanmar causing displacement and language disruption",
+        "Refugee communities in Thailand face assimilation pressure",
+        "Limited access to education in Karen language",
+        "Many dialects with limited mutual intelligibility, making standardisation difficult"
+      ],
+      "preservation_efforts": [
+        "Karen language schools in refugee camps along Thai-Myanmar border",
+        "Karen Baptist Convention promoting literacy",
+        "Cultural preservation through traditional weaving and music",
+        "NGO-supported mother tongue education programs"
+      ]
+    },
+    "Lao": {
+      "local_name": "ພາສາລາວ (Phasa Lao)",
+      "country": "Laos (Lao PDR)",
+      "region": "Nationwide — official language",
+      "family": "Tai-Kadai",
+      "speakers": "~3 million (native), ~5 million total in Laos",
+      "status": "Safe (official language)",
+      "script": "Lao script (abugida)",
+      "greetings": {
+        "hello": "Sabai dee bor?",
+        "i_am_fine": "Sabai dee",
+        "welcome": "Yin dee ton hap",
+        "good_morning": "Arun sawat",
+        "goodbye": "La gon",
+        "thank_you": "Khawp jai",
+        "you_are_welcome": "Bor pen nyang"
+      },
+      "vocabulary": {
+        "I_me": "Khoi",
+        "you": "Jao",
+        "yes": "Maan / Deh",
+        "no": "Bor",
+        "water": "Nam",
+        "eat": "Kin khao",
+        "drink": "Deum",
+        "house": "Heuan",
+        "good": "Dee",
+        "big": "Nyai",
+        "small": "Noi",
+        "beautiful": "Ngam",
+        "friend": "Pheuan",
+        "rice": "Khao"
+      },
+      "common_phrases": [
+        "Sabai dee bor? — How are you?",
+        "Khoi sabai dee — I'm fine",
+        "Jao ma tae sai? — Where are you from?",
+        "Jao seu nyang? — What is your name?",
+        "Khoi bor khao jai — I don't understand",
+        "Khawp jai lai lai — Thank you very much",
+        "Phaeng pao dai? — How much does it cost?"
+      ],
+      "grammar_notes": "Lao is a tonal language with 6 tones. It is closely related to Thai — speakers of both languages can often understand each other. Word order is Subject-Verb-Object. Lao script is written left to right with no spaces between words.",
+      "cultural_notes": "Laos is a predominantly Buddhist country. The Boun Pi Mai (Lao New Year / Water Festival) in April is the biggest celebration. Sticky rice (khao niao) is the staple food and a cultural symbol. The Mekong River is central to Lao culture and livelihoods.",
+      "threats": [
+        "Influence of Thai media (TV, music) causing language mixing",
+        "English growing in urban and tourist areas",
+        "Many ethnic minority languages within Laos competing",
+        "Youth preferring Thai pop culture"
+      ],
+      "preservation_efforts": [
+        "Lao script and language are taught in all national schools",
+        "Government promotion of Lao national identity",
+        "Cultural festivals preserving traditional music and dance",
+        "Lao literature and poetry traditions"
+      ]
+    },
+    "Hmong": {
+      "local_name": "Lus Hmoob",
+      "country": "Laos, Vietnam, China, Thailand",
+      "region": "Northern highlands of Laos and Vietnam",
+      "family": "Hmong-Mien (Miao-Yao)",
+      "speakers": "~4 million in SEA",
+      "status": "Vulnerable",
+      "script": "Latin-based (Romanised Popular Alphabet / RPA)",
+      "greetings": {
+        "hello": "Koj nyob li cas?",
+        "i_am_fine": "Kuv nyob zoo",
+        "welcome": "Zoo siab txais tos",
+        "goodbye": "Sib ntsib dua",
+        "thank_you": "Ua tsaug"
+      },
+      "vocabulary": {
+        "I_me": "Kuv",
+        "you": "Koj",
+        "yes": "Yog",
+        "no": "Tsis yog",
+        "water": "Dej",
+        "eat": "Noj mov",
+        "drink": "Haus",
+        "house": "Tsev",
+        "good": "Zoo",
+        "big": "Loj",
+        "small": "Me",
+        "family": "Tsev neeg",
+        "mountain": "Roob",
+        "friend": "Phooj ywg"
+      },
+      "common_phrases": [
+        "Koj nyob li cas? — How are you?",
+        "Kuv nyob zoo — I'm fine",
+        "Koj lub npe hu li cas? — What is your name?",
+        "Kuv tsis to taub — I don't understand",
+        "Ua tsaug ntau — Thank you very much",
+        "Koj tuaj qhov twg los? — Where are you from?"
+      ],
+      "grammar_notes": "Hmong is a tonal language with 8 tones (marked with final consonant letters in RPA). Word order is Subject-Verb-Object. There are many Hmong dialects — White Hmong (Hmong Daw) and Green Hmong (Mong Leng) are the most common.",
+      "cultural_notes": "Hmong people have a strong oral tradition with rich folktales and storytelling. The Paj Ntaub (flower cloth) embroidery is a cultural art form. Hmong New Year (Noj Peb Caug) is celebrated in November-December. Shamanism (Txiv Neeb) is a traditional spiritual practice.",
+      "threats": [
+        "Lack of formal education in Hmong language",
+        "Government assimilation policies in Laos, Vietnam, and China",
+        "Displacement from highland communities to lowlands",
+        "Diaspora communities (USA, France, Australia) shifting to host country languages"
+      ],
+      "preservation_efforts": [
+        "Hmong diaspora communities maintaining language schools",
+        "RPA script enabling literacy and written Hmong material",
+        "NGOs supporting mother-tongue education in Hmong communities",
+        "Cultural festivals and oral tradition documentation"
+      ]
+    },
+    "Isan": {
+      "local_name": "ภาษาอีสาน (Phasa Isan)",
+      "country": "Thailand",
+      "region": "Northeast Thailand (Isan region — 20 provinces)",
+      "family": "Tai-Kadai (closely related to Lao)",
+      "speakers": "~20 million",
+      "status": "Vulnerable — being replaced by Central Thai",
+      "script": "Thai script (same as Central Thai)",
+      "greetings": {
+        "hello": "Sabai dee bor?",
+        "i_am_fine": "Sabai dee",
+        "welcome": "Yin dee ton hap",
+        "goodbye": "Si kan mai",
+        "thank_you": "Khawp jai lai lai"
+      },
+      "vocabulary": {
+        "I_me": "Khoi",
+        "you": "Jao",
+        "yes": "Maan",
+        "no": "Bor",
+        "water": "Nam",
+        "eat": "Kin khao",
+        "house": "Heuan",
+        "good": "Dee",
+        "rice": "Khao niao (sticky rice)",
+        "big": "Nyai",
+        "small": "Noi",
+        "friend": "Pheuan"
+      },
+      "common_phrases": [
+        "Sabai dee bor? — How are you?",
+        "Pen yang dai? — How's it going?",
+        "Ma tae sai? — Where are you from?",
+        "Seu nyang? — What is your name?",
+        "Bor khao jai — I don't understand",
+        "Si kan mai — See you again"
+      ],
+      "grammar_notes": "Isan is mutually intelligible with Lao. It uses the Thai script but with Lao pronunciation and vocabulary. It differs significantly from Central Thai in vocabulary and tone patterns.",
+      "cultural_notes": "Isan people have a distinct cultural identity from Central Thailand. Mor lam (traditional singing) and khaen (bamboo mouth organ) music are iconic. Sticky rice is the staple, unlike jasmine rice in Central Thailand. Isan cuisine (e.g., som tam papaya salad, larb) is popular across Thailand.",
+      "threats": [
+        "Central Thai dominance in all official, educational, and media contexts",
+        "Social stigma historically associated with Isan dialect",
+        "Urban migration causing language shift",
+        "Young Isan people mixing Central Thai vocabulary"
+      ],
+      "preservation_efforts": [
+        "Mor lam music keeping the language alive in popular culture",
+        "Isan cultural pride movements and festivals",
+        "Academic research on Isan linguistics",
+        "Cross-border cultural connections with Laos"
+      ]
+    },
+    "Lanna": {
+      "local_name": "ภาษาเมือง / Kham Mueang",
+      "country": "Thailand",
+      "region": "Northern Thailand (Chiang Mai, Chiang Rai, Lampang, etc.)",
+      "family": "Tai-Kadai",
+      "speakers": "~6 million",
+      "status": "Vulnerable",
+      "script": "Tham script (ancient Lanna script) — rarely used today",
+      "greetings": {
+        "hello": "Sabai dee ga?",
+        "i_am_fine": "Sabai dee",
+        "welcome": "Yin dee ton hap",
+        "goodbye": "Pai kon na",
+        "thank_you": "Khawp jai"
+      },
+      "vocabulary": {
+        "I_me": "Khoi / Ku",
+        "you": "Mung",
+        "yes": "Maan",
+        "no": "Bor / Baw",
+        "water": "Nam",
+        "eat": "Kin",
+        "house": "Heuan",
+        "good": "Dee / Ngam",
+        "temple": "Wat",
+        "friend": "Pheuan",
+        "city": "Mueang"
+      },
+      "common_phrases": [
+        "Sabai dee ga? — How are you?",
+        "Khoi sabai dee — I'm fine",
+        "Ma tae sai? — Where are you from?",
+        "Seu nyang? — What is your name?",
+        "Bor khao jai — I don't understand",
+        "Muang nua — The North (Northern Thailand)"
+      ],
+      "grammar_notes": "Lanna (Kham Mueang) is related to Central Thai but has distinct vocabulary, tones, and expressions. It has its own ancient script (Tham script) used historically for Buddhist texts.",
+      "cultural_notes": "Northern Thailand (Lanna Kingdom) has a distinct culture from Central Thailand. Yi Peng (Lantern Festival) is a famous Lanna tradition where thousands of lanterns are released into the sky during Loi Krathong season. Ancient Lanna temples (Wat Chedi Luang, Doi Suthep) reflect a unique architectural style.",
+      "threats": [
+        "Central Thai dominance in all official contexts",
+        "Tourism industry promoting Central Thai as the national identity",
+        "Lanna script no longer widely taught",
+        "Young generation rarely speaks Kham Mueang"
+      ],
+      "preservation_efforts": [
+        "Lanna cultural centres and museums in Chiang Mai",
+        "Yi Peng festival preserving cultural traditions",
+        "Academic study of Tham script at Chiang Mai University",
+        "Community radio programs in Kham Mueang"
+      ]
+    },
+    "Tay": {
+      "local_name": "Tiếng Tày",
+      "country": "Vietnam",
+      "region": "Northeastern highlands (Cao Bang, Lang Son, Bac Kan, Thai Nguyen)",
+      "family": "Tai-Kadai",
+      "speakers": "~1.9 million",
+      "status": "Vulnerable",
+      "script": "Latin-based (Quoc ngu adapted)",
+      "greetings": {
+        "hello": "Chào bạn (Vietnamese-influenced) / Xin chào",
+        "how_are_you": "Slao mi tốt bấu?",
+        "i_am_fine": "Kin tốt",
+        "goodbye": "Lạ pây",
+        "thank_you": "Khốp chjai"
+      },
+      "vocabulary": {
+        "I_me": "Kha / Tôi",
+        "you": "Mừa / Mày",
+        "yes": "Ơn / Ừ",
+        "no": "Bấu",
+        "water": "Nặm",
+        "eat": "Kin",
+        "house": "Rườn",
+        "good": "Đi",
+        "mountain": "Phja",
+        "forest": "Dong",
+        "rice_field": "Nà"
+      },
+      "common_phrases": [
+        "Slao mi tốt bấu? — How are you?",
+        "Kin tốt — I'm fine",
+        "Mừa pi tàng lẹ? — Where are you from?",
+        "Bấu rú — I don't understand",
+        "Khốp chjai — Thank you"
+      ],
+      "grammar_notes": "Tay is closely related to Lao and Shan. It has been heavily influenced by Vietnamese in vocabulary and phonology. Tay uses a tonal system similar to other Tai-Kadai languages.",
+      "cultural_notes": "Tay people are the largest ethnic minority group in Vietnam. They have a rich tradition of Then singing (ritual music) which is a UNESCO intangible heritage. Tay cuisine features sticky rice, bamboo shoots, and grilled meats.",
+      "threats": [
+        "Vietnamese dominance in all education and official life",
+        "Rapid integration with Vietnamese mainstream culture",
+        "Young generation shifting to Vietnamese as primary language",
+        "Limited written material and digital content"
+      ],
+      "preservation_efforts": [
+        "Then singing recognised as UNESCO intangible cultural heritage (2019)",
+        "Ethnic minority schools teaching Tay language in northern provinces",
+        "Vietnamese government ethnic minority preservation programs",
+        "Academic documentation of Tay oral literature"
+      ]
+    },
+    "Khmer Krom": {
+      "local_name": "ភាសាខ្មែរក្រោម",
+      "country": "Vietnam (Mekong Delta region)",
+      "region": "Soc Trang, Tra Vinh, Kien Giang provinces",
+      "family": "Austroasiatic — Mon-Khmer",
+      "speakers": "~1 million",
+      "status": "Endangered",
+      "script": "Khmer script",
+      "greetings": {
+        "hello": "Chumreap suor",
+        "how_are_you": "Neak sok sabay te?",
+        "i_am_fine": "Knhom sok sabay",
+        "goodbye": "Leah haoy",
+        "thank_you": "Aw kun"
+      },
+      "vocabulary": {
+        "I_me": "Knhom",
+        "you": "Neak / Lok",
+        "yes": "Baat (male) / Jaa (female)",
+        "no": "Te",
+        "water": "Teuk",
+        "eat": "Nyam bai",
+        "house": "Phteah",
+        "good": "L'or",
+        "rice": "Bai",
+        "pagoda": "Wat",
+        "friend": "Mitt"
+      },
+      "common_phrases": [
+        "Chumreap suor — Hello (formal greeting with hands pressed together)",
+        "Neak sok sabay te? — How are you?",
+        "Knhom sok sabay — I'm fine",
+        "Neak mok pi na? — Where are you from?",
+        "Knhom min yul te — I don't understand",
+        "Aw kun — Thank you"
+      ],
+      "grammar_notes": "Khmer Krom is a dialect of standard Khmer (Cambodian). It has been influenced by Vietnamese in phonology and vocabulary. Khmer uses an abugida script with no spaces between words. Word order is Subject-Verb-Object.",
+      "cultural_notes": "Khmer Krom people maintain strong Theravada Buddhist traditions. The Khmer Krom have historically lived in the Mekong Delta (historically called Kampuchea Krom) before it became part of Vietnam. They maintain unique festivals and pagoda-centred community life.",
+      "threats": [
+        "Vietnamese dominance in education — Khmer Krom children educated solely in Vietnamese",
+        "Pressure to assimilate into Vietnamese mainstream culture",
+        "Limited rights for Khmer Krom cultural expression",
+        "Younger generation losing Khmer script literacy"
+      ],
+      "preservation_efforts": [
+        "Buddhist pagodas serving as cultural and language preservation centres",
+        "Khmer Krom diaspora communities in Cambodia and USA advocating for rights",
+        "Community-run Khmer language classes at pagodas",
+        "Cultural documentation by human rights organisations"
+      ]
+    },
+    "Cham": {
+      "local_name": "Bahasa Cam / ꨀꨗꨤꨮ꩓",
+      "country": "Vietnam, Cambodia",
+      "region": "Central Vietnam (Ninh Thuan, Binh Thuan), Cambodia (Phnom Penh region)",
+      "family": "Austronesian — Malayo-Polynesian (related to Malay)",
+      "speakers": "~400,000",
+      "status": "Vulnerable to Endangered",
+      "script": "Cham script (ancient), Arabic script (Jawi for Muslim Cham)",
+      "greetings": {
+        "hello_muslim": "Assalamu alaikum",
+        "hello_hindu": "Salamu",
+        "how_are_you": "Thau paran di?",
+        "goodbye": "Tama",
+        "thank_you": "Takai"
+      },
+      "vocabulary": {
+        "I_me": "Kau",
+        "you": "Ih",
+        "yes": "Uu",
+        "no": "Ơh",
+        "water": "Ia",
+        "eat": "Mưng",
+        "house": "Sang",
+        "good": "Padai",
+        "god": "Allah (Muslim) / Po (Hindu-Cham)",
+        "friend": "Saong"
+      },
+      "common_phrases": [
+        "Thau paran di? — How are you?",
+        "Kau saong — I'm fine",
+        "Kau ba kayua — I don't understand",
+        "Takai — Thank you",
+        "Ih mai tuk di? — Where are you from?"
+      ],
+      "grammar_notes": "Cham is an Austronesian language, making it related to Malay and Indonesian — unusual for mainland Southeast Asia. It has Subject-Verb-Object word order. There are two main groups: Eastern Cham (Vietnam) and Western Cham (Cambodia).",
+      "cultural_notes": "The Cham people are descendants of the ancient Champa Kingdom, a powerful Hindu-Buddhist civilisation that ruled central Vietnam. Today Cham are predominantly Muslim (in Vietnam and Cambodia) while some retain Hindu traditions (Bani Cham). My Son Sanctuary (UNESCO) is a remnant of Champa.",
+      "threats": [
+        "Small and scattered population",
+        "Dominant languages (Vietnamese, Khmer) overwhelming daily use",
+        "Two separate communities (Vietnam and Cambodia) with different scripts",
+        "Young generation losing Cham script literacy"
+      ],
+      "preservation_efforts": [
+        "Cham cultural institutes in Ninh Thuan province, Vietnam",
+        "My Son UNESCO site raising awareness of Champa heritage",
+        "Community efforts to preserve Cham script and poetry",
+        "Cham traditional textile weaving (Phan Rang brocade)"
+      ]
+    },
+    "Cebuano": {
+      "local_name": "Sinugbuanong Binisaya / Cebuano",
+      "country": "Philippines",
+      "region": "Visayas Islands (Cebu, Bohol, Leyte, Samar), Mindanao",
+      "family": "Austronesian — Malayo-Polynesian",
+      "speakers": "~25 million (2nd largest language in Philippines)",
+      "status": "Safe",
+      "script": "Latin",
+      "greetings": {
+        "hello": "Kumusta?",
+        "good_morning": "Maayong buntag",
+        "good_afternoon": "Maayong hapon",
+        "good_evening": "Maayong gabii",
+        "goodbye": "Babay / Amping",
+        "thank_you": "Salamat",
+        "you_are_welcome": "Walay sapayan"
+      },
+      "vocabulary": {
+        "I_me": "Ako",
+        "you": "Ikaw / Ka",
+        "we_inclusive": "Kita",
+        "we_exclusive": "Kami",
+        "yes": "Oo",
+        "no": "Dili / Wala",
+        "water": "Tubig",
+        "eat": "Kaon",
+        "drink": "Inom",
+        "house": "Balay",
+        "good": "Maayo",
+        "beautiful": "Gwapa (female) / Guwapo (male)",
+        "big": "Dako",
+        "small": "Gamay",
+        "friend": "Higala / Amigo"
+      },
+      "common_phrases": [
+        "Kumusta ka? — How are you?",
+        "Maayo man — I'm fine",
+        "Taga-asa ka? — Where are you from?",
+        "Unsa imong ngalan? — What is your name?",
+        "Wala ko kasabot — I don't understand",
+        "Pila man kana? — How much is that?",
+        "Amping — Take care (farewell)"
+      ],
+      "grammar_notes": "Cebuano is a focus-prominent language — verbs are marked to show which argument (actor, patient, location, etc.) is in focus. It uses affixes extensively to modify meaning. Word order is relatively flexible due to the focus system.",
+      "cultural_notes": "Cebuano speakers identify strongly with the Visayan culture. The Sinulog Festival in Cebu (January) is one of the biggest festivals in the Philippines, honouring the Santo Niño. Cebu City is considered the oldest city in the Philippines.",
+      "threats": [
+        "Filipino (Tagalog-based) and English dominating formal education and media",
+        "Urban migration causing dialect mixing",
+        "Younger generation mixing Cebuano with English (Bisdak-English)"
+      ],
+      "preservation_efforts": [
+        "Sinulog festival preserving Cebuano cultural identity",
+        "Cebuano literature and poetry (Sugbuanon literature)",
+        "Local media (TV, radio) in Cebuano language",
+        "University of San Carlos and University of the Philippines Cebu promoting Cebuano studies"
+      ]
+    },
+    "Ilocano": {
+      "local_name": "Iloko / Pagsasao nga Ilokano",
+      "country": "Philippines",
+      "region": "Northern Luzon (Ilocos Norte, Ilocos Sur, La Union, Pangasinan)",
+      "family": "Austronesian — Malayo-Polynesian",
+      "speakers": "~10 million",
+      "status": "Vulnerable",
+      "script": "Latin (formerly Baybayin script)",
+      "greetings": {
+        "hello": "Kumusta?",
+        "good_morning": "Naimbag a bigat",
+        "good_afternoon": "Naimbag a malem",
+        "good_evening": "Naimbag a rabii",
+        "goodbye": "Agkitak manen",
+        "thank_you": "Agyamanak",
+        "you_are_welcome": "Dika agkulo"
+      },
+      "vocabulary": {
+        "I_me": "Siak",
+        "you": "Sika",
+        "yes": "Wen",
+        "no": "Saan",
+        "water": "Danum",
+        "eat": "Mangan",
+        "drink": "Uminom",
+        "house": "Balay",
+        "good": "Naimbag",
+        "beautiful": "Nataengan / Napintas",
+        "big": "Dakkel",
+        "small": "Bassit",
+        "friend": "Gayyem"
+      },
+      "common_phrases": [
+        "Kumustakayo? — How are you? (plural/formal)",
+        "Naimbag met laeng — I'm doing well",
+        "Tagaanoka? — Where are you from?",
+        "Ania ti naganmo? — What is your name?",
+        "Diak maawatan — I don't understand",
+        "Agyamanak unay — Thank you very much"
+      ],
+      "grammar_notes": "Ilocano, like other Philippine languages, is a focus-prominent language with verb-initial tendency. It uses a complex affix system. Ilocano has a unique sound 'ng' that appears at the start of words.",
+      "cultural_notes": "Ilocano people are known for being hardworking and frugal (a cultural value called 'nagannak'). The Ilocos region is famous for its Spanish colonial churches (UNESCO heritage), vigan longganisa sausage, and woven fabric (abel Iloco). Many Ilocanos have migrated to Hawaii and the US mainland.",
+      "threats": [
+        "Filipino (Tagalog) and English dominance in national education",
+        "Large diaspora community shifting to host country languages",
+        "Young Ilocanos mixing Ilocano with Tagalog (Taglish influence)"
+      ],
+      "preservation_efforts": [
+        "Ilocano language taught in some Northern Luzon schools",
+        "Bannawag (Ilocano magazine) — longest-running vernacular magazine in Philippines",
+        "Ilocano literature and poetry traditions",
+        "Ilocano Heritage Festival celebrating culture"
+      ]
+    },
+    "Iban": {
+      "local_name": "Jaku Iban",
+      "country": "Malaysia (Sarawak), Brunei, Indonesia (West Kalimantan)",
+      "region": "Sarawak (Malaysian Borneo)",
+      "family": "Austronesian — Malayo-Polynesian",
+      "speakers": "~700,000",
+      "status": "Vulnerable",
+      "script": "Latin",
+      "greetings": {
+        "hello": "Selamat datai",
+        "how_are_you": "Dini ko?",
+        "i_am_fine": "Aku nyamai",
+        "goodbye": "Selamat jalan",
+        "thank_you": "Terima kasih / Mupuk"
+      },
+      "vocabulary": {
+        "I_me": "Aku",
+        "you": "Nuan",
+        "yes": "Ie",
+        "no": "Enda",
+        "water": "Ai",
+        "eat": "Makai",
+        "drink": "Inum",
+        "house": "Rumah Panjai (longhouse)",
+        "good": "Manah",
+        "big": "Besai",
+        "small": "Mit",
+        "friend": "Kaban",
+        "forest": "Menoa"
+      },
+      "common_phrases": [
+        "Selamat datai — Welcome",
+        "Dini ko? — How are you?",
+        "Aku nyamai — I'm fine",
+        "Ari ni ko? — Where are you from?",
+        "Semina nama nuan? — What is your name?",
+        "Aku enda ngarti — I don't understand",
+        "Mupuk — Thank you"
+      ],
+      "grammar_notes": "Iban is related to Malay but has distinct vocabulary and grammar. It uses Subject-Verb-Object order. The language has no tones.",
+      "cultural_notes": "Iban people are famous for their longhouse (Rumah Panjai) communal living. The Gawai Dayak harvest festival (June 1-2) is the biggest Iban celebration. Traditional Iban weaving (Pua Kumbu) is a sacred art form. Iban men historically underwent the bejalai (journey) tradition to prove their worth.",
+      "threats": [
+        "Malay and English dominance in education and government in Malaysia",
+        "Urbanisation drawing Iban youth away from longhouse communities",
+        "Young generation preferring Malay for social mobility",
+        "Traditional knowledge and oral epics (Pantun, Timang) at risk"
+      ],
+      "preservation_efforts": [
+        "Gawai Dayak festival maintaining cultural identity",
+        "Iban language broadcasting on RTM Sarawak (radio/TV)",
+        "Sarawak Museum preserving Iban cultural artifacts",
+        "Pua Kumbu weaving kept alive by women artisans"
+      ]
+    },
+    "Kadazan-Dusun": {
+      "local_name": "Kadazan / Dusun",
+      "country": "Malaysia (Sabah)",
+      "region": "Sabah (Malaysian Borneo)",
+      "family": "Austronesian — Malayo-Polynesian",
+      "speakers": "~350,000",
+      "status": "Vulnerable",
+      "script": "Latin",
+      "greetings": {
+        "hello": "Kokombus? / Om podoluhan",
+        "i_am_fine": "Aiso kirarampat",
+        "welcome": "Pinupuhanan kito",
+        "goodbye": "Salam / Pomogunan",
+        "thank_you": "Terima kasih / Sokogit"
+      },
+      "vocabulary": {
+        "I_me": "Oku / Nopo",
+        "you": "Kau",
+        "yes": "Io",
+        "no": "Koh",
+        "water": "Tubig / Danum",
+        "eat": "Mangan",
+        "house": "Walai",
+        "good": "Mouli",
+        "rice": "Paai (unhusked) / Nasi (cooked)",
+        "big": "Ogumu",
+        "small": "Kiilo",
+        "friend": "Tomod / Tadau"
+      },
+      "common_phrases": [
+        "Kokombus? — How are you?",
+        "Aiso kirarampat — I'm fine",
+        "Nokohizan kau? — Where are you from?",
+        "Onu ngaran nu? — What is your name?",
+        "Koh nobibisar oku — I don't understand",
+        "Sokogit — Thank you",
+        "Kotobian Tadau Kaamatan — Happy Harvest Festival"
+      ],
+      "grammar_notes": "Kadazan and Dusun are closely related dialects sometimes treated as one language. They are Austronesian languages related to other Borneo languages. The language has no tones.",
+      "cultural_notes": "The Kaamatan (Harvest Festival) is the most important celebration, held on May 30-31. The Unduk Ngadau beauty pageant during Kaamatan celebrates the legend of Huminodun. Kadazan-Dusun have a rich oral tradition of folktales (Tuminukud).",
+      "threats": [
+        "Malay and English dominance in Sabah's education and government",
+        "High degree of dialect variation making standardisation difficult",
+        "Young generation predominantly speaking Malay",
+        "Intermarriage with other groups leading to language shift"
+      ],
+      "preservation_efforts": [
+        "Kaamatan festival preserving cultural traditions",
+        "Kadazandusun Language Foundation (KDLF) promoting language education",
+        "Sabah Museum cultural programs",
+        "Unduk Ngadau pageant keeping cultural stories alive"
+      ]
+    },
+    "Teochew": {
+      "local_name": "Diê-ghioh-uê / 潮州話",
+      "country": "Singapore, Malaysia, Cambodia, Thailand",
+      "region": "Singapore (large community), Phnom Penh (Cambodia)",
+      "family": "Sino-Tibetan — Min Nan Chinese",
+      "speakers": "~2 million in SEA",
+      "status": "Vulnerable — shifting to Mandarin/English",
+      "script": "Traditional Chinese characters",
+      "greetings": {
+        "hello": "Li ho",
+        "how_are_you": "Li jia ho?",
+        "i_am_fine": "Ua jia ho",
+        "goodbye": "Jo kia",
+        "thank_you": "Dor jia"
+      },
+      "vocabulary": {
+        "I_me": "Ua / Ngo",
+        "you": "Li",
+        "yes": "Si",
+        "no": "M si",
+        "water": "Zui",
+        "eat": "Jia",
+        "drink": "Lim",
+        "house": "Chu",
+        "good": "Ho",
+        "rice": "Pung",
+        "friend": "Peng iu",
+        "family": "Ga li"
+      },
+      "common_phrases": [
+        "Li jia ho? — How are you?",
+        "Ua jia ho — I'm fine",
+        "Li si lor di lang? — Where are you from?",
+        "Li kia si mi mia? — What is your name?",
+        "Ua boi hioh — I don't understand",
+        "Dor jia — Thank you",
+        "Li jia bue? — Have you eaten? (common greeting)"
+      ],
+      "grammar_notes": "Teochew is a Min Nan dialect of Chinese. It has 8 tones and is tonal. Unlike Mandarin (4 tones), Teochew preserves many archaic Chinese features. It is closely related to Hokkien but not mutually intelligible.",
+      "cultural_notes": "Teochew people are a major Chinese dialect group in Southeast Asia, particularly in Cambodia and Singapore. They were major merchants and traders. Teochew cuisine (e.g., porridge, oyster omelette) is popular across SEA. The Ghost Festival and Qingming are important cultural observances.",
+      "threats": [
+        "Singapore's Speak Mandarin Campaign since 1979 replacing dialect use",
+        "Young Chinese Singaporeans and Malaysians speaking English/Mandarin",
+        "Intergenerational transmission breaking down",
+        "No official status in any country"
+      ],
+      "preservation_efforts": [
+        "Teochew clan associations (Kongsi) maintaining cultural community",
+        "Teochew opera performances",
+        "Growing interest among younger diaspora to rediscover roots",
+        "Social media communities for Teochew language revival"
+      ]
+    },
+    "Hokkien": {
+      "local_name": "Hok-kiàn-oē / 福建話",
+      "country": "Singapore, Malaysia, Philippines (Cebu, Manila)",
+      "region": "Singapore, Penang (Malaysia), Cebu (Philippines)",
+      "family": "Sino-Tibetan — Min Nan Chinese",
+      "speakers": "~4 million in SEA",
+      "status": "Vulnerable",
+      "script": "Traditional Chinese characters / Latin (Pe̍h-ōe-jī romanisation)",
+      "greetings": {
+        "hello": "Lí hó",
+        "how_are_you": "Lí chia̍h pá bué?",
+        "i_am_fine": "Goa chia̍h pá ah",
+        "goodbye": "Khì ah",
+        "thank_you": "Toh-siā"
+      },
+      "vocabulary": {
+        "I_me": "Góa",
+        "you": "Lí",
+        "yes": "Sī",
+        "no": "M̄-sī",
+        "water": "Chúi",
+        "eat": "Chia̍h",
+        "drink": "Lim",
+        "house": "Chhù",
+        "good": "Hó",
+        "rice": "Pn̄g",
+        "friend": "Pêng-iú",
+        "family": "Ka-lí"
+      },
+      "common_phrases": [
+        "Lí chia̍h pá bué? — Have you eaten? (common greeting)",
+        "Goa chia̍h pá ah — I've already eaten",
+        "Lí sī toh-ūi lâng? — Where are you from?",
+        "Lí kiò sím-mi̍h miâ? — What is your name?",
+        "Góa bô hiáu — I don't understand",
+        "Toh-siā — Thank you",
+        "Bô iàu-kín — Never mind / No problem"
+      ],
+      "grammar_notes": "Hokkien (Min Nan) has 7-8 tones and uses sandhi (tone changes when words combine). It is the origin language of many loanwords in Malay and Indonesian (e.g., 'teh' for tea, 'kueh' for cake, 'botak' for bald).",
+      "cultural_notes": "Hokkien is the most influential Chinese dialect in Southeast Asia. Many Malay and Indonesian words come from Hokkien (e.g., 'teh'=tea, 'mie'=noodles, 'loteng'=upper floor). The Penang Hokkien dialect is famous for its Malay loanwords. Hokkien opera (Amoy opera) is a traditional art.",
+      "threats": [
+        "Mandarin promotion in Singapore and Malaysia replacing dialects",
+        "English dominance in Philippines Chinese community",
+        "Younger generation not learning Hokkien at home",
+        "Dialect seen as 'low prestige' compared to Mandarin or English"
+      ],
+      "preservation_efforts": [
+        "Hokkien clan associations (Fujian Association) in SEA",
+        "Penang Hokkien cultural festivals and media",
+        "Growing social media interest in dialect revival",
+        "Hokkien popular music (Min-nan pop) from Taiwan influencing SEA"
+      ]
+    },
+    "Dusun": {
+      "local_name": "Bahasa Dusun",
+      "country": "Brunei Darussalam",
+      "region": "Belait and Tutong districts of Brunei",
+      "family": "Austronesian — Malayo-Polynesian",
+      "speakers": "~20,000",
+      "status": "Endangered",
+      "script": "Latin",
+      "greetings": {
+        "hello": "Haro / Salam",
+        "how_are_you": "Baapa kaamu?",
+        "i_am_fine": "Amai oku",
+        "goodbye": "Salam / Daa",
+        "thank_you": "Terima kasih"
+      },
+      "vocabulary": {
+        "I_me": "Oku",
+        "you": "Kaamu",
+        "yes": "Io",
+        "no": "Tia / Koh",
+        "water": "Danum",
+        "eat": "Mangan",
+        "house": "Walai",
+        "good": "Muli",
+        "river": "Sungai",
+        "forest": "Utan"
+      },
+      "common_phrases": [
+        "Baapa kaamu? — How are you?",
+        "Amai oku — I'm fine",
+        "Onu ngaran nu? — What is your name?",
+        "Oku tia nobibisar — I don't understand",
+        "Terima kasih — Thank you"
+      ],
+      "grammar_notes": "Brunei Dusun is related to Kadazan-Dusun of Sabah. It has been influenced by Malay due to Brunei's Malay-dominant culture. It is an Austronesian language with no tones.",
+      "cultural_notes": "Dusun people in Brunei maintain traditional harvest festivals and have converted to Islam while retaining some indigenous cultural practices. The Dusun community is a recognised indigenous (bumiputera) group in Brunei.",
+      "threats": [
+        "Malay is the national language of Brunei — dominates all aspects of life",
+        "Very small speaker population",
+        "No formal education in Dusun language",
+        "Intermarriage with Malay community causing rapid language shift"
+      ],
+      "preservation_efforts": [
+        "Brunei government's recognition of Dusun as an indigenous group",
+        "Cultural festivals and oral tradition documentation",
+        "Academic interest from Universiti Brunei Darussalam (UBD)",
+        "Community elders preserving traditional songs and stories"
+      ]
+    },
+    "Tutong": {
+      "local_name": "Bahasa Tutong",
+      "country": "Brunei Darussalam",
+      "region": "Tutong district, Brunei",
+      "family": "Austronesian — Malayo-Polynesian",
+      "speakers": "~20,000",
+      "status": "Endangered",
+      "script": "Latin",
+      "greetings": {
+        "hello": "Salam / Helo",
+        "how_are_you": "Macam mana kabar?",
+        "i_am_fine": "Baik saja",
+        "goodbye": "Daa / Selamat tinggal",
+        "thank_you": "Terima kasih"
+      },
+      "vocabulary": {
+        "I_me": "Aku / Saya",
+        "you": "Kita / Awak",
+        "yes": "Iyo",
+        "no": "Ndak / Tidak",
+        "water": "Ayer",
+        "eat": "Makan",
+        "house": "Rumah",
+        "good": "Baik",
+        "river": "Sungai",
+        "village": "Kampung"
+      },
+      "common_phrases": [
+        "Macam mana kabar? — How are you? (Malay-influenced)",
+        "Baik saja — Fine/OK",
+        "Dari mana? — Where are you from?",
+        "Siapa nama? — What is your name?",
+        "Tidak faham — I don't understand"
+      ],
+      "grammar_notes": "Tutong is closely related to Malay and has absorbed many Malay words and grammatical structures due to Brunei's national language policy. It is an Austronesian language with Subject-Verb-Object order.",
+      "cultural_notes": "Tutong people are a recognised indigenous group in Brunei. They have unique oral traditions and traditional crafts. Like other indigenous groups in Brunei, they are predominantly Muslim and celebrate both Islamic and indigenous festivals.",
+      "threats": [
+        "Malay dominance making Tutong nearly indistinguishable from regional Malay dialects for some speakers",
+        "Very small speaker population",
+        "No formal education in Tutong",
+        "Rapid assimilation into Bruneian Malay identity"
+      ],
+      "preservation_efforts": [
+        "Brunei government recognition of indigenous groups",
+        "Community elders maintaining oral literature",
+        "Linguistic documentation by UBD researchers",
+        "Cultural festivals in Tutong district"
       ]
     },
     "Tetum": {
-      "local_name": "Lia-Tetun",
-      "country": "Timor Leste",
-      "speakers": "about 1 million",
-      "status": "official and regional language",
+      "local_name": "Tetun",
+      "country": "Timor-Leste (East Timor)",
+      "region": "Nationwide — co-official language of Timor-Leste",
+      "family": "Austronesian — Malayo-Polynesian",
+      "speakers": "~800,000 (as lingua franca)",
+      "status": "Safe (co-official language of Timor-Leste with Portuguese)",
+      "script": "Latin",
       "greetings": {
-        "welcome": "Ksolok bodik mai",
-        "hello": "Elo",
         "good_morning": "Bondia",
         "good_afternoon": "Botarde",
         "good_evening": "Bonoite",
-        "goodbye": "Adeus",
-        "thank_you": "Obrigadu",
-        "you_are_welcome": "La iha buat ida"
+        "welcome": "Bem-vindo (Portuguese) / Bom chegada",
+        "goodbye": "Adeus / Ate logo",
+        "thank_you": "Obrigadu (male) / Obrigada (female)",
+        "how_are_you": "Ita boot saúde diak?"
       },
       "vocabulary": {
+        "I_me": "Hau",
+        "you_singular": "Ita boot (respectful) / O (informal)",
+        "we_inclusive": "Ita",
+        "we_exclusive": "Ami",
         "yes": "Sin",
         "no": "Lae",
-        "fire": "Ahi"
+        "water": "Bee",
+        "eat": "Han",
+        "drink": "Hemu",
+        "house": "Uma",
+        "good": "Diak",
+        "beautiful": "Bonitu (male) / Bonita (female)",
+        "big": "Boot",
+        "small": "Ki'ik",
+        "friend": "Kolega / Maluk"
       },
       "common_phrases": [
-        { "english": "I understand", "translation": "Ha'u komprende" },
-        { "english": "I do not understand", "translation": "Ha'u la comprende" }
+        "Ita boot saúde diak? — How are you? (formal)",
+        "Hau saúde diak — I'm healthy/fine",
+        "Ita boot husi nebe? — Where are you from?",
+        "Ita boot nia naran saida? — What is your name?",
+        "Hau la hatene — I don't understand / I don't know",
+        "Obrigadu barak — Thank you very much",
+        "Favor — Please"
+      ],
+      "grammar_notes": "Tetum has been heavily influenced by Portuguese due to centuries of Portuguese colonisation and continues to absorb Portuguese vocabulary (called Tetum Prasa/urban Tetum). The more traditional form (Tetum Terik) retains more original Austronesian features. Word order is Subject-Verb-Object.",
+      "cultural_notes": "Timor-Leste gained independence in 2002, making it one of the world's newest nations. Tetum serves as the national lingua franca among the 30+ local languages. The sacred house (Uma Lulik) is central to Timorese spiritual life. Tais (traditional woven cloth) is a national symbol.",
+      "threats": [
+        "Portuguese (co-official language) competing for formal domains",
+        "English growing in business and international contexts",
+        "30+ indigenous languages competing with Tetum",
+        "Tetum Terik (traditional form) declining as Tetum Prasa (urban) dominates"
+      ],
+      "preservation_efforts": [
+        "Tetum is a co-official national language — supported by government policy",
+        "National University of Timor-Leste teaching in Tetum",
+        "Tais weaving tradition preservation",
+        "Uma Lulik (sacred house) cultural revival programs"
       ]
     },
     "Mambae": {
-      "local_name": "Mambae",
-      "country": "Timor Leste",
-      "speakers": "unknown",
-      "status": "regional language",
-      "greetings": {},
-      "vocabulary": {},
-      "common_phrases": []
+      "local_name": "Mambai",
+      "country": "Timor-Leste (East Timor)",
+      "region": "Central Timor (Aileu, Ermera, Manufahi districts)",
+      "family": "Trans-New Guinea — Timor-Alor-Pantar (non-Austronesian)",
+      "speakers": "~80,000",
+      "status": "Vulnerable",
+      "script": "Latin",
+      "greetings": {
+        "hello": "Bondia (Portuguese-influenced) / Olá",
+        "how_are_you": "O diak ka lae?",
+        "i_am_fine": "Ha'u diak",
+        "goodbye": "Adeus",
+        "thank_you": "Obrigadu"
+      },
+      "vocabulary": {
+        "I_me": "Ha'u",
+        "you": "O",
+        "yes": "Sin / Iha",
+        "no": "Lae",
+        "water": "We",
+        "eat": "Han",
+        "house": "Uma",
+        "mountain": "Foho",
+        "good": "Diak",
+        "big": "Boten",
+        "small": "Kiik",
+        "friend": "Maluk"
+      },
+      "common_phrases": [
+        "O diak ka lae? — How are you?",
+        "Ha'u diak — I'm fine",
+        "O husi nebe? — Where are you from?",
+        "O nia naran saida? — What is your name?",
+        "Ha'u la hatene — I don't understand",
+        "Obrigadu barak — Thank you very much"
+      ],
+      "grammar_notes": "Mambae is unique in Timor-Leste as it belongs to the Trans-New Guinea language family (non-Austronesian), making it linguistically distinct from most SEA languages. It has a Subject-Object-Verb tendency in traditional speech but is influenced by Tetum and Portuguese.",
+      "cultural_notes": "Mambae people live in the central highlands of Timor-Leste. They have rich animist traditions alongside Catholicism. The sacred house (Uma Lulik) is central to Mambae spiritual life. Traditional harvest ceremonies and oral poetry (dadolin) are important cultural expressions.",
+      "threats": [
+        "Tetum (national language) replacing Mambae in daily life",
+        "Portuguese in formal education",
+        "Limited digital content and educational materials in Mambae",
+        "Young generation shifting to Tetum for social mobility"
+      ],
+      "preservation_efforts": [
+        "SIL International linguistic documentation of Mambae",
+        "Community mother-tongue education initiatives",
+        "Dadolin (traditional poetry) oral tradition preservation",
+        "Uma Lulik cultural revival in Mambae communities"
+      ]
     }
   }
 }

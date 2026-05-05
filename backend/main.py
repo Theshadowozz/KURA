@@ -148,9 +148,9 @@ def build_system_prompt(user_messages: list | None = None):
         if lang_data:
             extra_context = f"\n\nDetailed language data for mentioned languages:\n{lang_data}"
 
-    return f"""You are Kura, an AI assistant specialised in Southeast Asian (SEA) regional languages.
+    return f"""You are Kura, an AI assistant specialised in Southeast Asian (SEA) regional language preservation.
 
-You have knowledge of SEA regional languages and cultural context.
+You have knowledge of 22 regional languages across 11 ASEAN countries.
 
 ## Available Languages Index:
 {language_index}
@@ -178,15 +178,21 @@ class LearnRequest(BaseModel):
 @app.post("/learn")
 def learn_word(request: LearnRequest):
     try:
-        with open("minangkabau_knowledge.json", "r", encoding="utf-8") as f:
+        with open("sea_languages_knowledge.json", "r", encoding="utf-8") as f:
             data = json.load(f)
 
-        if "kosakata" not in data:
-            data["kosakata"] = {}
+        if "languages" not in data:
+            data["languages"] = {}
+        if "Minangkabau" not in data["languages"]:
+            data["languages"]["Minangkabau"] = {}
+        if "vocabulary" not in data["languages"]["Minangkabau"]:
+            data["languages"]["Minangkabau"]["vocabulary"] = {}
 
-        data["kosakata"][request.indonesia.lower()] = request.minang.lower()
+        data["languages"]["Minangkabau"]["vocabulary"][
+            request.indonesia.lower()
+        ] = request.minang.lower()
 
-        with open("minangkabau_knowledge.json", "w", encoding="utf-8") as f:
+        with open("sea_languages_knowledge.json", "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
 
         return {"message": "Kata berhasil disimpan!"}
@@ -393,8 +399,11 @@ def chat(request: ChatRequest):
     if not request.messages:
         raise HTTPException(status_code=400, detail="messages is required")
 
-    messages = [{"role": "system", "content": build_system_prompt()}]
-    messages.extend([message.model_dump() for message in request.messages])
+    max_history = 10  # Keep last 10 messages (5 exchanges) to avoid token limits.
+    raw_messages = [message.model_dump() for message in request.messages]
+    trimmed_messages = raw_messages[-max_history:] if len(raw_messages) > max_history else raw_messages
+    messages = [{"role": "system", "content": build_system_prompt(trimmed_messages)}]
+    messages.extend(trimmed_messages)
 
     try:
         response = client.chat.completions.create(
