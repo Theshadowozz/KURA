@@ -40,7 +40,7 @@ jobs:
           git clone https://${{ secrets.GH_PAT }}@github.com/Theshadowozz/kura-frontend-build.git dist-repository
 
           rm -rf dist-repository/dist
-          cp -R dist dist-repository/
+          cp -R build/dist dist-repository/dist
 
           cd dist-repository
           git add .
