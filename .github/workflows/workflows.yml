@@ -17,13 +17,13 @@ jobs:
       - name: Install dependencies
         run: |
           cd frontend
-          npm ci
+          npm install
 
       - name: Set environment variables
         run: |
-          cd frontend
-          touch .env
-          echo "VITE_API_BASE=${{ vars.VITE_API_BASE_DEFAULT }}" >> .env
+          cat > frontend/.env << 'EOF'
+          VITE_API_BASE=${{ vars.VITE_API_BASE_DEFAULT }}
+          EOF
 
       - name: Build React.js app
         run: |
@@ -33,12 +33,16 @@ jobs:
       - name: Push build dist
         run: |
           cd frontend
-          git config --global user.name "${{ vars.GH_EMAIL }}"
-          git config --global user.email "${{ vars.GH_USERNAME }}"
-          git clone --branch main https://${{ secrets.GH_PAT }}@github.com/Theshadowozz/kura-frontend-build.git dist-repository
+
+          git config --global user.name "${{ vars.GH_USERNAME }}"
+          git config --global user.email "${{ vars.GH_EMAIL }}"
+
+          git clone https://${{ secrets.GH_PAT }}@github.com/Theshadowozz/kura-frontend-build.git dist-repository
+
           rm -rf dist-repository/dist
-          cp -R build/dist dist-repository/dist
+          cp -R dist dist-repository/
+
           cd dist-repository
           git add .
-          git commit -m "Build $(date +'%Y%m%d%H%M') of github.com/Theshadowozz/KURA/commit/${{ github.sha }}"
+          git commit -m "Build $(date +'%Y%m%d%H%M') - ${{ github.sha }}"
           git push
