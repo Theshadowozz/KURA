@@ -764,8 +764,15 @@ export default function App() {
     <div className={`app ${theme}`}>
       <header className="hero">
         <div>
-          <div className="pill-row">
-            <p className="pill">Kura AI</p>
+          <div className="header-top">
+            <div className="brand-chip">
+              <img
+                src="/icon/android-chrome-192x192.png"
+                alt="Kura AI icon"
+                className="brand-icon"
+              />
+              <p className="pill">Kura AI</p>
+            </div>
             <button
               className="theme-toggle"
               onClick={toggleTheme}
@@ -1175,7 +1182,14 @@ export default function App() {
       </main>
 
       <footer className="footer">
-        <p>© 2026 Kura AI. Built for Hackathon.</p>
+        <p>
+          <img
+            src="/icon/favicon-32x32.png"
+            alt="Kura AI icon"
+            className="footer-icon"
+          />
+          © 2026 Kura AI. Built for Hackathon.
+        </p>
       </footer>
     </div>
   );
