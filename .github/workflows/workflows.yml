@@ -21,6 +21,7 @@ jobs:
 
       - name: Set environment variables
         run: |
+          cd frontend
           cat > .env << 'EOF'
           VITE_API_BASE=${{ vars.VITE_API_BASE_DEFAULT }}
           EOF
