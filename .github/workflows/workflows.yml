@@ -1,0 +1,44 @@
+name: Build React.js App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout source repo
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Set environment variables
+        run: |
+          cat > .env << 'EOF'
+          VITE_API_BASE=${{ vars.VITE_API_BASE_DEFAULT }}
+          EOF
+
+      - name: Build React.js app
+        run: |
+          cd frontend
+          npm run build
+
+      - name: Push build dist
+        run: |
+          cd frontend
+          git config --global user.name "${{ vars.GH_EMAIL }}"
+          git config --global user.email "${{ vars.GH_USERNAME }}"
+          git clone --branch main https://${{ secrets.GH_PAT }}@github.com/Theshadowozz/kura-frontend-build.git dist-repository
+          rm -rf dist-repository/dist
+          cp -R build/dist dist-repository/dist
+          cd dist-repository
+          git add .
+          git commit -m "Build $(date +'%Y%m%d%H%M') of github.com/Theshadowozz/KURA/commit/${{ github.sha }}"
+          git push
