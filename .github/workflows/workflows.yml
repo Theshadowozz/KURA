@@ -1,4 +1,4 @@
-name: React.js Actions Script
+name: Build React.js App
 
 on:
   push:
@@ -8,22 +8,36 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: production
 
     steps:
-      - name: Checkout code
+      - name: Checkout source repo
         uses: actions/checkout@v4
+      
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: pnpm
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
-      - name: Set .env
+      - name: Set environment variables
         run: |
-          touch .env
-          echo "VITE_API_BASE=${{ vars.VITE_API_BASE_MAIN }}" >> .env
+          cat > .env << 'EOF'
+          VITE_PUBLIC_API_BASE_URL_DEFAULT=${{ vars.VITE_API_BASE_DEFAULT }}
+          VITE_PUBLIC_API_BASE_URL_DEV=${{ vars.VITE_API_BASE_DEV }}
+          EOF
 
       - name: Build React.js app
         run: |
-          npm run build
+          pnpm run build
 
       - name: Push build dist
         run: |
@@ -34,5 +48,5 @@ jobs:
           cp -R build/dist dist-repository/dist
           cd dist-repository
           git add .
-          git commit -m "Build $(date +'%Y%m%d%H%M') of github.com/Theshadowozz/kura-frontend-build/commit/${{ github.sha }}"
+          git commit -m "Build $(date +'%Y%m%d%H%M') of github.com/Theshadowozz/KURA/commit/${{ github.sha }}"
           git push
