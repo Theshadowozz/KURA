@@ -21,9 +21,9 @@ jobs:
 
       - name: Set environment variables
         run: |
-          cat > .env << 'EOF'
-          VITE_API_BASE=${{ vars.VITE_API_BASE_DEFAULT }}
-          EOF
+          cd frontend
+          touch .env
+          echo "VITE_API_BASE=${{ vars.VITE_API_BASE_DEFAULT }}" >> .env
 
       - name: Build React.js app
         run: |
