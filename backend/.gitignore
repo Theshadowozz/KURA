@@ -1,0 +1,70 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+.venv/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite3
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Cache
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Coverage
+.coverage
+coverage.xml
+htmlcov/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# Uvicorn / FastAPI runtime
+*.pid
+*.sock
+
+# Temporary files
+*.tmp
+*.temp
+
+# Pydantic compiled (optional)
+*.pyd
+
+# Docker (optional)
+docker-compose.override.yml
+
+# Test outputs
+.pytest_cache/
+
+# Static files (optional, kalau generate)
+staticfiles/
+
+# Media uploads (opsional, kalau ada)
+media/
