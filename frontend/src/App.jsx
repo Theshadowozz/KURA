@@ -67,80 +67,13 @@ function parseLine(text) {
   });
 }
 
-function renderMarkdown(text) {
-  const lines = text.split("\n");
-  const elements = [];
-  let i = 0;
-
-  while (i < lines.length) {
-    const line = lines[i];
-
-    // Bullet list
-    if (/^[-*]\s+/.test(line)) {
-      const items = [];
-      while (i < lines.length && /^[-*]\s+/.test(lines[i])) {
-        items.push(lines[i].replace(/^[-*]\s+/, ""));
-        i++;
-      }
-      elements.push(
-        <ul key={i} className="md-list">
-          {items.map((item, j) => (
-            <li key={j}>{parseLine(item)}</li>
-          ))}
-        </ul>
-      );
-      continue;
-    }
-
-    // Numbered list
-    if (/^\d+\.\s+/.test(line)) {
-      const items = [];
-      while (i < lines.length && /^\d+\.\s+/.test(lines[i])) {
-        items.push(lines[i].replace(/^\d+\.\s+/, ""));
-        i++;
-      }
-      elements.push(
-        <ol key={i} className="md-list">
-          {items.map((item, j) => (
-            <li key={j}>{parseLine(item)}</li>
-          ))}
-        </ol>
-      );
-      continue;
-    }
-
-    // Empty line
-    if (line.trim() === "") {
-      elements.push(<br key={i} />);
-      i++;
-      continue;
-    }
-
-    // Normal paragraph
-    elements.push(<p key={i}>{parseLine(line)}</p>);
-    i++;
-  }
-
-  return elements;
-}
-
-function parseLine(text) {
-  const parts = text.split(/(\*\*[^*]+\*\*)/g);
-  return parts.map((part, i) => {
-    if (part.startsWith("**") && part.endsWith("**")) {
-      return <strong key={i}>{part.slice(2, -2)}</strong>;
-    }
-    return part;
-  });
-}
-
-const API_BASE = import.meta.env.VITE_API_BASE;
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8000";
 
 const tabs = [
   { id: "chat", label: "Language Chatbot" },
   { id: "talk", label: "Two-Way Communication" },
   { id: "map", label: "SEA Map" },
-  { id: "quiz", label: "🎯 Quiz" },
+  { id: "quiz", label: "Quiz" },
 ];
 
 const QUIZ_LANGUAGES = [
@@ -266,37 +199,40 @@ const MAP_COUNTRIES = {
 
 const seaCountries = [
   // Myanmar
-  { id: "shan",         name: "Shan",          country: "Myanmar",      top: 27, left: 19, languages: ["Shan"] },
-  { id: "karen",        name: "Karen",          country: "Myanmar",      top: 40, left: 16, languages: ["Karen"] },
+  { id: "shan",         name: "Shan",          country: "Myanmar",      top: 22, left: 19, languages: ["Shan"] },
+  { id: "karen",        name: "Karen",          country: "Myanmar",      top: 30, left: 16, languages: ["Karen"] },
   // Laos
-  { id: "lao",          name: "Lao",            country: "Laos",         top: 32, left: 27, languages: ["Lao"] },
-  { id: "hmong",        name: "Hmong",          country: "Laos",         top: 24, left: 28, languages: ["Hmong"] },
+  { id: "lao",          name: "Lao",            country: "Laos",         top: 30, left: 26, languages: ["Lao"] },
+  { id: "hmong",        name: "Hmong",          country: "Laos",         top: 38, left: 33, languages: ["Hmong"] },
   // Thailand
-  { id: "lanna",        name: "Lanna",          country: "Thailand",     top: 30, left: 23, languages: ["Lanna"] },
-  { id: "isan",         name: "Isan",           country: "Thailand",     top: 42, left: 28, languages: ["Isan"] },
+  { id: "lanna",        name: "Lanna",          country: "Thailand",     top: 35, left: 22, languages: ["Lanna"] },
+  { id: "isan",         name: "Isan",           country: "Thailand",     top: 40, left: 25, languages: ["Isan"] },
+  // Cambodia
+  { id: "khmer",        name: "Khmer",          country: "Cambodia",     top: 45, left: 32, languages: ["Khmer"] },
+  { id: "kuy",          name: "Kuy",            country: "Cambodia",     top: 43, left: 28, languages: ["Kuy"] },
   // Vietnam
-  { id: "tay",          name: "Tay",            country: "Vietnam",      top: 33, left: 59, languages: ["Tay"] },
-  { id: "cham",         name: "Cham",           country: "Vietnam",      top: 48, left: 62, languages: ["Cham"] },
-  { id: "khmer_krom",   name: "Khmer Krom",     country: "Vietnam",      top: 57, left: 56, languages: ["Khmer Krom"] },
+  { id: "tay",          name: "Tay",            country: "Vietnam",      top: 25, left: 30, languages: ["Tay"] },
+  { id: "cham",         name: "Cham",           country: "Vietnam",      top: 43, left: 36, languages: ["Cham"] },
+  { id: "khmer_krom",   name: "Khmer Krom",     country: "Vietnam",      top: 48, left: 33, languages: ["Khmer Krom"] },
   // Philippines
-  { id: "ilocano",      name: "Ilocano",        country: "Philippines",  top: 33, left: 56, languages: ["Ilocano"] },
+  { id: "ilocano",      name: "Ilocano",        country: "Philippines",  top: 35, left: 58, languages: ["Ilocano"] },
   { id: "cebuano",      name: "Cebuano",        country: "Philippines",  top: 46, left: 58, languages: ["Cebuano"] },
   // Malaysia
-  { id: "iban",         name: "Iban",           country: "Malaysia",     top: 63, left: 47, languages: ["Iban"] },
-  { id: "kadazandusun", name: "Kadazan-Dusun",  country: "Malaysia",     top: 54, left: 65, languages: ["Kadazan-Dusun"] },
+  { id: "iban",         name: "Iban",           country: "Malaysia",     top: 63, left: 26, languages: ["Iban"] },
+  { id: "kadazandusun", name: "Kadazan-Dusun",  country: "Malaysia",     top: 59, left: 23, languages: ["Kadazan-Dusun"] },
   // Singapore
   { id: "teochew",      name: "Teochew",        country: "Singapore",    top: 66, left: 28, languages: ["Teochew"] },
   { id: "hokkien",      name: "Hokkien",        country: "Singapore",    top: 68, left: 30, languages: ["Hokkien"] },
   // Brunei
   { id: "dusun",        name: "Dusun",          country: "Brunei",       top: 60, left: 45, languages: ["Dusun"] },
-  { id: "tutong",       name: "Tutong",         country: "Brunei",       top: 54, left: 61, languages: ["Tutong"] },
+  { id: "tutong",       name: "Tutong",         country: "Brunei",       top: 62, left: 47, languages: ["Tutong"] },
   // Indonesia
   { id: "minangkabau",  name: "Minangkabau",    country: "Indonesia",    top: 72, left: 23, languages: ["Minangkabau"] },
-  { id: "sunda",        name: "Sunda",          country: "Indonesia",    top: 80, left: 33, languages: ["Sunda"] },
-  { id: "jawa",         name: "Javanese",       country: "Indonesia",    top: 81, left: 38, languages: ["Jawa"] },
+  { id: "sunda",        name: "Sunda",          country: "Indonesia",    top: 82, left: 33, languages: ["Sunda"] },
+  { id: "jawa",         name: "Javanese",       country: "Indonesia",    top: 84, left: 38, languages: ["Jawa"] },
   // Timor Leste
-  { id: "tetum",        name: "Tetum",          country: "Timor Leste",  top: 86, left: 63, languages: ["Tetum"] },
-  { id: "mambae",       name: "Mambae",         country: "Timor Leste",  top: 89, left: 66, languages: ["Mambae"] },
+  { id: "tetum",        name: "Tetum",          country: "Timor Leste",  top: 89, left: 63, languages: ["Tetum"] },
+  { id: "mambae",       name: "Mambae",         country: "Timor Leste",  top: 87, left: 66, languages: ["Mambae"] },
 ];
 
 const languageOptions = [
@@ -845,7 +781,7 @@ export default function App() {
         <div>
           <div className="pill-row">
             <div className="pill">
-              <TurtleShellLogo size={20} />
+              <img src="/logo/logo.png" alt="Kura AI logo" className="app-logo" />
               Kura AI
             </div>
             <button
@@ -1082,24 +1018,6 @@ export default function App() {
                   >
                     🎤
                   </button>
-                  <div className="voice-buttons">
-                    <button
-                      className={`convo-mic ${recordingSide === 'left' && recordingMode === 'text' ? 'recording' : ''}`}
-                      onClick={() => startRecording("left", "text")}
-                      disabled={talkLoading || (recordingSide && recordingSide !== 'left')}
-                      title="Voice to Text"
-                    >
-                      🎤 T
-                    </button>
-                    <button
-                      className={`convo-mic ${recordingSide === 'left' && recordingMode === 'voice' ? 'recording' : ''}`}
-                      onClick={() => startRecording("left", "voice")}
-                      disabled={talkLoading || (recordingSide && recordingSide !== 'left')}
-                      title="Voice to Voice"
-                    >
-                      🎤 V
-                    </button>
-                  </div>
                 </div>
               </div>
 
@@ -1134,24 +1052,6 @@ export default function App() {
                   >
                     🎤
                   </button>
-                  <div className="voice-buttons">
-                    <button
-                      className={`convo-mic ${recordingSide === 'right' && recordingMode === 'text' ? 'recording' : ''}`}
-                      onClick={() => startRecording("right", "text")}
-                      disabled={talkLoading || (recordingSide && recordingSide !== 'right')}
-                      title="Voice to Text"
-                    >
-                      🎤 T
-                    </button>
-                    <button
-                      className={`convo-mic ${recordingSide === 'right' && recordingMode === 'voice' ? 'recording' : ''}`}
-                      onClick={() => startRecording("right", "voice")}
-                      disabled={talkLoading || (recordingSide && recordingSide !== 'right')}
-                      title="Voice to Voice"
-                    >
-                      🎤 V
-                    </button>
-                  </div>
                 </div>
               </div>
             </div>
@@ -1315,7 +1215,7 @@ export default function App() {
         {activeTab === "quiz" && (
           <section className="panel quiz-panel">
             <div className="panel-header">
-              <h2>🎯 Language Quiz</h2>
+              <h2> Language Quiz</h2>
               <p>Test your knowledge of SEA regional greetings. Pick the correct answer!</p>
             </div>
 
@@ -1378,9 +1278,7 @@ export default function App() {
             <div className={`quiz-mascot ${quizMascot}`}>
               <div className="quiz-mascot-body">
                 <div className="quiz-mascot-face">
-                  {quizMascot === "correct" && <span>😄</span>}
-                  {quizMascot === "wrong"   && <span>😅</span>}
-                  {quizMascot === "idle"    && <span>🦜</span>}
+                  <img src="/logo/logo.png" alt="Kura AI logo" className="quiz-mascot-logo" />
                 </div>
                 <div className="quiz-mascot-name">Kura</div>
               </div>

@@ -56,7 +56,11 @@ app = FastAPI(title="Kura API", version="0.3.0")
 # ==============================
 # SEA-LION REFINER (HuggingFace)
 # ==============================
-SEA_REGIONAL_LANGUAGES = {"minang", "jawa", "sunda", "iban", "kadazan-dusun", "dusun", "tetum"}
+SEA_REGIONAL_LANGUAGES = {"minang", "minangkabau", "jawa", "sunda", "iban", "kadazan-dusun", "dusun", "tetum"}
+
+LANGUAGE_ALIASES = {
+    "Minang": "Minangkabau",
+}
 
 def refine_sea_language(text: str) -> str:
     """Refine regional SEA language translation using SEA-LION via HuggingFace API."""
@@ -100,6 +104,7 @@ LANG_CODE_MAP = {
     "Malay": "ms",
     "Tagalog": "tl",
     "Khmer": "km",
+    "Kuy": "km",
 
     # Indonesian regional languages → fallback to Indonesian
     "Minang": "id",
@@ -145,6 +150,40 @@ LANG_CODE_MAP = {
     "Mambae": "pt",
 }
 
+WHISPER_LANG_MAP = {
+    "Indonesia": "id",
+    "English": "en",
+    "Mandarin": "zh",
+    "Thai": "th",
+    "Vietnamese": "vi",
+    "Malay": "ms",
+    "Tagalog": "tl",
+    "Khmer": "km",
+    "Minangkabau": "id",
+    "Minang": "id",
+    "Jawa": "id",
+    "Sunda": "id",
+    "Shan": "en",
+    "Karen": "en",
+    "Lao": "lo",
+    "Hmong": "en",
+    "Isan": "th",
+    "Lanna": "th",
+    "Tay": "vi",
+    "Khmer Krom": "km",
+    "Cham": "vi",
+    "Cebuano": "tl",
+    "Ilocano": "tl",
+    "Iban": "ms",
+    "Kadazan-Dusun": "ms",
+    "Dusun": "ms",
+    "Tutong": "ms",
+    "Teochew": "zh",
+    "Hokkien": "zh",
+    "Tetum": "pt",
+    "Mambae": "pt",
+}
+
 # Languages where the native script is incompatible with the assigned TTS engine.
 # For these, the map_audio prompt will request romanized (Latin) output so the
 # TTS engine can actually pronounce the text.
@@ -153,6 +192,55 @@ ROMANIZE_LANGS = {"Karen", "Shan", "Hmong"}
 def get_gtts_lang(language_name: str) -> str:
     """Return gTTS language code for a given language name. Defaults to 'id'."""
     return LANG_CODE_MAP.get(language_name, "id")
+
+def get_whisper_lang(language_name: str) -> Optional[str]:
+    """Return Whisper language code for a given language name."""
+    return WHISPER_LANG_MAP.get(language_name)
+
+def normalize_language_name(language_name: str) -> str:
+    """Normalize aliases to canonical language names when possible."""
+    return LANGUAGE_ALIASES.get(language_name, language_name)
+
+def get_language_data(language_name: str):
+    """Return (key, data) for a language name or alias in the knowledge base."""
+    kb = load_knowledge_base()
+    alias_key = LANGUAGE_ALIASES.get(language_name)
+    if alias_key and alias_key in kb["languages"]:
+        return alias_key, kb["languages"][alias_key]
+    for key, val in kb["languages"].items():
+        if key.lower() == language_name.lower():
+            return key, val
+    return None, None
+
+def build_minang_glossary() -> str:
+    """Build a small Minangkabau glossary snippet to guide translation."""
+    key, data = get_language_data("Minangkabau")
+    if not data:
+        return ""
+    greetings = data.get("greetings", {})
+    vocab = data.get("vocabulary", {})
+    greeting_lines = [f"{k}: {v}" for k, v in list(greetings.items())[:6]]
+    vocab_lines = [f"{k}: {v}" for k, v in list(vocab.items())[:10]]
+    parts = []
+    if greeting_lines:
+        parts.append("Greetings: " + "; ".join(greeting_lines))
+    if vocab_lines:
+        parts.append("Vocabulary: " + "; ".join(vocab_lines))
+    return "\n".join(parts)
+
+def build_minang_transcription_prompt() -> str:
+    """Build a short prompt to bias Whisper toward Minangkabau vocabulary."""
+    key, data = get_language_data("Minangkabau")
+    if not data:
+        return ""
+    greetings = data.get("greetings", {})
+    vocab = data.get("vocabulary", {})
+    phrases = data.get("common_phrases", [])
+    tokens = []
+    tokens.extend(list(greetings.values())[:4])
+    tokens.extend(list(vocab.values())[:8])
+    tokens.extend([p.split("—")[0].strip() for p in phrases[:3]])
+    return ", ".join([t for t in tokens if t])
 
 # ==============================
 # KNOWLEDGE BASE LOADER
@@ -667,17 +755,25 @@ def translate_speak(request: TranslateSpeakRequest):
         raise HTTPException(status_code=400, detail="text is required")
 
     try:
+        minang_glossary = ""
+        if request.output_language.lower() in {"minang", "minangkabau"}:
+            minang_glossary = build_minang_glossary()
+
+        system_content = (
+            "You are Kura, a professional translator specialising in Southeast Asian languages, "
+            "including regional and minority languages. "
+            "Translate the given text accurately and naturally. "
+            "Return ONLY the translated text - no explanations, no notes, no alternatives."
+        )
+        if minang_glossary:
+            system_content += "\nUse this Minangkabau glossary as guidance:\n" + minang_glossary
+
         response = client.chat.completions.create(
             model=MODEL_NAME,
             messages=[
                 {
                     "role": "system",
-                    "content": (
-                        "You are Kura, a professional translator specialising in Southeast Asian languages, "
-                        "including regional and minority languages. "
-                        "Translate the given text accurately and naturally. "
-                        "Return ONLY the translated text — no explanations, no notes, no alternatives."
-                    )
+                    "content": system_content
                 },
                 {
                     "role": "user",
@@ -692,6 +788,9 @@ def translate_speak(request: TranslateSpeakRequest):
         )
 
         translation = response.choices[0].message.content.strip()
+
+        if request.output_language.lower() in SEA_REGIONAL_LANGUAGES:
+            translation = refine_sea_language(translation)
 
         gtts_lang = get_gtts_lang(request.output_language)
         tts = gTTS(text=translation, lang=gtts_lang)
@@ -729,11 +828,20 @@ async def process_voice(
             temp_audio_path = temp_audio.name
 
         with open(temp_audio_path, "rb") as file:
-            transcription = groq_client.audio.transcriptions.create(
-                file=(audio.filename, file.read()),
-                model="whisper-large-v3",
-                response_format="json"
-            )
+            normalized_input = normalize_language_name(input_language)
+            whisper_language = get_whisper_lang(normalized_input)
+            transcription_kwargs = {
+                "file": (audio.filename, file.read()),
+                "model": "whisper-large-v3",
+                "response_format": "json",
+            }
+            if whisper_language:
+                transcription_kwargs["language"] = whisper_language
+            if normalized_input.lower() == "minangkabau":
+                minang_prompt = build_minang_transcription_prompt()
+                if minang_prompt:
+                    transcription_kwargs["prompt"] = minang_prompt
+            transcription = groq_client.audio.transcriptions.create(**transcription_kwargs)
         
         original_text = transcription.text.strip()
         if not original_text:
