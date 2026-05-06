@@ -16,12 +16,21 @@ const parseMarkdownResponse = (text) => {
       elements.push(
         <ul key={`list-${key++}`} className="md-list">
           {currentList.map((item, idx) => (
-            <li key={idx}>{item}</li>
+            <li key={idx}>{renderInline(item)}</li>
           ))}
         </ul>
       );
       currentList = [];
     }
+  };
+
+  // Render inline formatting (**bold**, links, etc)
+  const renderInline = (text) => {
+    if (!text) return text;
+    // Replace **text** with <strong>
+    return text.split(/\*\*(.+?)\*\*/g).map((part, idx) => 
+      idx % 2 === 1 ? <strong key={idx}>{part}</strong> : part
+    );
   };
 
   lines.forEach((line, idx) => {
@@ -30,9 +39,9 @@ const parseMarkdownResponse = (text) => {
     // Heading (##)
     if (trimmed.startsWith("##")) {
       flushList();
-      const heading = trimmed.replace(/^##\s*/, "");
+      const heading = trimmed.replace(/^##\s*/, "").replace(/\*\*/g, "");
       elements.push(
-        <h3 key={`h3-${key++}`} style={{ marginTop: idx > 0 ? "12px" : "0", marginBottom: "6px" }}>
+        <h3 key={`h3-${key++}`} style={{ marginTop: idx > 0 ? "12px" : "0", marginBottom: "6px", fontWeight: "600" }}>
           {heading}
         </h3>
       );
@@ -46,7 +55,9 @@ const parseMarkdownResponse = (text) => {
     else if (trimmed.length > 0) {
       flushList();
       elements.push(
-        <p key={`p-${key++}`}>{trimmed}</p>
+        <p key={`p-${key++}`} style={{ marginBottom: "8px", lineHeight: "1.5" }}>
+          {renderInline(trimmed)}
+        </p>
       );
     }
   });
