@@ -307,6 +307,9 @@ You have knowledge of 22 regional languages across 11 ASEAN countries.
 - Share cultural context and stories behind language traditions.
 - Highlight language endangerment and preservation efforts.
 - Respond in English by default. Switch language if the user writes in another language.
+- Keep responses direct and avoid unnecessary repetition.
+- Do not repeat the same word, phrase, or pronunciation breakdown multiple times.
+- Avoid over-explaining translations; provide only the answer unless the user asks for detail.
 - If asked about a topic unrelated to SEA languages or cultures, politely redirect the conversation back.
 
 Be friendly, accurate, and culturally respectful in all responses.
@@ -694,7 +697,10 @@ def chat(request: ChatRequest):
         response = client.chat.completions.create(
             model=MODEL_NAME,
             messages=messages,
-            temperature=0.7
+            temperature=0.5,
+            top_p=0.9,
+            frequency_penalty=0.8,
+            presence_penalty=0.6
         )
 
         reply = response.choices[0].message.content
@@ -723,7 +729,10 @@ def chat_stream(request: ChatRequest):
             stream = client.chat.completions.create(
                 model=MODEL_NAME,
                 messages=messages_list,
-                temperature=0.7,
+                temperature=0.5,
+                top_p=0.9,
+                frequency_penalty=0.8,
+                presence_penalty=0.6,
                 stream=True
             )
             for chunk in stream:

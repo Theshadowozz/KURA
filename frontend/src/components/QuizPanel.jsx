@@ -78,7 +78,11 @@ export default function QuizPanel({
       <div className={`quiz-mascot ${quizMascot}`}>
         <div className="quiz-mascot-body">
           <div className="quiz-mascot-face">
-            <img src="/logo/logo.png" alt="Kura AI logo" className="quiz-mascot-logo" />
+            {(quizLoading || quizMascot === "idle") && (
+              <img src="/logo/logo.png" alt="Kura AI logo" className="quiz-mascot-logo" />
+            )}
+            {quizMascot === "correct" && "😊"}
+            {quizMascot === "wrong" && "😔"}
           </div>
           <div className="quiz-mascot-name">Kura</div>
         </div>
