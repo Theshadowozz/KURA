@@ -5,16 +5,22 @@ import ChatPanel from "./components/ChatPanel";
 import TalkPanel from "./components/TalkPanel";
 import MapPanel from "./components/MapPanel";
 import QuizPanel from "./components/QuizPanel";
-import { renderMarkdown } from "./lib/markdown";
+import { renderMarkdown } from "./utils/markdown";
+import {
+  streamChat,
+  getQuizQuestion,
+  speakText,
+  mapAudioRequest,
+  translateSpeakRequest,
+  processVoiceRequest,
+} from "./api";
 import {
   tabs,
   QUIZ_LANGUAGES,
   COUNTRY_FLAGS,
   seaCountries,
   languageOptions,
-} from "./lib/constants";
-
-const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8000";
+} from "./utils/constants";
 
 export default function App() {
   const [theme, setTheme] = useState(
@@ -109,7 +115,7 @@ export default function App() {
         stream.getTracks().forEach((track) => track.stop());
         setRecordingSide(null);
         setRecordingMode(null);
-        await processVoice(audioBlob, side, mode);
+        await handleProcessVoice(audioBlob, side, mode);
       };
 
       mediaRecorder.start();
@@ -120,7 +126,7 @@ export default function App() {
     }
   };
 
-  const processVoice = async (audioBlob, side, mode) => {
+  const handleProcessVoice = async (audioBlob, side, mode) => {
     setTalkLoading(true);
     const inputLang = side === "left" ? talkLangLeft : talkLangRight;
     const outputLang = side === "left" ? talkLangRight : talkLangLeft;
@@ -132,35 +138,18 @@ export default function App() {
     formData.append("mode", mode);
 
     try {
-      const response = await fetch(`${API_BASE}/process-voice`, {
-        method: "POST",
-        body: formData,
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        setTalkConvo((prev) => [
-          ...prev,
-          {
-            side,
-            original: data.original_text,
-            translation: data.translation,
-            audio: data.audio_base64,
-          },
-        ]);
-        if (mode === "voice" && data.audio_base64) {
-          playAudio(data.audio_base64);
-        }
-      } else {
-        setTalkConvo((prev) => [
-          ...prev,
-          {
-            side,
-            original: "Audio",
-            translation: data.error || data.detail || "Error",
-            audio: null,
-          },
-        ]);
+      const data = await processVoiceRequest(formData);
+      setTalkConvo((prev) => [
+        ...prev,
+        {
+          side,
+          original: data.original_text,
+          translation: data.translation,
+          audio: data.audio_base64,
+        },
+      ]);
+      if (mode === "voice" && data.audio_base64) {
+        playAudio(data.audio_base64);
       }
     } catch (e) {
       setTalkConvo((prev) => [
@@ -202,32 +191,24 @@ export default function App() {
     const randomLang =
       country.languages[Math.floor(Math.random() * country.languages.length)];
     try {
-      const response = await fetch(`${API_BASE}/map-audio`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ language: randomLang }),
-        signal: abortController.signal,
+      const data = await mapAudioRequest(randomLang, abortController.signal);
+      setMapResult({
+        lang: randomLang,
+        text: data.text,
+        audio: data.audio_base64 || null,
+        speakers: data.speakers || null,
+        status: data.status || null,
+        cultural_fact: data.cultural_fact || null,
+        family: data.family || null,
       });
-      const data = await response.json();
-      if (response.ok) {
-        setMapResult({
-          lang: randomLang,
-          text: data.text,
-          audio: data.audio_base64 || null,
-          speakers: data.speakers || null,
-          status: data.status || null,
-          cultural_fact: data.cultural_fact || null,
-          family: data.family || null,
-        });
-        const audio = new Audio(`data:audio/mp3;base64,${data.audio_base64}`);
-        mapAudioRef.current = audio;
-        audio.play();
-        audio.onended = () => {
-          mapAudioRef.current = null;
-        };
-      }
+      const audio = new Audio(`data:audio/mp3;base64,${data.audio_base64}`);
+      mapAudioRef.current = audio;
+      audio.play();
+      audio.onended = () => {
+        mapAudioRef.current = null;
+      };
     } catch (err) {
-      if (err.name !== "AbortError") {
+      if (err?.code !== "ERR_CANCELED" && err?.name !== "AbortError") {
         setMapResult({ lang: randomLang, text: "Failed to load audio." });
       }
     } finally {
@@ -271,22 +252,14 @@ export default function App() {
     setQuizMascot("idle");
     setQuizDidReset(false);
     try {
-      const excludeParam = askedKeys.length
-        ? `&exclude=${encodeURIComponent(askedKeys.join(","))}`
-        : "";
-      const res = await fetch(
-        `${API_BASE}/quiz/question?language=${encodeURIComponent(lang)}${excludeParam}`
-      );
-      const data = await res.json();
-      if (res.ok) {
-        setQuizQuestion(data);
-        setQuizTotalKeys(data.total_keys || 0);
-        if (data.did_reset) {
-          setQuizAskedKeys([data.question_key]);
-          setQuizDidReset(true);
-        } else {
-          setQuizAskedKeys((prev) => [...prev, data.question_key]);
-        }
+      const data = await getQuizQuestion(lang, askedKeys);
+      setQuizQuestion(data);
+      setQuizTotalKeys(data.total_keys || 0);
+      if (data.did_reset) {
+        setQuizAskedKeys([data.question_key]);
+        setQuizDidReset(true);
+      } else {
+        setQuizAskedKeys((prev) => [...prev, data.question_key]);
       }
     } catch {
       // silently fail
@@ -304,12 +277,7 @@ export default function App() {
       setQuizScore((s) => s + 1);
       setQuizStreak((s) => s + 1);
       setQuizMascot("correct");
-      fetch(`${API_BASE}/speak`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ language: quizLang, text: quizQuestion.correct_answer }),
-      })
-        .then((r) => r.json())
+      speakText(quizLang, quizQuestion.correct_answer)
         .then((d) => {
           if (d.audio_base64) {
             const audio = new Audio(`data:audio/mp3;base64,${d.audio_base64}`);
@@ -361,60 +329,27 @@ export default function App() {
     setChatLoading(true);
 
     try {
-      const response = await fetch(`${API_BASE}/chat/stream`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: nextMessages }),
-      });
-
-      if (!response.ok) {
-        const data = await response.json();
-        setMessages([
-          ...nextMessages,
-          { role: "assistant", content: data.detail || "An error occurred." },
-        ]);
-        return;
-      }
-
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
       let accumulated = "";
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        const text = decoder.decode(value, { stream: true });
-        const lines = text.split("\n");
-
-        for (const line of lines) {
-          if (!line.startsWith("data: ")) continue;
-          const payload = line.slice(6).trim();
-          if (payload === "[DONE]") continue;
-          try {
-            const parsed = JSON.parse(payload);
-            if (parsed.content) {
-              accumulated += parsed.content;
-              setMessages([
-                ...nextMessages,
-                { role: "assistant", content: accumulated },
-              ]);
-            }
-            if (parsed.error) {
-              setMessages([
-                ...nextMessages,
-                { role: "assistant", content: `Error: ${parsed.error}` },
-              ]);
-            }
-          } catch {
-            // ignore malformed SSE lines
-          }
-        }
-      }
+      await streamChat(
+        nextMessages,
+        (chunk) => {
+          accumulated += chunk;
+          setMessages([
+            ...nextMessages,
+            { role: "assistant", content: accumulated },
+          ]);
+        },
+        (err) => {
+          setMessages([
+            ...nextMessages,
+            { role: "assistant", content: `Error: ${err}` },
+          ]);
+        },
+      );
     } catch (error) {
       setMessages([
         ...nextMessages,
-        { role: "assistant", content: "Could not connect to server." },
+        { role: "assistant", content: error.message || "Could not connect to server." },
       ]);
     } finally {
       setChatLoading(false);
@@ -431,37 +366,20 @@ export default function App() {
     if (side === "left") setTalkInputLeft("");
     else setTalkInputRight("");
     try {
-      const response = await fetch(`${API_BASE}/translate-speak`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          input_language: inputLang,
-          output_language: outputLang,
-          text: text.trim(),
-        }),
-      });
-      const data = await response.json();
-      if (response.ok) {
-        setTalkConvo((prev) => [
-          ...prev,
-          {
-            side,
-            original: text.trim(),
-            translation: data.translation,
-            audio: data.audio_base64,
-          },
-        ]);
-      } else {
-        setTalkConvo((prev) => [
-          ...prev,
-          {
-            side,
-            original: text.trim(),
-            translation: data.error || data.detail || "Error",
-            audio: null,
-          },
-        ]);
-      }
+      const data = await translateSpeakRequest(
+        inputLang,
+        outputLang,
+        text.trim(),
+      );
+      setTalkConvo((prev) => [
+        ...prev,
+        {
+          side,
+          original: text.trim(),
+          translation: data.translation,
+          audio: data.audio_base64,
+        },
+      ]);
     } catch {
       setTalkConvo((prev) => [
         ...prev,

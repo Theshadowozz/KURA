@@ -1,4 +1,4 @@
-import { QUIZ_LANGUAGES } from "../lib/constants";
+import { QUIZ_LANGUAGES } from "../utils/constants";
 
 export default function QuizPanel({
   quizLang,
