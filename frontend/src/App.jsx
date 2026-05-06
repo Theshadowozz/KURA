@@ -2,6 +2,59 @@ import { useState, useRef } from "react";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8000";
 
+// Parser untuk format markdown sederhana dengan heading dan bullet list
+const parseMarkdownResponse = (text) => {
+  if (!text) return <></>;
+  
+  const lines = text.split("\n");
+  const elements = [];
+  let currentList = [];
+  let key = 0;
+
+  const flushList = () => {
+    if (currentList.length > 0) {
+      elements.push(
+        <ul key={`list-${key++}`} className="md-list">
+          {currentList.map((item, idx) => (
+            <li key={idx}>{item}</li>
+          ))}
+        </ul>
+      );
+      currentList = [];
+    }
+  };
+
+  lines.forEach((line, idx) => {
+    const trimmed = line.trim();
+
+    // Heading (##)
+    if (trimmed.startsWith("##")) {
+      flushList();
+      const heading = trimmed.replace(/^##\s*/, "");
+      elements.push(
+        <h3 key={`h3-${key++}`} style={{ marginTop: idx > 0 ? "12px" : "0", marginBottom: "6px" }}>
+          {heading}
+        </h3>
+      );
+    }
+    // Bullet point (-)
+    else if (trimmed.startsWith("-")) {
+      const bullet = trimmed.replace(/^-\s*/, "");
+      currentList.push(bullet);
+    }
+    // Paragraph
+    else if (trimmed.length > 0) {
+      flushList();
+      elements.push(
+        <p key={`p-${key++}`}>{trimmed}</p>
+      );
+    }
+  });
+
+  flushList();
+  return <>{elements}</>;
+};
+
 const tabs = [
   { id: "chat", label: "Language Chatbot" },
   { id: "talk", label: "Two-Way Communication" },
@@ -826,7 +879,7 @@ export default function App() {
                     key={`${message.role}-${index}`}
                     className={`bubble ${message.role}`}
                   >
-                    {message.content}
+                    {message.role === "assistant" ? parseMarkdownResponse(message.content) : message.content}
                   </div>
                 ))}
                 {chatLoading && (

@@ -5,10 +5,12 @@ import json
 import random
 import tempfile
 from typing import List, Optional
+import requests
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 from openai import OpenAI
 from gtts import gTTS
@@ -18,7 +20,7 @@ from groq import Groq
 # LOAD ENV
 # ==============================
 load_dotenv()
-
+hf_token = os.getenv("HF_TOKEN")
 api_key = os.getenv("OPENROUTER_API_KEY")
 if not api_key:
     raise RuntimeError("OPENROUTER_API_KEY is not set.")
@@ -46,6 +48,27 @@ if not groq_api_key:
     print("Warning: GROQ_API_KEY is not set. Voice processing will fail.")
 else:
     groq_client = Groq(api_key=groq_api_key)
+
+# ==============================
+# SEA-LION REFINER (HuggingFace)
+# ==============================
+SEA_REGIONAL_LANGUAGES = {"minang", "jawa", "sunda", "iban", "kadazan-dusun", "dusun", "tetum"}
+
+def refine_sea_language(text: str) -> str:
+    """Refine regional SEA language translation using SEA-LION via HuggingFace API."""
+    if not hf_token:
+        return text  # fallback: return as-is if no token
+    try:
+        API_URL = "https://api-inference.huggingface.co/models/aisingapore/sea-lion-7b-instruct"
+        headers = {"Authorization": f"Bearer {hf_token}"}
+        payload = {"inputs": text, "parameters": {"max_new_tokens": 150}}
+        res = requests.post(API_URL, headers=headers, json=payload, timeout=10)
+        result = res.json()
+        if isinstance(result, list) and result:
+            return result[0].get("generated_text", text)
+    except Exception as e:
+        print("SEA-LION REFINE ERROR:", e)
+    return text  # fallback jika error
 
 app = FastAPI(title="Kura API", version="0.3.0")
 
@@ -164,7 +187,28 @@ You have knowledge of 22 regional languages across 11 ASEAN countries.
 - Respond in English by default. Switch language if the user writes in another language.
 - If asked about a topic unrelated to SEA languages or cultures, politely redirect the conversation back.
 
-Be friendly, accurate, and culturally respectful in all responses.
+## Output Format Rules:
+- If the user asks about a specific SEA language, always respond with a short introduction followed by structured bullet points.
+- Use these sections when relevant: Basic Greetings, Essential Phrases, Key Vocabulary, Cultural Notes, Grammar Notes.
+- Use markdown-style headings and bullet items exactly, not paragraphs.
+- Each bullet should contain one short example or fact.
+- Do not repeat greetings, phrases, or vocabulary items.
+- When possible, use the knowledge base data from the requested language.
+- If the user asks for Javanese or another language, the output should look like:
+  ## Basic Greetings:
+  - Hello (informal): Halo
+  - Hello (formal): Sugeng rawuh
+  ## Essential Phrases:
+  - How are you? (informal): Piye kabare?
+  - I don't understand: Kula mboten mangertos
+  ## Key Vocabulary:
+  - I/me (informal): Aku
+  - You (informal): Kowe
+  ## Cultural Notes:
+  - Javanese has three speech levels: Ngoko, Madya, Krama.
+- Keep the output concise and organized by bullets.
+
+Be friendly, accurate, culturally respectful, and structured in all responses.
 """
 
 # ==============================
@@ -244,9 +288,11 @@ class MapGreeting(BaseModel):
 
 class MapAudioResponse(BaseModel):
     text: str
-    meaning: Optional[str] = None
-    greetings: List[MapGreeting] = Field(default_factory=list)
     audio_base64: str
+    speakers: Optional[str] = None
+    status: Optional[str] = None
+    cultural_fact: Optional[str] = None
+    family: Optional[str] = None
 
 
 MAP_GREETING_DATA = {
@@ -420,6 +466,47 @@ def chat(request: ChatRequest):
         raise HTTPException(status_code=500, detail=str(error))
 
 # ==============================
+# CHAT STREAM (SSE)
+# ==============================
+@app.post("/chat/stream")
+def chat_stream(request: ChatRequest):
+    if not request.messages:
+        raise HTTPException(status_code=400, detail="messages is required")
+
+    MAX_HISTORY = 10
+    raw_messages = [message.model_dump() for message in request.messages]
+    trimmed_messages = raw_messages[-MAX_HISTORY:] if len(raw_messages) > MAX_HISTORY else raw_messages
+    messages_list = [{"role": "system", "content": build_system_prompt(trimmed_messages)}]
+    messages_list.extend(trimmed_messages)
+
+    def generate():
+        try:
+            stream = client.chat.completions.create(
+                model=MODEL_NAME,
+                messages=messages_list,
+                temperature=0.7,
+                stream=True
+            )
+            for chunk in stream:
+                delta = chunk.choices[0].delta
+                if delta.content:
+                    yield f"data: {json.dumps({'content': delta.content})}\n\n"
+        except Exception as error:
+            print("STREAM ERROR:", error)
+            yield f"data: {json.dumps({'error': str(error)})}\n\n"
+        finally:
+            yield "data: [DONE]\n\n"
+
+    return StreamingResponse(
+        generate(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "X-Accel-Buffering": "no",
+        }
+    )
+
+# ==============================
 # TRANSLATE + SPEAK
 # ==============================
 @app.post("/translate-speak", response_model=TranslateSpeakResponse)
@@ -434,15 +521,20 @@ def translate_speak(request: TranslateSpeakRequest):
             messages=[
                 {
                     "role": "system",
-                    "content": "Kamu adalah penerjemah profesional. HANYA terjemahkan teks."
+                    "content": (
+                        "You are Kura, a professional translator specialising in Southeast Asian languages, "
+                        "including regional and minority languages. "
+                        "Translate the given text accurately and naturally. "
+                        "Return ONLY the translated text — no explanations, no notes, no alternatives."
+                    )
                 },
                 {
                     "role": "user",
-                    "content": f"""
-Bahasa sumber: {request.input_language}
-Bahasa tujuan: {request.output_language}
-Teks: {request.text}
-"""
+                    "content": (
+                        f"Source language: {request.input_language}\n"
+                        f"Target language: {request.output_language}\n"
+                        f"Text: {request.text}"
+                    )
                 }
             ],
             temperature=0.3
@@ -450,7 +542,12 @@ Teks: {request.text}
 
         translation = response.choices[0].message.content.strip()
 
-        tts = gTTS(text=translation, lang="en")
+        # 🔥 Refine dengan SEA-LION jika output adalah bahasa daerah
+        if request.output_language.lower() in SEA_REGIONAL_LANGUAGES:
+            translation = refine_sea_language(translation)
+
+        gtts_lang = get_gtts_lang(request.output_language)
+        tts = gTTS(text=translation, lang=gtts_lang)
         audio_buffer = io.BytesIO()
         tts.write_to_fp(audio_buffer)
         audio_buffer.seek(0)
@@ -500,11 +597,20 @@ async def process_voice(
             messages=[
                 {
                     "role": "system",
-                    "content": "Kamu adalah penerjemah profesional. HANYA terjemahkan teks."
+                    "content": (
+                        "You are Kura, a professional translator specialising in Southeast Asian languages, "
+                        "including regional and minority languages. "
+                        "Translate the given text accurately and naturally. "
+                        "Return ONLY the translated text — no explanations, no notes, no alternatives."
+                    )
                 },
                 {
                     "role": "user",
-                    "content": f"Bahasa sumber: {input_language}\nBahasa tujuan: {output_language}\nTeks: {original_text}"
+                    "content": (
+                        f"Source language: {input_language}\n"
+                        f"Target language: {output_language}\n"
+                        f"Text: {original_text}"
+                    )
                 }
             ],
             temperature=0.3
@@ -512,9 +618,14 @@ async def process_voice(
 
         translation = response.choices[0].message.content.strip()
 
+        # 🔥 Refine dengan SEA-LION jika output adalah bahasa daerah
+        if output_language.lower() in SEA_REGIONAL_LANGUAGES:
+            translation = refine_sea_language(translation)
+
         audio_base64 = None
         if mode == "voice":
-            tts = gTTS(text=translation, lang="en")
+            gtts_lang = get_gtts_lang(output_language)
+            tts = gTTS(text=translation, lang=gtts_lang)
             audio_buffer = io.BytesIO()
             tts.write_to_fp(audio_buffer)
             audio_buffer.seek(0)
@@ -573,59 +684,74 @@ def map_audio(request: MapAudioRequest):
         raise HTTPException(status_code=400, detail="language is required")
 
     try:
-        greeting = MAP_GREETING_DATA.get(request.language)
-        if greeting:
-            greeting_items = greeting.get("greetings", [])
-            if not greeting_items:
-                greeting_items = [greeting]
-            selected_greeting = random.choice(greeting_items)
-            display_text = selected_greeting["text"]
-            meaning = selected_greeting.get("meaning")
-            audio_text = selected_greeting.get("audio_text", display_text)
-            gtts_lang = greeting.get("tts_lang") or get_gtts_lang(request.language)
-        else:
-            response = client.chat.completions.create(
-                model=MODEL_NAME,
-                messages=[
-                    {
-                        "role": "system",
-                        "content": (
-                            "You are Kura, a SEA regional language expert. "
-                            "Reply with ONLY one romanized greeting phrase in the requested language. "
-                            "Do not include translations, explanations, quotes, parentheses, or punctuation."
-                        )
-                    },
-                    {
-                        "role": "user",
-                        "content": f"Give one common romanized greeting in {request.language}."
-                    }
-                ],
-                temperature=0.3
-            )
+        # Generate a natural greeting in the requested regional language
+        response = client.chat.completions.create(
+            model=MODEL_NAME,
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        "You are Kura, a Southeast Asian regional language expert. "
+                        "Your task is to produce a short, natural greeting or expression "
+                        "in the requested regional language. "
+                        "Reply with ONLY the greeting text itself — no explanation, "
+                        "no transliteration, no quotes, no punctuation beyond what is natural. "
+                        "Maximum 10 words."
+                    )
+                },
+                {
+                    "role": "user",
+                    "content": (
+                        f"Give one common greeting or short expression in the {request.language} language."
+                    )
+                }
+            ],
+            temperature=0.7
+        )
 
-            display_text = response.choices[0].message.content.strip().strip('"')
-            meaning = None
-            audio_text = display_text
-            gtts_lang = get_gtts_lang(request.language)
-            selected_greeting = {"text": display_text, "meaning": meaning}
+        greeting_text = response.choices[0].message.content.strip()
 
-        tts = gTTS(text=audio_text, lang=gtts_lang)
+        # Convert greeting to audio using the correct language code
+        gtts_lang = get_gtts_lang(request.language)
+        tts = gTTS(text=greeting_text, lang=gtts_lang)
         audio_buffer = io.BytesIO()
         tts.write_to_fp(audio_buffer)
         audio_buffer.seek(0)
         audio_base64 = base64.b64encode(audio_buffer.read()).decode("utf-8")
 
+        # Enrich response with knowledge base data
+        speakers = None
+        status = None
+        cultural_fact = None
+        family = None
+        try:
+            kb = load_knowledge_base()
+            lang_data = None
+            for key, val in kb["languages"].items():
+                if key.lower() == request.language.lower():
+                    lang_data = val
+                    break
+            if lang_data:
+                speakers = lang_data.get("speakers")
+                status = lang_data.get("status")
+                family = lang_data.get("family")
+                cultural_notes = lang_data.get("cultural_notes", "")
+                # Pick the first sentence of cultural_notes as the fact
+                if cultural_notes:
+                    sentences = [s.strip() for s in cultural_notes.replace("\n", " ").split(".") if s.strip()]
+                    cultural_fact = sentences[0] + "." if sentences else None
+        except Exception:
+            pass  # cultural enrichment is non-critical
+
         return MapAudioResponse(
-            text=display_text,
-            meaning=meaning,
-            greetings=[
-                MapGreeting(
-                    text=selected_greeting["text"],
-                    meaning=selected_greeting.get("meaning")
-                )
-            ],
-            audio_base64=audio_base64
+            text=greeting_text,
+            audio_base64=audio_base64,
+            speakers=speakers,
+            status=status,
+            cultural_fact=cultural_fact,
+            family=family,
         )
+
     except Exception as error:
         print("MAP AUDIO ERROR:", error)
         raise HTTPException(status_code=500, detail=str(error))
