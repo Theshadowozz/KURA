@@ -470,7 +470,10 @@ def chat(request: ChatRequest):
         response = client.chat.completions.create(
             model=MODEL_NAME,
             messages=messages,
-            temperature=0.7
+            temperature=0.5,
+            frequency_penalty=0.8,
+            presence_penalty=0.6,
+            top_p=0.9
         )
 
         reply = response.choices[0].message.content
@@ -499,7 +502,10 @@ def chat_stream(request: ChatRequest):
             stream = client.chat.completions.create(
                 model=MODEL_NAME,
                 messages=messages_list,
-                temperature=0.7,
+                temperature=0.5,
+                frequency_penalty=0.8,
+                presence_penalty=0.6,
+                top_p=0.9,
                 stream=True
             )
             for chunk in stream:
