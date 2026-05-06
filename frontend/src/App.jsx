@@ -67,13 +67,119 @@ function parseLine(text) {
   });
 }
 
+function renderMarkdown(text) {
+  const lines = text.split("\n");
+  const elements = [];
+  let i = 0;
+
+  while (i < lines.length) {
+    const line = lines[i];
+
+    // Bullet list
+    if (/^[-*]\s+/.test(line)) {
+      const items = [];
+      while (i < lines.length && /^[-*]\s+/.test(lines[i])) {
+        items.push(lines[i].replace(/^[-*]\s+/, ""));
+        i++;
+      }
+      elements.push(
+        <ul key={i} className="md-list">
+          {items.map((item, j) => (
+            <li key={j}>{parseLine(item)}</li>
+          ))}
+        </ul>
+      );
+      continue;
+    }
+
+    // Numbered list
+    if (/^\d+\.\s+/.test(line)) {
+      const items = [];
+      while (i < lines.length && /^\d+\.\s+/.test(lines[i])) {
+        items.push(lines[i].replace(/^\d+\.\s+/, ""));
+        i++;
+      }
+      elements.push(
+        <ol key={i} className="md-list">
+          {items.map((item, j) => (
+            <li key={j}>{parseLine(item)}</li>
+          ))}
+        </ol>
+      );
+      continue;
+    }
+
+    // Empty line
+    if (line.trim() === "") {
+      elements.push(<br key={i} />);
+      i++;
+      continue;
+    }
+
+    // Normal paragraph
+    elements.push(<p key={i}>{parseLine(line)}</p>);
+    i++;
+  }
+
+  return elements;
+}
+
+function parseLine(text) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return <strong key={i}>{part.slice(2, -2)}</strong>;
+    }
+    return part;
+  });
+}
+
 const API_BASE = import.meta.env.VITE_API_BASE;
 
 const tabs = [
   { id: "chat", label: "Language Chatbot" },
   { id: "talk", label: "Two-Way Communication" },
   { id: "map", label: "SEA Map" },
+  { id: "quiz", label: "🎯 Quiz" },
 ];
+
+const QUIZ_LANGUAGES = [
+  { name: "Minangkabau", flag: "🇮🇩" },
+  { name: "Jawa",        flag: "🇮🇩" },
+  { name: "Sunda",       flag: "🇮🇩" },
+  { name: "Shan",        flag: "🇲🇲" },
+  { name: "Karen",       flag: "🇲🇲" },
+  { name: "Lao",         flag: "🇱🇦" },
+  { name: "Hmong",       flag: "🇱🇦" },
+  { name: "Lanna",       flag: "🇹🇭" },
+  { name: "Isan",        flag: "🇹🇭" },
+  { name: "Tay",         flag: "🇻🇳" },
+  { name: "Cham",        flag: "🇻🇳" },
+  { name: "Khmer Krom",  flag: "🇻🇳" },
+  { name: "Cebuano",     flag: "🇵🇭" },
+  { name: "Ilocano",     flag: "🇵🇭" },
+  { name: "Iban",        flag: "🇲🇾" },
+  { name: "Kadazan-Dusun", flag: "🇲🇾" },
+  { name: "Teochew",     flag: "🇸🇬" },
+  { name: "Hokkien",     flag: "🇸🇬" },
+  { name: "Dusun",       flag: "🇧🇳" },
+  { name: "Tutong",      flag: "🇧🇳" },
+  { name: "Tetum",       flag: "🇹🇱" },
+  { name: "Mambae",      flag: "🇹🇱" },
+];
+
+const COUNTRY_FLAGS = {
+  "Myanmar":     "🇲🇲",
+  "Laos":        "🇱🇦",
+  "Thailand":    "🇹🇭",
+  "Vietnam":     "🇻🇳",
+  "Philippines": "🇵🇭",
+  "Malaysia":    "🇲🇾",
+  "Singapore":   "🇸🇬",
+  "Brunei":      "🇧🇳",
+  "Indonesia":   "🇮🇩",
+  "Timor Leste": "🇹🇱",
+};
 
 const MAP_COUNTRIES = {
   myanmar: {
@@ -169,21 +275,21 @@ const seaCountries = [
   { id: "lanna",        name: "Lanna",          country: "Thailand",     top: 30, left: 23, languages: ["Lanna"] },
   { id: "isan",         name: "Isan",           country: "Thailand",     top: 42, left: 28, languages: ["Isan"] },
   // Vietnam
-  { id: "tay",          name: "Tay",            country: "Vietnam",      top: 33, left: 34, languages: ["Tay"] },
-  { id: "cham",         name: "Cham",           country: "Vietnam",      top: 48, left: 37, languages: ["Cham"] },
-  { id: "khmer_krom",   name: "Khmer Krom",     country: "Vietnam",      top: 55, left: 33, languages: ["Khmer Krom"] },
+  { id: "tay",          name: "Tay",            country: "Vietnam",      top: 33, left: 59, languages: ["Tay"] },
+  { id: "cham",         name: "Cham",           country: "Vietnam",      top: 48, left: 62, languages: ["Cham"] },
+  { id: "khmer_krom",   name: "Khmer Krom",     country: "Vietnam",      top: 57, left: 56, languages: ["Khmer Krom"] },
   // Philippines
   { id: "ilocano",      name: "Ilocano",        country: "Philippines",  top: 33, left: 56, languages: ["Ilocano"] },
   { id: "cebuano",      name: "Cebuano",        country: "Philippines",  top: 46, left: 58, languages: ["Cebuano"] },
   // Malaysia
   { id: "iban",         name: "Iban",           country: "Malaysia",     top: 63, left: 47, languages: ["Iban"] },
-  { id: "kadazandusun", name: "Kadazan-Dusun",  country: "Malaysia",     top: 57, left: 54, languages: ["Kadazan-Dusun"] },
+  { id: "kadazandusun", name: "Kadazan-Dusun",  country: "Malaysia",     top: 54, left: 65, languages: ["Kadazan-Dusun"] },
   // Singapore
   { id: "teochew",      name: "Teochew",        country: "Singapore",    top: 66, left: 28, languages: ["Teochew"] },
   { id: "hokkien",      name: "Hokkien",        country: "Singapore",    top: 68, left: 30, languages: ["Hokkien"] },
   // Brunei
   { id: "dusun",        name: "Dusun",          country: "Brunei",       top: 60, left: 45, languages: ["Dusun"] },
-  { id: "tutong",       name: "Tutong",         country: "Brunei",       top: 62, left: 47, languages: ["Tutong"] },
+  { id: "tutong",       name: "Tutong",         country: "Brunei",       top: 54, left: 61, languages: ["Tutong"] },
   // Indonesia
   { id: "minangkabau",  name: "Minangkabau",    country: "Indonesia",    top: 72, left: 23, languages: ["Minangkabau"] },
   { id: "sunda",        name: "Sunda",          country: "Indonesia",    top: 80, left: 33, languages: ["Sunda"] },
@@ -226,6 +332,40 @@ const languageOptions = [
   "Mambae"
 ];
 
+function TurtleShellLogo({ size = 22 }) {
+  return (
+    <svg
+      viewBox="0 0 28 24"
+      width={size}
+      height={size}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      className="turtle-logo"
+    >
+      {/* Outer shell rim */}
+      <ellipse
+        cx="14" cy="12" rx="12.5" ry="10"
+        stroke="currentColor" strokeWidth="1.6"
+        fill="currentColor" fillOpacity="0.18"
+      />
+      {/* Central vertebral hexagon */}
+      <path
+        d="M14 6.5 L17.8 8.5 L17.8 12.5 L14 14.5 L10.2 12.5 L10.2 8.5 Z"
+        stroke="currentColor" strokeWidth="1.3"
+        fill="currentColor" fillOpacity="0.35"
+      />
+      {/* Scute dividers: hex vertices → shell rim */}
+      <line x1="14"   y1="6.5"  x2="14"   y2="2"    stroke="currentColor" strokeWidth="1.1" strokeLinecap="round"/>
+      <line x1="17.8" y1="8.5"  x2="23"   y2="6"    stroke="currentColor" strokeWidth="1.1" strokeLinecap="round"/>
+      <line x1="17.8" y1="12.5" x2="23"   y2="15.5" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round"/>
+      <line x1="14"   y1="14.5" x2="14"   y2="19.5" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round"/>
+      <line x1="10.2" y1="12.5" x2="5"    y2="15.5" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round"/>
+      <line x1="10.2" y1="8.5"  x2="5"    y2="6"    stroke="currentColor" strokeWidth="1.1" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
 export default function App() {
   const [theme, setTheme] = useState(
     () => localStorage.getItem("theme") || "dark",
@@ -266,6 +406,20 @@ export default function App() {
   const [talkInputLeft, setTalkInputLeft] = useState("");
   const [talkInputRight, setTalkInputRight] = useState("");
   const [talkLoading, setTalkLoading] = useState(false);
+  const [copiedIndex, setCopiedIndex] = useState(null);
+
+  const talkBottomRef = useRef(null);
+
+  useEffect(() => {
+    talkBottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [talkConvo, talkLoading]);
+
+  const handleCopyTranslation = (text, index) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopiedIndex(index);
+      setTimeout(() => setCopiedIndex(null), 2000);
+    });
+  };
 
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
@@ -372,6 +526,7 @@ export default function App() {
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [mapPlaying, setMapPlaying] = useState(false);
   const [mapResult, setMapResult] = useState(null);
+  const [exploredIds, setExploredIds] = useState(new Set());
   const mapAudioRef = useRef(null);
   const mapAbortRef = useRef(null);
 
@@ -391,6 +546,7 @@ export default function App() {
     setSelectedCountry(country);
     setMapResult(null);
     setMapPlaying(true);
+    setExploredIds((prev) => new Set([...prev, country.id]));
     const randomLang =
       country.languages[Math.floor(Math.random() * country.languages.length)];
     try {
@@ -405,6 +561,7 @@ export default function App() {
         setMapResult({
           lang: randomLang,
           text: data.text,
+          audio: data.audio_base64 || null,
           speakers: data.speakers || null,
           status: data.status || null,
           cultural_fact: data.cultural_fact || null,
@@ -427,6 +584,117 @@ export default function App() {
       }
     }
   };
+
+  const replayMapAudio = () => {
+    if (!mapResult?.audio) return;
+    if (mapAudioRef.current) {
+      mapAudioRef.current.pause();
+      mapAudioRef.current = null;
+    }
+    const audio = new Audio(`data:audio/mp3;base64,${mapResult.audio}`);
+    mapAudioRef.current = audio;
+    audio.play();
+    audio.onended = () => { mapAudioRef.current = null; };
+  };
+
+  // ── Quiz state ──────────────────────────────────
+  const [quizLang, setQuizLang]         = useState(QUIZ_LANGUAGES[0].name);
+  const [quizQuestion, setQuizQuestion] = useState(null);
+  const [quizSelected, setQuizSelected] = useState(null);
+  const [quizRevealed, setQuizRevealed] = useState(false);
+  const [quizScore, setQuizScore]       = useState(0);
+  const [quizStreak, setQuizStreak]     = useState(0);
+  const [quizTotal, setQuizTotal]       = useState(0);
+  const [quizLoading, setQuizLoading]   = useState(false);
+  const [quizMascot, setQuizMascot]     = useState("idle");
+  const [quizAskedKeys, setQuizAskedKeys] = useState([]);   // keys already shown this cycle
+  const [quizTotalKeys, setQuizTotalKeys] = useState(0);    // total available keys for current lang
+  const [quizDidReset, setQuizDidReset]   = useState(false);// backend signalled a cycle reset
+  const quizLoadedRef = useRef(false);
+
+  const fetchQuizQuestion = async (lang, askedKeys = []) => {
+    setQuizLoading(true);
+    setQuizQuestion(null);
+    setQuizSelected(null);
+    setQuizRevealed(false);
+    setQuizMascot("idle");
+    setQuizDidReset(false);
+    try {
+      const excludeParam = askedKeys.length
+        ? `&exclude=${encodeURIComponent(askedKeys.join(","))}`
+        : "";
+      const res = await fetch(
+        `${API_BASE}/quiz/question?language=${encodeURIComponent(lang)}${excludeParam}`
+      );
+      const data = await res.json();
+      if (res.ok) {
+        setQuizQuestion(data);
+        setQuizTotalKeys(data.total_keys || 0);
+        if (data.did_reset) {
+          // All questions cycled — backend reset; clear tracking and notify
+          setQuizAskedKeys([data.question_key]);
+          setQuizDidReset(true);
+        } else {
+          setQuizAskedKeys((prev) => [...prev, data.question_key]);
+        }
+      }
+    } catch {
+      // silently fail
+    } finally {
+      setQuizLoading(false);
+    }
+  };
+
+  const handleQuizAnswer = (choice) => {
+    if (quizRevealed) return;
+    setQuizSelected(choice);
+    setQuizRevealed(true);
+    setQuizTotal((t) => t + 1);
+    if (choice === quizQuestion.correct_answer) {
+      setQuizScore((s) => s + 1);
+      setQuizStreak((s) => s + 1);
+      setQuizMascot("correct");
+      fetch(`${API_BASE}/speak`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ language: quizLang, text: quizQuestion.correct_answer }),
+      })
+        .then((r) => r.json())
+        .then((d) => {
+          if (d.audio_base64) {
+            const audio = new Audio(`data:audio/mp3;base64,${d.audio_base64}`);
+            audio.play();
+          }
+        })
+        .catch(() => {});
+    } else {
+      setQuizStreak(0);
+      setQuizMascot("wrong");
+    }
+  };
+
+  const handleQuizNext = () => {
+    fetchQuizQuestion(quizLang, quizDidReset ? [] : quizAskedKeys);
+  };
+
+  const handleQuizLangChange = (lang) => {
+    setQuizLang(lang);
+    setQuizScore(0);
+    setQuizStreak(0);
+    setQuizTotal(0);
+    setQuizAskedKeys([]);
+    setQuizTotalKeys(0);
+    setQuizDidReset(false);
+    fetchQuizQuestion(lang, []);
+  };
+
+  // Auto-load first question when Quiz tab opened
+  useEffect(() => {
+    if (activeTab === "quiz" && !quizLoadedRef.current) {
+      quizLoadedRef.current = true;
+      fetchQuizQuestion(QUIZ_LANGUAGES[0].name, []);
+    }
+  }, [activeTab]);
 
   const MAX_CHAT_CHARS = 500;
   const charsLeft = MAX_CHAT_CHARS - chatInput.length;
@@ -576,7 +844,10 @@ export default function App() {
       <header className="hero">
         <div>
           <div className="pill-row">
-            <p className="pill">Kura AI</p>
+            <div className="pill">
+              <TurtleShellLogo size={20} />
+              Kura AI
+            </div>
             <button
               className="theme-toggle"
               onClick={toggleTheme}
@@ -707,23 +978,36 @@ export default function App() {
                     <p className="convo-original">{msg.original}</p>
                     <div className="convo-divider" />
                     <p className="convo-translation">{msg.translation}</p>
-                  </div>
-                  {msg.audio && (
-                    <button
-                      className="convo-play"
-                      onClick={() => playAudio(msg.audio)}
-                      aria-label="Play"
-                    >
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
+                    <div className="convo-play-row">
+                      <button
+                        className={`convo-copy ${copiedIndex === i ? 'copied' : ''}`}
+                        onClick={() => handleCopyTranslation(msg.translation, i)}
+                        aria-label="Copy translation"
+                        title="Copy translation"
                       >
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </button>
-                  )}
+                        {copiedIndex === i ? (
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                          </svg>
+                        ) : (
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                          </svg>
+                        )}
+                      </button>
+                      {msg.audio && (
+                        <button
+                          className="convo-play"
+                          onClick={() => playAudio(msg.audio)}
+                          aria-label="Play"
+                        >
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </button>
+                      )}
+                    </div>
+                  </div>
                 </div>
               ))}
               {talkLoading && (
@@ -733,6 +1017,7 @@ export default function App() {
                   </div>
                 </div>
               )}
+              <div ref={talkBottomRef} />
             </div>
 
             <div className="convo-lang-bar">
@@ -789,6 +1074,14 @@ export default function App() {
                       <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
                     </svg>
                   </button>
+                  <button
+                    className={`convo-mic ${recordingSide === 'left' ? 'recording' : ''}`}
+                    onClick={() => startRecording("left", "voice")}
+                    disabled={talkLoading || (recordingSide && recordingSide !== 'left')}
+                    title="Voice to Voice"
+                  >
+                    🎤
+                  </button>
                   <div className="voice-buttons">
                     <button
                       className={`convo-mic ${recordingSide === 'left' && recordingMode === 'text' ? 'recording' : ''}`}
@@ -833,6 +1126,14 @@ export default function App() {
                       <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
                     </svg>
                   </button>
+                  <button
+                    className={`convo-mic ${recordingSide === 'right' ? 'recording' : ''}`}
+                    onClick={() => startRecording("right", "voice")}
+                    disabled={talkLoading || (recordingSide && recordingSide !== 'right')}
+                    title="Voice to Voice"
+                  >
+                    🎤
+                  </button>
                   <div className="voice-buttons">
                     <button
                       className={`convo-mic ${recordingSide === 'right' && recordingMode === 'text' ? 'recording' : ''}`}
@@ -860,12 +1161,45 @@ export default function App() {
         {activeTab === "map" && (
           <section className="panel">
             <div className="panel-header">
-              <h2>🗺️ SEA Regional Language Map</h2>
-              <p>
-                Click a language dot on the map to hear a greeting in that regional language.
-              </p>
+              <div className="map-header-row">
+                <div>
+                  <h2>🗺️ SEA Regional Language Map</h2>
+                  <p>
+                    Click a language dot on the map to hear a greeting in that regional language.
+                  </p>
+                </div>
+                <div className="map-progress-box">
+                  <div className="map-progress-label">
+                    Explored
+                  </div>
+                  <div className="map-progress-count">
+                    <span className="map-progress-current">{exploredIds.size}</span>
+                    <span className="map-progress-total"> / {seaCountries.length}</span>
+                  </div>
+                  <div className="map-progress-bar-track">
+                    <div
+                      className="map-progress-bar-fill"
+                      style={{ width: `${(exploredIds.size / seaCountries.length) * 100}%` }}
+                    />
+                  </div>
+                  {exploredIds.size === seaCountries.length && (
+                    <div className="map-progress-complete">🎉 All explored!</div>
+                  )}
+                </div>
+              </div>
             </div>
             <div className="map-container">
+              <div className="map-legend">
+                <span className="map-legend-item safe">
+                  <span className="map-legend-dot" />Safe
+                </span>
+                <span className="map-legend-item warn">
+                  <span className="map-legend-dot" />Vulnerable
+                </span>
+                <span className="map-legend-item danger">
+                  <span className="map-legend-dot" />Endangered
+                </span>
+              </div>
               <div className="map-image-wrapper">
                 <img
                   src="/image.png"
@@ -876,7 +1210,7 @@ export default function App() {
                 {seaCountries.map((c) => (
                   <button
                     key={c.id}
-                    className={`map-dot-btn ${selectedCountry?.id === c.id ? "active" : ""}`}
+                    className={`map-dot-btn ${selectedCountry?.id === c.id ? "active" : ""} ${exploredIds.has(c.id) && selectedCountry?.id !== c.id ? "explored" : ""}`}
                     style={{ top: `${c.top}%`, left: `${c.left}%` }}
                     onClick={() => handleMapClick(c)}
                     aria-label={c.name}
@@ -891,7 +1225,7 @@ export default function App() {
               <div className="map-info-bar">
                 {!selectedCountry && !mapPlaying && (
                   <p className="map-hint">
-                    Click a country dot on the map to hear a regional greeting
+                    Click a language dot on the map to hear a regional greeting
                   </p>
                 )}
                 {mapPlaying && (
@@ -911,7 +1245,12 @@ export default function App() {
                       <div>
                         <h3>{selectedCountry.name}</h3>
                         {selectedCountry.country && (
-                          <p className="map-result-country">{selectedCountry.country}</p>
+                          <p className="map-result-country">
+                            {COUNTRY_FLAGS[selectedCountry.country] && (
+                              <span className="map-country-flag">{COUNTRY_FLAGS[selectedCountry.country]}</span>
+                            )}
+                            {selectedCountry.country}
+                          </p>
                         )}
                       </div>
                       {mapResult.status && (
@@ -939,7 +1278,19 @@ export default function App() {
 
                     {/* Greeting audio text */}
                     <div className="map-result-greeting">
-                      <span className="map-greeting-label">Greeting</span>
+                      <div className="map-greeting-header">
+                        <span className="map-greeting-label">Greeting</span>
+                        {mapResult.audio && (
+                          <button
+                            className="map-replay-btn"
+                            onClick={replayMapAudio}
+                            title="Replay greeting"
+                            aria-label="Replay greeting audio"
+                          >
+                            🔊 Replay
+                          </button>
+                        )}
+                      </div>
                       <p className="map-result-text">"{mapResult.text}"</p>
                     </div>
 
@@ -958,6 +1309,143 @@ export default function App() {
                 )}
               </div>
             </div>
+          </section>
+        )}
+
+        {activeTab === "quiz" && (
+          <section className="panel quiz-panel">
+            <div className="panel-header">
+              <h2>🎯 Language Quiz</h2>
+              <p>Test your knowledge of SEA regional greetings. Pick the correct answer!</p>
+            </div>
+
+            {/* Language selector */}
+            <div className="quiz-lang-scroll">
+              {QUIZ_LANGUAGES.map((l) => (
+                <button
+                  key={l.name}
+                  className={`quiz-lang-pill ${quizLang === l.name ? "active" : ""}`}
+                  onClick={() => handleQuizLangChange(l.name)}
+                  disabled={quizLoading}
+                >
+                  {l.flag} {l.name}
+                </button>
+              ))}
+            </div>
+
+            {/* Score bar */}
+            <div className="quiz-score-bar">
+              <div className="quiz-score-item">
+                <span className="quiz-score-value">{quizScore}</span>
+                <span className="quiz-score-label">Correct</span>
+              </div>
+              <div className="quiz-score-item">
+                <span className="quiz-score-value quiz-streak">
+                  {quizStreak > 0 ? `🔥 ${quizStreak}` : quizStreak}
+                </span>
+                <span className="quiz-score-label">Streak</span>
+              </div>
+              <div className="quiz-score-item">
+                <span className="quiz-score-value">{quizTotal}</span>
+                <span className="quiz-score-label">Answered</span>
+              </div>
+              {quizTotal > 0 && (
+                <div className="quiz-score-item">
+                  <span className="quiz-score-value">
+                    {Math.round((quizScore / quizTotal) * 100)}%
+                  </span>
+                  <span className="quiz-score-label">Accuracy</span>
+                </div>
+              )}
+              {quizTotalKeys > 0 && (
+                <div className="quiz-score-item quiz-progress-item">
+                  <span className="quiz-score-value quiz-progress-value">
+                    {quizAskedKeys.length}<span className="quiz-progress-sep">/{quizTotalKeys}</span>
+                  </span>
+                  <span className="quiz-score-label">Questions</span>
+                </div>
+              )}
+            </div>
+
+            {/* Cycle-reset notification */}
+            {quizDidReset && (
+              <div className="quiz-reset-notice">
+                🔁 All questions completed — starting a new round!
+              </div>
+            )}
+
+            {/* Mascot */}
+            <div className={`quiz-mascot ${quizMascot}`}>
+              <div className="quiz-mascot-body">
+                <div className="quiz-mascot-face">
+                  {quizMascot === "correct" && <span>😄</span>}
+                  {quizMascot === "wrong"   && <span>😅</span>}
+                  {quizMascot === "idle"    && <span>🦜</span>}
+                </div>
+                <div className="quiz-mascot-name">Kura</div>
+              </div>
+              {quizMascot === "correct" && (
+                <div className="quiz-mascot-bubble correct">
+                  ✅ Correct! Well done!
+                </div>
+              )}
+              {quizMascot === "wrong" && quizQuestion && (
+                <div className="quiz-mascot-bubble wrong">
+                  ❌ The answer is: <strong>{quizQuestion.correct_answer}</strong>
+                </div>
+              )}
+              {quizMascot === "idle" && quizQuestion && (
+                <div className="quiz-mascot-bubble idle">
+                  How do you say <strong>"{quizQuestion.question_label}"</strong> in {quizQuestion.language}?
+                </div>
+              )}
+            </div>
+
+            {/* Loading */}
+            {quizLoading && (
+              <div className="quiz-loading">
+                <div className="pb-spinner" />
+                <span>Loading question...</span>
+              </div>
+            )}
+
+            {/* Choices */}
+            {!quizLoading && quizQuestion && (
+              <div className="quiz-choices">
+                {quizQuestion.choices.map((choice, i) => {
+                  let state = "default";
+                  if (quizRevealed) {
+                    if (choice === quizQuestion.correct_answer) state = "correct";
+                    else if (choice === quizSelected)           state = "wrong";
+                    else                                        state = "dim";
+                  }
+                  return (
+                    <button
+                      key={i}
+                      className={`quiz-choice ${state}`}
+                      onClick={() => handleQuizAnswer(choice)}
+                      disabled={quizRevealed}
+                    >
+                      <span className="quiz-choice-letter">
+                        {["A", "B", "C", "D"][i]}
+                      </span>
+                      <span className="quiz-choice-text">{choice}</span>
+                      {state === "correct" && <span className="quiz-choice-icon">✅</span>}
+                      {state === "wrong"   && <span className="quiz-choice-icon">❌</span>}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Next button */}
+            {quizRevealed && (
+              <div className="quiz-next-row">
+                <button className="quiz-next-btn" onClick={handleQuizNext}>
+                  Next Question →
+                </button>
+              </div>
+            )}
           </section>
         )}
       </main>

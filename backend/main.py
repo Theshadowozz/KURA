@@ -3,6 +3,7 @@ import io
 import os
 import json
 import tempfile
+import random
 from typing import List, Optional
 import requests
 
@@ -105,13 +106,16 @@ LANG_CODE_MAP = {
     "Jawa": "id",
     "Sunda": "id",
 
-    # Myanmar regional languages → fallback to Burmese
-    "Shan": "my",
-    "Karen": "my",
+    # Myanmar regional languages
+    # Karen/Shan scripts differ from Burmese — use "en" TTS with romanized text
+    "Shan": "en",
+    "Karen": "en",
 
     # Lao & related
-    "Lao": "lo",
-    "Hmong": "lo",
+    # "lo" is NOT supported by gTTS — Lao uses Thai TTS (closely related phonetics)
+    # Hmong is romanized (RPA) — use English TTS
+    "Lao": "th",
+    "Hmong": "en",
 
     # Thai regional → fallback to Thai
     "Isan": "th",
@@ -140,6 +144,11 @@ LANG_CODE_MAP = {
     "Tetum": "pt",
     "Mambae": "pt",
 }
+
+# Languages where the native script is incompatible with the assigned TTS engine.
+# For these, the map_audio prompt will request romanized (Latin) output so the
+# TTS engine can actually pronounce the text.
+ROMANIZE_LANGS = {"Karen", "Shan", "Hmong"}
 
 def get_gtts_lang(language_name: str) -> str:
     """Return gTTS language code for a given language name. Defaults to 'id'."""
@@ -310,6 +319,16 @@ class PhrasebookResponse(BaseModel):
     vocabulary: dict
     common_phrases: list
 
+
+class QuizQuestionResponse(BaseModel):
+    language: str
+    question_key: str
+    question_label: str
+    correct_answer: str
+    choices: List[str]
+    total_keys: int = 0
+    did_reset: bool = False
+
 # ==============================
 # HEALTH
 # ==============================
@@ -371,6 +390,114 @@ def speak(request: SpeakRequest):
 
 
 # ==============================
+# QUIZ
+# ==============================
+
+# Human-readable labels for greeting keys
+GREETING_KEY_LABELS = {
+    "hello": "Hello",
+    "hello_informal": "Hello (Informal)",
+    "hello_formal": "Hello (Formal)",
+    "welcome": "Welcome",
+    "good_morning": "Good Morning",
+    "good_afternoon": "Good Afternoon",
+    "good_evening": "Good Evening",
+    "goodbye": "Goodbye",
+    "thank_you": "Thank You",
+    "you_are_welcome": "You're Welcome",
+    "yes": "Yes",
+    "no": "No",
+    "please": "Please",
+    "sorry": "Sorry",
+    "how_are_you": "How Are You?",
+}
+
+@app.get("/quiz/question", response_model=QuizQuestionResponse)
+def get_quiz_question(language: str, exclude: str = ""):
+    try:
+        kb = load_knowledge_base()
+        languages = kb["languages"]
+
+        # Find the target language (case-insensitive)
+        lang_data = None
+        matched_key = language
+        for key, val in languages.items():
+            if key.lower() == language.lower():
+                lang_data = val
+                matched_key = key
+                break
+
+        if not lang_data:
+            raise HTTPException(status_code=404, detail=f"Language '{language}' not found")
+
+        greetings = lang_data.get("greetings", {})
+        if not greetings:
+            raise HTTPException(status_code=404, detail=f"No greetings found for '{language}'")
+
+        # Pick a random greeting key that has a non-empty value
+        all_valid_keys = [k for k, v in greetings.items() if v and v.strip()]
+        if not all_valid_keys:
+            raise HTTPException(status_code=404, detail="No valid greeting keys found")
+
+        # Exclude already-asked keys; if all exhausted, reset (start over)
+        excluded_set = set(k.strip() for k in exclude.split(",") if k.strip())
+        valid_keys = [k for k in all_valid_keys if k not in excluded_set]
+        did_reset = False
+        if not valid_keys:
+            valid_keys = all_valid_keys   # all asked — reset the cycle
+            did_reset = True
+
+        question_key = random.choice(valid_keys)
+        correct_answer = greetings[question_key].strip()
+        question_label = GREETING_KEY_LABELS.get(question_key, question_key.replace("_", " ").title())
+
+        # Gather wrong answers from OTHER languages using the same key
+        wrong_pool = []
+        for other_lang, other_data in languages.items():
+            if other_lang == matched_key:
+                continue
+            other_greetings = other_data.get("greetings", {})
+            # Try the same key first, then any other greeting key
+            candidate = other_greetings.get(question_key) or (
+                random.choice(list(other_greetings.values())) if other_greetings else None
+            )
+            if candidate and candidate.strip() and candidate.strip() != correct_answer:
+                wrong_pool.append(candidate.strip())
+
+        # Deduplicate and pick 3 wrong answers
+        wrong_pool = list(dict.fromkeys(wrong_pool))  # preserve order, remove dupes
+        random.shuffle(wrong_pool)
+        wrong_choices = wrong_pool[:3]
+
+        # Pad with generic fillers if not enough wrong answers
+        fillers = ["Sabai dee", "Sawubona", "Namaste", "Mabuhay", "Salamat"]
+        for f in fillers:
+            if len(wrong_choices) >= 3:
+                break
+            if f != correct_answer and f not in wrong_choices:
+                wrong_choices.append(f)
+
+        # Build final shuffled choices
+        choices = wrong_choices[:3] + [correct_answer]
+        random.shuffle(choices)
+
+        return QuizQuestionResponse(
+            language=matched_key,
+            question_key=question_key,
+            question_label=question_label,
+            correct_answer=correct_answer,
+            choices=choices,
+            total_keys=len(all_valid_keys),
+            did_reset=did_reset,
+        )
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# ==============================
 # MAP AUDIO
 # ==============================
 @app.post("/map-audio", response_model=MapAudioResponse)
@@ -379,6 +506,14 @@ def map_audio(request: MapAudioRequest):
         raise HTTPException(status_code=400, detail="language is required")
 
     try:
+        # For languages whose native script is incompatible with the TTS engine,
+        # request romanized (Latin) output so the TTS can actually pronounce it.
+        needs_romanize = request.language in ROMANIZE_LANGS
+        script_instruction = (
+            "Write the greeting using ONLY romanized Latin characters (no native script). "
+            if needs_romanize else ""
+        )
+
         # Generate a natural greeting in the requested regional language
         response = client.chat.completions.create(
             model=MODEL_NAME,
@@ -389,6 +524,7 @@ def map_audio(request: MapAudioRequest):
                         "You are Kura, a Southeast Asian regional language expert. "
                         "Your task is to produce a short, natural greeting or expression "
                         "in the requested regional language. "
+                        + script_instruction +
                         "Reply with ONLY the greeting text itself — no explanation, "
                         "no transliteration, no quotes, no punctuation beyond what is natural. "
                         "Maximum 10 words."
@@ -556,10 +692,6 @@ def translate_speak(request: TranslateSpeakRequest):
         )
 
         translation = response.choices[0].message.content.strip()
-
-        # 🔥 Refine dengan SEA-LION jika output adalah bahasa daerah
-        if request.output_language.lower() in SEA_REGIONAL_LANGUAGES:
-            translation = refine_sea_language(translation)
 
         gtts_lang = get_gtts_lang(request.output_language)
         tts = gTTS(text=translation, lang=gtts_lang)
