@@ -38,7 +38,7 @@ jobs:
           git config --global user.name "${{ vars.GH_USERNAME }}"
           git config --global user.email "${{ vars.GH_EMAIL }}"
 
-          git clone https://${{ secrets.GH_PAT }}@github.com/Theshadowozz/kura-frontend-build.git dist-repository
+          git clone --branch tiara https://${{ secrets.GH_PAT }}@github.com/Theshadowozz/kura-frontend-build.git dist-repository
 
           rm -rf dist-repository/dist
           cp -R build/dist dist-repository/dist
