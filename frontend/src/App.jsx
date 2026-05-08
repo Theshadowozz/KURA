@@ -26,10 +26,45 @@ export default function App() {
   const [theme, setTheme] = useState(
     () => localStorage.getItem("theme") || "dark",
   );
-  const toggleTheme = () => {
+  const [themeRevealVisible, setThemeRevealVisible] = useState(false);
+  const [themeRevealKey, setThemeRevealKey] = useState(0);
+  const themeRemoveTimeoutRef = useRef(null);
+
+  const toggleTheme = (event) => {
     const next = theme === "dark" ? "light" : "dark";
+    const root = document.documentElement;
+
+    const target = event?.currentTarget;
+    if (target?.getBoundingClientRect) {
+      const rect = target.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+      root.style.setProperty("--theme-x", `${x}px`);
+      root.style.setProperty("--theme-y", `${y}px`);
+    } else {
+      root.style.setProperty("--theme-x", `${window.innerWidth / 2}px`);
+      root.style.setProperty("--theme-y", `${window.innerHeight / 2}px`);
+    }
+
+    root.style.setProperty(
+      "--theme-transition-bg",
+      next === "dark" ? "#001a4d" : "#e8eef8",
+    );
+
+    // Apply theme immediately so the UI stays visible during the reveal.
     setTheme(next);
     localStorage.setItem("theme", next);
+
+    // Start overlay animation from the toggle position.
+    setThemeRevealKey((value) => value + 1);
+    setThemeRevealVisible(true);
+
+    // Remove overlay after animation completes
+    const ANIM_MS = 1250;
+    if (themeRemoveTimeoutRef.current) clearTimeout(themeRemoveTimeoutRef.current);
+    themeRemoveTimeoutRef.current = setTimeout(() => {
+      setThemeRevealVisible(false);
+    }, ANIM_MS);
   };
   const [activeTab, setActiveTab] = useState("chat");
   const [messages, setMessages] = useState([
@@ -55,6 +90,10 @@ export default function App() {
   useEffect(() => {
     chatBottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, chatLoading]);
+
+  useEffect(() => () => {
+    if (themeRemoveTimeoutRef.current) clearTimeout(themeRemoveTimeoutRef.current);
+  }, []);
 
   const [talkLangLeft, setTalkLangLeft] = useState("Indonesia");
   const [talkLangRight, setTalkLangRight] = useState("English");
@@ -408,6 +447,13 @@ export default function App() {
 
   return (
     <div className={`app ${theme}`}>
+      {themeRevealVisible && (
+        <div
+          key={themeRevealKey}
+          className="theme-reveal-overlay"
+          aria-hidden="true"
+        />
+      )}
       <Header theme={theme} onToggleTheme={toggleTheme} />
       <Tabs tabs={tabs} activeTab={activeTab} onChange={setActiveTab} />
 

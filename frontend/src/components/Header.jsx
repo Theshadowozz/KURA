@@ -12,7 +12,7 @@ export default function Header({ theme, onToggleTheme }) {
             onClick={onToggleTheme}
             aria-label="Toggle theme"
           >
-            {theme === "dark" ? "☀️" : "🌙"}
+            <span className="theme-toggle-icon" aria-hidden="true" />
           </button>
         </div>
         <h1>
@@ -24,11 +24,11 @@ export default function Header({ theme, onToggleTheme }) {
       </div>
       <div className="hero-card">
         <div className="hero-stat">
-          <span>22</span>
+          <span>24</span>
           <p>Regional Languages</p>
         </div>
         <div className="hero-stat">
-          <span>3</span>
+          <span>4</span>
           <p>Main Features</p>
         </div>
       </div>
