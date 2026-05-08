@@ -3,7 +3,7 @@ name: Build React.js App
 on:
   push:
     branches:
-      - main
+      - tiara
 
 jobs:
   build:
