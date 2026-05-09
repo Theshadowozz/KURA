@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import Header from "./components/Header";
-import Tabs from "./components/Tabs";
+import HomePage from "./components/HomePage";
 import QuickPhrasePanel from "./components/QuickPhrasePanel";
 import DictionaryPanel from "./components/DictionaryPanel";
 import ChatPanel from "./components/ChatPanel";
@@ -17,7 +17,6 @@ import {
 } from "./handlers";
 import { playBase64Audio } from "./lib";
 import {
-  tabs,
   QUIZ_LANGUAGES,
   QUIZ_COUNTRIES,
   DICTIONARY_LANGUAGES,
@@ -31,12 +30,11 @@ export default function App() {
   const [theme, setTheme] = useState(
     () => localStorage.getItem("theme") || "dark",
   );
+  const [currentView, setCurrentView] = useState("home");
   const [themeRevealVisible, setThemeRevealVisible] = useState(false);
   const [themeRevealKey, setThemeRevealKey] = useState(0);
   const themeRemoveTimeoutRef = useRef(null);
   const [chatOpen, setChatOpen] = useState(false);
-  const [featureSidebarOpen, setFeatureSidebarOpen] = useState(false);
-  const [featureRailOpen, setFeatureRailOpen] = useState(false);
 
   const toggleTheme = (event) => {
     const next = theme === "dark" ? "light" : "dark";
@@ -74,7 +72,6 @@ export default function App() {
       setThemeRevealVisible(false);
     }, ANIM_MS);
   };
-  const [activeTab, setActiveTab] = useState("dictionary");
   const [messages, setMessages] = useState([
     {
       role: "assistant",
@@ -111,7 +108,7 @@ export default function App() {
   const [talkLoading, setTalkLoading] = useState(false);
   const [copiedIndex, setCopiedIndex] = useState(null);
 
-  const clearTalk = () => {
+  const clearTalkConvo = () => {
     setTalkConvo([]);
   };
 
@@ -372,17 +369,6 @@ export default function App() {
     fetchQuizQuestion(firstLang, []);
   };
 
-  useEffect(() => {
-    if (activeTab === "quiz" && !quizLoadedRef.current) {
-      quizLoadedRef.current = true;
-      const firstCountry = QUIZ_COUNTRIES[0];
-      const firstLang = firstCountry?.languages[0]?.name || QUIZ_LANGUAGES[0].name;
-      setQuizCountry(firstCountry?.code || "id");
-      setQuizLang(firstLang);
-      fetchQuizQuestion(firstLang, []);
-    }
-  }, [activeTab]);
-
   const [selectedDictLang, setSelectedDictLang] = useState(null);
   const [dictData, setDictData] = useState(null);
   const [dictLoading, setDictLoading] = useState(false);
@@ -430,6 +416,43 @@ export default function App() {
     setSelectedDictLang(lang);
     loadDictionary(lang);
   };
+
+  const openFeatureView = (featureId) => {
+    if (featureId === "home") {
+      setCurrentView("home");
+      return;
+    }
+
+    setCurrentView(featureId);
+  };
+
+  const handleHomeFeatureClick = (featureId) => {
+    openFeatureView(featureId);
+  };
+
+  const handleNavigate = (featureId) => {
+    openFeatureView(featureId);
+  };
+
+  useEffect(() => {
+    if (currentView === "quiz" && !quizLoadedRef.current) {
+      quizLoadedRef.current = true;
+      const firstCountry = QUIZ_COUNTRIES[0];
+      const firstLang = firstCountry?.languages[0]?.name || QUIZ_LANGUAGES[0].name;
+      setQuizCountry(firstCountry?.code || "id");
+      setQuizLang(firstLang);
+      fetchQuizQuestion(firstLang, []);
+    }
+  }, [currentView]);
+
+  useEffect(() => {
+    if (currentView !== "dictionary" || selectedDictLang || dictLoading) return;
+    const firstAvailableLang = DICTIONARY_LANGUAGES.find((language) => language.name !== "Vietnamese")?.name
+      || DICTIONARY_LANGUAGES[0]?.name;
+    if (firstAvailableLang) {
+      handleDictLangChange(firstAvailableLang);
+    }
+  }, [currentView, selectedDictLang, dictLoading]);
 
   const MAX_CHAT_CHARS = 500;
   const charsLeft = MAX_CHAT_CHARS - chatInput.length;
@@ -535,172 +558,94 @@ export default function App() {
       <Header
         theme={theme}
         onToggleTheme={toggleTheme}
+        onNavigate={handleNavigate}
       />
 
       <div className="app-shell">
         <main className="main-stage">
-          <QuickPhrasePanel
-            languageOptions={SEA_NATIONAL_LANGUAGES}
-            onTranslate={handleQuickTranslate}
-            onPlayAudio={playAudio}
-          />
-        </main>
+          {currentView === "home" && (
+            <HomePage onFeatureClick={handleHomeFeatureClick} />
+          )}
 
-        <button
-          className={`feature-launcher ${featureRailOpen ? "open" : ""}`}
-          type="button"
-          onClick={() => setFeatureRailOpen((value) => !value)}
-          aria-label="Open feature menu"
-        >
-          <span className="feature-launcher-line" aria-hidden="true" />
-          <span className="feature-launcher-dot" aria-hidden="true" />
-        </button>
-
-        {featureRailOpen && (
-          <div className="feature-launcher-menu" role="menu" aria-label="Feature menu">
-            <button
-              type="button"
-              className="feature-launcher-item"
-              onClick={() => {
-                setActiveTab("dictionary");
-                setFeatureSidebarOpen(true);
-                setFeatureRailOpen(false);
-              }}
-            >
-              Dictionary
-            </button>
-            <button
-              type="button"
-              className="feature-launcher-item"
-              onClick={() => {
-                setActiveTab("talk");
-                setFeatureSidebarOpen(true);
-                setFeatureRailOpen(false);
-              }}
-            >
-              Two-Way Communication
-            </button>
-            <button
-              type="button"
-              className="feature-launcher-item"
-              onClick={() => {
-                setActiveTab("map");
-                setFeatureSidebarOpen(true);
-                setFeatureRailOpen(false);
-              }}
-            >
-              SEA Map
-            </button>
-            <button
-              type="button"
-              className="feature-launcher-item"
-              onClick={() => {
-                setActiveTab("quiz");
-                setFeatureSidebarOpen(true);
-                setFeatureRailOpen(false);
-              }}
-            >
-              Quiz
-            </button>
-          </div>
-        )}
-
-        {featureSidebarOpen && (
-          <div className="feature-sidebar-overlay" role="dialog" aria-modal="true" aria-label="Feature sidebar">
-            <button
-              className="feature-sidebar-backdrop"
-              type="button"
-              aria-label="Close feature sidebar"
-              onClick={() => setFeatureSidebarOpen(false)}
+          {currentView === "quick-access" && (
+            <QuickPhrasePanel
+              languageOptions={SEA_NATIONAL_LANGUAGES}
+              onTranslate={handleQuickTranslate}
+              onPlayAudio={playAudio}
             />
-            <aside className="feature-sidebar">
-              <div className="feature-sidebar-head">
-                <div>
-                  <p className="feature-rail-label">Side features</p>
-                  <h2>Dictionary, voice, map, quiz</h2>
-                </div>
-                <button className="feature-sidebar-close" type="button" onClick={() => setFeatureSidebarOpen(false)}>
-                  Close
-                </button>
-              </div>
+          )}
 
-              <Tabs tabs={tabs} activeTab={activeTab} onChange={setActiveTab} />
+          {currentView === "dictionary" && (
+            <DictionaryPanel
+              selectedDictLang={selectedDictLang}
+              dictData={dictData}
+              dictLoading={dictLoading}
+              dictError={dictError}
+              onDictLangChange={handleDictLangChange}
+              onLoadDictionary={loadDictionary}
+            />
+          )}
 
-              <div className="feature-sidebar-body">
-                {activeTab === "dictionary" && (
-                  <DictionaryPanel
-                    selectedDictLang={selectedDictLang}
-                    dictData={dictData}
-                    dictLoading={dictLoading}
-                    dictError={dictError}
-                    onDictLangChange={handleDictLangChange}
-                    onLoadDictionary={loadDictionary}
-                  />
-                )}
+          {currentView === "talk" && (
+            <TalkPanel
+              talkConvo={talkConvo}
+              talkLoading={talkLoading}
+              talkLangLeft={talkLangLeft}
+              talkLangRight={talkLangRight}
+              talkInputLeft={talkInputLeft}
+              talkInputRight={talkInputRight}
+              onTalkLangLeftChange={(event) => setTalkLangLeft(event.target.value)}
+              onTalkLangRightChange={(event) => setTalkLangRight(event.target.value)}
+              onTalkInputLeftChange={(event) => setTalkInputLeft(event.target.value)}
+              onTalkInputRightChange={(event) => setTalkInputRight(event.target.value)}
+              onTalkSend={handleTalkSend}
+              onSwapLangs={swapTalkLangs}
+              onClearConvo={clearTalkConvo}
+              recordingSide={recordingSide}
+              onStartRecording={startRecording}
+              copiedIndex={copiedIndex}
+              onCopyTranslation={handleCopyTranslation}
+              onPlayAudio={playAudio}
+              talkBottomRef={talkBottomRef}
+              languageOptions={languageOptions}
+            />
+          )}
 
-                {activeTab === "talk" && (
-                  <TalkPanel
-                    talkConvo={talkConvo}
-                    talkLoading={talkLoading}
-                    talkLangLeft={talkLangLeft}
-                    talkLangRight={talkLangRight}
-                    talkInputLeft={talkInputLeft}
-                    talkInputRight={talkInputRight}
-                    onTalkLangLeftChange={(event) => setTalkLangLeft(event.target.value)}
-                    onTalkLangRightChange={(event) => setTalkLangRight(event.target.value)}
-                    onTalkInputLeftChange={(event) => setTalkInputLeft(event.target.value)}
-                    onTalkInputRightChange={(event) => setTalkInputRight(event.target.value)}
-                    onTalkSend={handleTalkSend}
-                    onSwapLangs={swapTalkLangs}
-                    onClearConvo={clearTalk}
-                    recordingSide={recordingSide}
-                    onStartRecording={startRecording}
-                    copiedIndex={copiedIndex}
-                    onCopyTranslation={handleCopyTranslation}
-                    onPlayAudio={playAudio}
-                    talkBottomRef={talkBottomRef}
-                    languageOptions={languageOptions}
-                  />
-                )}
+          {currentView === "map" && (
+            <MapPanel
+              seaCountries={seaCountries}
+              selectedCountry={selectedCountry}
+              mapResult={mapResult}
+              mapPlaying={mapPlaying}
+              exploredIds={exploredIds}
+              onMapClick={handleMapClick}
+              onReplayMapAudio={replayMapAudio}
+              countryFlags={COUNTRY_FLAGS}
+            />
+          )}
 
-                {activeTab === "map" && (
-                  <MapPanel
-                    seaCountries={seaCountries}
-                    selectedCountry={selectedCountry}
-                    mapResult={mapResult}
-                    mapPlaying={mapPlaying}
-                    exploredIds={exploredIds}
-                    onMapClick={handleMapClick}
-                    onReplayMapAudio={replayMapAudio}
-                    countryFlags={COUNTRY_FLAGS}
-                  />
-                )}
-
-                {activeTab === "quiz" && (
-                  <QuizPanel
-                    quizCountry={quizCountry}
-                    quizLang={quizLang}
-                    quizQuestion={quizQuestion}
-                    quizSelected={quizSelected}
-                    quizRevealed={quizRevealed}
-                    quizScore={quizScore}
-                    quizStreak={quizStreak}
-                    quizTotal={quizTotal}
-                    quizLoading={quizLoading}
-                    quizAskedKeys={quizAskedKeys}
-                    quizTotalKeys={quizTotalKeys}
-                    quizDidReset={quizDidReset}
-                    quizMascot={quizMascot}
-                    onQuizCountryChange={handleQuizCountryChange}
-                    onQuizLangChange={handleQuizLangChange}
-                    onQuizAnswer={handleQuizAnswer}
-                    onQuizNext={handleQuizNext}
-                  />
-                )}
-              </div>
-            </aside>
-          </div>
-        )}
+          {currentView === "quiz" && (
+            <QuizPanel
+              quizCountry={quizCountry}
+              quizLang={quizLang}
+              quizQuestion={quizQuestion}
+              quizSelected={quizSelected}
+              quizRevealed={quizRevealed}
+              quizScore={quizScore}
+              quizStreak={quizStreak}
+              quizTotal={quizTotal}
+              quizLoading={quizLoading}
+              quizAskedKeys={quizAskedKeys}
+              quizTotalKeys={quizTotalKeys}
+              quizDidReset={quizDidReset}
+              quizMascot={quizMascot}
+              onQuizCountryChange={handleQuizCountryChange}
+              onQuizLangChange={handleQuizLangChange}
+              onQuizAnswer={handleQuizAnswer}
+              onQuizNext={handleQuizNext}
+            />
+          )}
+        </main>
       </div>
 
       <button

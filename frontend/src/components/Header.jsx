@@ -1,18 +1,25 @@
-export default function Header({ theme, onToggleTheme }) {
+export default function Header({ theme, onToggleTheme, onNavigate }) {
   return (
     <header className="hero">
-      <div>
+      <div className="hero-top">
         <div className="pill-row">
-          <div className="pill">
-            <img src="/logo/logo.png" alt="Kura AI logo" className="app-logo" />
-            Kura AI
-          </div>
+          <button type="button" className="brand-link" onClick={() => onNavigate?.("home")}>Kura AI</button>
+
+          <nav className="main-nav" aria-label="Main navigation">
+            <button type="button" className="nav-item" onClick={() => onNavigate?.("home")}>Home</button>
+            <button type="button" className="nav-item" onClick={() => onNavigate?.("dictionary")}>Dictionary</button>
+            <button type="button" className="nav-item" onClick={() => onNavigate?.("quick-access")}>Quick Speak</button>
+            <button type="button" className="nav-item" onClick={() => onNavigate?.("talk")}>Two-Way</button>
+            <button type="button" className="nav-item" onClick={() => onNavigate?.("map")}>SEA Map</button>
+            <button type="button" className="nav-item" onClick={() => onNavigate?.("quiz")}>Quiz</button>
+          </nav>
+
           <button
             className="theme-toggle"
             onClick={onToggleTheme}
             aria-label="Toggle theme"
           >
-            <span className="theme-toggle-icon" aria-hidden="true" />
+            <span className="theme-toggle-icon" />
           </button>
         </div>
         <h1>Fast language templates for real-world use</h1>

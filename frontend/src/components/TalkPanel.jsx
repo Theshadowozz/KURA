@@ -30,7 +30,7 @@ export default function TalkPanel({
             disabled={talkLoading}
             title="Clear conversation"
           >
-            🗑 Clear
+            Clear
           </button>
         </div>
       )}

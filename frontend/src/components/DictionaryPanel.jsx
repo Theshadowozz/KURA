@@ -15,6 +15,7 @@ export default function DictionaryPanel({
   const PAGE_SIZE = 20;
   const scrollYRef = useRef(0);
   const paginationRef = useRef(null);
+  const isInitialRenderRef = useRef(true);
 
   const [availableLangs, setAvailableLangs] = useState([]);
   const [activeCountry, setActiveCountry] = useState(null);
@@ -97,15 +98,18 @@ export default function DictionaryPanel({
     }
   }, [currentPage]);
 
-  useEffect(() => {
-    if (paginationRef.current) {
-      paginationRef.current.scrollIntoView({
-        block: "center",
-        inline: "nearest",
-        behavior: "smooth",
-      });
-    }
-  }, [currentPage]);
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+    setTimeout(() => {
+      if (paginationRef.current) {
+        paginationRef.current.scrollIntoView({
+          block: "center",
+          inline: "nearest",
+          behavior: "smooth",
+        });
+      }
+    }, 0);
+  };
 
   return (
     <section className="panel">

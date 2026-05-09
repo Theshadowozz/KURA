@@ -13,7 +13,7 @@ export default function MapPanel({
       <div className="panel-header">
         <div className="map-header-row">
           <div>
-            <h2>🗺️ SEA Regional Language Map</h2>
+            <h2>SEA Regional Language Map</h2>
             <p>
               Click a language dot on the map to hear a greeting in that regional language.
             </p>
