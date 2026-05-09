@@ -243,6 +243,13 @@ body:has(.app.light) {
   transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
 }
 
+.nav-item:hover,
+.nav-item.active {
+  background: var(--tab-active-bg);
+  border-color: var(--tab-active-border);
+  color: var(--text);
+}
+
 .theme-toggle {
   border-radius: 999px;
   border: 1px solid var(--input-border);

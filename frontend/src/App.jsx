@@ -557,6 +557,7 @@ export default function App() {
       )}
       <Header
         theme={theme}
+        currentView={currentView}
         onToggleTheme={toggleTheme}
         onNavigate={handleNavigate}
       />
