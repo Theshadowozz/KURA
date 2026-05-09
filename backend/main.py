@@ -295,7 +295,7 @@ def build_system_prompt(user_messages: list = None):
 
     return f"""You are Kura, an AI assistant specialised in Southeast Asian (SEA) regional language preservation.
 
-You have knowledge of 22 regional languages across 11 ASEAN countries.
+You have knowledge of 24 regional languages across 11 ASEAN countries.
 
 ## Available Languages Index:
 {language_index}

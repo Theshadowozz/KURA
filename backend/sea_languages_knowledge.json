@@ -1,9 +1,9 @@
 {
   "meta": {
     "version": "2.0",
-    "description": "SEA Regional Language Knowledge Base for Kura AI — covers 22 regional languages across 11 ASEAN countries",
+    "description": "SEA Regional Language Knowledge Base for Kura AI — covers 24 regional languages across 11 ASEAN countries",
     "last_updated": "2026-04-30",
-    "languages_count": 22
+    "languages_count": 24
   },
   "languages": {
     "Minangkabau": {
@@ -561,6 +561,107 @@
         "Ethnic minority schools teaching Tay language in northern provinces",
         "Vietnamese government ethnic minority preservation programs",
         "Academic documentation of Tay oral literature"
+      ]
+    },
+    "Khmer": {
+      "local_name": "ភាសាខ្មែរ",
+      "country": "Cambodia",
+      "region": "Cambodia, especially Phnom Penh and central lowland provinces",
+      "family": "Austroasiatic — Mon-Khmer",
+      "speakers": "~17 million",
+      "status": "Safe",
+      "script": "Khmer script",
+      "greetings": {
+        "hello": "Chumreap suor",
+        "hello_informal": "Sousdei",
+        "how_are_you": "Neak sok sabay te?",
+        "i_am_fine": "Knhom sok sabay",
+        "welcome": "Som swa kum",
+        "good_morning": "Arun suasdey",
+        "goodbye": "Leah haoy",
+        "thank_you": "Aw kun",
+        "you_are_welcome": "Min ei te"
+      },
+      "vocabulary": {
+        "I_me": "Knhom",
+        "you": "Neak",
+        "yes": "Baat / Jaa",
+        "no": "Te",
+        "water": "Teuk",
+        "eat": "Nyam",
+        "house": "Phteah",
+        "good": "L'or",
+        "rice": "Bai",
+        "pagoda": "Wat"
+      },
+      "common_phrases": [
+        "Chumreap suor — Hello (formal greeting)",
+        "Sousdei — Hello (informal)",
+        "Neak sok sabay te? — How are you?",
+        "Knhom sok sabay — I'm fine",
+        "Knhom min yul te — I don't understand",
+        "Aw kun — Thank you"
+      ],
+      "grammar_notes": "Khmer generally uses Subject-Verb-Object word order. It is not tonal, unlike many neighbouring mainland Southeast Asian languages. Social politeness is often shown through pronouns, particles, and greeting style.",
+      "cultural_notes": "Khmer is the national language of Cambodia and is closely tied to Theravada Buddhist traditions, classical dance, temple culture, and the historical legacy of Angkor.",
+      "threats": [
+        "Urban youth often mix Khmer with English and other global media vocabulary",
+        "Digital resources for formal and regional Khmer varieties remain uneven",
+        "Diaspora communities may experience intergenerational language shift"
+      ],
+      "preservation_efforts": [
+        "Khmer is used in Cambodian education, media, and public life",
+        "Temple communities and cultural organisations preserve classical arts and language",
+        "Unicode Khmer support enables broader digital writing and publishing"
+      ]
+    },
+    "Kuy": {
+      "local_name": "Kuy / Kui",
+      "country": "Cambodia",
+      "region": "Northern Cambodia, especially Preah Vihear, Kampong Thom, and neighbouring areas",
+      "family": "Austroasiatic — Katuic",
+      "speakers": "~300,000",
+      "status": "Vulnerable",
+      "script": "Mostly oral; Khmer script or Latin transcription may be used in documentation",
+      "greetings": {
+        "hello": "Chumreap suor",
+        "how_are_you": "Neh sok sabay te?",
+        "i_am_fine": "Knhom sok sabay",
+        "welcome": "Som swa kum",
+        "good_morning": "Arun suasdey",
+        "goodbye": "Leah haoy",
+        "thank_you": "Aw kun"
+      },
+      "vocabulary": {
+        "I_me": "Knhom / Anh",
+        "you": "Neh",
+        "yes": "Baat / Jaa",
+        "no": "Te",
+        "water": "Dak / Teuk",
+        "eat": "Cha / Nyam",
+        "house": "Dum / Phteah",
+        "good": "L'or",
+        "forest": "Prey",
+        "rice": "Bai"
+      },
+      "common_phrases": [
+        "Neh sok sabay te? — How are you?",
+        "Knhom sok sabay — I'm fine",
+        "Som swa kum — Welcome",
+        "Leah haoy — Goodbye",
+        "Aw kun — Thank you"
+      ],
+      "grammar_notes": "Kuy is an Austroasiatic language from the Katuic branch. Many Kuy communities are multilingual and use Khmer in school, media, and government contexts, so documented phrases may show Khmer influence.",
+      "cultural_notes": "Kuy communities in Cambodia are known for forest-based livelihoods, traditional ecological knowledge, and historical connections to elephant keeping and metalworking in parts of mainland Southeast Asia.",
+      "threats": [
+        "Strong shift toward Khmer in education and public life",
+        "Limited written materials and digital resources",
+        "Younger speakers may use Kuy less often outside family and village settings"
+      ],
+      "preservation_efforts": [
+        "Community elders transmit oral stories and vocabulary",
+        "Ethnolinguistic documentation projects record Kuy varieties",
+        "Local cultural groups support indigenous identity and language awareness"
       ]
     },
     "Khmer Krom": {

@@ -6,6 +6,8 @@ export const tabs = [
 ];
 
 export const QUIZ_LANGUAGES = [
+  { name: "Khmer",       flag: "🇰🇭­" },
+  { name: "Kuy",         flag: "🇰🇭­" },
   { name: "Minangkabau", flag: "🇮🇩" },
   { name: "Jawa",        flag: "🇮🇩" },
   { name: "Sunda",       flag: "🇮🇩" },
@@ -31,6 +33,7 @@ export const QUIZ_LANGUAGES = [
 ];
 
 export const COUNTRY_FLAGS = {
+  "Cambodia": "🇰🇭­",
   "Myanmar": "🇲🇲",
   "Laos": "🇱🇦",
   "Thailand": "🇹🇭",
@@ -79,6 +82,7 @@ export const languageOptions = [
   "Malay",
   "Tagalog",
   "Khmer",
+  "Kuy",
   "Minang",
   "Jawa",
   "Sunda",
