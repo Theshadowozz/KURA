@@ -1551,6 +1551,51 @@ button.primary {
   gap: 0;
 }
 
+.dict-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 18px 16px 6px;
+  margin-top: 4px;
+}
+
+.dict-pagination-btn {
+  min-width: 92px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--card-border);
+  background: var(--tab-bg);
+  color: var(--text-sub);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s;
+}
+
+.dict-pagination-btn:hover:not(:disabled) {
+  background: var(--tab-active-bg);
+  border-color: var(--tab-active-border);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.dict-pagination-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.dict-pagination-info {
+  min-width: 96px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-sub);
+  letter-spacing: 0.03em;
+}
+
 .dict-category {
   border-top: 1px solid var(--card-border);
 }

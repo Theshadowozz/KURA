@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { DICTIONARY_LANGUAGES, QUIZ_COUNTRIES } from "../utils/constants";
 import { dictionaryHandler } from "../handlers";
 
@@ -11,6 +11,10 @@ export default function DictionaryPanel({
   onLoadDictionary,
 }) {
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const PAGE_SIZE = 20;
+  const scrollYRef = useRef(0);
+  const paginationRef = useRef(null);
 
   const [availableLangs, setAvailableLangs] = useState([]);
   const [activeCountry, setActiveCountry] = useState(null);
@@ -67,6 +71,41 @@ export default function DictionaryPanel({
   };
 
   const entriesList = getFilteredSortedEntries();
+  const totalPages = Math.max(1, Math.ceil(entriesList.length / PAGE_SIZE));
+  const paginatedEntries = entriesList.slice(
+    (currentPage - 1) * PAGE_SIZE,
+    currentPage * PAGE_SIZE
+  );
+
+  const saveScrollPosition = () => {
+    scrollYRef.current = window.scrollY;
+  };
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedDictLang, searchQuery, dictData?.language]);
+
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages);
+    }
+  }, [currentPage, totalPages]);
+
+  useEffect(() => {
+    if (scrollYRef.current > 0) {
+      window.scrollTo({ top: scrollYRef.current, behavior: "auto" });
+    }
+  }, [currentPage]);
+
+  useEffect(() => {
+    if (paginationRef.current) {
+      paginationRef.current.scrollIntoView({
+        block: "center",
+        inline: "nearest",
+        behavior: "smooth",
+      });
+    }
+  }, [currentPage]);
 
   return (
     <section className="panel">
@@ -152,8 +191,9 @@ export default function DictionaryPanel({
               <p>No entries match your search.</p>
             </div>
           ) : (
-            <div className="dict-list">
-              {entriesList.map((entry, idx) => (
+            <>
+              <div className="dict-list">
+                {paginatedEntries.map((entry, idx) => (
                 <div key={idx} className="dict-entry simple">
                   <div className="dict-entry-row">
                     <div className="dict-entry-word">
@@ -174,7 +214,36 @@ export default function DictionaryPanel({
                   </div>
                 </div>
               ))}
-            </div>
+              </div>
+
+              <div className="dict-pagination" ref={paginationRef}>
+                <button
+                  className="dict-pagination-btn"
+                  onClick={() => {
+                    saveScrollPosition();
+                    setCurrentPage((page) => Math.max(1, page - 1));
+                  }}
+                  disabled={currentPage === 1}
+                >
+                  Previous
+                </button>
+
+                <span className="dict-pagination-info">
+                  Page {currentPage} of {totalPages}
+                </span>
+
+                <button
+                  className="dict-pagination-btn"
+                  onClick={() => {
+                    saveScrollPosition();
+                    setCurrentPage((page) => Math.min(totalPages, page + 1));
+                  }}
+                  disabled={currentPage === totalPages}
+                >
+                  Next
+                </button>
+              </div>
+            </>
           )}
         </div>
       )}
