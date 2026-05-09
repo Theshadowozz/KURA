@@ -15,22 +15,10 @@ export default function Header({ theme, onToggleTheme }) {
             <span className="theme-toggle-icon" aria-hidden="true" />
           </button>
         </div>
-        <h1>
-          AI-Powered Language Tools for <span>SEA</span>
-        </h1>
+        <h1>Fast language templates for real-world use</h1>
         <p className="subtitle">
-          Language chatbot, two-way AI voice communication, and a regional language map.
+          Choose a source sentence, switch the output language, and play the translation in one tap.
         </p>
-      </div>
-      <div className="hero-card">
-        <div className="hero-stat">
-          <span>24</span>
-          <p>Regional Languages</p>
-        </div>
-        <div className="hero-stat">
-          <span>5</span>
-          <p>Main Features</p>
-        </div>
       </div>
     </header>
   );

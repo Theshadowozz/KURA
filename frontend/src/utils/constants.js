@@ -1,6 +1,5 @@
 export const tabs = [
   { id: "dictionary", label: "Dictionary" },
-  { id: "chat", label: "Language Chatbot" },
   { id: "talk", label: "Two-Way Communication" },
   { id: "map", label: "SEA Map" },
   { id: "quiz", label: "Quiz" },

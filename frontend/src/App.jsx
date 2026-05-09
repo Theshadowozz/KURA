@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import Header from "./components/Header";
 import Tabs from "./components/Tabs";
+import QuickPhrasePanel from "./components/QuickPhrasePanel";
 import DictionaryPanel from "./components/DictionaryPanel";
 import ChatPanel from "./components/ChatPanel";
 import TalkPanel from "./components/TalkPanel";
@@ -32,6 +33,9 @@ export default function App() {
   const [themeRevealVisible, setThemeRevealVisible] = useState(false);
   const [themeRevealKey, setThemeRevealKey] = useState(0);
   const themeRemoveTimeoutRef = useRef(null);
+  const [chatOpen, setChatOpen] = useState(false);
+  const [featureSidebarOpen, setFeatureSidebarOpen] = useState(false);
+  const [featureRailOpen, setFeatureRailOpen] = useState(false);
 
   const toggleTheme = (event) => {
     const next = theme === "dark" ? "light" : "dark";
@@ -121,6 +125,10 @@ export default function App() {
       setCopiedIndex(index);
       setTimeout(() => setCopiedIndex(null), 2000);
     });
+  };
+
+  const handleQuickTranslate = async (sourceLanguage, targetLanguage, text) => {
+    return talkHandler.translateAndSpeak(sourceLanguage, targetLanguage, text);
   };
 
   const mediaRecorderRef = useRef(null);
@@ -523,97 +531,220 @@ export default function App() {
           aria-hidden="true"
         />
       )}
-      <Header theme={theme} onToggleTheme={toggleTheme} />
-      <Tabs tabs={tabs} activeTab={activeTab} onChange={setActiveTab} />
+      <Header
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
 
-      <main className="content">
-        {activeTab === "dictionary" && (
-          <DictionaryPanel
-            selectedDictLang={selectedDictLang}
-            dictData={dictData}
-            dictLoading={dictLoading}
-            dictError={dictError}
-            onDictLangChange={handleDictLangChange}
-            onLoadDictionary={loadDictionary}
-          />
-        )}
-
-        {activeTab === "chat" && (
-          <ChatPanel
-            messages={messages}
-            chatLoading={chatLoading}
-            chatInput={chatInput}
-            onChatInputChange={(event) => setChatInput(event.target.value)}
-            onChatSend={sendChat}
-            isOverLimit={isOverLimit}
-            isNearLimit={isNearLimit}
-            charsLeft={charsLeft}
-            onClearChat={clearChat}
-            chatBottomRef={chatBottomRef}
-            renderMarkdown={renderMarkdown}
-          />
-        )}
-
-        {activeTab === "talk" && (
-          <TalkPanel
-            talkConvo={talkConvo}
-            talkLoading={talkLoading}
-            talkLangLeft={talkLangLeft}
-            talkLangRight={talkLangRight}
-            talkInputLeft={talkInputLeft}
-            talkInputRight={talkInputRight}
-            onTalkLangLeftChange={(event) => setTalkLangLeft(event.target.value)}
-            onTalkLangRightChange={(event) => setTalkLangRight(event.target.value)}
-            onTalkInputLeftChange={(event) => setTalkInputLeft(event.target.value)}
-            onTalkInputRightChange={(event) => setTalkInputRight(event.target.value)}
-            onTalkSend={handleTalkSend}
-            onSwapLangs={swapTalkLangs}
-            onClearConvo={clearTalk}
-            recordingSide={recordingSide}
-            onStartRecording={startRecording}
-            copiedIndex={copiedIndex}
-            onCopyTranslation={handleCopyTranslation}
-            onPlayAudio={playAudio}
-            talkBottomRef={talkBottomRef}
+      <div className="app-shell">
+        <main className="main-stage">
+          <QuickPhrasePanel
             languageOptions={languageOptions}
+            onTranslate={handleQuickTranslate}
+            onPlayAudio={playAudio}
           />
+        </main>
+
+        <button
+          className={`feature-launcher ${featureRailOpen ? "open" : ""}`}
+          type="button"
+          onClick={() => setFeatureRailOpen((value) => !value)}
+          aria-label="Open feature menu"
+        >
+          <span className="feature-launcher-line" aria-hidden="true" />
+          <span className="feature-launcher-dot" aria-hidden="true" />
+        </button>
+
+        {featureRailOpen && (
+          <div className="feature-launcher-menu" role="menu" aria-label="Feature menu">
+            <button
+              type="button"
+              className="feature-launcher-item"
+              onClick={() => {
+                setActiveTab("dictionary");
+                setFeatureSidebarOpen(true);
+                setFeatureRailOpen(false);
+              }}
+            >
+              Dictionary
+            </button>
+            <button
+              type="button"
+              className="feature-launcher-item"
+              onClick={() => {
+                setActiveTab("talk");
+                setFeatureSidebarOpen(true);
+                setFeatureRailOpen(false);
+              }}
+            >
+              Two-Way Communication
+            </button>
+            <button
+              type="button"
+              className="feature-launcher-item"
+              onClick={() => {
+                setActiveTab("map");
+                setFeatureSidebarOpen(true);
+                setFeatureRailOpen(false);
+              }}
+            >
+              SEA Map
+            </button>
+            <button
+              type="button"
+              className="feature-launcher-item"
+              onClick={() => {
+                setActiveTab("quiz");
+                setFeatureSidebarOpen(true);
+                setFeatureRailOpen(false);
+              }}
+            >
+              Quiz
+            </button>
+          </div>
         )}
 
-        {activeTab === "map" && (
-          <MapPanel
-            seaCountries={seaCountries}
-            selectedCountry={selectedCountry}
-            mapResult={mapResult}
-            mapPlaying={mapPlaying}
-            exploredIds={exploredIds}
-            onMapClick={handleMapClick}
-            onReplayMapAudio={replayMapAudio}
-            countryFlags={COUNTRY_FLAGS}
-          />
-        )}
+        {featureSidebarOpen && (
+          <div className="feature-sidebar-overlay" role="dialog" aria-modal="true" aria-label="Feature sidebar">
+            <button
+              className="feature-sidebar-backdrop"
+              type="button"
+              aria-label="Close feature sidebar"
+              onClick={() => setFeatureSidebarOpen(false)}
+            />
+            <aside className="feature-sidebar">
+              <div className="feature-sidebar-head">
+                <div>
+                  <p className="feature-rail-label">Side features</p>
+                  <h2>Dictionary, voice, map, quiz</h2>
+                </div>
+                <button className="feature-sidebar-close" type="button" onClick={() => setFeatureSidebarOpen(false)}>
+                  Close
+                </button>
+              </div>
 
-        {activeTab === "quiz" && (
-          <QuizPanel
-            quizCountry={quizCountry}
-            quizLang={quizLang}
-            quizQuestion={quizQuestion}
-            quizSelected={quizSelected}
-            quizRevealed={quizRevealed}
-            quizScore={quizScore}
-            quizStreak={quizStreak}
-            quizTotal={quizTotal}
-            quizLoading={quizLoading}
-            quizAskedKeys={quizAskedKeys}
-            quizTotalKeys={quizTotalKeys}
-            quizDidReset={quizDidReset}
-            quizMascot={quizMascot}
-            onQuizCountryChange={handleQuizCountryChange}
-            onQuizLangChange={handleQuizLangChange}
-            onQuizAnswer={handleQuizAnswer}
-            onQuizNext={handleQuizNext}
-          />
+              <Tabs tabs={tabs} activeTab={activeTab} onChange={setActiveTab} />
+
+              <div className="feature-sidebar-body">
+                {activeTab === "dictionary" && (
+                  <DictionaryPanel
+                    selectedDictLang={selectedDictLang}
+                    dictData={dictData}
+                    dictLoading={dictLoading}
+                    dictError={dictError}
+                    onDictLangChange={handleDictLangChange}
+                    onLoadDictionary={loadDictionary}
+                  />
+                )}
+
+                {activeTab === "talk" && (
+                  <TalkPanel
+                    talkConvo={talkConvo}
+                    talkLoading={talkLoading}
+                    talkLangLeft={talkLangLeft}
+                    talkLangRight={talkLangRight}
+                    talkInputLeft={talkInputLeft}
+                    talkInputRight={talkInputRight}
+                    onTalkLangLeftChange={(event) => setTalkLangLeft(event.target.value)}
+                    onTalkLangRightChange={(event) => setTalkLangRight(event.target.value)}
+                    onTalkInputLeftChange={(event) => setTalkInputLeft(event.target.value)}
+                    onTalkInputRightChange={(event) => setTalkInputRight(event.target.value)}
+                    onTalkSend={handleTalkSend}
+                    onSwapLangs={swapTalkLangs}
+                    onClearConvo={clearTalk}
+                    recordingSide={recordingSide}
+                    onStartRecording={startRecording}
+                    copiedIndex={copiedIndex}
+                    onCopyTranslation={handleCopyTranslation}
+                    onPlayAudio={playAudio}
+                    talkBottomRef={talkBottomRef}
+                    languageOptions={languageOptions}
+                  />
+                )}
+
+                {activeTab === "map" && (
+                  <MapPanel
+                    seaCountries={seaCountries}
+                    selectedCountry={selectedCountry}
+                    mapResult={mapResult}
+                    mapPlaying={mapPlaying}
+                    exploredIds={exploredIds}
+                    onMapClick={handleMapClick}
+                    onReplayMapAudio={replayMapAudio}
+                    countryFlags={COUNTRY_FLAGS}
+                  />
+                )}
+
+                {activeTab === "quiz" && (
+                  <QuizPanel
+                    quizCountry={quizCountry}
+                    quizLang={quizLang}
+                    quizQuestion={quizQuestion}
+                    quizSelected={quizSelected}
+                    quizRevealed={quizRevealed}
+                    quizScore={quizScore}
+                    quizStreak={quizStreak}
+                    quizTotal={quizTotal}
+                    quizLoading={quizLoading}
+                    quizAskedKeys={quizAskedKeys}
+                    quizTotalKeys={quizTotalKeys}
+                    quizDidReset={quizDidReset}
+                    quizMascot={quizMascot}
+                    onQuizCountryChange={handleQuizCountryChange}
+                    onQuizLangChange={handleQuizLangChange}
+                    onQuizAnswer={handleQuizAnswer}
+                    onQuizNext={handleQuizNext}
+                  />
+                )}
+              </div>
+            </aside>
+          </div>
         )}
-      </main>
+      </div>
+
+      <button
+        className="chat-fab"
+        type="button"
+        onClick={() => setChatOpen(true)}
+        aria-label="Open chatbot"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" className="chat-fab-icon">
+          <path d="M7 10.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm7 0a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm-8.5 4.5c1.2 2.2 3.4 3.5 6.5 3.5s5.3-1.3 6.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+          <rect x="5" y="6" width="14" height="10" rx="4" fill="none" stroke="currentColor" strokeWidth="1.8"/>
+          <path d="M12 3.5v2.1" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+          <circle cx="12" cy="3.1" r="1.1" fill="currentColor"/>
+        </svg>
+      </button>
+
+      {chatOpen && (
+        <div className="chat-overlay" role="dialog" aria-modal="true" aria-label="Chatbot">
+          <button className="chat-backdrop" type="button" aria-label="Close chatbot" onClick={() => setChatOpen(false)} />
+          <div className="chat-drawer">
+            <div className="chat-drawer-top">
+              <div>
+                <p className="feature-rail-label">Chatbot</p>
+                <h2>Ask about translations</h2>
+              </div>
+              <button className="chat-close-btn" type="button" onClick={() => setChatOpen(false)}>
+                Close
+              </button>
+            </div>
+            <ChatPanel
+              messages={messages}
+              chatLoading={chatLoading}
+              chatInput={chatInput}
+              onChatInputChange={(event) => setChatInput(event.target.value)}
+              onChatSend={sendChat}
+              isOverLimit={isOverLimit}
+              isNearLimit={isNearLimit}
+              charsLeft={charsLeft}
+              onClearChat={clearChat}
+              chatBottomRef={chatBottomRef}
+              renderMarkdown={renderMarkdown}
+            />
+          </div>
+        </div>
+      )}
 
       <footer className="footer">
         <p>© 2026 Kura AI. Built for Hackathon.</p>
