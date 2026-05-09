@@ -475,7 +475,9 @@ body:has(.app.light) {
 }
 
 .quick-template-area {
-  margin-bottom: 18px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--divider);
 }
 
 .quick-template-area-head {
@@ -501,10 +503,10 @@ body:has(.app.light) {
 
 .quick-controls {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 14px;
   align-items: end;
-  margin-bottom: 18px;
+  margin-bottom: 28px;
 }
 
 .quick-select-group {
@@ -560,6 +562,46 @@ body:has(.app.light) {
   color: var(--text);
 }
 
+.quick-translate-now {
+  display: grid;
+  gap: 12px;
+  padding: 20px;
+  border-radius: 18px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  margin-bottom: 24px;
+}
+
+.quick-translate-now label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.quick-translate-now textarea {
+  border-radius: 14px;
+  border: 1px solid var(--card-border);
+  background: var(--input-bg);
+  color: var(--text);
+  padding: 14px;
+  font: inherit;
+  resize: vertical;
+  min-height: 88px;
+}
+
+.quick-translate-now textarea:focus {
+  outline: none;
+  border-color: var(--tab-active-border);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.quick-actions-row {
+  display: flex;
+  gap: 12px;
+}
+
 .quick-template-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -611,22 +653,49 @@ body:has(.app.light) {
 
 .quick-custom {
   display: grid;
-  gap: 10px;
+  gap: 12px;
+  padding: 20px;
+  border-radius: 18px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  margin-top: 24px;
   margin-bottom: 16px;
 }
 
+.quick-custom label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 4px;
+}
+
 .quick-custom input {
-  border-radius: 16px;
+  border-radius: 14px;
   border: 1px solid var(--card-border);
-  background: var(--tab-bg);
+  background: var(--input-bg);
   color: var(--text);
   padding: 12px 14px;
   font: inherit;
 }
 
 .quick-custom textarea {
+  border-radius: 14px;
+  border: 1px solid var(--card-border);
+  background: var(--input-bg);
+  color: var(--text);
+  padding: 14px;
+  font: inherit;
   resize: vertical;
-  min-height: 96px;
+  min-height: 88px;
+}
+
+.quick-custom input:focus,
+.quick-custom textarea:focus {
+  outline: none;
+  border-color: var(--tab-active-border);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 .quick-actions {
@@ -647,11 +716,17 @@ body:has(.app.light) {
   padding: 12px 18px;
   font-weight: 700;
   cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
 }
 
 .quick-secondary-btn:hover:not(:disabled) {
   background: var(--tab-active-bg);
   color: var(--text);
+}
+
+.quick-secondary-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
 }
 
 .quick-primary-btn {
@@ -663,10 +738,12 @@ body:has(.app.light) {
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 10px 24px rgba(0, 82, 204, 0.18);
+  transition: background 0.18s ease, box-shadow 0.18s ease;
 }
 
 .quick-primary-btn:hover:not(:disabled) {
   background: var(--accent-strong);
+  box-shadow: 0 12px 32px rgba(0, 82, 204, 0.28);
 }
 
 .quick-primary-btn:disabled {
