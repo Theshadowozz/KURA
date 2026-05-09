@@ -189,6 +189,13 @@ WHISPER_LANG_MAP = {
 # TTS engine can actually pronounce the text.
 ROMANIZE_LANGS = {"Karen", "Shan", "Hmong"}
 
+# SEA Map voice overrides for languages that sound better with a syllable-based
+# TTS voice than with English spelling.
+MAP_TTS_LANG_OVERRIDES = {
+    "Karen": "ms",
+    "Shan": "ms",
+}
+
 def get_gtts_lang(language_name: str) -> str:
     """Return gTTS language code for a given language name. Defaults to 'id'."""
     return LANG_CODE_MAP.get(language_name, "id")
@@ -671,44 +678,34 @@ def map_audio(request: MapAudioRequest):
         raise HTTPException(status_code=400, detail="language is required")
 
     try:
-        # For languages whose native script is incompatible with the TTS engine,
-        # request romanized (Latin) output so the TTS can actually pronounce it.
-        needs_romanize = request.language in ROMANIZE_LANGS
-        script_instruction = (
-            "Write the greeting using ONLY romanized Latin characters (no native script). "
-            if needs_romanize else ""
-        )
+        # Load curated greeting from knowledge base (not LLM generation)
+        kb = load_knowledge_base()
+        lang_data = None
+        matched_key = None
+        for key, val in kb["languages"].items():
+            if key.lower() == request.language.lower():
+                lang_data = val
+                matched_key = key
+                break
 
-        # Generate a natural greeting in the requested regional language
-        response = client.chat.completions.create(
-            model=MODEL_NAME,
-            messages=[
-                {
-                    "role": "system",
-                    "content": (
-                        "You are Kura, a Southeast Asian regional language expert. "
-                        "Your task is to produce a short, natural greeting or expression "
-                        "in the requested regional language. "
-                        + script_instruction +
-                        "Reply with ONLY the greeting text itself — no explanation, "
-                        "no transliteration, no quotes, no punctuation beyond what is natural. "
-                        "Maximum 10 words."
-                    )
-                },
-                {
-                    "role": "user",
-                    "content": (
-                        f"Give one common greeting or short expression in the {request.language} language."
-                    )
-                }
-            ],
-            temperature=0.7
-        )
+        if not lang_data:
+            raise HTTPException(status_code=404, detail=f"Language '{request.language}' not found in knowledge base")
 
-        greeting_text = response.choices[0].message.content.strip()
+        # Get greetings from KB
+        greetings = lang_data.get("greetings", {})
+        if not greetings:
+            raise HTTPException(status_code=404, detail=f"No greetings found for '{request.language}'")
 
-        # Convert greeting to audio using the correct language code
-        gtts_lang = get_gtts_lang(request.language)
+        # Pick a random greeting value from the curated greetings dict
+        valid_greetings = [v for v in greetings.values() if v and v.strip()]
+        if not valid_greetings:
+            raise HTTPException(status_code=404, detail="No valid greetings available")
+
+        greeting_text = random.choice(valid_greetings).strip()
+
+        # Convert greeting to audio using the correct language code.
+        # Use a Malay voice for Karen/Shan so romanized text is read more naturally.
+        gtts_lang = MAP_TTS_LANG_OVERRIDES.get(matched_key or request.language, get_gtts_lang(request.language))
         tts = gTTS(text=greeting_text, lang=gtts_lang)
         audio_buffer = io.BytesIO()
         tts.write_to_fp(audio_buffer)
