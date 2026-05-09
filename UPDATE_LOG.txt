@@ -1,6 +1,16 @@
 ================================================================================
   KURA AI — UPDATE LOG
-  Version: 2.0  |  Date: 2026-04-30  |  Team: GRIDFX
+  Version: 2.1  |  Latest: 2026-05-10  |  Team: GRIDFX
+  
+  Total Features: 6
+  - AI Chatbot (Streaming)
+  - Dictionary (Language Reference)
+  - Quick Speak (Text-to-Speech)
+  - Two-Way Voice Communication
+  - SEA Regional Language Map (22 dots)
+  - Language Quiz (Non-repeating)
+  
+  Supported Languages: 24 Regional Languages
 ================================================================================
 
 --------------------------------------------------------------------------------
@@ -270,6 +280,231 @@ BACKEND ENDPOINTS — CURRENT STATE
   GET  /phrasebook/{language}    Phrasebook data per language    [NEW, backend only]
   POST /speak                    TTS only, no translation        [NEW, backend only]
   POST /learn                    Add vocabulary to knowledge base
+
+
+--------------------------------------------------------------------------------
+7. DICTIONARY — LANGUAGE REFERENCE (NEW)
+--------------------------------------------------------------------------------
+Status  : NEW FEATURE
+Date    : 2026-05-10
+Files   : frontend/src/components/DictionaryPanel.jsx (NEW)
+          frontend/src/handlers/dictionary/index.js (NEW)
+          frontend/src/App.jsx, frontend/src/styles.css
+
+Description:
+  - Fitur Dictionary menjadi tab ke-2 dalam interface (setelah AI Chatbot)
+  - Menyediakan referensi bahasa lengkap untuk 24 bahasa regional
+  - Akses data dari dictionary/*.json files (di backend/dictionary/)
+
+Frontend Components:
+  - DictionaryPanel.jsx: UI component untuk dictionary
+    + Language selector dropdown (24 bahasa)
+    + Search box untuk mencari kata/frasa
+    + Grid/List view untuk menampilkan entry kamus
+    + Setiap entry menampilkan: word, pronunciation, meaning, example
+    + Play button untuk audio pronunciation
+
+  - handlers/dictionary/index.js:
+    + loadDictionary(language): fetch dictionary data per bahasa
+    + searchWords(query, language): filter kata berdasarkan search
+    + playWordAudio(word, language): play audio pronunciation
+
+CSS Updates:
+  - .dict-lang-selector: dropdown styling
+  - .dict-search-bar: search input styling
+  - .dict-grid: grid layout untuk dictionary entries
+  - .dict-entry: card styling per entry
+    + .dict-entry-word: headword styling
+    + .dict-entry-pronunciation: phonetic display
+    + .dict-entry-meaning: definition styling
+    + .dict-entry-example: example usage
+    + .dict-entry-audio: audio play button
+  - Responsive design untuk mobile (max-width 640px):
+    + Grid berubah ke 1 kolom
+    + Font sizes dikurangi
+    + Touch-friendly buttons
+
+Backend Data:
+  - backend/dictionary/*.json (22 files, sekarang diperluas ke 24):
+    + Format JSON untuk setiap bahasa
+    + Entries dengan: word, pronunciation, meaning, partOfSpeech, example
+    + Support untuk tone marks dan special characters
+
+
+--------------------------------------------------------------------------------
+8. QUICK SPEAK — TEXT-TO-SPEECH UTILITY (NEW)
+--------------------------------------------------------------------------------
+Status  : NEW FEATURE
+Date    : 2026-05-10
+Files   : frontend/src/components/QuickPhrasePanel.jsx (NEW)
+          frontend/src/handlers/talk/index.js (UPDATED)
+          frontend/src/App.jsx, frontend/src/styles.css
+
+Description:
+  - Fitur Quick Speak/Quick Phrase untuk TTS one-way tanpa recording
+  - User hanya input teks, pilih bahasa, dan dengarkan audio
+  - Lebih sederhana dibanding Two-Way Communication
+
+Frontend Components:
+  - QuickPhrasePanel.jsx: UI component untuk quick TTS
+    + Language selector (24 bahasa)
+    + Text input area
+    + Play button besar untuk generate dan play audio
+    + History/Recent phrases (opsional)
+
+  - handlers/talk/index.js (UPDATED):
+    + generateQuickSpeech(text, language): call backend /speak endpoint
+    + playQuickAudio(audioUrl): playback audio
+    + handleQuickSpeakSubmit(): orchestrate flow
+
+CSS Updates:
+  - .quick-input-group: text input section
+  - .quick-lang-select: language selector
+  - .quick-play-btn: large play button
+    + Hover effect
+    + Loading state dengan spinner
+  - .quick-history: recent phrases list (optional)
+  - Responsive design untuk mobile
+
+Backend Endpoints (Already Exist):
+  - POST /speak: TTS only endpoint
+    + Input: text, language, gender (optional)
+    + Output: audio URL atau audio stream
+
+
+--------------------------------------------------------------------------------
+9. UI UPDATES & POLISH
+--------------------------------------------------------------------------------
+Status  : IMPROVEMENT / BUG FIX
+Date    : 2026-05-10
+Files   : frontend/src/App.jsx, frontend/src/styles.css
+
+Layout & Navigation:
+  - Updated hero section dengan 6 fitur (bukan 4 atau 5)
+    + Stats box: "6 Features", "24 Languages", "Real-time AI"
+  - Tab bar: 6 tabs sekarang (AI Chatbot, Dictionary, Quick Speak, Two-Way, Map, Quiz)
+    + Tab styling updated dengan better responsive handling
+    + Mobile: grid 3x2 layout (dari sebelumnya 2x2 atau 1x3)
+
+Color & Typography:
+  - Updated accent colors untuk better visual hierarchy
+  - Font weights disesuaikan untuk readability
+  - Button styling improvements dengan better hover/focus states
+
+Component Refinements:
+  - Header: logo dan title updated
+  - Chat Panel: bubble styling tweaks
+  - Talk Panel: input field improvements
+  - Map Panel: dot sizing optimizations
+  - Quiz Panel: answer button styling
+
+Accessibility:
+  - Improved ARIA labels
+  - Better keyboard navigation support
+  - Color contrast improvements
+  - Touch target sizing (minimum 44px untuk mobile)
+
+Performance:
+  - Lazy loading untuk DictionaryPanel
+  - Optimized dictionary data caching
+  - Reduced re-renders untuk list components
+
+Responsive Updates:
+  - Tablet (900px): 3 tab columns + better spacing
+  - Mobile (640px): 2 tab columns, stacked panels
+  - Small Phone (380px): full-width tabs, minimal padding
+  - Dictionary entries: adaptive font sizes
+  - Quick Speak input: expanded width di mobile
+
+
+--------------------------------------------------------------------------------
+LANGUAGE SUPPORT — UPDATED TO 24
+--------------------------------------------------------------------------------
+
+Previous (22 languages):
+  Shan, Karen, Lao, Hmong, Lanna, Isan, Tay, Cham, Khmer Krom,
+  Ilocano, Cebuano, Iban, Kadazan-Dusun, Teochew, Hokkien, Dusun, Tutong,
+  Minangkabau, Sunda, Javanese, Tetum, Mambae
+
+New (24 languages — +2):
+  + English, Mandarin (Chinese)
+  
+  Complete list:
+  1. Indonesia / Bahasa Indonesia
+  2. English / English
+  3. Mandarin / 普通话
+  4. Thai / ภาษาไทย
+  5. Vietnamese / Tiếng Việt
+  6. Malay / Bahasa Melayu
+  7. Tagalog / Filipino
+  8. Khmer / ខ្មែរ
+  9. Minangkabau / Minangkabau
+  10. Javanese / Basa Jawa
+  11. Sundanese / Basa Sunda
+  12. Lao / ພາສາລາວ
+  13. Shan / အရပ်သုံး
+  14. Karen / ကညီကံ
+  15. Hmong / Hmoob
+  16. Isan / ภาษาอีสาน
+  17. Lanna / ภาษาล้านนา
+  18. Tay / Tày
+  19. Cham / Arap Champa
+  20. Khmer Krom / ខ្មែរក្រោម
+  21. Cebuano / Sinugbuanong Binisaya
+  22. Ilocano / Iloko
+  23. Iban / Bahasa Iban
+  24. Kadazan-Dusun / Kadazan-Dusun
+
+Data Updates:
+  - sea_languages_knowledge.json: expanded untuk 24 bahasa
+  - dictionary/*.json: 2 file baru (English.json, Mandarin.json)
+  - Backend LANG_CODE_MAP: 2 entries baru
+
+
+================================================================================
+  FEATURE SUMMARY — VERSION 2.1
+================================================================================
+
+Total Features: 6
+
+1️⃣  AI CHATBOT (Streaming)
+    - Real-time token streaming via SSE
+    - Grounded di knowledge base 24 bahasa
+    - Visual cursor animation
+
+2️⃣  DICTIONARY (Reference)
+    - Language reference dari 24 bahasa
+    - Search, pronunciation, examples
+    - Audio pronunciation playback
+
+3️⃣  QUICK SPEAK (Text-to-Speech)
+    - One-way TTS tanpa voice input
+    - Simple text + language + play
+    - Generate audio untuk speaking practice
+
+4️⃣  TWO-WAY COMMUNICATION
+    - Voice-to-voice translation
+    - Mic input untuk record, translate, playback
+    - Real-time audio feedback
+
+5️⃣  SEA REGIONAL MAP
+    - 22 interactive language dots
+    - Language status (Safe/Vulnerable/Endangered)
+    - Cultural facts & speaker counts
+    - Greetings playback
+
+6️⃣  LANGUAGE QUIZ
+    - Gamified multiple-choice
+    - Non-repeating question cycles
+    - Score tracking & progress
+
+
+================================================================================
+  SUPPORTED LANGUAGES: 24 REGIONAL
+================================================================================
+
+Total Speakers: ~2.5 Billion people (combined)
+Geographic Coverage: Southeast Asia, East Asia
 
 
 ================================================================================
