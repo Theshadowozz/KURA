@@ -1,6 +1,7 @@
-import { QUIZ_LANGUAGES } from "../utils/constants";
+import { QUIZ_LANGUAGES, QUIZ_COUNTRIES } from "../utils/constants";
 
 export default function QuizPanel({
+  quizCountry,
   quizLang,
   quizQuestion,
   quizSelected,
@@ -13,10 +14,13 @@ export default function QuizPanel({
   quizTotalKeys,
   quizDidReset,
   quizMascot,
+  onQuizCountryChange,
   onQuizLangChange,
   onQuizAnswer,
   onQuizNext,
 }) {
+  const currentCountry = QUIZ_COUNTRIES.find((c) => c.code === quizCountry);
+  const countriesWithLangs = QUIZ_COUNTRIES.filter((c) => c.languages.length > 0);
   return (
     <section className="panel quiz-panel">
       <div className="panel-header">
@@ -25,16 +29,34 @@ export default function QuizPanel({
       </div>
 
       <div className="quiz-lang-scroll">
-        {QUIZ_LANGUAGES.map((l) => (
-          <button
-            key={l.name}
-            className={`quiz-lang-pill ${quizLang === l.name ? "active" : ""}`}
-            onClick={() => onQuizLangChange(l.name)}
-            disabled={quizLoading}
-          >
-            {l.flag} {l.name}
-          </button>
-        ))}
+        <div className="quiz-country-tabs">
+          {countriesWithLangs.map((country) => (
+            <button
+              key={country.code}
+              className={`quiz-country-tab ${quizCountry === country.code ? "active" : ""}`}
+              onClick={() => onQuizCountryChange(country.code)}
+              disabled={quizLoading}
+              title={country.name}
+            >
+              {country.flag} {country.name}
+            </button>
+          ))}
+        </div>
+
+        {currentCountry && (
+          <div className="quiz-lang-buttons">
+            {currentCountry.languages.map((lang) => (
+              <button
+                key={lang.name}
+                className={`quiz-lang-pill ${quizLang === lang.name ? "active" : ""}`}
+                onClick={() => onQuizLangChange(lang.name)}
+                disabled={quizLoading}
+              >
+                {lang.flag} {lang.name}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="quiz-score-bar">

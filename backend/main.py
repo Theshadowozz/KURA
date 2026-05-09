@@ -539,25 +539,22 @@ def get_quiz_question(language: str, exclude: str = ""):
         correct_answer = greetings[question_key].strip()
         question_label = GREETING_KEY_LABELS.get(question_key, question_key.replace("_", " ").title())
 
-        # Gather wrong answers from OTHER languages using the same key
+        # Gather wrong answers from the SAME language but different greeting keys
         wrong_pool = []
-        for other_lang, other_data in languages.items():
-            if other_lang == matched_key:
+        for other_key, other_value in greetings.items():
+            # Skip the correct answer key and empty values
+            if other_key == question_key or not other_value or not other_value.strip():
                 continue
-            other_greetings = other_data.get("greetings", {})
-            # Try the same key first, then any other greeting key
-            candidate = other_greetings.get(question_key) or (
-                random.choice(list(other_greetings.values())) if other_greetings else None
-            )
-            if candidate and candidate.strip() and candidate.strip() != correct_answer:
-                wrong_pool.append(candidate.strip())
+            candidate = other_value.strip()
+            if candidate != correct_answer:
+                wrong_pool.append(candidate)
 
         # Deduplicate and pick 3 wrong answers
         wrong_pool = list(dict.fromkeys(wrong_pool))  # preserve order, remove dupes
         random.shuffle(wrong_pool)
         wrong_choices = wrong_pool[:3]
 
-        # Pad with generic fillers if not enough wrong answers
+        # Pad with generic fillers if not enough wrong answers from same language
         fillers = ["Sabai dee", "Sawubona", "Namaste", "Mabuhay", "Salamat"]
         for f in fillers:
             if len(wrong_choices) >= 3:

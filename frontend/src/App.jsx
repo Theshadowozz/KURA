@@ -16,6 +16,7 @@ import { playBase64Audio } from "./lib";
 import {
   tabs,
   QUIZ_LANGUAGES,
+  QUIZ_COUNTRIES,
   COUNTRY_FLAGS,
   seaCountries,
   languageOptions,
@@ -269,6 +270,7 @@ export default function App() {
   };
 
   const [quizLang, setQuizLang] = useState(QUIZ_LANGUAGES[0].name);
+  const [quizCountry, setQuizCountry] = useState(QUIZ_COUNTRIES[0]?.code || "id");
   const [quizQuestion, setQuizQuestion] = useState(null);
   const [quizSelected, setQuizSelected] = useState(null);
   const [quizRevealed, setQuizRevealed] = useState(false);
@@ -343,10 +345,29 @@ export default function App() {
     fetchQuizQuestion(lang, []);
   };
 
+  const handleQuizCountryChange = (countryCode) => {
+    setQuizCountry(countryCode);
+    // Get first language of this country
+    const country = QUIZ_COUNTRIES.find((c) => c.code === countryCode);
+    const firstLang = country?.languages[0]?.name || QUIZ_LANGUAGES[0].name;
+    setQuizLang(firstLang);
+    setQuizScore(0);
+    setQuizStreak(0);
+    setQuizTotal(0);
+    setQuizAskedKeys([]);
+    setQuizTotalKeys(0);
+    setQuizDidReset(false);
+    fetchQuizQuestion(firstLang, []);
+  };
+
   useEffect(() => {
     if (activeTab === "quiz" && !quizLoadedRef.current) {
       quizLoadedRef.current = true;
-      fetchQuizQuestion(QUIZ_LANGUAGES[0].name, []);
+      const firstCountry = QUIZ_COUNTRIES[0];
+      const firstLang = firstCountry?.languages[0]?.name || QUIZ_LANGUAGES[0].name;
+      setQuizCountry(firstCountry?.code || "id");
+      setQuizLang(firstLang);
+      fetchQuizQuestion(firstLang, []);
     }
   }, [activeTab]);
 
@@ -511,6 +532,7 @@ export default function App() {
 
         {activeTab === "quiz" && (
           <QuizPanel
+            quizCountry={quizCountry}
             quizLang={quizLang}
             quizQuestion={quizQuestion}
             quizSelected={quizSelected}
@@ -523,6 +545,7 @@ export default function App() {
             quizTotalKeys={quizTotalKeys}
             quizDidReset={quizDidReset}
             quizMascot={quizMascot}
+            onQuizCountryChange={handleQuizCountryChange}
             onQuizLangChange={handleQuizLangChange}
             onQuizAnswer={handleQuizAnswer}
             onQuizNext={handleQuizNext}

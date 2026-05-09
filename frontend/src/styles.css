@@ -1392,11 +1392,63 @@ button.primary {
    QUIZ TAB
    ============================================= */
 
-/* Language selector pills */
-.quiz-lang-scroll {
+/* Country tabs */
+.quiz-country-tabs {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.quiz-country-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--card-border);
+  background: var(--tab-bg);
+  color: var(--text-sub);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.quiz-country-tab:hover:not(:disabled) {
+  background: var(--tab-active-bg);
+  color: var(--text);
+  border-color: var(--tab-active-border);
+}
+
+.quiz-country-tab.active {
+  background: var(--tab-active-bg);
+  border-color: var(--tab-active-border);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.quiz-country-tab:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Language buttons (under country) */
+.quiz-lang-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+/* Language selector pills */
+.quiz-lang-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   margin-bottom: 20px;
 }
 

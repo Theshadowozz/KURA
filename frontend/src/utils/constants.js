@@ -106,3 +106,73 @@ export const languageOptions = [
   "Tetum",
   "Mambae",
 ];
+
+// Group QUIZ_LANGUAGES by country for quiz UI
+export const QUIZ_COUNTRIES = [
+  {
+    code: "kh",
+    name: "Cambodia",
+    flag: "🇰🇭",
+    languages: QUIZ_LANGUAGES.filter((l) => COUNTRY_FLAGS["Cambodia"] && l.flag === COUNTRY_FLAGS["Cambodia"]),
+  },
+  {
+    code: "mm",
+    name: "Myanmar",
+    flag: "🇲🇲",
+    languages: QUIZ_LANGUAGES.filter((l) => COUNTRY_FLAGS["Myanmar"] && l.flag === COUNTRY_FLAGS["Myanmar"]),
+  },
+  {
+    code: "la",
+    name: "Laos",
+    flag: "🇱🇦",
+    languages: QUIZ_LANGUAGES.filter((l) => COUNTRY_FLAGS["Laos"] && l.flag === COUNTRY_FLAGS["Laos"]),
+  },
+  {
+    code: "th",
+    name: "Thailand",
+    flag: "🇹🇭",
+    languages: QUIZ_LANGUAGES.filter((l) => COUNTRY_FLAGS["Thailand"] && l.flag === COUNTRY_FLAGS["Thailand"]),
+  },
+  {
+    code: "vn",
+    name: "Vietnam",
+    flag: "🇻🇳",
+    languages: QUIZ_LANGUAGES.filter((l) => COUNTRY_FLAGS["Vietnam"] && l.flag === COUNTRY_FLAGS["Vietnam"]),
+  },
+  {
+    code: "ph",
+    name: "Philippines",
+    flag: "🇵🇭",
+    languages: QUIZ_LANGUAGES.filter((l) => COUNTRY_FLAGS["Philippines"] && l.flag === COUNTRY_FLAGS["Philippines"]),
+  },
+  {
+    code: "my",
+    name: "Malaysia",
+    flag: "🇲🇾",
+    languages: QUIZ_LANGUAGES.filter((l) => COUNTRY_FLAGS["Malaysia"] && l.flag === COUNTRY_FLAGS["Malaysia"]),
+  },
+  {
+    code: "sg",
+    name: "Singapore",
+    flag: "🇸🇬",
+    languages: QUIZ_LANGUAGES.filter((l) => COUNTRY_FLAGS["Singapore"] && l.flag === COUNTRY_FLAGS["Singapore"]),
+  },
+  {
+    code: "bn",
+    name: "Brunei",
+    flag: "🇧🇳",
+    languages: QUIZ_LANGUAGES.filter((l) => COUNTRY_FLAGS["Brunei"] && l.flag === COUNTRY_FLAGS["Brunei"]),
+  },
+  {
+    code: "id",
+    name: "Indonesia",
+    flag: "🇮🇩",
+    languages: QUIZ_LANGUAGES.filter((l) => COUNTRY_FLAGS["Indonesia"] && l.flag === COUNTRY_FLAGS["Indonesia"]),
+  },
+  {
+    code: "tl",
+    name: "Timor Leste",
+    flag: "🇹🇱",
+    languages: QUIZ_LANGUAGES.filter((l) => COUNTRY_FLAGS["Timor Leste"] && l.flag === COUNTRY_FLAGS["Timor Leste"]),
+  },
+];
