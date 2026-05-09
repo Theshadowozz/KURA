@@ -24,6 +24,7 @@ import {
   COUNTRY_FLAGS,
   seaCountries,
   languageOptions,
+  SEA_NATIONAL_LANGUAGES,
 } from "./utils/constants";
 
 export default function App() {
@@ -539,7 +540,7 @@ export default function App() {
       <div className="app-shell">
         <main className="main-stage">
           <QuickPhrasePanel
-            languageOptions={languageOptions}
+            languageOptions={SEA_NATIONAL_LANGUAGES}
             onTranslate={handleQuickTranslate}
             onPlayAudio={playAudio}
           />

@@ -136,6 +136,21 @@ export const languageOptions = [
   "Mambae",
 ];
 
+// SEA National Languages for Quick Access feature only
+export const SEA_NATIONAL_LANGUAGES = [
+  "Indonesia",
+  "English",
+  "Malay",
+  "Thai",
+  "Vietnamese",
+  "Tagalog",
+  "Khmer",
+  "Lao",
+  "Burmese",
+  "Tetum",
+  "Mandarin",
+];
+
 // Group QUIZ_LANGUAGES by country for quiz UI
 export const QUIZ_COUNTRIES = [
   {
