@@ -1,0 +1,14 @@
+{
+  "language": "Isan",
+  "local_name": "ภาษาอีสาน",
+  "entries": [
+    {"word": "สวัสดี", "pronunciation": "Sa-wad-dee", "english": "Hello", "category": "greetings", "example": "สวัสดีครับ", "example_english": "Hello"},
+    {"word": "ลาจากไป", "pronunciation": "La chak pai", "english": "Goodbye", "category": "greetings", "example": "ลาจากไป", "example_english": "Goodbye"},
+    {"word": "ขอบคุณ", "pronunciation": "Kob khun", "english": "Thank you", "category": "greetings", "example": "ขอบคุณมาก", "example_english": "Thank you very much"},
+    {"word": "ฉัน", "pronunciation": "Chan", "english": "I / Me", "category": "vocabulary", "example": "ฉันมาจากอีสาน", "example_english": "I am from Isan"},
+    {"word": "เธอ", "pronunciation": "Thoe", "english": "You", "category": "vocabulary", "example": "เธอชื่ออะไร", "example_english": "What is your name?"},
+    {"word": "ใช่", "pronunciation": "Chai", "english": "Yes", "category": "vocabulary", "example": "ใช่ครับ", "example_english": "Yes"},
+    {"word": "ไม่", "pronunciation": "Mai", "english": "No", "category": "vocabulary", "example": "ไม่ครับ", "example_english": "No"},
+    {"word": "น้ำ", "pronunciation": "Nam", "english": "Water", "category": "vocabulary", "example": "น้ำอุ่น", "example_english": "Warm water"}
+  ]
+}

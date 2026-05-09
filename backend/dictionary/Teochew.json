@@ -1,0 +1,14 @@
+{
+  "language": "Teochew",
+  "local_name": "潮州話",
+  "entries": [
+    {"word": "你好", "pronunciation": "Ni-ho", "english": "Hello", "category": "greetings", "example": "你好", "example_english": "Hello"},
+    {"word": "再見", "pronunciation": "Zai-gin", "english": "Goodbye", "category": "greetings", "example": "再見", "example_english": "Goodbye"},
+    {"word": "多謝", "pronunciation": "Do-tsia", "english": "Thank you", "category": "greetings", "example": "多謝", "example_english": "Thank you"},
+    {"word": "我", "pronunciation": "Ngua", "english": "I / Me", "category": "vocabulary", "example": "我係潮州人", "example_english": "I am Teochew"},
+    {"word": "你", "pronunciation": "Ni", "english": "You", "category": "vocabulary", "example": "你貴姓", "example_english": "What is your surname?"},
+    {"word": "係", "pronunciation": "Hai", "english": "Yes / Is", "category": "vocabulary", "example": "係啦", "example_english": "Yes"},
+    {"word": "唔係", "pronunciation": "Mm-hai", "english": "No / Not", "category": "vocabulary", "example": "唔係", "example_english": "No"},
+    {"word": "水", "pronunciation": "Tsui", "english": "Water", "category": "vocabulary", "example": "冷水", "example_english": "Cold water"}
+  ]
+}

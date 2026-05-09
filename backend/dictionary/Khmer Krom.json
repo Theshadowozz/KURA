@@ -1,0 +1,14 @@
+{
+  "language": "Khmer Krom",
+  "local_name": "ខ្មែរក្រោម",
+  "entries": [
+    {"word": "សូមស្វាគមន៍", "pronunciation": "Sum svagom", "english": "Hello / Welcome", "category": "greetings", "example": "សូមស្វាគមន៍មក​ខ្មែរក្រោម", "example_english": "Welcome to Khmer Krom"},
+    {"word": "លាសិនហើយ", "pronunciation": "La sin haey", "english": "Goodbye", "category": "greetings", "example": "លាសិនហើយ", "example_english": "Goodbye"},
+    {"word": "សូមអរគុណ", "pronunciation": "Sum orkun", "english": "Thank you", "category": "greetings", "example": "សូមអរគុណច្រើន", "example_english": "Thank you very much"},
+    {"word": "ខ្ញុំ", "pronunciation": "Khnhom", "english": "I / Me", "category": "vocabulary", "example": "ខ្ញុំមកពីខ្មែរក្រោម", "example_english": "I am from Khmer Krom"},
+    {"word": "អ្នក", "pronunciation": "Anak", "english": "You", "category": "vocabulary", "example": "អ្នកឈ្មោះថាអ្វី", "example_english": "What is your name?"},
+    {"word": "បាទ", "pronunciation": "Bat", "english": "Yes", "category": "vocabulary", "example": "បាទ ខ្ញុំយល់", "example_english": "Yes I understand"},
+    {"word": "ទេ", "pronunciation": "Te", "english": "No", "category": "vocabulary", "example": "ទេ ខ្ញុំមិនដឹង", "example_english": "No I don't know"},
+    {"word": "ទឹក", "pronunciation": "Teuk", "english": "Water", "category": "vocabulary", "example": "ទឹកត្រជាក់", "example_english": "Cold water"}
+  ]
+}

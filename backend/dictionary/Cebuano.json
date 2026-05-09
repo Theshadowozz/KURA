@@ -1,0 +1,14 @@
+{
+  "language": "Cebuano",
+  "local_name": "Cebuano",
+  "entries": [
+    {"word": "Kamusta", "pronunciation": "Ka-mus-ta", "english": "Hello / How are you?", "category": "greetings", "example": "Kamusta ka?", "example_english": "How are you?"},
+    {"word": "Paalam", "pronunciation": "Pa-a-lam", "english": "Goodbye", "category": "greetings", "example": "Paalam na", "example_english": "Goodbye now"},
+    {"word": "Salamat", "pronunciation": "Sa-la-mat", "english": "Thank you", "category": "greetings", "example": "Salamat ng malaki", "example_english": "Thank you very much"},
+    {"word": "Ako", "pronunciation": "A-ko", "english": "I / Me", "category": "vocabulary", "example": "Ako taga Cebuano", "example_english": "I am from Cebuano"},
+    {"word": "Ikaw", "pronunciation": "I-kaw", "english": "You", "category": "vocabulary", "example": "Unsa ang pangalan mo?", "example_english": "What is your name?"},
+    {"word": "Oo", "pronunciation": "O-o", "english": "Yes", "category": "vocabulary", "example": "Oo, nakaintindi", "example_english": "Yes I understand"},
+    {"word": "Dili", "pronunciation": "Di-li", "english": "No", "category": "vocabulary", "example": "Dili, wala akong alam", "example_english": "No I don't know"},
+    {"word": "Tubig", "pronunciation": "Tu-big", "english": "Water", "category": "vocabulary", "example": "Tubig na malamig", "example_english": "Cold water"}
+  ]
+}

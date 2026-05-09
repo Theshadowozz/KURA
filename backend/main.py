@@ -249,6 +249,31 @@ def load_knowledge_base():
     with open("sea_languages_knowledge.json", "r", encoding="utf-8") as f:
         return json.load(f)
 
+def load_dictionary():
+    # Prefer a folder-based dictionary (one JSON file per language) if present.
+    dict_dir = "dictionary"
+    result = {}
+    if os.path.isdir(dict_dir):
+        for fname in os.listdir(dict_dir):
+            if not fname.lower().endswith(".json"):
+                continue
+            path = os.path.join(dict_dir, fname)
+            try:
+                with open(path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    key = os.path.splitext(fname)[0]
+                    result[key] = data
+            except Exception:
+                # skip malformed files but continue loading others
+                continue
+        return result
+    # Fallback: legacy single-file dictionary
+    try:
+        with open("sea_languages_dictionary.json", "r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
+
 def get_language_index() -> str:
     """Return a compact index of all languages for the system prompt."""
     kb = load_knowledge_base()
@@ -454,6 +479,61 @@ def get_phrasebook(language: str):
         )
     except HTTPException:
         raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# ==============================
+# DICTIONARY
+# ==============================
+class DictionaryEntryResponse(BaseModel):
+    word: str
+    pronunciation: str
+    english: str
+    category: str
+    example: str
+    example_english: str
+
+
+class DictionaryResponse(BaseModel):
+    language: str
+    local_name: str
+    entries: List[DictionaryEntryResponse]
+
+
+@app.get("/dictionary/{language}", response_model=DictionaryResponse)
+def get_dictionary(language: str):
+    try:
+        dictionary = load_dictionary()
+        # Try exact match first, then case-insensitive
+        data = dictionary.get(language)
+        if not data:
+            for key, val in dictionary.items():
+                if key.lower() == language.lower():
+                    data = val
+                    language = key
+                    break
+        if not data:
+            raise HTTPException(status_code=404, detail=f"Dictionary for '{language}' not found")
+
+        entries = [DictionaryEntryResponse(**entry) for entry in data.get("entries", [])]
+        return DictionaryResponse(
+            language=language,
+            local_name=data.get("local_name", language),
+            entries=entries,
+        )
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/dictionary")
+def list_dictionaries():
+    try:
+        dictionary = load_dictionary()
+        available = list(dictionary.keys())
+        return {"available_languages": available, "count": len(available)}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

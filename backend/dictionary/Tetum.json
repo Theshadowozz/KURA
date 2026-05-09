@@ -1,0 +1,14 @@
+{
+  "language": "Tetum",
+  "local_name": "Tetum",
+  "entries": [
+    {"word": "Olá", "pronunciation": "O-la", "english": "Hello", "category": "greetings", "example": "Olá", "example_english": "Hello"},
+    {"word": "Até logo", "pronunciation": "A-te lo-go", "english": "Goodbye", "category": "greetings", "example": "Até logo", "example_english": "Goodbye"},
+    {"word": "Obrigado", "pronunciation": "O-bri-ga-do", "english": "Thank you", "category": "greetings", "example": "Obrigado muito", "example_english": "Thank you very much"},
+    {"word": "Hu", "pronunciation": "Hu", "english": "I / Me", "category": "vocabulary", "example": "Hu Tetum", "example_english": "I am Tetum"},
+    {"word": "Ita", "pronunciation": "I-ta", "english": "You / We", "category": "vocabulary", "example": "Ita inan sida?", "example_english": "What is your name?"},
+    {"word": "Iha", "pronunciation": "I-ha", "english": "Yes / Is", "category": "vocabulary", "example": "Iha, ha", "example_english": "Yes"},
+    {"word": "Lae", "pronunciation": "La-e", "english": "No", "category": "vocabulary", "example": "Lae, ha musan", "example_english": "No I don't know"},
+    {"word": "Bee", "pronunciation": "Be-e", "english": "Water", "category": "vocabulary", "example": "Bee maun", "example_english": "Cold water"}
+  ]
+}

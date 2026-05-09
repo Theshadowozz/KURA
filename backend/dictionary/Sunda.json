@@ -1,0 +1,16 @@
+{
+  "language": "Sunda",
+  "local_name": "Basa Sunda",
+  "entries": [
+    {"word": "Sampurasun", "pronunciation": "Sam-pu-ra-sun", "english": "Hello (greeting)", "category": "greetings", "example": "Sampurasun", "example_english": "Hello"},
+    {"word": "Rampes", "pronunciation": "Ram-pes", "english": "Hello (response)", "category": "greetings", "example": "Sampurasun. Rampes", "example_english": "Hello. Hi"},
+    {"word": "Hatur nuhun", "pronunciation": "Ha-tur nu-hun", "english": "Thank you", "category": "greetings", "example": "Hatur nuhun pikeun tulungan", "example_english": "Thank you for helping"},
+    {"word": "Hilap jeung", "pronunciation": "Hi-lap jeung", "english": "Goodbye", "category": "greetings", "example": "Hilap jeung", "example_english": "Goodbye"},
+    {"word": "Abdi", "pronunciation": "Ab-di", "english": "I / Me (formal)", "category": "vocabulary", "example": "Abdi saking Sunda", "example_english": "I am from Sunda"},
+    {"word": "Anjeun", "pronunciation": "An-jeun", "english": "You (formal)", "category": "vocabulary", "example": "Saha ngaran anjeun?", "example_english": "What is your name?"},
+    {"word": "Enya", "pronunciation": "E-nya", "english": "Yes", "category": "vocabulary", "example": "Enya, paham", "example_english": "Yes, I understand"},
+    {"word": "Henteu", "pronunciation": "Hen-teu", "english": "No", "category": "vocabulary", "example": "Henteu hayang", "example_english": "Don't want"},
+    {"word": "Cai", "pronunciation": "Cai", "english": "Water", "category": "vocabulary", "example": "Cai tiis", "example_english": "Cold water"},
+    {"word": "Kaharepan", "pronunciation": "Ka-ha-re-pan", "english": "Food / Hope", "category": "vocabulary", "example": "Kaharepan sareng", "example_english": "Food together"}
+  ]
+}

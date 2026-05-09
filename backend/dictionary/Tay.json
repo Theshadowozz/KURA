@@ -1,0 +1,14 @@
+{
+  "language": "Tay",
+  "local_name": "Tay",
+  "entries": [
+    {"word": "Xin chào", "pronunciation": "Sin chao", "english": "Hello", "category": "greetings", "example": "Xin chào anh", "example_english": "Hello sir"},
+    {"word": "Tạm biệt", "pronunciation": "Tam biet", "english": "Goodbye", "category": "greetings", "example": "Tạm biệt nhé", "example_english": "Goodbye"},
+    {"word": "Cảm ơn", "pronunciation": "Cam on", "english": "Thank you", "category": "greetings", "example": "Cảm ơn rất nhiều", "example_english": "Thank you very much"},
+    {"word": "Tôi", "pronunciation": "Toi", "english": "I / Me", "category": "vocabulary", "example": "Tôi từ dân tộc Tày", "example_english": "I am Tay ethnic"},
+    {"word": "Bạn", "pronunciation": "Ban", "english": "You / Friend", "category": "vocabulary", "example": "Bạn tên gì?", "example_english": "What is your name?"},
+    {"word": "Được", "pronunciation": "Duoc", "english": "Yes / OK", "category": "vocabulary", "example": "Được rồi, tôi hiểu", "example_english": "OK I understand"},
+    {"word": "Không", "pronunciation": "Khong", "english": "No", "category": "vocabulary", "example": "Không, tôi không biết", "example_english": "No I don't know"},
+    {"word": "Nước", "pronunciation": "Nuoc", "english": "Water", "category": "vocabulary", "example": "Nước lạnh", "example_english": "Cold water"}
+  ]
+}

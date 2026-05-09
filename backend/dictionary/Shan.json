@@ -1,0 +1,15 @@
+{
+  "language": "Shan",
+  "local_name": "ၽႃႇသႃႇ (Shan)",
+  "entries": [
+    {"word": "ဆၢႆႇ", "pronunciation": "Sa-dee", "english": "Hello", "category": "greetings", "example": "ဆၢႆႇ", "example_english": "Hello"},
+    {"word": "ၼႃႉတႅင်ႈ", "pronunciation": "Nai-ting", "english": "Goodbye", "category": "greetings", "example": "ၼႃႉတႅင်ႈ", "example_english": "Goodbye"},
+    {"word": "မိုႆႇ", "pronunciation": "Mo-su", "english": "Thank you", "category": "greetings", "example": "မိုႆႇ", "example_english": "Thank you"},
+    {"word": "ၵူႉ", "pronunciation": "Khu", "english": "I / Me", "category": "vocabulary", "example": "ၵူႉ ၽႃႇ သႂၼ", "example_english": "I am Shan"},
+    {"word": "သုတ်", "pronunciation": "Sut", "english": "You", "category": "vocabulary", "example": "သုတ် ၽႃႇ ဘႃႇ", "example_english": "You are good"},
+    {"word": "ႆႇ", "pronunciation": "Shi", "english": "Yes", "category": "vocabulary", "example": "ႆႇ, ကိုႈ", "example_english": "Yes, I agree"},
+    {"word": "မ‌ႃႇ", "pronunciation": "Ma", "english": "No", "category": "vocabulary", "example": "မ‌ႃႇ, အႇ", "example_english": "No, not"},
+    {"word": "ႏႃႉ", "pronunciation": "Nai", "english": "Water", "category": "vocabulary", "example": "ႏႃႉ ရႃႈ", "example_english": "Cold water"},
+    {"word": "အႀႇတႆႈ", "pronunciation": "Ah-tat", "english": "Food", "category": "vocabulary", "example": "အႀႇတႆႈ ႇႇ", "example_english": "Eat food"}
+  ]
+}

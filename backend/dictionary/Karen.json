@@ -1,0 +1,15 @@
+{
+  "language": "Karen",
+  "local_name": "Karen",
+  "entries": [
+    {"word": "Thwa ba du", "pronunciation": "Thwa ba du", "english": "Hello", "category": "greetings", "example": "Thwa ba du", "example_english": "Hello"},
+    {"word": "Thee daw", "pronunciation": "Thee daw", "english": "Goodbye", "category": "greetings", "example": "Thee daw", "example_english": "Goodbye"},
+    {"word": "Ta ku thwa ba", "pronunciation": "Ta ku thwa ba", "english": "Thank you", "category": "greetings", "example": "Ta ku thwa ba", "example_english": "Thank you"},
+    {"word": "Nah", "pronunciation": "Nah", "english": "I / Me", "category": "vocabulary", "example": "Nah Karen du", "example_english": "I am Karen"},
+    {"word": "Ma", "pronunciation": "Ma", "english": "You", "category": "vocabulary", "example": "Ma ta ba", "example_english": "You good"},
+    {"word": "Hti", "pronunciation": "Hti", "english": "Yes", "category": "vocabulary", "example": "Hti lo", "example_english": "Yes, okay"},
+    {"word": "Ma hti", "pronunciation": "Ma hti", "english": "No", "category": "vocabulary", "example": "Ma hti ba", "example_english": "No, not"},
+    {"word": "Yay", "pronunciation": "Yay", "english": "Water", "category": "vocabulary", "example": "Yay ka", "example_english": "Cold water"},
+    {"word": "Sa du", "pronunciation": "Sa du", "english": "Food", "category": "vocabulary", "example": "Sa du yu", "example_english": "Eat food"}
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "language": "Khmer",
+  "local_name": "ភាសាខ្មែរ",
+  "entries": [
+    {"word": "ឆុំរាប លោក", "pronunciation": "Chumreap suor", "english": "Hello (formal)", "category": "greetings", "example": "ឆុំរាប លោក !", "example_english": "Hello!"},
+    {"word": "សូស្ដេច", "pronunciation": "Sousdei", "english": "Hello (informal)", "category": "greetings", "example": "សូស្ដេច !", "example_english": "Hi!"},
+    {"word": "អរុណ សួស្ដេច", "pronunciation": "Arun suasdey", "english": "Good morning", "category": "greetings", "example": "អរុណ សួស្ដេច !", "example_english": "Good morning!"},
+    {"word": "លាហើយ", "pronunciation": "Leah haoy", "english": "Goodbye", "category": "greetings", "example": "លាហើយ", "example_english": "Goodbye"},
+    {"word": "អរគុណ", "pronunciation": "Aw kun", "english": "Thank you", "category": "greetings", "example": "អរគុណច្រើន", "example_english": "Thank you very much"},
+    {"word": "ចាប់", "pronunciation": "Jaa", "english": "Yes", "category": "vocabulary", "example": "ចាប់ !", "example_english": "Yes!"},
+    {"word": "ទេ", "pronunciation": "Te", "english": "No", "category": "vocabulary", "example": "ទេ ក្ខា", "example_english": "No, thank you"},
+    {"word": "ខ្ញុំ", "pronunciation": "Knhom", "english": "I / Me", "category": "vocabulary", "example": "ខ្ញុំ សូស្ដេច", "example_english": "I say hello"},
+    {"word": "អ្នក", "pronunciation": "Neak", "english": "You", "category": "vocabulary", "example": "អ្នក ឈ្មោះ អ្វី ?", "example_english": "What is your name?"},
+    {"word": "ទឹក", "pronunciation": "Teuk", "english": "Water", "category": "vocabulary", "example": "ទឹក ត្រជាក់", "example_english": "Cold water"},
+    {"word": "ញ៉ាំ", "pronunciation": "Nyam", "english": "Eat", "category": "vocabulary", "example": "ញ៉ាំ បាយ", "example_english": "Eat rice"},
+    {"word": "ផ្ទះ", "pronunciation": "Phteah", "english": "House", "category": "vocabulary", "example": "នេះ ផ្ទះ ខ្ញុំ", "example_english": "This is my house"},
+    {"word": "ល្អ", "pronunciation": "L'or", "english": "Good", "category": "vocabulary", "example": "ល្អ ណាស់", "example_english": "Very good"},
+    {"word": "បាយ", "pronunciation": "Bai", "english": "Rice", "category": "vocabulary", "example": "ញ៉ាំ បាយ", "example_english": "Eat rice"},
+    {"word": "វត្ត", "pronunciation": "Wat", "english": "Pagoda", "category": "vocabulary", "example": "ចូល វត្ត", "example_english": "Enter pagoda"}
+  ]
+}

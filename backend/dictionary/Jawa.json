@@ -1,0 +1,10 @@
+{
+  "language": "Javanese",
+  "local_name": "Basa Jawa",
+  "entries": [
+    {"word": "Halo", "pronunciation": "Halo", "english": "Hello", "category": "greetings", "example": "Halo sedulur", "example_english": "Hello friends"},
+    {"word": "Pamit", "pronunciation": "Pamit", "english": "Goodbye", "category": "greetings", "example": "Pamit dhisik", "example_english": "Goodbye for now"},
+    {"word": "Matur nuwun", "pronunciation": "Ma-tur nu-wun", "english": "Thank you", "category": "politeness", "example": "Matur nuwun sanget", "example_english": "Thank you very much"},
+    {"word": "Banyu", "pronunciation": "Ba-nyu", "english": "Water", "category": "basics", "example": "Banyu adhem", "example_english": "Cold water"}
+  ]
+}

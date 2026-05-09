@@ -1,0 +1,14 @@
+{
+  "language": "Hokkien",
+  "local_name": "福建話",
+  "entries": [
+    {"word": "你好", "pronunciation": "Li-ho", "english": "Hello", "category": "greetings", "example": "你好", "example_english": "Hello"},
+    {"word": "再見", "pronunciation": "Tsai-kin", "english": "Goodbye", "category": "greetings", "example": "再見", "example_english": "Goodbye"},
+    {"word": "感謝", "pronunciation": "Kua-tsia", "english": "Thank you", "category": "greetings", "example": "感謝", "example_english": "Thank you"},
+    {"word": "我", "pronunciation": "Gua", "english": "I / Me", "category": "vocabulary", "example": "我是福建人", "example_english": "I am Hokkien"},
+    {"word": "你", "pronunciation": "Li", "english": "You", "category": "vocabulary", "example": "你是誰", "example_english": "Who are you?"},
+    {"word": "是", "pronunciation": "Tsi", "english": "Yes / Is", "category": "vocabulary", "example": "是啦", "example_english": "Yes"},
+    {"word": "無", "pronunciation": "Bu", "english": "No / Not", "category": "vocabulary", "example": "無啦", "example_english": "No"},
+    {"word": "水", "pronunciation": "Tshuinn", "english": "Water", "category": "vocabulary", "example": "冷水", "example_english": "Cold water"}
+  ]
+}

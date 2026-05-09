@@ -1,4 +1,5 @@
 export const tabs = [
+  { id: "dictionary", label: "Dictionary" },
   { id: "chat", label: "Language Chatbot" },
   { id: "talk", label: "Two-Way Communication" },
   { id: "map", label: "SEA Map" },
@@ -17,6 +18,7 @@ export const QUIZ_LANGUAGES = [
   { name: "Hmong",       flag: "🇱🇦" },
   { name: "Lanna",       flag: "🇹🇭" },
   { name: "Isan",        flag: "🇹🇭" },
+  { name: "Khmer Krom",  flag: "🇹🇭" },
   { name: "Tay",         flag: "🇻🇳" },
   { name: "Cham",        flag: "🇻🇳" },
   { name: "Khmer Krom",  flag: "🇻🇳" },
@@ -30,6 +32,34 @@ export const QUIZ_LANGUAGES = [
   { name: "Tutong",      flag: "🇧🇳" },
   { name: "Tetum",       flag: "🇹🇱" },
   { name: "Mambae",      flag: "🇹🇱" },
+];
+
+// Dictionary languages - synchronized with QUIZ_LANGUAGES (24 regional languages)
+export const DICTIONARY_LANGUAGES = [
+  { name: "Khmer", code: "km" },
+  { name: "Kuy", code: "kuy" },
+  { name: "Minangkabau", code: "min" },
+  { name: "Jawa", code: "jv" },
+  { name: "Sunda", code: "su" },
+  { name: "Shan", code: "shn" },
+  { name: "Karen", code: "kar" },
+  { name: "Lao", code: "lo" },
+  { name: "Hmong", code: "hmn" },
+  { name: "Lanna", code: "noi" },
+  { name: "Isan", code: "tts" },
+  { name: "Tay", code: "tyz" },
+  { name: "Cham", code: "cjm" },
+  { name: "Khmer Krom", code: "kkr" },
+  { name: "Cebuano", code: "ceb" },
+  { name: "Ilocano", code: "ilo" },
+  { name: "Iban", code: "iba" },
+  { name: "Kadazan-Dusun", code: "dtp" },
+  { name: "Teochew", code: "zh-teo" },
+  { name: "Hokkien", code: "zh-hok" },
+  { name: "Dusun", code: "dsk" },
+  { name: "Tutong", code: "ttg" },
+  { name: "Tetum", code: "tet" },
+  { name: "Mambae", code: "mgm" },
 ];
 
 export const COUNTRY_FLAGS = {

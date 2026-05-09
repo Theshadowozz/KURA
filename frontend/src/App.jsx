@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import Header from "./components/Header";
 import Tabs from "./components/Tabs";
+import DictionaryPanel from "./components/DictionaryPanel";
 import ChatPanel from "./components/ChatPanel";
 import TalkPanel from "./components/TalkPanel";
 import MapPanel from "./components/MapPanel";
@@ -11,12 +12,14 @@ import {
   mapHandler,
   quizHandler,
   talkHandler,
+  dictionaryHandler,
 } from "./handlers";
 import { playBase64Audio } from "./lib";
 import {
   tabs,
   QUIZ_LANGUAGES,
   QUIZ_COUNTRIES,
+  DICTIONARY_LANGUAGES,
   COUNTRY_FLAGS,
   seaCountries,
   languageOptions,
@@ -66,7 +69,7 @@ export default function App() {
       setThemeRevealVisible(false);
     }, ANIM_MS);
   };
-  const [activeTab, setActiveTab] = useState("chat");
+  const [activeTab, setActiveTab] = useState("dictionary");
   const [messages, setMessages] = useState([
     {
       role: "assistant",
@@ -371,6 +374,54 @@ export default function App() {
     }
   }, [activeTab]);
 
+  const [selectedDictLang, setSelectedDictLang] = useState(null);
+  const [dictData, setDictData] = useState(null);
+  const [dictLoading, setDictLoading] = useState(false);
+  const [dictError, setDictError] = useState(null);
+  const dictCacheRef = useRef({});
+  const dictLoadRequestRef = useRef(null);
+
+  const loadDictionary = async (lang) => {
+    // If already cached, use it and don't refetch
+    if (dictCacheRef.current[lang]) {
+      setDictData(dictCacheRef.current[lang]);
+      setDictError(null);
+      setDictLoading(false);
+      return;
+    }
+
+    // Avoid duplicate concurrent requests for the same language
+    if (dictLoadRequestRef.current === lang && dictLoading) return;
+
+    dictLoadRequestRef.current = lang;
+    setDictLoading(true);
+    setDictError(null);
+    try {
+      const data = await dictionaryHandler.getDictionary(lang);
+      // If another request was started after this one, ignore this result
+      if (dictLoadRequestRef.current !== lang) return;
+      dictCacheRef.current[lang] = data;
+      setDictData(data);
+      setDictError(null);
+    } catch (e) {
+      if (dictLoadRequestRef.current !== lang) return;
+      setDictError("Could not load dictionary. Please try again.");
+    } finally {
+      if (dictLoadRequestRef.current === lang) {
+        setDictLoading(false);
+        dictLoadRequestRef.current = null;
+      }
+    }
+  };
+
+  const handleDictLangChange = (lang) => {
+    // Ignore clicks when loading or when same language selected
+    if (lang === selectedDictLang) return;
+    if (dictLoading) return;
+    setSelectedDictLang(lang);
+    loadDictionary(lang);
+  };
+
   const MAX_CHAT_CHARS = 500;
   const charsLeft = MAX_CHAT_CHARS - chatInput.length;
   const isOverLimit = chatInput.length > MAX_CHAT_CHARS;
@@ -476,6 +527,17 @@ export default function App() {
       <Tabs tabs={tabs} activeTab={activeTab} onChange={setActiveTab} />
 
       <main className="content">
+        {activeTab === "dictionary" && (
+          <DictionaryPanel
+            selectedDictLang={selectedDictLang}
+            dictData={dictData}
+            dictLoading={dictLoading}
+            dictError={dictError}
+            onDictLangChange={handleDictLangChange}
+            onLoadDictionary={loadDictionary}
+          />
+        )}
+
         {activeTab === "chat" && (
           <ChatPanel
             messages={messages}

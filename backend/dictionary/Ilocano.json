@@ -1,0 +1,14 @@
+{
+  "language": "Ilocano",
+  "local_name": "Ilocano",
+  "entries": [
+    {"word": "Naimbag", "pronunciation": "Nai-m-bag", "english": "Hello / Good", "category": "greetings", "example": "Naimbag a biag", "example_english": "Good life / greeting"},
+    {"word": "Agpayak", "pronunciation": "Ag-pa-yak", "english": "Goodbye", "category": "greetings", "example": "Agpayak", "example_english": "Goodbye"},
+    {"word": "Dios ti bless", "pronunciation": "Di-os ti bless", "english": "God bless / Thank you", "category": "greetings", "example": "Dios ti bless", "example_english": "God bless you"},
+    {"word": "Siak", "pronunciation": "Si-ak", "english": "I / Me", "category": "vocabulary", "example": "Siak ti tao ti Ilocano", "example_english": "I am an Ilocano person"},
+    {"word": "Ikaw", "pronunciation": "I-kaw", "english": "You", "category": "vocabulary", "example": "Anong pangalan mo?", "example_english": "What is your name?"},
+    {"word": "Wen", "pronunciation": "Wen", "english": "Yes", "category": "vocabulary", "example": "Wen, maintindihan ko", "example_english": "Yes I understand"},
+    {"word": "Saan", "pronunciation": "Sa-an", "english": "No", "category": "vocabulary", "example": "Saan, wala akong alam", "example_english": "No I don't know"},
+    {"word": "Tubi", "pronunciation": "Tu-bi", "english": "Water", "category": "vocabulary", "example": "Tubi a malamig", "example_english": "Cold water"}
+  ]
+}

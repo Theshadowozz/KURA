@@ -1,0 +1,14 @@
+{
+  "language": "Iban",
+  "local_name": "Iban",
+  "entries": [
+    {"word": "Selamat pagi", "pronunciation": "Se-la-mat pa-gi", "english": "Good morning", "category": "greetings", "example": "Selamat pagi", "example_english": "Good morning"},
+    {"word": "Selamat tinggal", "pronunciation": "Se-la-mat ting-gal", "english": "Goodbye", "category": "greetings", "example": "Selamat tinggal", "example_english": "Goodbye"},
+    {"word": "Terima kasih", "pronunciation": "Te-ri-ma ka-sih", "english": "Thank you", "category": "greetings", "example": "Terima kasih banyak", "example_english": "Thank you very much"},
+    {"word": "Saya", "pronunciation": "Sa-ya", "english": "I / Me", "category": "vocabulary", "example": "Saya orang Iban", "example_english": "I am Iban"},
+    {"word": "Kamu", "pronunciation": "Ka-mu", "english": "You", "category": "vocabulary", "example": "Nama kamu siapa?", "example_english": "What is your name?"},
+    {"word": "Ya", "pronunciation": "Ya", "english": "Yes", "category": "vocabulary", "example": "Ya, saya faham", "example_english": "Yes I understand"},
+    {"word": "Tidak", "pronunciation": "Ti-dak", "english": "No", "category": "vocabulary", "example": "Tidak, saya tidak tahu", "example_english": "No I don't know"},
+    {"word": "Air", "pronunciation": "Air", "english": "Water", "category": "vocabulary", "example": "Air sejuk", "example_english": "Cold water"}
+  ]
+}

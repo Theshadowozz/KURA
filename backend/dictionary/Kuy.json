@@ -1,0 +1,14 @@
+{
+  "language": "Kuy",
+  "local_name": "Kuy",
+  "entries": [
+    {"word": "សូម​សាលាម", "pronunciation": "Sum salam", "english": "Hello", "category": "greetings", "example": "សូម​សាលាម​លោក", "example_english": "Hello sir"},
+    {"word": "លាឡើងវិញ", "pronunciation": "La laung vinh", "english": "Goodbye", "category": "greetings", "example": "លាឡើងវិញ", "example_english": "Goodbye"},
+    {"word": "សូមអរគុណ", "pronunciation": "Sum orkun", "english": "Thank you", "category": "greetings", "example": "សូមអរគុណច្រើន", "example_english": "Thank you very much"},
+    {"word": "ខ្ញុំ", "pronunciation": "Khnhom", "english": "I / Me", "category": "vocabulary", "example": "ខ្ញុំ​មកពី​ដែនដី​គុយ", "example_english": "I am from Kuy land"},
+    {"word": "អ្នក", "pronunciation": "Anak", "english": "You", "category": "vocabulary", "example": "អ្នក​មាន​ឈ្មោះ​ថា​ឯ", "example_english": "What is your name?"},
+    {"word": "ឯ", "pronunciation": "Ae", "english": "Yes", "category": "vocabulary", "example": "ឯ ខ្ញុំ​យល់", "example_english": "Yes I understand"},
+    {"word": "ទេ", "pronunciation": "Te", "english": "No", "category": "vocabulary", "example": "ទេ ខ្ញុំ​មិន​ដឹង", "example_english": "No I don't know"},
+    {"word": "ទឹក", "pronunciation": "Teuk", "english": "Water", "category": "vocabulary", "example": "ទឹក​ត្រជាក់", "example_english": "Cold water"}
+  ]
+}

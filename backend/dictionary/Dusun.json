@@ -1,0 +1,14 @@
+{
+  "language": "Dusun",
+  "local_name": "Dusun",
+  "entries": [
+    {"word": "Oi", "pronunciation": "Oi", "english": "Hello", "category": "greetings", "example": "Oi", "example_english": "Hello"},
+    {"word": "Sapai", "pronunciation": "Sa-pai", "english": "Goodbye", "category": "greetings", "example": "Sapai", "example_english": "Goodbye"},
+    {"word": "Tangsulud", "pronunciation": "Tang-su-lud", "english": "Thank you", "category": "greetings", "example": "Tangsulud", "example_english": "Thank you"},
+    {"word": "Aku", "pronunciation": "A-ku", "english": "I / Me", "category": "vocabulary", "example": "Aku Dusun", "example_english": "I am Dusun"},
+    {"word": "Ikau", "pronunciation": "I-kau", "english": "You", "category": "vocabulary", "example": "Siapa nama ikau?", "example_english": "What is your name?"},
+    {"word": "Noo", "pronunciation": "Noo", "english": "Yes", "category": "vocabulary", "example": "Noo, aku paham", "example_english": "Yes I understand"},
+    {"word": "Tiyok", "pronunciation": "Ti-yok", "english": "No", "category": "vocabulary", "example": "Tiyok, aku tidak tahu", "example_english": "No I don't know"},
+    {"word": "Tubig", "pronunciation": "Tu-big", "english": "Water", "category": "vocabulary", "example": "Tubig sinut", "example_english": "Cold water"}
+  ]
+}

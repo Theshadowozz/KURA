@@ -1,0 +1,21 @@
+{
+  "language": "Lao",
+  "local_name": "ພາສາລາວ",
+  "entries": [
+    {"word": "ສະບາຍ ດີ ບໍ", "pronunciation": "Sabai dee bor", "english": "How are you?", "category": "greetings", "example": "ສະບາຍ ດີ ບໍ", "example_english": "How are you?"},
+    {"word": "ສະບາຍ ດີ", "pronunciation": "Sabai dee", "english": "I'm fine", "category": "greetings", "example": "ຂ້ອຍ ສະບາຍ ດີ", "example_english": "I'm fine"},
+    {"word": "ຍິນ ດີ ຕ້ອນ ຮັບ", "pronunciation": "Yin dee ton hap", "english": "Welcome", "category": "greetings", "example": "ຍິນ ດີ ຕ້ອນ ຮັບ", "example_english": "Welcome"},
+    {"word": "ອາຣຸນ ສະວັດ", "pronunciation": "Arun sawat", "english": "Good morning", "category": "greetings", "example": "ອາຣຸນ ສະວັດ", "example_english": "Good morning"},
+    {"word": "ລາ ກ້ອນ", "pronunciation": "La gon", "english": "Goodbye", "category": "greetings", "example": "ລາ ກ້ອນ", "example_english": "Goodbye"},
+    {"word": "ຂອບ ໃຈ", "pronunciation": "Khawp jai", "english": "Thank you", "category": "greetings", "example": "ຂອບ ໃຈ ຫຼາຍ", "example_english": "Thank you very much"},
+    {"word": "ມາ້ນ / ແດ້ະ", "pronunciation": "Maan / Deh", "english": "Yes", "category": "vocabulary", "example": "ມາ້ນ ຄ່ະບ", "example_english": "Yes"},
+    {"word": "ບໍ", "pronunciation": "Bor", "english": "No", "category": "vocabulary", "example": "ບໍ ຂອບ ໃຈ", "example_english": "No thank you"},
+    {"word": "ຂ້ອຍ", "pronunciation": "Khoi", "english": "I / Me", "category": "vocabulary", "example": "ຂ້ອຍ ມາ ຈາກ ລາວ", "example_english": "I am from Laos"},
+    {"word": "ເຈົ້າ", "pronunciation": "Jao", "english": "You", "category": "vocabulary", "example": "ເຈົ້າ ມາ ຈາກ ໃສ", "example_english": "Where are you from?"},
+    {"word": "ນໍ້າ", "pronunciation": "Nam", "english": "Water", "category": "vocabulary", "example": "ດື່ມ ນໍ້າ", "example_english": "Drink water"},
+    {"word": "ກິນ ເຂົ້າ", "pronunciation": "Kin khao", "english": "Eat rice", "category": "vocabulary", "example": "ກິນ ເຂົ້າ", "example_english": "Eat rice"},
+    {"word": "ເຫືອນ", "pronunciation": "Heuan", "english": "House", "category": "vocabulary", "example": "ນີ້ ເຫືອນ ຂອງ ຂ້ອຍ", "example_english": "This is my house"},
+    {"word": "ດີ", "pronunciation": "Dee", "english": "Good", "category": "vocabulary", "example": "ດີ ຫຼາຍ", "example_english": "Very good"},
+    {"word": "ເຂົ້າ", "pronunciation": "Khao", "english": "Rice", "category": "vocabulary", "example": "ກິນ ເຂົ້າ ໜຽວ", "example_english": "Eat sticky rice"}
+  ]
+}

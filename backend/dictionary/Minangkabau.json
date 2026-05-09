@@ -1,0 +1,16 @@
+{
+  "language": "Minangkabau",
+  "local_name": "Bahaso Minang",
+  "entries": [
+    {"word": "Apo kaba?", "pronunciation": "Apo ka-ba", "english": "How are you?", "category": "greetings", "example": "Apo kaba?", "example_english": "How are you?"},
+    {"word": "Salamaik datang", "pronunciation": "Sa-la-maik da-tang", "english": "Welcome", "category": "greetings", "example": "Salamaik datang di rumah kami", "example_english": "Welcome to our house"},
+    {"word": "Salamaik pagi", "pronunciation": "Sa-la-maik pa-gi", "english": "Good morning", "category": "greetings", "example": "Salamaik pagi", "example_english": "Good morning"},
+    {"word": "Tarimo kasih", "pronunciation": "Ta-ri-mo ka-sih", "english": "Thank you", "category": "greetings", "example": "Tarimo kasih yang banyak", "example_english": "Thank you very much"},
+    {"word": "Ambo", "pronunciation": "Am-bo", "english": "I / Me", "category": "vocabulary", "example": "Ambo dari Minangkabau", "example_english": "I am from Minangkabau"},
+    {"word": "Awak", "pronunciation": "A-wak", "english": "You", "category": "vocabulary", "example": "Nama awak siapo?", "example_english": "What is your name?"},
+    {"word": "Iyo", "pronunciation": "I-yo", "english": "Yes", "category": "vocabulary", "example": "Iyo, paham", "example_english": "Yes, I understand"},
+    {"word": "Indak", "pronunciation": "In-dak", "english": "No", "category": "vocabulary", "example": "Indak tahu", "example_english": "Don't know"},
+    {"word": "Aia", "pronunciation": "A-ia", "english": "Water", "category": "vocabulary", "example": "Aia dingin", "example_english": "Cold water"},
+    {"word": "Makanan", "pronunciation": "Ma-ka-nan", "english": "Food", "category": "vocabulary", "example": "Makanan enak", "example_english": "Delicious food"}
+  ]
+}

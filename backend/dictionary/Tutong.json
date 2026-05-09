@@ -1,0 +1,14 @@
+{
+  "language": "Tutong",
+  "local_name": "Tutong",
+  "entries": [
+    {"word": "Assalamu alaikum", "pronunciation": "As-sa-lam a-lei-kum", "english": "Hello (Islamic greeting)", "category": "greetings", "example": "Assalamu alaikum", "example_english": "Hello"},
+    {"word": "Wa alaikum assalam", "pronunciation": "Wa a-lei-kum as-sam", "english": "Hello (response)", "category": "greetings", "example": "Wa alaikum assalam", "example_english": "And upon you be peace"},
+    {"word": "Sampai jumpa", "pronunciation": "Sam-pai jum-pa", "english": "Goodbye", "category": "greetings", "example": "Sampai jumpa", "example_english": "Goodbye"},
+    {"word": "Terima kasih", "pronunciation": "Te-ri-ma ka-sih", "english": "Thank you", "category": "greetings", "example": "Terima kasih banyak", "example_english": "Thank you very much"},
+    {"word": "Saya", "pronunciation": "Sa-ya", "english": "I / Me", "category": "vocabulary", "example": "Saya orang Tutong", "example_english": "I am Tutong"},
+    {"word": "Anda", "pronunciation": "An-da", "english": "You", "category": "vocabulary", "example": "Siapa nama anda?", "example_english": "What is your name?"},
+    {"word": "Ya", "pronunciation": "Ya", "english": "Yes", "category": "vocabulary", "example": "Ya, saya faham", "example_english": "Yes I understand"},
+    {"word": "Air", "pronunciation": "Air", "english": "Water", "category": "vocabulary", "example": "Air sejuk", "example_english": "Cold water"}
+  ]
+}

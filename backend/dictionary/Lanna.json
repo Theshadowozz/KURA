@@ -1,0 +1,14 @@
+{
+  "language": "Lanna",
+  "local_name": "ภาษาล้านนา",
+  "entries": [
+    {"word": "สวัสดี", "pronunciation": "Sa-wad-dee", "english": "Hello", "category": "greetings", "example": "สวัสดีครับ", "example_english": "Hello (polite)"},
+    {"word": "ลาก่อน", "pronunciation": "La-gon", "english": "Goodbye", "category": "greetings", "example": "ลาก่อนนะ", "example_english": "Goodbye"},
+    {"word": "ขอบคุณ", "pronunciation": "Kop-khun", "english": "Thank you", "category": "greetings", "example": "ขอบคุณครับ", "example_english": "Thank you"},
+    {"word": "ฉัน", "pronunciation": "Chan", "english": "I / Me", "category": "vocabulary", "example": "ฉันมาจากล้านนา", "example_english": "I am from Lanna"},
+    {"word": "เธอ", "pronunciation": "Ther", "english": "You", "category": "vocabulary", "example": "เธอไปไหน", "example_english": "Where are you going?"},
+    {"word": "ใช่", "pronunciation": "Chai", "english": "Yes", "category": "vocabulary", "example": "ใช่ครับ", "example_english": "Yes"},
+    {"word": "ไม่", "pronunciation": "Mai", "english": "No", "category": "vocabulary", "example": "ไม่ครับ", "example_english": "No"},
+    {"word": "น้ำ", "pronunciation": "Nam", "english": "Water", "category": "vocabulary", "example": "น้ำเย็น", "example_english": "Cold water"}
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "language": "Hmong",
+  "local_name": "Hmong / Miao",
+  "entries": [
+    {"word": "Nyob zoo", "pronunciation": "Nyob zoo", "english": "Hello / Stay well", "category": "greetings", "example": "Nyob zoo", "example_english": "Hello"},
+    {"word": "Mus nyob zoo", "pronunciation": "Mus nyob zoo", "english": "Goodbye", "category": "greetings", "example": "Mus nyob zoo", "example_english": "Goodbye"},
+    {"word": "Ua tsaug", "pronunciation": "Ua tsaug", "english": "Thank you", "category": "greetings", "example": "Ua tsaug ntau", "example_english": "Thank you very much"},
+    {"word": "Kuv", "pronunciation": "Kuv", "english": "I / Me", "category": "vocabulary", "example": "Kuv yog Hmong", "example_english": "I am Hmong"},
+    {"word": "Koj", "pronunciation": "Koj", "english": "You", "category": "vocabulary", "example": "Koj lub npe yog dab tsi?", "example_english": "What is your name?"},
+    {"word": "Yog", "pronunciation": "Yog", "english": "Yes", "category": "vocabulary", "example": "Yog, kuv nkag siab", "example_english": "Yes I understand"},
+    {"word": "Tsis yog", "pronunciation": "Tsis yog", "english": "No", "category": "vocabulary", "example": "Tsis yog, kuv tsis paub", "example_english": "No I don't know"},
+    {"word": "Dej", "pronunciation": "Dej", "english": "Water", "category": "vocabulary", "example": "Dej txias", "example_english": "Cold water"}
+  ]
+}

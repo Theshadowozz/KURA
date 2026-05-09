@@ -1,0 +1,14 @@
+{
+  "language": "Mambae",
+  "local_name": "Mambae",
+  "entries": [
+    {"word": "Olá", "pronunciation": "O-la", "english": "Hello", "category": "greetings", "example": "Olá laku", "example_english": "Hello friend"},
+    {"word": "Até logo", "pronunciation": "A-te lo-go", "english": "Goodbye", "category": "greetings", "example": "Até logo", "example_english": "Goodbye"},
+    {"word": "Obrigado", "pronunciation": "O-bri-ga-do", "english": "Thank you", "category": "greetings", "example": "Obrigado", "example_english": "Thank you"},
+    {"word": "Eme", "pronunciation": "E-me", "english": "I / Me", "category": "vocabulary", "example": "Eme Mambae", "example_english": "I am Mambae"},
+    {"word": "Oe", "pronunciation": "O-e", "english": "You", "category": "vocabulary", "example": "Oe inan sira?", "example_english": "What is your name?"},
+    {"word": "Iha", "pronunciation": "I-ha", "english": "Yes", "category": "vocabulary", "example": "Iha", "example_english": "Yes"},
+    {"word": "Lae", "pronunciation": "La-e", "english": "No", "category": "vocabulary", "example": "Lae", "example_english": "No"},
+    {"word": "Bee", "pronunciation": "Be-e", "english": "Water", "category": "vocabulary", "example": "Bee maun", "example_english": "Cold water"}
+  ]
+}

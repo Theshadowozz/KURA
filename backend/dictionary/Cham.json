@@ -1,0 +1,14 @@
+{
+  "language": "Cham",
+  "local_name": "Cham",
+  "entries": [
+    {"word": "Assalam alaikum", "pronunciation": "As-sa-lam a-lei-kum", "english": "Hello (Islamic greeting)", "category": "greetings", "example": "Assalam alaikum", "example_english": "Hello"},
+    {"word": "Wa alaikum assalam", "pronunciation": "Wa a-lei-kum as-sam", "english": "Hello (response)", "category": "greetings", "example": "Wa alaikum assalam", "example_english": "And upon you be peace"},
+    {"word": "Xin chào", "pronunciation": "Sin chao", "english": "Hello (casual)", "category": "greetings", "example": "Xin chào", "example_english": "Hello"},
+    {"word": "Tạm biệt", "pronunciation": "Tam biet", "english": "Goodbye", "category": "greetings", "example": "Tạm biệt", "example_english": "Goodbye"},
+    {"word": "Tôi", "pronunciation": "Toi", "english": "I / Me", "category": "vocabulary", "example": "Tôi là người Chăm", "example_english": "I am Cham"},
+    {"word": "Cảm ơn", "pronunciation": "Cam on", "english": "Thank you", "category": "greetings", "example": "Cảm ơn", "example_english": "Thank you"},
+    {"word": "Được", "pronunciation": "Duoc", "english": "Yes", "category": "vocabulary", "example": "Được", "example_english": "Yes"},
+    {"word": "Nước", "pronunciation": "Nuoc", "english": "Water", "category": "vocabulary", "example": "Nước uống", "example_english": "Drinking water"}
+  ]
+}
