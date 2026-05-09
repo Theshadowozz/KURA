@@ -43,6 +43,41 @@ export const processVoiceRequest = async (formData) => {
   return data;
 };
 
+export const submitArchiveRequest = async (formData) => {
+  const { data } = await api.post("/archive/submit", formData);
+  return data;
+};
+
+export const archiveListRequest = async () => {
+  const { data } = await api.get("/archive/list");
+  return data;
+};
+
+export const archiveStatsRequest = async () => {
+  const { data } = await api.get("/archive/stats");
+  return data;
+};
+
+export const archiveVoiceCountsRequest = async () => {
+  const { data } = await api.get("/archive/voice-counts");
+  return data;
+};
+
+export const archiveFeaturedRequest = async (language) => {
+  const { data } = await api.get(`/archive/featured/${encodeURIComponent(language)}`);
+  return data;
+};
+
+export const archiveDictionaryRequest = async (language) => {
+  const { data } = await api.get(`/archive/dictionary/${encodeURIComponent(language)}`);
+  return data;
+};
+
+export const archiveQuizQuestionsRequest = async (language) => {
+  const { data } = await api.get(`/archive/quiz-questions/${encodeURIComponent(language)}`);
+  return data;
+};
+
 export const streamChat = async (messages, onChunk, onError) => {
   const response = await fetch(`${API_BASE}/chat/stream`, {
     method: "POST",

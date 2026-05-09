@@ -28,7 +28,7 @@ export default function Header({ theme, onToggleTheme }) {
           <p>Regional Languages</p>
         </div>
         <div className="hero-stat">
-          <span>5</span>
+          <span>6</span>
           <p>Main Features</p>
         </div>
       </div>

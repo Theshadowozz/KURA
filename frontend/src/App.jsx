@@ -5,6 +5,7 @@ import DictionaryPanel from "./components/DictionaryPanel";
 import ChatPanel from "./components/ChatPanel";
 import TalkPanel from "./components/TalkPanel";
 import MapPanel from "./components/MapPanel";
+import ArchivePanel from "./components/ArchivePanel";
 import QuizPanel from "./components/QuizPanel";
 import { renderMarkdown } from "./utils/markdown";
 import {
@@ -13,6 +14,7 @@ import {
   quizHandler,
   talkHandler,
   dictionaryHandler,
+  archiveHandler,
 } from "./handlers";
 import { playBase64Audio } from "./lib";
 import {
@@ -212,8 +214,18 @@ export default function App() {
   const [mapPlaying, setMapPlaying] = useState(false);
   const [mapResult, setMapResult] = useState(null);
   const [exploredIds, setExploredIds] = useState(new Set());
+  const [voiceCounts, setVoiceCounts] = useState({});
   const mapAudioRef = useRef(null);
   const mapAbortRef = useRef(null);
+
+  // Fetch archive voice counts on mount so the map shows preservation activity
+  useEffect(() => {
+    archiveHandler.getVoiceCounts()
+      .then((data) => {
+        if (data?.counts) setVoiceCounts(data.counts);
+      })
+      .catch(() => {}); // non-critical
+  }, []);
 
   const handleMapClick = async (country) => {
     if (mapAudioRef.current) {
@@ -589,7 +601,12 @@ export default function App() {
             onMapClick={handleMapClick}
             onReplayMapAudio={replayMapAudio}
             countryFlags={COUNTRY_FLAGS}
+            voiceCounts={voiceCounts}
           />
+        )}
+
+        {activeTab === "archive" && (
+          <ArchivePanel />
         )}
 
         {activeTab === "quiz" && (

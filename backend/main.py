@@ -2,10 +2,15 @@ import base64
 import io
 import os
 import json
+import uuid
 import tempfile
 import random
-from typing import List, Optional
+from datetime import datetime, timezone
+from typing import Any, Dict, List, Optional
 import requests
+
+# Cultural Memory Engine — shared knowledge layer for all KURA features
+import archive_engine
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, UploadFile, File, Form
@@ -62,21 +67,75 @@ LANGUAGE_ALIASES = {
     "Minang": "Minangkabau",
 }
 
-def refine_sea_language(text: str) -> str:
-    """Refine regional SEA language translation using SEA-LION via HuggingFace API."""
-    if not hf_token:
-        return text  # fallback: return as-is if no token
+def refine_sea_language(text: str, source_language: str = "", target_language: str = "") -> str:
+    """
+    Refine regional SEA language text using SEA-LION.
+    Falls back safely if API fails.
+    """
+
+    if not hf_token or not text.strip():
+        return text
+
     try:
         API_URL = "https://api-inference.huggingface.co/models/aisingapore/sea-lion-7b-instruct"
-        headers = {"Authorization": f"Bearer {hf_token}"}
-        payload = {"inputs": text, "parameters": {"max_new_tokens": 150}}
-        res = requests.post(API_URL, headers=headers, json=payload, timeout=10)
+
+        headers = {
+            "Authorization": f"Bearer {hf_token}",
+            "Content-Type": "application/json",
+        }
+
+        prompt = f"""
+                You are SEA-LION, an ASEAN cultural language assistant.
+
+                Your task:
+                - Refine the regional Southeast Asian language transcription.
+                - Preserve original meaning.
+                - Preserve cultural tone.
+                - Do NOT translate to English.
+                - Clean unclear speech artifacts.
+                - Return ONLY the refined text.
+
+                Text:
+                {text}
+                """
+
+        payload = {
+            "inputs": prompt,
+            "parameters": {
+                "max_new_tokens": 80,
+                "temperature": 0.2,
+                "return_full_text": False
+            }
+        }
+
+        res = requests.post(
+            API_URL,
+            headers=headers,
+            json=payload,
+            timeout=20
+        )
+
+        if res.status_code != 200:
+            print("SEA-LION HTTP ERROR:", res.text)
+            return text
+
         result = res.json()
-        if isinstance(result, list) and result:
-            return result[0].get("generated_text", text)
+
+        if isinstance(result, dict) and result.get("error"):
+            print("SEA-LION MODEL ERROR:", result["error"])
+            return text
+
+        if isinstance(result, list) and len(result) > 0:
+            generated = result[0].get("generated_text", "").strip()
+
+            if generated:
+                return generated
+
+        return text
+
     except Exception as e:
         print("SEA-LION REFINE ERROR:", e)
-    return text  # fallback jika error
+        return text
 
 # ==============================
 # CORS
@@ -315,8 +374,9 @@ def get_relevant_language_data(query: str) -> str:
 def build_system_prompt(user_messages: list = None):
     language_index = get_language_index()
 
-    # Try to detect relevant languages from conversation
+    # Detect relevant languages from conversation
     extra_context = ""
+    archive_context = ""
     if user_messages:
         combined_query = " ".join(
             m.get("content", "") for m in user_messages if m.get("role") == "user"
@@ -324,19 +384,26 @@ def build_system_prompt(user_messages: list = None):
         lang_data = get_relevant_language_data(combined_query)
         if lang_data:
             extra_context = f"\n\nDetailed language data for mentioned languages:\n{lang_data}"
+        # Inject relevant elder archive memories as cultural grounding
+        archive_mem = archive_engine.build_archive_context_for_chat(combined_query)
+        if archive_mem:
+            archive_context = f"\n\n{archive_mem}"
 
     return f"""You are Kura, an AI assistant specialised in Southeast Asian (SEA) regional language preservation.
+You are community-trained: you have access to real oral recordings and cultural memories contributed
+by indigenous elders and community members across ASEAN.
 
 You have knowledge of 24 regional languages across 11 ASEAN countries.
 
 ## Available Languages Index:
 {language_index}
-{extra_context}
+{extra_context}{archive_context}
 
 ## Your Role:
 - Answer questions about SEA regional languages: greetings, vocabulary, phrases, grammar, culture, and preservation status.
 - Provide translations between languages when asked.
-- Share cultural context and stories behind language traditions.
+- Share cultural context and stories behind language traditions — including insights from the elder archive above.
+- Reference preserved proverbs, folklore, and oral traditions naturally in your answers when relevant.
 - Highlight language endangerment and preservation efforts.
 - Respond in English by default. Switch language if the user writes in another language.
 - If asked about a topic unrelated to SEA languages or cultures, politely redirect the conversation back.
@@ -448,6 +515,191 @@ class QuizQuestionResponse(BaseModel):
     choices: List[str]
     total_keys: int = 0
     did_reset: bool = False
+
+# ==============================
+# ARCHIVE STORAGE
+# ==============================
+ARCHIVE_DB_PATH = "suara_leluhur_archive.json"
+
+def ensure_archive_storage():
+    if not os.path.exists(ARCHIVE_DB_PATH):
+        with open(ARCHIVE_DB_PATH, "w", encoding="utf-8") as f:
+            json.dump({"archive": []}, f, indent=2, ensure_ascii=False)
+
+def load_archive_storage():
+    ensure_archive_storage()
+    with open(ARCHIVE_DB_PATH, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def save_archive_storage(data):
+    with open(ARCHIVE_DB_PATH, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+def get_preservation_status(language_name: str) -> str:
+    if language_name.lower() in SEA_REGIONAL_LANGUAGES:
+        return "Endangered heritage voice"
+    return "Preserved cultural memory"
+
+def parse_archive_response(content: str) -> dict:
+    try:
+        return json.loads(content)
+    except Exception:
+        result = {}
+        lines = [line.strip() for line in content.splitlines() if line.strip()]
+        for line in lines:
+            if line.lower().startswith("english_translation"):
+                result["english_translation"] = line.split(":", 1)[1].strip()
+            elif line.lower().startswith("indonesian_translation"):
+                result["indonesian_translation"] = line.split(":", 1)[1].strip()
+            elif line.lower().startswith("cultural_summary"):
+                result["summary"] = line.split(":", 1)[1].strip()
+        return result
+
+@app.post("/archive/submit")
+def submit_archive(
+    audio: UploadFile = File(...),
+    language: str = Form(...),
+    country: str = Form(...),
+    speaker_role: str = Form(...),
+    category: str = Form(...),
+    speaker_name: Optional[str] = Form(None),
+    speaker_age: Optional[str] = Form(None),
+    location: Optional[str] = Form(None),
+):
+    if not groq_api_key:
+        raise HTTPException(status_code=500, detail="GROQ_API_KEY is not configured")
+
+    temp_audio_path = None
+    try:
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".webm") as temp_audio:
+            temp_audio.write(audio.file.read())
+            temp_audio_path = temp_audio.name
+
+        with open(temp_audio_path, "rb") as file:
+            normalized_language = normalize_language_name(language)
+            whisper_language = get_whisper_lang(normalized_language)
+            transcription_kwargs = {
+                "file": (audio.filename, file.read()),
+                "model": "whisper-large-v3",
+                "response_format": "json",
+            }
+            if whisper_language:
+                transcription_kwargs["language"] = whisper_language
+            transcription = groq_client.audio.transcriptions.create(**transcription_kwargs)
+
+        original_text = transcription.text.strip()
+        if not original_text:
+            raise HTTPException(status_code=400, detail="Could not transcribe audio")
+
+        if normalized_language.lower() in SEA_REGIONAL_LANGUAGES:
+            original_text = refine_sea_language(original_text)
+
+        prompt = (
+            "You are Kura, a cultural preservation assistant. "
+            "Translate the transcription below into English and Indonesian, and create a warm, human-centered cultural summary. "
+            "Return only valid JSON with keys: english_translation, indonesian_translation, cultural_summary."
+        )
+
+        response = client.chat.completions.create(
+            model=MODEL_NAME,
+            messages=[
+                {"role": "system", "content": prompt},
+                {
+                    "role": "user",
+                    "content": (
+                        f"Language: {language}\n"
+                        f"Country: {country}\n"
+                        f"Speaker role: {speaker_role}\n"
+                        f"Category: {category}\n"
+                        f"Transcript: {original_text}"
+                    ),
+                },
+            ],
+            temperature=0.4,
+            max_tokens=1024,
+        )
+
+        ai_output = response.choices[0].message.content.strip()
+        parsed = parse_archive_response(ai_output)
+        english_translation = parsed.get("english_translation", "")
+        indonesian_translation = parsed.get("indonesian_translation", "")
+        cultural_summary = parsed.get("cultural_summary", "")
+
+        audio.file.seek(0)
+        audio_bytes = audio.file.read() if hasattr(audio.file, "read") else b""
+        if not audio_bytes and temp_audio_path and os.path.exists(temp_audio_path):
+            with open(temp_audio_path, "rb") as f:
+                audio_bytes = f.read()
+
+        audio_base64 = base64.b64encode(audio_bytes).decode("utf-8")
+
+        db = load_archive_storage()
+        entry = {
+            "id": uuid.uuid4().hex,
+            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "language": language,
+            "country": country,
+            "speaker_role": speaker_role,
+            "category": category,
+            "speaker_name": speaker_name or "",
+            "speaker_age": speaker_age or "",
+            "location": location or "",
+            "original_text": original_text,
+            "english_translation": english_translation,
+            "indonesian_translation": indonesian_translation,
+            "summary": cultural_summary,
+            "audio_base64": audio_base64,
+            "audio_mime": audio.content_type or "audio/webm",
+            "preservation_status": get_preservation_status(language),
+            "language_badge": language,
+        }
+        db["archive"].insert(0, entry)
+        save_archive_storage(db)
+
+        stats = {
+            "total_entries": len(db["archive"]),
+            "languages_archived": len({item["language"] for item in db["archive"]}),
+            "total_today": sum(
+                1
+                for item in db["archive"]
+                if item.get("timestamp", "").startswith(datetime.utcnow().date().isoformat())
+            ),
+        }
+
+        return {"entry": entry, "stats": stats}
+    except HTTPException:
+        raise
+    except Exception as e:
+        print("ARCHIVE ERROR:", e)
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        if temp_audio_path and os.path.exists(temp_audio_path):
+            os.remove(temp_audio_path)
+
+@app.get("/archive/list")
+def archive_list():
+    try:
+        db = load_archive_storage()
+        return {"entries": db.get("archive", [])}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/archive/stats")
+def archive_stats():
+    try:
+        db = load_archive_storage()
+        archive_items = db.get("archive", [])
+        return {
+            "total_entries": len(archive_items),
+            "languages_archived": len({item.get("language") for item in archive_items}),
+            "total_today": sum(
+                1
+                for item in archive_items
+                if item.get("timestamp", "").startswith(datetime.utcnow().date().isoformat())
+            ),
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 # ==============================
 # HEALTH
@@ -768,7 +1020,8 @@ def chat(request: ChatRequest):
         response = client.chat.completions.create(
             model=MODEL_NAME,
             messages=messages,
-            temperature=0.7
+            temperature=0.7,
+            max_tokens=1024
         )
 
         reply = response.choices[0].message.content
@@ -798,7 +1051,8 @@ def chat_stream(request: ChatRequest):
                 model=MODEL_NAME,
                 messages=messages_list,
                 temperature=0.7,
-                stream=True
+                stream=True,
+                max_tokens=1024
             )
             for chunk in stream:
                 delta = chunk.choices[0].delta
@@ -858,13 +1112,14 @@ def translate_speak(request: TranslateSpeakRequest):
                     )
                 }
             ],
-            temperature=0.3
+            temperature=0.3,
+            max_tokens=1024
         )
 
         translation = response.choices[0].message.content.strip()
 
         if request.output_language.lower() in SEA_REGIONAL_LANGUAGES:
-            translation = refine_sea_language(translation)
+            translation = refine_sea_language(translation, request.input_language, request.output_language)
 
         gtts_lang = get_gtts_lang(request.output_language)
         tts = gTTS(text=translation, lang=gtts_lang)
@@ -942,14 +1197,15 @@ async def process_voice(
                     )
                 }
             ],
-            temperature=0.3
+            temperature=0.3,
+            max_tokens=1024
         )
 
         translation = response.choices[0].message.content.strip()
 
-        # 🔥 Refine dengan SEA-LION jika output adalah bahasa daerah
+        # Refine dengan SEA-LION jika output adalah bahasa daerah
         if output_language.lower() in SEA_REGIONAL_LANGUAGES:
-            translation = refine_sea_language(translation)
+            translation = refine_sea_language(translation, input_language, output_language)
 
         audio_base64 = None
         if mode == "voice":
@@ -971,3 +1227,231 @@ async def process_voice(
     finally:
         if temp_audio_path and os.path.exists(temp_audio_path):
             os.remove(temp_audio_path)
+
+
+# ============================================================
+# ARCHIVE — SUARA LELUHUR (Cultural Memory Engine)
+# ============================================================
+
+class ArchiveSubmitResponse(BaseModel):
+    entry: Dict[str, Any]
+    stats: Dict[str, Any]
+
+
+class ArchiveListResponse(BaseModel):
+    entries: List[Dict[str, Any]]
+    total: int
+
+
+class ArchiveStatsResponse(BaseModel):
+    total_entries: int
+    languages_archived: int
+    total_today: int
+
+
+class ArchiveVoiceCountsResponse(BaseModel):
+    counts: Dict[str, int]
+
+
+def _run_ai_classification(
+    transcript: str,
+    language: str,
+    country: str,
+    speaker_role: str,
+    category: str,
+) -> Dict[str, Any]:
+    """
+    Call the LLM to classify and extract cultural metadata from a transcript.
+    Returns a validated dict — always non-empty due to fallbacks.
+    """
+    prompt = archive_engine.build_classification_prompt(
+        transcript=transcript,
+        language=language,
+        country=country,
+        speaker_role=speaker_role,
+        category=category,
+    )
+    try:
+        response = client.chat.completions.create(
+            model=MODEL_NAME,
+            messages=[
+                {"role": "system", "content": "You are a cultural anthropologist AI. Return ONLY valid JSON."},
+                {"role": "user", "content": prompt},
+            ],
+            temperature=0.2,
+            max_tokens=1024,
+        )
+        raw = response.choices[0].message.content.strip()
+        # Strip markdown fences if present
+        if raw.startswith("```"):
+            parts = raw.split("```")
+            raw = parts[1] if len(parts) > 1 else raw
+            if raw.startswith("json"):
+                raw = raw[4:]
+        ai_result = json.loads(raw)
+    except Exception as e:
+        print("AI CLASSIFICATION ERROR:", e)
+        ai_result = {}
+    return archive_engine.validate_and_apply_fallbacks(ai_result)
+
+
+@app.post("/archive/submit", response_model=ArchiveSubmitResponse)
+async def archive_submit(
+    audio: UploadFile = File(...),
+    language: str = Form(...),
+    country: str = Form(...),
+    speaker_role: str = Form(default="Elder"),
+    category: str = Form(default="Oral History"),
+    speaker_name: str = Form(default=""),
+    speaker_age: str = Form(default=""),
+    location: str = Form(default=""),
+):
+    """
+    Submit an elder voice recording.
+    Pipeline:
+      1. Read audio bytes
+      2. Transcribe with Groq Whisper large-v3
+      3. AI cultural classification & metadata extraction
+      4. Persist to archive_memory.json (with audio as base64)
+      5. Return enriched entry — now feeds ALL other KURA features
+    """
+    if not groq_api_key:
+        raise HTTPException(status_code=500, detail="GROQ_API_KEY not configured.")
+
+    audio_bytes = await audio.read()
+    if not audio_bytes:
+        raise HTTPException(status_code=400, detail="Audio file is empty.")
+
+    temp_path = None
+    try:
+        # Step 1: Persist audio temporarily for Whisper
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".webm") as tmp:
+            tmp.write(audio_bytes)
+            temp_path = tmp.name
+
+        # Step 2: Transcribe
+        whisper_lang = get_whisper_lang(language)
+        with open(temp_path, "rb") as af:
+            transcription_kwargs: Dict[str, Any] = {
+                "file": (audio.filename or "recording.webm", af.read()),
+                "model": "whisper-large-v3",
+                "response_format": "json",
+            }
+            if whisper_lang:
+                transcription_kwargs["language"] = whisper_lang
+        transcription = groq_client.audio.transcriptions.create(**transcription_kwargs)
+        transcript = transcription.text.strip()
+        if not transcript:
+            transcript = "[Audio could not be transcribed — preserved as cultural recording]"
+
+        # Step 3: AI Cultural Classification
+        ai_meta = _run_ai_classification(
+            transcript=transcript,
+            language=language,
+            country=country,
+            speaker_role=speaker_role,
+            category=category,
+        )
+
+        # Step 4: Encode audio as base64
+        audio_b64 = base64.b64encode(audio_bytes).decode("utf-8")
+
+        # Step 5: Build + persist entry
+        entry: Dict[str, Any] = {
+            "language": language,
+            "country": country,
+            "speaker_role": speaker_role,
+            "category": category,
+            "speaker_name": speaker_name or None,
+            "speaker_age": speaker_age or None,
+            "location": location or None,
+            "original_text": transcript,
+            "english_translation": ai_meta.get("english_translation", ""),
+            "indonesian_translation": ai_meta.get("indonesian_translation", ""),
+            "cultural_summary": ai_meta.get("cultural_summary", ""),
+            "summary": ai_meta.get("cultural_summary", ""),  # alias for frontend
+            "detected_category": ai_meta.get("detected_category", "oral_history"),
+            "extracted_keywords": ai_meta.get("keywords", []),
+            "extracted_phrases": ai_meta.get("important_phrases", []),
+            "cultural_significance": ai_meta.get("cultural_significance", ""),
+            "emotional_tone": ai_meta.get("emotional_tone", ""),
+            "preservation_value": ai_meta.get("preservation_value", ""),
+            "audio_base64": audio_b64,
+            "audio_mime": audio.content_type or "audio/webm",
+        }
+
+        saved_entry = archive_engine.add_entry(entry)
+        stats = archive_engine.get_stats()
+        return ArchiveSubmitResponse(entry=saved_entry, stats=stats)
+
+    except HTTPException:
+        raise
+    except Exception as error:
+        print("ARCHIVE SUBMIT ERROR:", error)
+        raise HTTPException(status_code=500, detail=str(error))
+    finally:
+        if temp_path and os.path.exists(temp_path):
+            os.remove(temp_path)
+
+
+@app.get("/archive/list", response_model=ArchiveListResponse)
+def archive_list(
+    language: Optional[str] = None,
+    limit: int = 50,
+):
+    """Return archive entries, optionally filtered by language."""
+    entries = (
+        archive_engine.get_entries_for_language(language)
+        if language
+        else archive_engine.get_all_entries()
+    )
+    return ArchiveListResponse(entries=entries[:limit], total=len(entries))
+
+
+@app.get("/archive/stats", response_model=ArchiveStatsResponse)
+def archive_stats():
+    """Return archive statistics for the Suara Leluhur panel."""
+    s = archive_engine.get_stats()
+    return ArchiveStatsResponse(**s)
+
+
+@app.get("/archive/voice-counts", response_model=ArchiveVoiceCountsResponse)
+def archive_voice_counts():
+    """
+    Per-language voice counts for the SEA Language Map.
+    e.g. {"Minangkabau": 5, "Iban": 2}
+    """
+    counts = archive_engine.get_language_voice_counts()
+    return ArchiveVoiceCountsResponse(counts=counts)
+
+
+@app.get("/archive/featured/{language}")
+def archive_featured(language: str):
+    """
+    Most culturally significant entry for a language.
+    Used by the SEA Map to surface a featured elder story.
+    """
+    entry = archive_engine.get_featured_entry_for_language(language)
+    if not entry:
+        raise HTTPException(status_code=404, detail=f"No archive entries for '{language}'")
+    return entry
+
+
+@app.get("/archive/dictionary/{language}")
+def archive_dictionary_entries(language: str):
+    """
+    Archive-derived vocabulary and phrase entries for a language.
+    Merged into the Dictionary panel to show community-sourced words.
+    """
+    entries = archive_engine.extract_dictionary_entries_from_archive(language)
+    return {"language": language, "entries": entries, "total": len(entries)}
+
+
+@app.get("/archive/quiz-questions/{language}")
+def archive_quiz_questions(language: str):
+    """
+    Dynamically generated quiz questions from archived elder recordings.
+    Allows the quiz to grow as the community contributes more recordings.
+    """
+    questions = archive_engine.generate_quiz_questions_from_archive(language)
+    return {"language": language, "questions": questions, "total": len(questions)}

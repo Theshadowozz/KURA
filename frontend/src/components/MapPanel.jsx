@@ -7,6 +7,7 @@ export default function MapPanel({
   onMapClick,
   onReplayMapAudio,
   countryFlags,
+  voiceCounts = {},
 }) {
   return (
     <section className="panel">
@@ -147,6 +148,18 @@ export default function MapPanel({
                 <div className="map-cultural-fact">
                   <span className="map-cultural-icon">💡</span>
                   <p>{mapResult.cultural_fact}</p>
+                </div>
+              )}
+
+              {/* Archive voice count badge */}
+              {voiceCounts[selectedCountry?.name] > 0 && (
+                <div className="map-archive-badge">
+                  <span>🎙️</span>
+                  <span>
+                    {voiceCounts[selectedCountry.name]} voice
+                    {voiceCounts[selectedCountry.name] !== 1 ? "s" : ""} preserved
+                    in Suara Leluhur
+                  </span>
                 </div>
               )}
 
