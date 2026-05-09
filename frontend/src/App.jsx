@@ -7,13 +7,12 @@ import MapPanel from "./components/MapPanel";
 import QuizPanel from "./components/QuizPanel";
 import { renderMarkdown } from "./utils/markdown";
 import {
-  streamChat,
-  getQuizQuestion,
-  speakText,
-  mapAudioRequest,
-  translateSpeakRequest,
-  processVoiceRequest,
-} from "./api";
+  chatHandler,
+  mapHandler,
+  quizHandler,
+  talkHandler,
+} from "./handlers";
+import { playBase64Audio } from "./lib";
 import {
   tabs,
   QUIZ_LANGUAGES,
@@ -177,7 +176,7 @@ export default function App() {
     formData.append("mode", mode);
 
     try {
-      const data = await processVoiceRequest(formData);
+      const data = await talkHandler.processVoice(formData);
       setTalkConvo((prev) => [
         ...prev,
         {
@@ -230,7 +229,7 @@ export default function App() {
     const randomLang =
       country.languages[Math.floor(Math.random() * country.languages.length)];
     try {
-      const data = await mapAudioRequest(randomLang, abortController.signal);
+      const data = await mapHandler.fetchMapAudio(randomLang, abortController.signal);
       setMapResult({
         lang: randomLang,
         text: data.text,
@@ -291,7 +290,7 @@ export default function App() {
     setQuizMascot("idle");
     setQuizDidReset(false);
     try {
-      const data = await getQuizQuestion(lang, askedKeys);
+      const data = await quizHandler.loadQuizQuestion(lang, askedKeys);
       setQuizQuestion(data);
       setQuizTotalKeys(data.total_keys || 0);
       if (data.did_reset) {
@@ -316,14 +315,13 @@ export default function App() {
       setQuizScore((s) => s + 1);
       setQuizStreak((s) => s + 1);
       setQuizMascot("correct");
-      speakText(quizLang, quizQuestion.correct_answer)
-        .then((d) => {
-          if (d.audio_base64) {
-            const audio = new Audio(`data:audio/mp3;base64,${d.audio_base64}`);
-            audio.play();
-          }
-        })
-        .catch(() => {});
+        quizHandler.speakAnswer(quizLang, quizQuestion.correct_answer)
+          .then((d) => {
+            if (d.audio_base64) {
+              playAudio(d.audio_base64);
+            }
+          })
+          .catch(() => {});
     } else {
       setQuizStreak(0);
       setQuizMascot("wrong");
@@ -369,7 +367,7 @@ export default function App() {
 
     try {
       let accumulated = "";
-      await streamChat(
+      await chatHandler.streamChatHandler(
         nextMessages,
         (chunk) => {
           accumulated += chunk;
@@ -405,7 +403,7 @@ export default function App() {
     if (side === "left") setTalkInputLeft("");
     else setTalkInputRight("");
     try {
-      const data = await translateSpeakRequest(
+      const data = await talkHandler.translateAndSpeak(
         inputLang,
         outputLang,
         text.trim(),
@@ -441,8 +439,7 @@ export default function App() {
 
   const playAudio = (base64) => {
     if (!base64) return;
-    const audio = new Audio(`data:audio/mp3;base64,${base64}`);
-    audio.play();
+    playBase64Audio(base64);
   };
 
   return (
