@@ -2,13 +2,597 @@
   "language": "Tutong",
   "local_name": "Tutong",
   "entries": [
-    {"word": "Assalamu alaikum", "pronunciation": "As-sa-lam a-lei-kum", "english": "Hello (Islamic greeting)", "category": "greetings", "example": "Assalamu alaikum", "example_english": "Hello"},
-    {"word": "Wa alaikum assalam", "pronunciation": "Wa a-lei-kum as-sam", "english": "Hello (response)", "category": "greetings", "example": "Wa alaikum assalam", "example_english": "And upon you be peace"},
-    {"word": "Sampai jumpa", "pronunciation": "Sam-pai jum-pa", "english": "Goodbye", "category": "greetings", "example": "Sampai jumpa", "example_english": "Goodbye"},
-    {"word": "Terima kasih", "pronunciation": "Te-ri-ma ka-sih", "english": "Thank you", "category": "greetings", "example": "Terima kasih banyak", "example_english": "Thank you very much"},
-    {"word": "Saya", "pronunciation": "Sa-ya", "english": "I / Me", "category": "vocabulary", "example": "Saya orang Tutong", "example_english": "I am Tutong"},
-    {"word": "Anda", "pronunciation": "An-da", "english": "You", "category": "vocabulary", "example": "Siapa nama anda?", "example_english": "What is your name?"},
-    {"word": "Ya", "pronunciation": "Ya", "english": "Yes", "category": "vocabulary", "example": "Ya, saya faham", "example_english": "Yes I understand"},
-    {"word": "Air", "pronunciation": "Air", "english": "Water", "category": "vocabulary", "example": "Air sejuk", "example_english": "Cold water"}
+    {
+      "word": "Salamat",
+      "pronunciation": "Sa-la-mat",
+      "english": "Hello / Greetings",
+      "category": "greetings",
+      "example": "Salamat, apa khabar?",
+      "example_english": "Hello, how are you?"
+    },
+    {
+      "word": "Salamat pagi",
+      "pronunciation": "Sa-la-mat pa-gi",
+      "english": "Good morning",
+      "category": "greetings",
+      "example": "Salamat pagi, semua.",
+      "example_english": "Good morning, everyone."
+    },
+    {
+      "word": "Salamat petang",
+      "pronunciation": "Sa-la-mat pe-tang",
+      "english": "Good afternoon",
+      "category": "greetings",
+      "example": "Salamat petang, Pak.",
+      "example_english": "Good afternoon, sir."
+    },
+    {
+      "word": "Salamat malam",
+      "pronunciation": "Sa-la-mat ma-lam",
+      "english": "Good night",
+      "category": "greetings",
+      "example": "Salamat malam, rehat.",
+      "example_english": "Good night, rest."
+    },
+    {
+      "word": "Apa khabar?",
+      "pronunciation": "A-pa kha-bar",
+      "english": "How are you?",
+      "category": "greetings",
+      "example": "Apa khabar hari ini?",
+      "example_english": "How are you today?"
+    },
+    {
+      "word": "Salamat datang",
+      "pronunciation": "Sa-la-mat da-tang",
+      "english": "Welcome",
+      "category": "greetings",
+      "example": "Salamat datang ka Tutong!",
+      "example_english": "Welcome to Tutong!"
+    },
+    {
+      "word": "Baik, terima kasih",
+      "pronunciation": "Ba-ik te-ri-ma ka-sih",
+      "english": "Fine, thank you",
+      "category": "responses",
+      "example": "Baik, terima kasih bertanya.",
+      "example_english": "Fine, thank you for asking."
+    },
+    {
+      "word": "Terima kasih",
+      "pronunciation": "Te-ri-ma ka-sih",
+      "english": "Thank you",
+      "category": "responses",
+      "example": "Terima kasih banyak.",
+      "example_english": "Thank you very much."
+    },
+    {
+      "word": "Sama-sama",
+      "pronunciation": "Sa-ma sa-ma",
+      "english": "You're welcome",
+      "category": "responses",
+      "example": "Sama-sama, inda apo.",
+      "example_english": "You're welcome, it's nothing."
+    },
+    {
+      "word": "Maaf",
+      "pronunciation": "Ma-af",
+      "english": "Sorry",
+      "category": "responses",
+      "example": "Maaf, aku lambat.",
+      "example_english": "Sorry, I am late."
+    },
+    {
+      "word": "Salamat tinggal",
+      "pronunciation": "Sa-la-mat ting-gal",
+      "english": "Goodbye",
+      "category": "responses",
+      "example": "Salamat tinggal, jumpa lagi.",
+      "example_english": "Goodbye, see you again."
+    },
+    {
+      "word": "Aku",
+      "pronunciation": "A-ku",
+      "english": "I / Me",
+      "category": "pronouns",
+      "example": "Aku dari Tutong.",
+      "example_english": "I am from Tutong."
+    },
+    {
+      "word": "Kau",
+      "pronunciation": "Kau",
+      "english": "You",
+      "category": "pronouns",
+      "example": "Kau mau kemana?",
+      "example_english": "Where are you going?"
+    },
+    {
+      "word": "Ia",
+      "pronunciation": "I-a",
+      "english": "He / She",
+      "category": "pronouns",
+      "example": "Ia guru aku.",
+      "example_english": "He/She is my teacher."
+    },
+    {
+      "word": "Kami",
+      "pronunciation": "Ka-mi",
+      "english": "We (exclusive)",
+      "category": "pronouns",
+      "example": "Kami pergi sama-sama.",
+      "example_english": "We go together."
+    },
+    {
+      "word": "Dorang",
+      "pronunciation": "Do-rang",
+      "english": "They",
+      "category": "pronouns",
+      "example": "Dorang dari Tutong.",
+      "example_english": "They are from Tutong."
+    },
+    {
+      "word": "Satu",
+      "pronunciation": "Sa-tu",
+      "english": "One (1)",
+      "category": "numbers",
+      "example": "Satu piring nasi.",
+      "example_english": "One plate of rice."
+    },
+    {
+      "word": "Dua",
+      "pronunciation": "Du-a",
+      "english": "Two (2)",
+      "category": "numbers",
+      "example": "Dua cawan kopi.",
+      "example_english": "Two cups of coffee."
+    },
+    {
+      "word": "Tiga",
+      "pronunciation": "Ti-ga",
+      "english": "Three (3)",
+      "category": "numbers",
+      "example": "Tiga hari lagi.",
+      "example_english": "Three more days."
+    },
+    {
+      "word": "Ampat",
+      "pronunciation": "Am-pat",
+      "english": "Four (4)",
+      "category": "numbers",
+      "example": "Ampat orang.",
+      "example_english": "Four people."
+    },
+    {
+      "word": "Lima",
+      "pronunciation": "Li-ma",
+      "english": "Five (5)",
+      "category": "numbers",
+      "example": "Lima ringgit.",
+      "example_english": "Five ringgit."
+    },
+    {
+      "word": "Anam",
+      "pronunciation": "A-nam",
+      "english": "Six (6)",
+      "category": "numbers",
+      "example": "Anam jam.",
+      "example_english": "Six hours."
+    },
+    {
+      "word": "Tujuh",
+      "pronunciation": "Tu-juh",
+      "english": "Seven (7)",
+      "category": "numbers",
+      "example": "Tujuh hari.",
+      "example_english": "Seven days."
+    },
+    {
+      "word": "Lapan",
+      "pronunciation": "La-pan",
+      "english": "Eight (8)",
+      "category": "numbers",
+      "example": "Lapan bulan.",
+      "example_english": "Eight months."
+    },
+    {
+      "word": "Sambilan",
+      "pronunciation": "Sam-bi-lan",
+      "english": "Nine (9)",
+      "category": "numbers",
+      "example": "Sambilan bintang.",
+      "example_english": "Nine stars."
+    },
+    {
+      "word": "Sapuluh",
+      "pronunciation": "Sa-pu-luh",
+      "english": "Ten (10)",
+      "category": "numbers",
+      "example": "Sapuluh minit.",
+      "example_english": "Ten minutes."
+    },
+    {
+      "word": "Mirah",
+      "pronunciation": "Mi-rah",
+      "english": "Red",
+      "category": "colors",
+      "example": "Baju mirah cantik.",
+      "example_english": "Red shirt is beautiful."
+    },
+    {
+      "word": "Biru",
+      "pronunciation": "Bi-ru",
+      "english": "Blue",
+      "category": "colors",
+      "example": "Langit biru.",
+      "example_english": "Blue sky."
+    },
+    {
+      "word": "Ijau",
+      "pronunciation": "I-jau",
+      "english": "Green",
+      "category": "colors",
+      "example": "Daun ijau.",
+      "example_english": "Green leaves."
+    },
+    {
+      "word": "Kuning",
+      "pronunciation": "Ku-ning",
+      "english": "Yellow",
+      "category": "colors",
+      "example": "Pisang kuning.",
+      "example_english": "Yellow banana."
+    },
+    {
+      "word": "Putih",
+      "pronunciation": "Pu-tih",
+      "english": "White",
+      "category": "colors",
+      "example": "Awan putih.",
+      "example_english": "White cloud."
+    },
+    {
+      "word": "Itam",
+      "pronunciation": "I-tam",
+      "english": "Black",
+      "category": "colors",
+      "example": "Kucing itam.",
+      "example_english": "Black cat."
+    },
+    {
+      "word": "Nasi",
+      "pronunciation": "Na-si",
+      "english": "Cooked rice",
+      "category": "food",
+      "example": "Aku makan nasi tiap hari.",
+      "example_english": "I eat rice every day."
+    },
+    {
+      "word": "Mee",
+      "pronunciation": "Mee",
+      "english": "Noodles",
+      "category": "food",
+      "example": "Mee goreng sedap.",
+      "example_english": "Fried noodles are delicious."
+    },
+    {
+      "word": "Ayam",
+      "pronunciation": "A-yam",
+      "english": "Chicken",
+      "category": "food",
+      "example": "Ayam masak lemak.",
+      "example_english": "Chicken cooked in coconut milk."
+    },
+    {
+      "word": "Ikan",
+      "pronunciation": "I-kan",
+      "english": "Fish",
+      "category": "food",
+      "example": "Ikan segar dari laut.",
+      "example_english": "Fresh fish from the sea."
+    },
+    {
+      "word": "Sayur",
+      "pronunciation": "Sa-yur",
+      "english": "Vegetables",
+      "category": "food",
+      "example": "Makan sayur sihat.",
+      "example_english": "Eating vegetables is healthy."
+    },
+    {
+      "word": "Air",
+      "pronunciation": "A-ir",
+      "english": "Water",
+      "category": "food",
+      "example": "Minum air banyak.",
+      "example_english": "Drink plenty of water."
+    },
+    {
+      "word": "Ibu",
+      "pronunciation": "I-bu",
+      "english": "Mother",
+      "category": "family",
+      "example": "Ibu pandai masak.",
+      "example_english": "Mother cooks well."
+    },
+    {
+      "word": "Bapa",
+      "pronunciation": "Ba-pa",
+      "english": "Father",
+      "category": "family",
+      "example": "Bapa bekerja.",
+      "example_english": "Father works."
+    },
+    {
+      "word": "Abang",
+      "pronunciation": "A-bang",
+      "english": "Older brother",
+      "category": "family",
+      "example": "Abang aku bekerja.",
+      "example_english": "My older brother works."
+    },
+    {
+      "word": "Adik",
+      "pronunciation": "A-dik",
+      "english": "Younger sibling",
+      "category": "family",
+      "example": "Adik aku bersekolah.",
+      "example_english": "My younger sibling is in school."
+    },
+    {
+      "word": "Datuk",
+      "pronunciation": "Da-tuk",
+      "english": "Grandfather",
+      "category": "family",
+      "example": "Datuk aku sudah tua.",
+      "example_english": "My grandfather is old."
+    },
+    {
+      "word": "Nenek",
+      "pronunciation": "Ne-nek",
+      "english": "Grandmother",
+      "category": "family",
+      "example": "Nenek pandai bertenun.",
+      "example_english": "Grandmother weaves well."
+    },
+    {
+      "word": "Kepala",
+      "pronunciation": "Ke-pa-la",
+      "english": "Head",
+      "category": "body",
+      "example": "Kepala aku sakit.",
+      "example_english": "My head hurts."
+    },
+    {
+      "word": "Mata",
+      "pronunciation": "Ma-ta",
+      "english": "Eyes",
+      "category": "body",
+      "example": "Mata aku penat.",
+      "example_english": "My eyes are tired."
+    },
+    {
+      "word": "Tangan",
+      "pronunciation": "Ta-ngan",
+      "english": "Hand",
+      "category": "body",
+      "example": "Basuh tangan dulu.",
+      "example_english": "Wash hands first."
+    },
+    {
+      "word": "Kaki",
+      "pronunciation": "Ka-ki",
+      "english": "Foot / Leg",
+      "category": "body",
+      "example": "Kaki aku sakit.",
+      "example_english": "My leg hurts."
+    },
+    {
+      "word": "Hari ani",
+      "pronunciation": "Ha-ri a-ni",
+      "english": "Today",
+      "category": "time",
+      "example": "Hari ani panas.",
+      "example_english": "Today is hot."
+    },
+    {
+      "word": "Kamarau",
+      "pronunciation": "Ka-ma-rau",
+      "english": "Yesterday",
+      "category": "time",
+      "example": "Kamarau hujan.",
+      "example_english": "Yesterday it rained."
+    },
+    {
+      "word": "Bahari",
+      "pronunciation": "Ba-ha-ri",
+      "english": "Tomorrow",
+      "category": "time",
+      "example": "Bahari aku pergi.",
+      "example_english": "Tomorrow I go."
+    },
+    {
+      "word": "Pagi",
+      "pronunciation": "Pa-gi",
+      "english": "Morning",
+      "category": "time",
+      "example": "Udara pagi segar.",
+      "example_english": "Morning air is fresh."
+    },
+    {
+      "word": "Malam",
+      "pronunciation": "Ma-lam",
+      "english": "Night",
+      "category": "time",
+      "example": "Bintang malam.",
+      "example_english": "Stars at night."
+    },
+    {
+      "word": "Baik",
+      "pronunciation": "Ba-ik",
+      "english": "Good",
+      "category": "adjectives",
+      "example": "Ini baik!",
+      "example_english": "This is good!"
+    },
+    {
+      "word": "Besar",
+      "pronunciation": "Be-sar",
+      "english": "Big",
+      "category": "adjectives",
+      "example": "Rumah itu besar.",
+      "example_english": "That house is big."
+    },
+    {
+      "word": "Kecil",
+      "pronunciation": "Ke-cil",
+      "english": "Small",
+      "category": "adjectives",
+      "example": "Kucing kecil.",
+      "example_english": "Small cat."
+    },
+    {
+      "word": "Panas",
+      "pronunciation": "Pa-nas",
+      "english": "Hot",
+      "category": "adjectives",
+      "example": "Panas hari ani.",
+      "example_english": "Today is hot."
+    },
+    {
+      "word": "Sejuk",
+      "pronunciation": "Se-juk",
+      "english": "Cold",
+      "category": "adjectives",
+      "example": "Air gunung sejuk.",
+      "example_english": "Mountain water is cold."
+    },
+    {
+      "word": "Sedap",
+      "pronunciation": "Se-dap",
+      "english": "Delicious",
+      "category": "adjectives",
+      "example": "Makanan sedap!",
+      "example_english": "Delicious food!"
+    },
+    {
+      "word": "Makan",
+      "pronunciation": "Ma-kan",
+      "english": "To eat",
+      "category": "verbs",
+      "example": "Aku makan nasi.",
+      "example_english": "I eat rice."
+    },
+    {
+      "word": "Minum",
+      "pronunciation": "Mi-num",
+      "english": "To drink",
+      "category": "verbs",
+      "example": "Ia minum kopi.",
+      "example_english": "He/she drinks coffee."
+    },
+    {
+      "word": "Tidur",
+      "pronunciation": "Ti-dur",
+      "english": "To sleep",
+      "category": "verbs",
+      "example": "Anak itu tidur.",
+      "example_english": "The child is sleeping."
+    },
+    {
+      "word": "Pergi",
+      "pronunciation": "Per-gi",
+      "english": "To go",
+      "category": "verbs",
+      "example": "Kami pergi ke pantai.",
+      "example_english": "We go to the beach."
+    },
+    {
+      "word": "Belajar",
+      "pronunciation": "Be-la-jar",
+      "english": "To study",
+      "category": "verbs",
+      "example": "Aku belajar bahasa Tutong.",
+      "example_english": "I am studying Tutong."
+    },
+    {
+      "word": "Laut",
+      "pronunciation": "La-ut",
+      "english": "Sea",
+      "category": "nature",
+      "example": "Laut Brunei cantik.",
+      "example_english": "Brunei's sea is beautiful."
+    },
+    {
+      "word": "Bukit",
+      "pronunciation": "Bu-kit",
+      "english": "Hill",
+      "category": "nature",
+      "example": "Bukit hijau.",
+      "example_english": "Green hill."
+    },
+    {
+      "word": "Sungai",
+      "pronunciation": "Su-ngai",
+      "english": "River",
+      "category": "nature",
+      "example": "Sungai mengalir.",
+      "example_english": "The river flows."
+    },
+    {
+      "word": "Hutan",
+      "pronunciation": "Hu-tan",
+      "english": "Forest",
+      "category": "nature",
+      "example": "Hutan lebat.",
+      "example_english": "Dense forest."
+    },
+    {
+      "word": "Hujan",
+      "pronunciation": "Hu-jan",
+      "english": "Rain",
+      "category": "nature",
+      "example": "Hujan turun.",
+      "example_english": "Rain falls."
+    },
+    {
+      "word": "Kucing",
+      "pronunciation": "Ku-cing",
+      "english": "Cat",
+      "category": "animals",
+      "example": "Kucing comel.",
+      "example_english": "Cute cat."
+    },
+    {
+      "word": "Anjing",
+      "pronunciation": "An-jing",
+      "english": "Dog",
+      "category": "animals",
+      "example": "Anjing setia.",
+      "example_english": "Loyal dog."
+    },
+    {
+      "word": "Burung",
+      "pronunciation": "Bu-rung",
+      "english": "Bird",
+      "category": "animals",
+      "example": "Burung bernyanyi.",
+      "example_english": "Birds sing."
+    },
+    {
+      "word": "Ular",
+      "pronunciation": "U-lar",
+      "english": "Snake",
+      "category": "animals",
+      "example": "Ular di hutan.",
+      "example_english": "Snakes in the forest."
+    },
+    {
+      "word": "Kera",
+      "pronunciation": "Ke-ra",
+      "english": "Monkey",
+      "category": "animals",
+      "example": "Kera di pokok.",
+      "example_english": "Monkey in the tree."
+    }
   ]
 }

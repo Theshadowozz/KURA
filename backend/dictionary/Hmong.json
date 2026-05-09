@@ -2,13 +2,549 @@
   "language": "Hmong",
   "local_name": "Hmong / Miao",
   "entries": [
-    {"word": "Nyob zoo", "pronunciation": "Nyob zoo", "english": "Hello / Stay well", "category": "greetings", "example": "Nyob zoo", "example_english": "Hello"},
-    {"word": "Mus nyob zoo", "pronunciation": "Mus nyob zoo", "english": "Goodbye", "category": "greetings", "example": "Mus nyob zoo", "example_english": "Goodbye"},
-    {"word": "Ua tsaug", "pronunciation": "Ua tsaug", "english": "Thank you", "category": "greetings", "example": "Ua tsaug ntau", "example_english": "Thank you very much"},
-    {"word": "Kuv", "pronunciation": "Kuv", "english": "I / Me", "category": "vocabulary", "example": "Kuv yog Hmong", "example_english": "I am Hmong"},
-    {"word": "Koj", "pronunciation": "Koj", "english": "You", "category": "vocabulary", "example": "Koj lub npe yog dab tsi?", "example_english": "What is your name?"},
-    {"word": "Yog", "pronunciation": "Yog", "english": "Yes", "category": "vocabulary", "example": "Yog, kuv nkag siab", "example_english": "Yes I understand"},
-    {"word": "Tsis yog", "pronunciation": "Tsis yog", "english": "No", "category": "vocabulary", "example": "Tsis yog, kuv tsis paub", "example_english": "No I don't know"},
-    {"word": "Dej", "pronunciation": "Dej", "english": "Water", "category": "vocabulary", "example": "Dej txias", "example_english": "Cold water"}
+    {
+      "word": "Nyob zoo",
+      "pronunciation": "Nyob-zoo",
+      "english": "Hello / Good health",
+      "category": "greetings",
+      "example": "Nyob zoo koj",
+      "example_english": "Hello to you"
+    },
+    {
+      "word": "Ua tsaug",
+      "pronunciation": "Ua-tsaug",
+      "english": "Thank you",
+      "category": "greetings",
+      "example": "Ua tsaug ntau",
+      "example_english": "Thank you very much"
+    },
+    {
+      "word": "Mus zoo",
+      "pronunciation": "Mus-zoo",
+      "english": "Goodbye",
+      "category": "greetings",
+      "example": "Mus zoo, pom dua",
+      "example_english": "Goodbye, see you again"
+    },
+    {
+      "word": "Yog",
+      "pronunciation": "Yog",
+      "english": "Yes",
+      "category": "vocabulary",
+      "example": "Yog, kuv paub",
+      "example_english": "Yes, I know"
+    },
+    {
+      "word": "Tsis yog",
+      "pronunciation": "Tsis-yog",
+      "english": "No / Not",
+      "category": "vocabulary",
+      "example": "Tsis yog, kuv tsis paub",
+      "example_english": "No, I don't know"
+    },
+    {
+      "word": "Kuv",
+      "pronunciation": "Kuv",
+      "english": "I / Me",
+      "category": "pronouns",
+      "example": "Kuv yog Hmoob",
+      "example_english": "I am Hmong"
+    },
+    {
+      "word": "Koj",
+      "pronunciation": "Koj",
+      "english": "You",
+      "category": "pronouns",
+      "example": "Koj nyob li cas",
+      "example_english": "How are you?"
+    },
+    {
+      "word": "Nws",
+      "pronunciation": "Nws",
+      "english": "He / She",
+      "category": "pronouns",
+      "example": "Nws mus ua hauj lwm",
+      "example_english": "He/She goes to work"
+    },
+    {
+      "word": "Peb",
+      "pronunciation": "Peb",
+      "english": "We",
+      "category": "pronouns",
+      "example": "Peb ua ke",
+      "example_english": "We are together"
+    },
+    {
+      "word": "Ib",
+      "pronunciation": "Ib",
+      "english": "One",
+      "category": "numbers",
+      "example": "Ib tus",
+      "example_english": "One (animal/person)"
+    },
+    {
+      "word": "Ob",
+      "pronunciation": "Ob",
+      "english": "Two",
+      "category": "numbers",
+      "example": "Ob tus neeg",
+      "example_english": "Two people"
+    },
+    {
+      "word": "Peb",
+      "pronunciation": "Peb",
+      "english": "Three",
+      "category": "numbers",
+      "example": "Peb hnub",
+      "example_english": "Three days"
+    },
+    {
+      "word": "Plaub",
+      "pronunciation": "Plaub",
+      "english": "Four",
+      "category": "numbers",
+      "example": "Plaub xyoos",
+      "example_english": "Four years"
+    },
+    {
+      "word": "Tsib",
+      "pronunciation": "Tsib",
+      "english": "Five",
+      "category": "numbers",
+      "example": "Tsib tus",
+      "example_english": "Five pieces"
+    },
+    {
+      "word": "Rau",
+      "pronunciation": "Rau",
+      "english": "Six",
+      "category": "numbers",
+      "example": "Rau hlis",
+      "example_english": "Six months"
+    },
+    {
+      "word": "Xya",
+      "pronunciation": "Xya",
+      "english": "Seven",
+      "category": "numbers",
+      "example": "Xya hnub",
+      "example_english": "Seven days"
+    },
+    {
+      "word": "Yim",
+      "pronunciation": "Yim",
+      "english": "Eight",
+      "category": "numbers",
+      "example": "Yim tus neeg",
+      "example_english": "Eight people"
+    },
+    {
+      "word": "Cuaj",
+      "pronunciation": "Cuaj",
+      "english": "Nine",
+      "category": "numbers",
+      "example": "Cuaj tus",
+      "example_english": "Nine pieces"
+    },
+    {
+      "word": "Kaum",
+      "pronunciation": "Kaum",
+      "english": "Ten",
+      "category": "numbers",
+      "example": "Kaum hnub",
+      "example_english": "Ten days"
+    },
+    {
+      "word": "Liab",
+      "pronunciation": "Liab",
+      "english": "Red",
+      "category": "colors",
+      "example": "Paj liab",
+      "example_english": "Red flower"
+    },
+    {
+      "word": "Daj",
+      "pronunciation": "Daj",
+      "english": "Yellow",
+      "category": "colors",
+      "example": "Nplooj daj",
+      "example_english": "Yellow leaf"
+    },
+    {
+      "word": "Ntsuab",
+      "pronunciation": "Ntsuab",
+      "english": "Green",
+      "category": "colors",
+      "example": "Ntoo ntsuab",
+      "example_english": "Green tree"
+    },
+    {
+      "word": "Dub",
+      "pronunciation": "Dub",
+      "english": "Black",
+      "category": "colors",
+      "example": "Miv dub",
+      "example_english": "Black cat"
+    },
+    {
+      "word": "Dawb",
+      "pronunciation": "Dawb",
+      "english": "White",
+      "category": "colors",
+      "example": "Khaub ncaws dawb",
+      "example_english": "White clothing"
+    },
+    {
+      "word": "Xiav",
+      "pronunciation": "Xiav",
+      "english": "Blue",
+      "category": "colors",
+      "example": "Ntuj xiav",
+      "example_english": "Blue sky"
+    },
+    {
+      "word": "Mov",
+      "pronunciation": "Mov",
+      "english": "Cooked rice",
+      "category": "food",
+      "example": "Mov qab",
+      "example_english": "Delicious rice"
+    },
+    {
+      "word": "Dej",
+      "pronunciation": "Dej",
+      "english": "Water",
+      "category": "food",
+      "example": "Dej huv",
+      "example_english": "Clean water"
+    },
+    {
+      "word": "Ntses",
+      "pronunciation": "Ntses",
+      "english": "Fish",
+      "category": "food",
+      "example": "Ntses kib",
+      "example_english": "Fried fish"
+    },
+    {
+      "word": "Nqaij",
+      "pronunciation": "Nqaij",
+      "english": "Meat",
+      "category": "food",
+      "example": "Nqaij npua",
+      "example_english": "Pork"
+    },
+    {
+      "word": "Zaub",
+      "pronunciation": "Zaub",
+      "english": "Vegetable",
+      "category": "food",
+      "example": "Zaub tshiab",
+      "example_english": "Fresh vegetable"
+    },
+    {
+      "word": "Tes",
+      "pronunciation": "Tes",
+      "english": "Hand",
+      "category": "body",
+      "example": "Tes xis",
+      "example_english": "Right hand"
+    },
+    {
+      "word": "Qhov ncauj",
+      "pronunciation": "Qhov-ncauj",
+      "english": "Mouth",
+      "category": "body",
+      "example": "Qhov ncauj qab",
+      "example_english": "Sweet mouth"
+    },
+    {
+      "word": "Qhov muag",
+      "pronunciation": "Qhov-muag",
+      "english": "Eye",
+      "category": "body",
+      "example": "Qhov muag pom",
+      "example_english": "Seeing eye"
+    },
+    {
+      "word": "Taw",
+      "pronunciation": "Taw",
+      "english": "Foot",
+      "category": "body",
+      "example": "Taw mob",
+      "example_english": "Aching foot"
+    },
+    {
+      "word": "Taub hau",
+      "pronunciation": "Taub-hau",
+      "english": "Head",
+      "category": "body",
+      "example": "Taub hau mob",
+      "example_english": "Headache"
+    },
+    {
+      "word": "Txiv",
+      "pronunciation": "Txiv",
+      "english": "Father",
+      "category": "family",
+      "example": "Txiv kuv",
+      "example_english": "My father"
+    },
+    {
+      "word": "Niam",
+      "pronunciation": "Niam",
+      "english": "Mother",
+      "category": "family",
+      "example": "Niam kuv",
+      "example_english": "My mother"
+    },
+    {
+      "word": "Tij laug",
+      "pronunciation": "Tij-laug",
+      "english": "Older brother",
+      "category": "family",
+      "example": "Tij laug kuv",
+      "example_english": "My older brother"
+    },
+    {
+      "word": "Niam tais",
+      "pronunciation": "Niam-tais",
+      "english": "Older sister",
+      "category": "family",
+      "example": "Niam tais kuv",
+      "example_english": "My older sister"
+    },
+    {
+      "word": "Kwv tij",
+      "pronunciation": "Kwv-tij",
+      "english": "Younger sibling",
+      "category": "family",
+      "example": "Kwv tij kuv",
+      "example_english": "My younger sibling"
+    },
+    {
+      "word": "Pog / Yawg",
+      "pronunciation": "Pog / Yawg",
+      "english": "Grandmother / Grandfather",
+      "category": "family",
+      "example": "Pog yawg kuv",
+      "example_english": "My grandparents"
+    },
+    {
+      "word": "Thaum sawv ntxov",
+      "pronunciation": "Thaum-sawv-ntxov",
+      "english": "Morning",
+      "category": "time",
+      "example": "Thaum sawv ntxov no",
+      "example_english": "This morning"
+    },
+    {
+      "word": "Hnub no",
+      "pronunciation": "Hnub-no",
+      "english": "Today",
+      "category": "time",
+      "example": "Hnub no zoo",
+      "example_english": "Today is good"
+    },
+    {
+      "word": "Tsaus ntuj",
+      "pronunciation": "Tsaus-ntuj",
+      "english": "Evening / Dark",
+      "category": "time",
+      "example": "Tsaus ntuj no",
+      "example_english": "Tonight"
+    },
+    {
+      "word": "Hmo ntuj",
+      "pronunciation": "Hmo-ntuj",
+      "english": "Night",
+      "category": "time",
+      "example": "Hmo ntuj no",
+      "example_english": "This night"
+    },
+    {
+      "word": "Hlis no",
+      "pronunciation": "Hlis-no",
+      "english": "This month",
+      "category": "time",
+      "example": "Hlis no nyuaj",
+      "example_english": "This month is busy"
+    },
+    {
+      "word": "Zoo",
+      "pronunciation": "Zoo",
+      "english": "Good",
+      "category": "adjectives",
+      "example": "Zoo kawg",
+      "example_english": "Very good"
+    },
+    {
+      "word": "Me",
+      "pronunciation": "Me",
+      "english": "Small",
+      "category": "adjectives",
+      "example": "Tsev me",
+      "example_english": "Small house"
+    },
+    {
+      "word": "Loj",
+      "pronunciation": "Loj",
+      "english": "Big / Large",
+      "category": "adjectives",
+      "example": "Tsev loj",
+      "example_english": "Big house"
+    },
+    {
+      "word": "Kub",
+      "pronunciation": "Kub",
+      "english": "Hot",
+      "category": "adjectives",
+      "example": "Hnub kub",
+      "example_english": "Hot day"
+    },
+    {
+      "word": "Txias",
+      "pronunciation": "Txias",
+      "english": "Cool / Cold",
+      "category": "adjectives",
+      "example": "Dej txias",
+      "example_english": "Cold water"
+    },
+    {
+      "word": "Noj",
+      "pronunciation": "Noj",
+      "english": "To eat",
+      "category": "verbs",
+      "example": "Peb noj mov",
+      "example_english": "We eat rice"
+    },
+    {
+      "word": "Haus",
+      "pronunciation": "Haus",
+      "english": "To drink",
+      "category": "verbs",
+      "example": "Haus dej",
+      "example_english": "Drink water"
+    },
+    {
+      "word": "Ua hauj lwm",
+      "pronunciation": "Ua-hauj-lwm",
+      "english": "To work",
+      "category": "verbs",
+      "example": "Nws ua hauj lwm",
+      "example_english": "He/She works"
+    },
+    {
+      "word": "Tsaug zog",
+      "pronunciation": "Tsaug-zog",
+      "english": "To sleep",
+      "category": "verbs",
+      "example": "Kwv tij tsaug zog",
+      "example_english": "Younger sibling sleeps"
+    },
+    {
+      "word": "Taug kev",
+      "pronunciation": "Taug-kev",
+      "english": "To walk",
+      "category": "verbs",
+      "example": "Peb taug kev",
+      "example_english": "We walk"
+    },
+    {
+      "word": "Nyeem",
+      "pronunciation": "Nyeem",
+      "english": "To read",
+      "category": "verbs",
+      "example": "Nyeem ntawv",
+      "example_english": "Read a book"
+    },
+    {
+      "word": "Tsev",
+      "pronunciation": "Tsev",
+      "english": "House / Home",
+      "category": "vocabulary",
+      "example": "Tsev kuv",
+      "example_english": "My house"
+    },
+    {
+      "word": "Kev",
+      "pronunciation": "Kev",
+      "english": "Road / Path",
+      "category": "vocabulary",
+      "example": "Kev loj",
+      "example_english": "Wide road"
+    },
+    {
+      "word": "Hav zoov",
+      "pronunciation": "Hav-zoov",
+      "english": "Forest",
+      "category": "nature",
+      "example": "Hav zoov loj",
+      "example_english": "Big forest"
+    },
+    {
+      "word": "Av",
+      "pronunciation": "Av",
+      "english": "Land / Soil",
+      "category": "nature",
+      "example": "Av zoo",
+      "example_english": "Good land"
+    },
+    {
+      "word": "Dej ntws",
+      "pronunciation": "Dej-ntws",
+      "english": "River (flowing water)",
+      "category": "nature",
+      "example": "Dej ntws loj",
+      "example_english": "Big river"
+    },
+    {
+      "word": "Ntuj",
+      "pronunciation": "Ntuj",
+      "english": "Sky",
+      "category": "nature",
+      "example": "Ntuj xiav",
+      "example_english": "Blue sky"
+    },
+    {
+      "word": "Dev",
+      "pronunciation": "Dev",
+      "english": "Dog",
+      "category": "animals",
+      "example": "Dev zoo",
+      "example_english": "Good dog"
+    },
+    {
+      "word": "Miv",
+      "pronunciation": "Miv",
+      "english": "Cat",
+      "category": "animals",
+      "example": "Miv dawb",
+      "example_english": "White cat"
+    },
+    {
+      "word": "Qaib",
+      "pronunciation": "Qaib",
+      "english": "Chicken",
+      "category": "animals",
+      "example": "Qaib zoo",
+      "example_english": "Good chicken"
+    },
+    {
+      "word": "Npua",
+      "pronunciation": "Npua",
+      "english": "Pig",
+      "category": "animals",
+      "example": "Npua loj",
+      "example_english": "Big pig"
+    },
+    {
+      "word": "Ntxhw",
+      "pronunciation": "Ntxhw",
+      "english": "Elephant",
+      "category": "animals",
+      "example": "Ntxhw loj kawg",
+      "example_english": "Very big elephant"
+    }
   ]
 }

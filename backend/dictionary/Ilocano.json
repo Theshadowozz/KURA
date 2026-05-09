@@ -2,13 +2,597 @@
   "language": "Ilocano",
   "local_name": "Ilocano",
   "entries": [
-    {"word": "Naimbag", "pronunciation": "Nai-m-bag", "english": "Hello / Good", "category": "greetings", "example": "Naimbag a biag", "example_english": "Good life / greeting"},
-    {"word": "Agpayak", "pronunciation": "Ag-pa-yak", "english": "Goodbye", "category": "greetings", "example": "Agpayak", "example_english": "Goodbye"},
-    {"word": "Dios ti bless", "pronunciation": "Di-os ti bless", "english": "God bless / Thank you", "category": "greetings", "example": "Dios ti bless", "example_english": "God bless you"},
-    {"word": "Siak", "pronunciation": "Si-ak", "english": "I / Me", "category": "vocabulary", "example": "Siak ti tao ti Ilocano", "example_english": "I am an Ilocano person"},
-    {"word": "Ikaw", "pronunciation": "I-kaw", "english": "You", "category": "vocabulary", "example": "Anong pangalan mo?", "example_english": "What is your name?"},
-    {"word": "Wen", "pronunciation": "Wen", "english": "Yes", "category": "vocabulary", "example": "Wen, maintindihan ko", "example_english": "Yes I understand"},
-    {"word": "Saan", "pronunciation": "Sa-an", "english": "No", "category": "vocabulary", "example": "Saan, wala akong alam", "example_english": "No I don't know"},
-    {"word": "Tubi", "pronunciation": "Tu-bi", "english": "Water", "category": "vocabulary", "example": "Tubi a malamig", "example_english": "Cold water"}
+    {
+      "word": "Naimbag a bigat",
+      "pronunciation": "Na-im-bag a bi-gat",
+      "english": "Good morning",
+      "category": "greetings",
+      "example": "Naimbag a bigat, ading",
+      "example_english": "Good morning, friend"
+    },
+    {
+      "word": "Naimbag a malem",
+      "pronunciation": "Na-im-bag a ma-lem",
+      "english": "Good afternoon",
+      "category": "greetings",
+      "example": "Naimbag a malem kaniam",
+      "example_english": "Good afternoon to you"
+    },
+    {
+      "word": "Naimbag a rabii",
+      "pronunciation": "Na-im-bag a ra-bi-i",
+      "english": "Good evening",
+      "category": "greetings",
+      "example": "Naimbag a rabii amin",
+      "example_english": "Good evening everyone"
+    },
+    {
+      "word": "Agyamanak",
+      "pronunciation": "Ag-ya-ma-nak",
+      "english": "Thank you",
+      "category": "greetings",
+      "example": "Agyamanak unay",
+      "example_english": "Thank you very much"
+    },
+    {
+      "word": "Padam",
+      "pronunciation": "Pa-dam",
+      "english": "Goodbye",
+      "category": "greetings",
+      "example": "Padam, agkita tayo manen",
+      "example_english": "Goodbye, we will meet again"
+    },
+    {
+      "word": "Wen",
+      "pronunciation": "Wen",
+      "english": "Yes",
+      "category": "vocabulary",
+      "example": "Wen, mabalin",
+      "example_english": "Yes, it's possible"
+    },
+    {
+      "word": "Saan",
+      "pronunciation": "Sa-an",
+      "english": "No",
+      "category": "vocabulary",
+      "example": "Saan, di ak mabalin",
+      "example_english": "No, I cannot"
+    },
+    {
+      "word": "Siak",
+      "pronunciation": "Si-ak",
+      "english": "I / Me",
+      "category": "pronouns",
+      "example": "Siak ti mangipaay",
+      "example_english": "I am the one giving"
+    },
+    {
+      "word": "Sika",
+      "pronunciation": "Si-ka",
+      "english": "You",
+      "category": "pronouns",
+      "example": "Sika ti nangala",
+      "example_english": "You are the one who took it"
+    },
+    {
+      "word": "Isuna",
+      "pronunciation": "I-su-na",
+      "english": "He / She",
+      "category": "pronouns",
+      "example": "Isuna ti nagtrabaho",
+      "example_english": "He/She worked"
+    },
+    {
+      "word": "Datayo",
+      "pronunciation": "Da-ta-yo",
+      "english": "We (inclusive)",
+      "category": "pronouns",
+      "example": "Datayo a dua",
+      "example_english": "Both of us"
+    },
+    {
+      "word": "Dakami",
+      "pronunciation": "Da-ka-mi",
+      "english": "We (exclusive)",
+      "category": "pronouns",
+      "example": "Dakami ti nangkita",
+      "example_english": "We (not you) saw it"
+    },
+    {
+      "word": "Maymaysa",
+      "pronunciation": "May-may-sa",
+      "english": "One",
+      "category": "numbers",
+      "example": "Maymaysa ti kuarta",
+      "example_english": "One peso"
+    },
+    {
+      "word": "Dua",
+      "pronunciation": "Du-a",
+      "english": "Two",
+      "category": "numbers",
+      "example": "Dua a mansana",
+      "example_english": "Two apples"
+    },
+    {
+      "word": "Tallo",
+      "pronunciation": "Tal-lo",
+      "english": "Three",
+      "category": "numbers",
+      "example": "Tallo a libro",
+      "example_english": "Three books"
+    },
+    {
+      "word": "Uppat",
+      "pronunciation": "Up-pat",
+      "english": "Four",
+      "category": "numbers",
+      "example": "Uppat a sida",
+      "example_english": "Four dishes"
+    },
+    {
+      "word": "Lima",
+      "pronunciation": "Li-ma",
+      "english": "Five",
+      "category": "numbers",
+      "example": "Lima a gatad",
+      "example_english": "Five pieces"
+    },
+    {
+      "word": "Innem",
+      "pronunciation": "In-nem",
+      "english": "Six",
+      "category": "numbers",
+      "example": "Innem a aldaw",
+      "example_english": "Six days"
+    },
+    {
+      "word": "Pito",
+      "pronunciation": "Pi-to",
+      "english": "Seven",
+      "category": "numbers",
+      "example": "Pito a bulan",
+      "example_english": "Seven months"
+    },
+    {
+      "word": "Walo",
+      "pronunciation": "Wa-lo",
+      "english": "Eight",
+      "category": "numbers",
+      "example": "Walo a tao",
+      "example_english": "Eight people"
+    },
+    {
+      "word": "Siam",
+      "pronunciation": "Si-am",
+      "english": "Nine",
+      "category": "numbers",
+      "example": "Siam a lawag",
+      "example_english": "Nine lights"
+    },
+    {
+      "word": "Sangapulo",
+      "pronunciation": "San-ga-pu-lo",
+      "english": "Ten",
+      "category": "numbers",
+      "example": "Sangapulo a libro",
+      "example_english": "Ten books"
+    },
+    {
+      "word": "Nalabaga",
+      "pronunciation": "Na-la-ba-ga",
+      "english": "Red",
+      "category": "colors",
+      "example": "Nalabaga a rosas",
+      "example_english": "Red rose"
+    },
+    {
+      "word": "Nagaraw",
+      "pronunciation": "Na-ga-raw",
+      "english": "Yellow",
+      "category": "colors",
+      "example": "Nagaraw a bulak",
+      "example_english": "Yellow flower"
+    },
+    {
+      "word": "Naberde",
+      "pronunciation": "Na-ber-de",
+      "english": "Green",
+      "category": "colors",
+      "example": "Naberde a mula",
+      "example_english": "Green plant"
+    },
+    {
+      "word": "Nangisit",
+      "pronunciation": "Na-ngi-sit",
+      "english": "Black",
+      "category": "colors",
+      "example": "Nangisit a aso",
+      "example_english": "Black dog"
+    },
+    {
+      "word": "Puraw",
+      "pronunciation": "Pu-raw",
+      "english": "White",
+      "category": "colors",
+      "example": "Puraw a papel",
+      "example_english": "White paper"
+    },
+    {
+      "word": "Naarimat",
+      "pronunciation": "Na-a-ri-mat",
+      "english": "Blue",
+      "category": "colors",
+      "example": "Naarimat a langit",
+      "example_english": "Blue sky"
+    },
+    {
+      "word": "Kanen",
+      "pronunciation": "Ka-nen",
+      "english": "Food / Rice",
+      "category": "food",
+      "example": "Adda kanen ditoy",
+      "example_english": "There is food here"
+    },
+    {
+      "word": "Danum",
+      "pronunciation": "Da-num",
+      "english": "Water",
+      "category": "food",
+      "example": "Mainum ti danum",
+      "example_english": "Drink water"
+    },
+    {
+      "word": "Sida",
+      "pronunciation": "Si-da",
+      "english": "Dish / Viand",
+      "category": "food",
+      "example": "Naimas ti sida",
+      "example_english": "The dish is delicious"
+    },
+    {
+      "word": "Bagas",
+      "pronunciation": "Ba-gas",
+      "english": "Rice (uncooked)",
+      "category": "food",
+      "example": "Umsagmaw ti bagas",
+      "example_english": "Buy rice"
+    },
+    {
+      "word": "Isda",
+      "pronunciation": "Is-da",
+      "english": "Fish",
+      "category": "food",
+      "example": "Nangal-ot ti isda",
+      "example_english": "Ate fish"
+    },
+    {
+      "word": "Karne",
+      "pronunciation": "Kar-ne",
+      "english": "Meat",
+      "category": "food",
+      "example": "Nabanglo ti karne",
+      "example_english": "The meat smells good"
+    },
+    {
+      "word": "Ima",
+      "pronunciation": "I-ma",
+      "english": "Hand",
+      "category": "body",
+      "example": "Napaay ti ima",
+      "example_english": "The hand is sore"
+    },
+    {
+      "word": "Sao",
+      "pronunciation": "Sa-o",
+      "english": "Mouth",
+      "category": "body",
+      "example": "Agkanta ti sao",
+      "example_english": "The mouth sings"
+    },
+    {
+      "word": "Mata",
+      "pronunciation": "Ma-ta",
+      "english": "Eye",
+      "category": "body",
+      "example": "Malem ti mata",
+      "example_english": "The eye is tired"
+    },
+    {
+      "word": "Batog",
+      "pronunciation": "Ba-tog",
+      "english": "Foot / Leg",
+      "category": "body",
+      "example": "Natagtag ti batog",
+      "example_english": "The leg is tired"
+    },
+    {
+      "word": "Ulo",
+      "pronunciation": "U-lo",
+      "english": "Head",
+      "category": "body",
+      "example": "Malugoy ti ulo",
+      "example_english": "The head is dizzy"
+    },
+    {
+      "word": "Ima",
+      "pronunciation": "I-ma",
+      "english": "Arm",
+      "category": "body",
+      "example": "Napinget ti ima",
+      "example_english": "The arm is strong"
+    },
+    {
+      "word": "Ama",
+      "pronunciation": "A-ma",
+      "english": "Father",
+      "category": "family",
+      "example": "Naibabain ti ama",
+      "example_english": "Father is proud"
+    },
+    {
+      "word": "Ina",
+      "pronunciation": "I-na",
+      "english": "Mother",
+      "category": "family",
+      "example": "Nalukmeg ti ina",
+      "example_english": "Mother is healthy"
+    },
+    {
+      "word": "Ading",
+      "pronunciation": "A-ding",
+      "english": "Younger sibling",
+      "category": "family",
+      "example": "Nagnanakem ti ading",
+      "example_english": "Younger sibling is smart"
+    },
+    {
+      "word": "Manong",
+      "pronunciation": "Ma-nong",
+      "english": "Older brother",
+      "category": "family",
+      "example": "Napayon ti manong",
+      "example_english": "Older brother arrived"
+    },
+    {
+      "word": "Manang",
+      "pronunciation": "Ma-nang",
+      "english": "Older sister",
+      "category": "family",
+      "example": "Nagsarita ti manang",
+      "example_english": "Older sister spoke"
+    },
+    {
+      "word": "Apo",
+      "pronunciation": "A-po",
+      "english": "Grandparent",
+      "category": "family",
+      "example": "Naka-ili ti apo",
+      "example_english": "Grandparent went home"
+    },
+    {
+      "word": "Bigat",
+      "pronunciation": "Bi-gat",
+      "english": "Morning",
+      "category": "time",
+      "example": "Bigat pay laeng",
+      "example_english": "It's still morning"
+    },
+    {
+      "word": "Malem",
+      "pronunciation": "Ma-lem",
+      "english": "Afternoon",
+      "category": "time",
+      "example": "Malem ti panagkita",
+      "example_english": "Afternoon meeting"
+    },
+    {
+      "word": "Rabii",
+      "pronunciation": "Ra-bi-i",
+      "english": "Night",
+      "category": "time",
+      "example": "Natay ti rabii",
+      "example_english": "The night is silent"
+    },
+    {
+      "word": "Aldaw",
+      "pronunciation": "Al-daw",
+      "english": "Day / Sun",
+      "category": "time",
+      "example": "Nainiton ti aldaw",
+      "example_english": "The day is hot"
+    },
+    {
+      "word": "Bulan",
+      "pronunciation": "Bu-lan",
+      "english": "Month / Moon",
+      "category": "time",
+      "example": "Naray-ay ti bulan",
+      "example_english": "The moon is full"
+    },
+    {
+      "word": "Naimbag",
+      "pronunciation": "Na-im-bag",
+      "english": "Good",
+      "category": "adjectives",
+      "example": "Naimbag ti bes",
+      "example_english": "The weather is good"
+    },
+    {
+      "word": "Bassit",
+      "pronunciation": "Bas-sit",
+      "english": "Small",
+      "category": "adjectives",
+      "example": "Bassit ti balay",
+      "example_english": "The house is small"
+    },
+    {
+      "word": "Dakkel",
+      "pronunciation": "Dak-kel",
+      "english": "Big / Large",
+      "category": "adjectives",
+      "example": "Dakkel ti manok",
+      "example_english": "The chicken is big"
+    },
+    {
+      "word": "Nalinak",
+      "pronunciation": "Na-li-nak",
+      "english": "Quiet / Calm",
+      "category": "adjectives",
+      "example": "Nalinak ti lugar",
+      "example_english": "The place is quiet"
+    },
+    {
+      "word": "Nanas",
+      "pronunciation": "Na-nas",
+      "english": "Fast",
+      "category": "adjectives",
+      "example": "Nanas ti taksi",
+      "example_english": "The taxi is fast"
+    },
+    {
+      "word": "Nalablabes",
+      "pronunciation": "Na-lab-la-bes",
+      "english": "Slow",
+      "category": "adjectives",
+      "example": "Nalablabes ti trabaho",
+      "example_english": "The work is slow"
+    },
+    {
+      "word": "Kumain",
+      "pronunciation": "Ku-ma-in",
+      "english": "To eat",
+      "category": "verbs",
+      "example": "Kumain tayo",
+      "example_english": "Let us eat"
+    },
+    {
+      "word": "Uminom",
+      "pronunciation": "U-mi-nom",
+      "english": "To drink",
+      "category": "verbs",
+      "example": "Uminom ti danum",
+      "example_english": "Drink water"
+    },
+    {
+      "word": "Agtrabaho",
+      "pronunciation": "Ag-tra-ba-ho",
+      "english": "To work",
+      "category": "verbs",
+      "example": "Agtrabaho ti lalaki",
+      "example_english": "The man works"
+    },
+    {
+      "word": "Agturog",
+      "pronunciation": "Ag-tu-rog",
+      "english": "To sleep",
+      "category": "verbs",
+      "example": "Agturog ti ubing",
+      "example_english": "The child sleeps"
+    },
+    {
+      "word": "Lumakad",
+      "pronunciation": "Lu-ma-kad",
+      "english": "To walk",
+      "category": "verbs",
+      "example": "Lumakad tayo",
+      "example_english": "Let us walk"
+    },
+    {
+      "word": "Agbasa",
+      "pronunciation": "Ag-ba-sa",
+      "english": "To read",
+      "category": "verbs",
+      "example": "Agbasa ti estudyante",
+      "example_english": "The student reads"
+    },
+    {
+      "word": "Nakem",
+      "pronunciation": "Na-kem",
+      "english": "Mind / Heart",
+      "category": "vocabulary",
+      "example": "Nakaay ti nakem",
+      "example_english": "Mind is lost"
+    },
+    {
+      "word": "Balay",
+      "pronunciation": "Ba-lay",
+      "english": "House",
+      "category": "vocabulary",
+      "example": "Dakkel ti balay",
+      "example_english": "The house is big"
+    },
+    {
+      "word": "Kalsada",
+      "pronunciation": "Kal-sa-da",
+      "english": "Road / Street",
+      "category": "vocabulary",
+      "example": "Nalinak ti kalsada",
+      "example_english": "The road is quiet"
+    },
+    {
+      "word": "Talon",
+      "pronunciation": "Ta-lon",
+      "english": "Forest / Farm",
+      "category": "nature",
+      "example": "Napinget ti talon",
+      "example_english": "The forest is dense"
+    },
+    {
+      "word": "Daga",
+      "pronunciation": "Da-ga",
+      "english": "Land / Earth",
+      "category": "nature",
+      "example": "Napateg ti daga",
+      "example_english": "The land is valuable"
+    },
+    {
+      "word": "Zinnaro",
+      "pronunciation": "Zin-na-ro",
+      "english": "River",
+      "category": "nature",
+      "example": "Nakuttong ti zinnaro",
+      "example_english": "The river is flooding"
+    },
+    {
+      "word": "Langit",
+      "pronunciation": "La-ngit",
+      "english": "Sky",
+      "category": "nature",
+      "example": "Nagaraw ti langit",
+      "example_english": "The sky is clear"
+    },
+    {
+      "word": "Ido",
+      "pronunciation": "I-do",
+      "english": "Dog",
+      "category": "animals",
+      "example": "Nabagas ti ido",
+      "example_english": "The dog is fat"
+    },
+    {
+      "word": "Pusa",
+      "pronunciation": "Pu-sa",
+      "english": "Cat",
+      "category": "animals",
+      "example": "Nakatulog ti pusa",
+      "example_english": "The cat is sleeping"
+    },
+    {
+      "word": "Manok",
+      "pronunciation": "Ma-nok",
+      "english": "Chicken",
+      "category": "animals",
+      "example": "Nabagsak ti manok",
+      "example_english": "The chicken fell"
+    },
+    {
+      "word": "Baboy",
+      "pronunciation": "Ba-boy",
+      "english": "Pig",
+      "category": "animals",
+      "example": "Nalukmeg ti baboy",
+      "example_english": "The pig is fat"
+    }
   ]
 }

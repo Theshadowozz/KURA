@@ -2,13 +2,565 @@
   "language": "Kadazan-Dusun",
   "local_name": "Kadazan-Dusun",
   "entries": [
-    {"word": "Mohd", "pronunciation": "Mohd", "english": "Hello", "category": "greetings", "example": "Mohd", "example_english": "Hello"},
-    {"word": "Sapai", "pronunciation": "Sa-pai", "english": "Goodbye", "category": "greetings", "example": "Sapai", "example_english": "Goodbye"},
-    {"word": "Suyu-suyu", "pronunciation": "Su-yu su-yu", "english": "Thank you", "category": "greetings", "example": "Suyu-suyu", "example_english": "Thank you"},
-    {"word": "Aku", "pronunciation": "A-ku", "english": "I / Me", "category": "vocabulary", "example": "Aku Kadazan", "example_english": "I am Kadazan"},
-    {"word": "Ikau", "pronunciation": "I-kau", "english": "You", "category": "vocabulary", "example": "Siapa nama ikau?", "example_english": "What is your name?"},
-    {"word": "Noo", "pronunciation": "Noo", "english": "Yes", "category": "vocabulary", "example": "Noo, paham", "example_english": "Yes I understand"},
-    {"word": "Tiyok", "pronunciation": "Ti-yok", "english": "No", "category": "vocabulary", "example": "Tiyok, tidak tahu", "example_english": "No I don't know"},
-    {"word": "Tubig", "pronunciation": "Tu-big", "english": "Water", "category": "vocabulary", "example": "Tubig dingin", "example_english": "Cold water"}
+    {
+      "word": "Tadau kau mato'o!",
+      "pronunciation": "Ta-dau kau ma-to-o",
+      "english": "Good morning!",
+      "category": "greetings",
+      "example": "Tadau kau mato'o, tomod!",
+      "example_english": "Good morning, friend!"
+    },
+    {
+      "word": "Om piho-piho koh?",
+      "pronunciation": "Om pi-ho pi-ho koh",
+      "english": "How are you?",
+      "category": "greetings",
+      "example": "Om piho-piho koh nga'an?",
+      "example_english": "How are you today?"
+    },
+    {
+      "word": "Sokogit",
+      "pronunciation": "So-ko-git",
+      "english": "Thank you",
+      "category": "greetings",
+      "example": "Sokogit om aiso hilo.",
+      "example_english": "Thank you very much."
+    },
+    {
+      "word": "Kopivosian",
+      "pronunciation": "Ko-pi-vo-si-an",
+      "english": "Welcome",
+      "category": "greetings",
+      "example": "Kopivosian dii Sabah!",
+      "example_english": "Welcome to Sabah!"
+    },
+    {
+      "word": "Kumaa koh",
+      "pronunciation": "Ku-maa koh",
+      "english": "Goodbye / Where are you going?",
+      "category": "greetings",
+      "example": "Kumaa koh? Poingon.",
+      "example_english": "Where are you going? I am going home."
+    },
+    {
+      "word": "Aiso hilo",
+      "pronunciation": "Ai-so hi-lo",
+      "english": "You're welcome / It's nothing",
+      "category": "responses",
+      "example": "Sokogit. Aiso hilo.",
+      "example_english": "Thank you. You're welcome."
+    },
+    {
+      "word": "Oo",
+      "pronunciation": "Oo",
+      "english": "Yes",
+      "category": "responses",
+      "example": "Oo, piho do.",
+      "example_english": "Yes, it is fine."
+    },
+    {
+      "word": "Adi",
+      "pronunciation": "A-di",
+      "english": "No",
+      "category": "responses",
+      "example": "Adi, oku adi poingon.",
+      "example_english": "No, I am not going."
+    },
+    {
+      "word": "Maaf",
+      "pronunciation": "Ma-af",
+      "english": "Sorry",
+      "category": "responses",
+      "example": "Maaf, oku nopo lolobou.",
+      "example_english": "Sorry, I was late."
+    },
+    {
+      "word": "Oku",
+      "pronunciation": "O-ku",
+      "english": "I / Me",
+      "category": "pronouns",
+      "example": "Oku Kadazan.",
+      "example_english": "I am Kadazan."
+    },
+    {
+      "word": "Koh",
+      "pronunciation": "Koh",
+      "english": "You",
+      "category": "pronouns",
+      "example": "Koh dii dilo?",
+      "example_english": "Where are you from?"
+    },
+    {
+      "word": "Sia",
+      "pronunciation": "Si-a",
+      "english": "He / She",
+      "category": "pronouns",
+      "example": "Sia guru dino.",
+      "example_english": "He/She is my teacher."
+    },
+    {
+      "word": "Kotobokian",
+      "pronunciation": "Ko-to-bo-ki-an",
+      "english": "We (all of us)",
+      "category": "pronouns",
+      "example": "Kotobokian om poingon.",
+      "example_english": "We all go together."
+    },
+    {
+      "word": "Sikod",
+      "pronunciation": "Si-kod",
+      "english": "They",
+      "category": "pronouns",
+      "example": "Sikod dii Kota Kinabalu.",
+      "example_english": "They are from Kota Kinabalu."
+    },
+    {
+      "word": "Iso",
+      "pronunciation": "I-so",
+      "english": "One (1)",
+      "category": "numbers",
+      "example": "Iso talam nasi.",
+      "example_english": "One plate of rice."
+    },
+    {
+      "word": "Duo",
+      "pronunciation": "Du-o",
+      "english": "Two (2)",
+      "category": "numbers",
+      "example": "Duo kopung ayal.",
+      "example_english": "Two cups of water."
+    },
+    {
+      "word": "Tolu",
+      "pronunciation": "To-lu",
+      "english": "Three (3)",
+      "category": "numbers",
+      "example": "Tolu ontok.",
+      "example_english": "Three days."
+    },
+    {
+      "word": "Apat",
+      "pronunciation": "A-pat",
+      "english": "Four (4)",
+      "category": "numbers",
+      "example": "Apat ongkod.",
+      "example_english": "Four people."
+    },
+    {
+      "word": "Limo",
+      "pronunciation": "Li-mo",
+      "english": "Five (5)",
+      "category": "numbers",
+      "example": "Limo ringgit.",
+      "example_english": "Five ringgit."
+    },
+    {
+      "word": "Onom",
+      "pronunciation": "O-nom",
+      "english": "Six (6)",
+      "category": "numbers",
+      "example": "Onom oras.",
+      "example_english": "Six hours."
+    },
+    {
+      "word": "Turu",
+      "pronunciation": "Tu-ru",
+      "english": "Seven (7)",
+      "category": "numbers",
+      "example": "Turu ontok do dingkol.",
+      "example_english": "Seven days a week."
+    },
+    {
+      "word": "Walu",
+      "pronunciation": "Wa-lu",
+      "english": "Eight (8)",
+      "category": "numbers",
+      "example": "Walu bulan.",
+      "example_english": "Eight months."
+    },
+    {
+      "word": "Siam",
+      "pronunciation": "Si-am",
+      "english": "Nine (9)",
+      "category": "numbers",
+      "example": "Siam bintang.",
+      "example_english": "Nine stars."
+    },
+    {
+      "word": "Hopod",
+      "pronunciation": "Ho-pod",
+      "english": "Ten (10)",
+      "category": "numbers",
+      "example": "Hopod minit.",
+      "example_english": "Ten minutes."
+    },
+    {
+      "word": "Agayo",
+      "pronunciation": "A-ga-yo",
+      "english": "Red",
+      "category": "colors",
+      "example": "Baju agayo i miontok.",
+      "example_english": "That red shirt is beautiful."
+    },
+    {
+      "word": "Buruq",
+      "pronunciation": "Bu-ruq",
+      "english": "Blue",
+      "category": "colors",
+      "example": "Langit buruq.",
+      "example_english": "Blue sky."
+    },
+    {
+      "word": "Tutung",
+      "pronunciation": "Tu-tung",
+      "english": "Green",
+      "category": "colors",
+      "example": "Daun tutung segar.",
+      "example_english": "Fresh green leaves."
+    },
+    {
+      "word": "Kuning",
+      "pronunciation": "Ku-ning",
+      "english": "Yellow",
+      "category": "colors",
+      "example": "Pisang kuning.",
+      "example_english": "Yellow banana."
+    },
+    {
+      "word": "Putih",
+      "pronunciation": "Pu-tih",
+      "english": "White",
+      "category": "colors",
+      "example": "Baju putih.",
+      "example_english": "White shirt."
+    },
+    {
+      "word": "Itom",
+      "pronunciation": "I-tom",
+      "english": "Black",
+      "category": "colors",
+      "example": "Pusa itom.",
+      "example_english": "Black cat."
+    },
+    {
+      "word": "Nopok",
+      "pronunciation": "No-pok",
+      "english": "Cooked rice",
+      "category": "food",
+      "example": "Oku mangan nopok dilo.",
+      "example_english": "I eat rice today."
+    },
+    {
+      "word": "Manuk",
+      "pronunciation": "Ma-nuk",
+      "english": "Chicken",
+      "category": "food",
+      "example": "Manuk notonop om miontok.",
+      "example_english": "Grilled chicken is delicious."
+    },
+    {
+      "word": "Sada",
+      "pronunciation": "Sa-da",
+      "english": "Fish",
+      "category": "food",
+      "example": "Sada dilo segar.",
+      "example_english": "Today's fish is fresh."
+    },
+    {
+      "word": "Ayal",
+      "pronunciation": "A-yal",
+      "english": "Water",
+      "category": "food",
+      "example": "Inum ayal kopio.",
+      "example_english": "Drink some water."
+    },
+    {
+      "word": "Tompok",
+      "pronunciation": "Tom-pok",
+      "english": "Bambangan (native fruit)",
+      "category": "food",
+      "example": "Tompok bambangan miontok.",
+      "example_english": "Bambangan fruit is delicious."
+    },
+    {
+      "word": "Indu",
+      "pronunciation": "In-du",
+      "english": "Mother",
+      "category": "family",
+      "example": "Indu oku pandai masak.",
+      "example_english": "My mother is good at cooking."
+    },
+    {
+      "word": "Tama",
+      "pronunciation": "Ta-ma",
+      "english": "Father",
+      "category": "family",
+      "example": "Tama oku mogihum.",
+      "example_english": "My father works hard."
+    },
+    {
+      "word": "Agi",
+      "pronunciation": "A-gi",
+      "english": "Older sibling",
+      "category": "family",
+      "example": "Agi oku dii KK.",
+      "example_english": "My older sibling is in Kota Kinabalu."
+    },
+    {
+      "word": "Adi",
+      "pronunciation": "A-di",
+      "english": "Younger sibling",
+      "category": "family",
+      "example": "Adi oku mogikolion.",
+      "example_english": "My younger sibling is still in school."
+    },
+    {
+      "word": "Tapa",
+      "pronunciation": "Ta-pa",
+      "english": "Grandfather",
+      "category": "family",
+      "example": "Tapa oku nopo toruon.",
+      "example_english": "My grandfather is already old."
+    },
+    {
+      "word": "Tina",
+      "pronunciation": "Ti-na",
+      "english": "Grandmother",
+      "category": "family",
+      "example": "Tina oku pandai mongubak.",
+      "example_english": "My grandmother is good at weaving."
+    },
+    {
+      "word": "Ulu",
+      "pronunciation": "U-lu",
+      "english": "Head",
+      "category": "body",
+      "example": "Ulu oku kiamo.",
+      "example_english": "My head hurts."
+    },
+    {
+      "word": "Mato",
+      "pronunciation": "Ma-to",
+      "english": "Eyes",
+      "category": "body",
+      "example": "Mato oku nopo koiru.",
+      "example_english": "My eyes are tired."
+    },
+    {
+      "word": "Tangan",
+      "pronunciation": "Ta-ngan",
+      "english": "Hand",
+      "category": "body",
+      "example": "Basuh tangan toboh kumaan.",
+      "example_english": "Wash hands before eating."
+    },
+    {
+      "word": "Rait",
+      "pronunciation": "Ra-it",
+      "english": "Foot / Leg",
+      "category": "body",
+      "example": "Rait oku koiru.",
+      "example_english": "My leg is tired."
+    },
+    {
+      "word": "Ontok dilo",
+      "pronunciation": "On-tok di-lo",
+      "english": "Today",
+      "category": "time",
+      "example": "Ontok dilo om ulan.",
+      "example_english": "Today it is raining."
+    },
+    {
+      "word": "Toruon",
+      "pronunciation": "To-ru-on",
+      "english": "Yesterday",
+      "category": "time",
+      "example": "Toruon oku poingon.",
+      "example_english": "Yesterday I went out."
+    },
+    {
+      "word": "Abah",
+      "pronunciation": "A-bah",
+      "english": "Tomorrow",
+      "category": "time",
+      "example": "Abah oku ko pasar.",
+      "example_english": "Tomorrow I go to the market."
+    },
+    {
+      "word": "Monduon",
+      "pronunciation": "Mon-du-on",
+      "english": "Morning",
+      "category": "time",
+      "example": "Monduon angin segar.",
+      "example_english": "Morning breeze is fresh."
+    },
+    {
+      "word": "Okon",
+      "pronunciation": "O-kon",
+      "english": "Night",
+      "category": "time",
+      "example": "Okon bintang milaab.",
+      "example_english": "Stars shine at night."
+    },
+    {
+      "word": "Miontok",
+      "pronunciation": "Mi-on-tok",
+      "english": "Good / Beautiful",
+      "category": "adjectives",
+      "example": "Kinanasan dilo miontok!",
+      "example_english": "Today's scenery is beautiful!"
+    },
+    {
+      "word": "Koilal",
+      "pronunciation": "Ko-i-lal",
+      "english": "Big",
+      "category": "adjectives",
+      "example": "Rumah koilal i.",
+      "example_english": "That house is big."
+    },
+    {
+      "word": "Kointok",
+      "pronunciation": "Ko-in-tok",
+      "english": "Small",
+      "category": "adjectives",
+      "example": "Pusa kointok miontok.",
+      "example_english": "That small cat is beautiful."
+    },
+    {
+      "word": "Panas",
+      "pronunciation": "Pa-nas",
+      "english": "Hot",
+      "category": "adjectives",
+      "example": "Panas do ontok dilo.",
+      "example_english": "Today is hot."
+    },
+    {
+      "word": "Tiis",
+      "pronunciation": "Ti-is",
+      "english": "Cold",
+      "category": "adjectives",
+      "example": "Ayal gunung tiis.",
+      "example_english": "Mountain water is cold."
+    },
+    {
+      "word": "Kumaan",
+      "pronunciation": "Ku-maan",
+      "english": "To eat",
+      "category": "verbs",
+      "example": "Oku kumaan nopok.",
+      "example_english": "I eat rice."
+    },
+    {
+      "word": "Moinum",
+      "pronunciation": "Mo-i-num",
+      "english": "To drink",
+      "category": "verbs",
+      "example": "Sia moinum kopi.",
+      "example_english": "He/she drinks coffee."
+    },
+    {
+      "word": "Mogisingkod",
+      "pronunciation": "Mo-gi-sing-kod",
+      "english": "To sleep",
+      "category": "verbs",
+      "example": "Anak dilo om mogisingkod.",
+      "example_english": "The child is sleeping."
+    },
+    {
+      "word": "Poingon",
+      "pronunciation": "Po-in-gon",
+      "english": "To go",
+      "category": "verbs",
+      "example": "Kotobokian om poingon.",
+      "example_english": "We all go."
+    },
+    {
+      "word": "Mogihum",
+      "pronunciation": "Mo-gi-hum",
+      "english": "To work",
+      "category": "verbs",
+      "example": "Tama oku mogihum.",
+      "example_english": "My father works."
+    },
+    {
+      "word": "Laut",
+      "pronunciation": "La-ut",
+      "english": "Sea / Ocean",
+      "category": "nature",
+      "example": "Laut Sabah miontok.",
+      "example_english": "Sabah's sea is beautiful."
+    },
+    {
+      "word": "Bungkul",
+      "pronunciation": "Bung-kul",
+      "english": "Hill / Mountain",
+      "category": "nature",
+      "example": "Bungkul Kinabalu na toruon.",
+      "example_english": "Mount Kinabalu is great."
+    },
+    {
+      "word": "Sungai",
+      "pronunciation": "Su-ngai",
+      "english": "River",
+      "category": "nature",
+      "example": "Sungai om moilo.",
+      "example_english": "The river flows."
+    },
+    {
+      "word": "Hutan",
+      "pronunciation": "Hu-tan",
+      "english": "Forest",
+      "category": "nature",
+      "example": "Hutan Sabah sot koilal.",
+      "example_english": "Sabah's forest is very large."
+    },
+    {
+      "word": "Ulan",
+      "pronunciation": "U-lan",
+      "english": "Rain",
+      "category": "nature",
+      "example": "Ulan tumonob.",
+      "example_english": "Rain falls."
+    },
+    {
+      "word": "Pusa",
+      "pronunciation": "Pu-sa",
+      "english": "Cat",
+      "category": "animals",
+      "example": "Pusa miontok i.",
+      "example_english": "That cat is beautiful."
+    },
+    {
+      "word": "Asu",
+      "pronunciation": "A-su",
+      "english": "Dog",
+      "category": "animals",
+      "example": "Asu poruong.",
+      "example_english": "Loyal dog."
+    },
+    {
+      "word": "Manuk poing",
+      "pronunciation": "Ma-nuk poing",
+      "english": "Bird (wild)",
+      "category": "animals",
+      "example": "Manuk poing numipit.",
+      "example_english": "Wild birds fly."
+    },
+    {
+      "word": "Buayo",
+      "pronunciation": "Bu-a-yo",
+      "english": "Crocodile",
+      "category": "animals",
+      "example": "Buayo dii sungai.",
+      "example_english": "Crocodile in the river."
+    },
+    {
+      "word": "Runsok",
+      "pronunciation": "Run-sok",
+      "english": "Proboscis monkey",
+      "category": "animals",
+      "example": "Runsok hilo dii Sabah.",
+      "example_english": "Proboscis monkeys are found in Sabah."
+    }
   ]
 }

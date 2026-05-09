@@ -2,14 +2,509 @@
   "language": "Karen",
   "local_name": "Karen",
   "entries": [
-    {"word": "Thwa ba du", "pronunciation": "Thwa ba du", "english": "Hello", "category": "greetings", "example": "Thwa ba du", "example_english": "Hello"},
-    {"word": "Thee daw", "pronunciation": "Thee daw", "english": "Goodbye", "category": "greetings", "example": "Thee daw", "example_english": "Goodbye"},
-    {"word": "Ta ku thwa ba", "pronunciation": "Ta ku thwa ba", "english": "Thank you", "category": "greetings", "example": "Ta ku thwa ba", "example_english": "Thank you"},
-    {"word": "Nah", "pronunciation": "Nah", "english": "I / Me", "category": "vocabulary", "example": "Nah Karen du", "example_english": "I am Karen"},
-    {"word": "Ma", "pronunciation": "Ma", "english": "You", "category": "vocabulary", "example": "Ma ta ba", "example_english": "You good"},
-    {"word": "Hti", "pronunciation": "Hti", "english": "Yes", "category": "vocabulary", "example": "Hti lo", "example_english": "Yes, okay"},
-    {"word": "Ma hti", "pronunciation": "Ma hti", "english": "No", "category": "vocabulary", "example": "Ma hti ba", "example_english": "No, not"},
-    {"word": "Yay", "pronunciation": "Yay", "english": "Water", "category": "vocabulary", "example": "Yay ka", "example_english": "Cold water"},
-    {"word": "Sa du", "pronunciation": "Sa du", "english": "Food", "category": "vocabulary", "example": "Sa du yu", "example_english": "Eat food"}
+    {
+      "word": "Ghaw lay",
+      "pronunciation": "Ghaw-lay",
+      "english": "Hello / How are you",
+      "category": "greetings",
+      "example": "Ghaw lay naw",
+      "example_english": "Hello to you"
+    },
+    {
+      "word": "Na thu",
+      "pronunciation": "Na-thu",
+      "english": "Thank you",
+      "category": "greetings",
+      "example": "Na thu ka nay",
+      "example_english": "Thank you very much"
+    },
+    {
+      "word": "Taw thu meh",
+      "pronunciation": "Taw-thu-meh",
+      "english": "Goodbye",
+      "category": "greetings",
+      "example": "Taw thu meh naw",
+      "example_english": "Goodbye to you"
+    },
+    {
+      "word": "Haw",
+      "pronunciation": "Haw",
+      "english": "Yes",
+      "category": "vocabulary",
+      "example": "Haw, ka nay",
+      "example_english": "Yes, very much"
+    },
+    {
+      "word": "Muh",
+      "pronunciation": "Muh",
+      "english": "No",
+      "category": "vocabulary",
+      "example": "Muh, k'naw muh ler",
+      "example_english": "No, I don't want"
+    },
+    {
+      "word": "K'naw",
+      "pronunciation": "K'naw",
+      "english": "I / Me",
+      "category": "pronouns",
+      "example": "K'naw ka pgh'aw",
+      "example_english": "I am Karen"
+    },
+    {
+      "word": "Naw",
+      "pronunciation": "Naw",
+      "english": "You (singular)",
+      "category": "pronouns",
+      "example": "Naw mer deh",
+      "example_english": "You are good"
+    },
+    {
+      "word": "Ya",
+      "pronunciation": "Ya",
+      "english": "He / She",
+      "category": "pronouns",
+      "example": "Ya ka mu",
+      "example_english": "He/She went"
+    },
+    {
+      "word": "K'poh",
+      "pronunciation": "K'poh",
+      "english": "We",
+      "category": "pronouns",
+      "example": "K'poh ka neh",
+      "example_english": "We are together"
+    },
+    {
+      "word": "Ti",
+      "pronunciation": "Ti",
+      "english": "One",
+      "category": "numbers",
+      "example": "Ti kha",
+      "example_english": "One piece"
+    },
+    {
+      "word": "Kler",
+      "pronunciation": "Kler",
+      "english": "Two",
+      "category": "numbers",
+      "example": "Kler ta",
+      "example_english": "Two people"
+    },
+    {
+      "word": "Thaw",
+      "pronunciation": "Thaw",
+      "english": "Three",
+      "category": "numbers",
+      "example": "Thaw ni",
+      "example_english": "Three days"
+    },
+    {
+      "word": "Lwi",
+      "pronunciation": "Lwi",
+      "english": "Four",
+      "category": "numbers",
+      "example": "Lwi ta",
+      "example_english": "Four people"
+    },
+    {
+      "word": "Yeh",
+      "pronunciation": "Yeh",
+      "english": "Five",
+      "category": "numbers",
+      "example": "Yeh kha",
+      "example_english": "Five things"
+    },
+    {
+      "word": "Khwa",
+      "pronunciation": "Khwa",
+      "english": "Six",
+      "category": "numbers",
+      "example": "Khwa ni",
+      "example_english": "Six days"
+    },
+    {
+      "word": "Nwi",
+      "pronunciation": "Nwi",
+      "english": "Seven",
+      "category": "numbers",
+      "example": "Nwi ta",
+      "example_english": "Seven people"
+    },
+    {
+      "word": "Hkwa",
+      "pronunciation": "Hkwa",
+      "english": "Eight",
+      "category": "numbers",
+      "example": "Hkwa kha",
+      "example_english": "Eight pieces"
+    },
+    {
+      "word": "Kwee",
+      "pronunciation": "Kwee",
+      "english": "Nine",
+      "category": "numbers",
+      "example": "Kwee ni",
+      "example_english": "Nine days"
+    },
+    {
+      "word": "Tee",
+      "pronunciation": "Tee",
+      "english": "Ten",
+      "category": "numbers",
+      "example": "Tee ta",
+      "example_english": "Ten people"
+    },
+    {
+      "word": "Neh deh",
+      "pronunciation": "Neh-deh",
+      "english": "Red",
+      "category": "colors",
+      "example": "Neh deh ma",
+      "example_english": "Red flower"
+    },
+    {
+      "word": "Weh deh",
+      "pronunciation": "Weh-deh",
+      "english": "Yellow",
+      "category": "colors",
+      "example": "Weh deh ni",
+      "example_english": "Yellow day"
+    },
+    {
+      "word": "Kheh deh",
+      "pronunciation": "Kheh-deh",
+      "english": "Green",
+      "category": "colors",
+      "example": "Kheh deh ta aw",
+      "example_english": "Green leaves"
+    },
+    {
+      "word": "Na deh",
+      "pronunciation": "Na-deh",
+      "english": "Black",
+      "category": "colors",
+      "example": "Na deh kw'lu",
+      "example_english": "Black cloth"
+    },
+    {
+      "word": "Pgh'a deh",
+      "pronunciation": "Pgh'a-deh",
+      "english": "White",
+      "category": "colors",
+      "example": "Pgh'a deh htaw",
+      "example_english": "White cloud"
+    },
+    {
+      "word": "Paw",
+      "pronunciation": "Paw",
+      "english": "Rice (cooked)",
+      "category": "food",
+      "example": "Paw mer deh",
+      "example_english": "The rice is delicious"
+    },
+    {
+      "word": "Ti",
+      "pronunciation": "Ti",
+      "english": "Water",
+      "category": "food",
+      "example": "Ti shu",
+      "example_english": "Clean water"
+    },
+    {
+      "word": "Pgh'aw",
+      "pronunciation": "Pgh'aw",
+      "english": "Meat",
+      "category": "food",
+      "example": "Pgh'aw mer deh",
+      "example_english": "The meat is delicious"
+    },
+    {
+      "word": "Nwi",
+      "pronunciation": "Nwi",
+      "english": "Fish",
+      "category": "food",
+      "example": "Nwi mer deh",
+      "example_english": "The fish is delicious"
+    },
+    {
+      "word": "Paw saw",
+      "pronunciation": "Paw-saw",
+      "english": "Vegetable",
+      "category": "food",
+      "example": "Paw saw shu",
+      "example_english": "Fresh vegetable"
+    },
+    {
+      "word": "La",
+      "pronunciation": "La",
+      "english": "Hand",
+      "category": "body",
+      "example": "La khwa",
+      "example_english": "Right hand"
+    },
+    {
+      "word": "Klaw",
+      "pronunciation": "Klaw",
+      "english": "Mouth",
+      "category": "body",
+      "example": "Klaw mer deh",
+      "example_english": "Sweet mouth"
+    },
+    {
+      "word": "Meh",
+      "pronunciation": "Meh",
+      "english": "Eye",
+      "category": "body",
+      "example": "Meh shu",
+      "example_english": "Clear eyes"
+    },
+    {
+      "word": "K'thaw",
+      "pronunciation": "K'thaw",
+      "english": "Foot",
+      "category": "body",
+      "example": "K'thaw jep",
+      "example_english": "Sore foot"
+    },
+    {
+      "word": "Ber",
+      "pronunciation": "Ber",
+      "english": "Head",
+      "category": "body",
+      "example": "Ber deh",
+      "example_english": "Head aches"
+    },
+    {
+      "word": "Pah",
+      "pronunciation": "Pah",
+      "english": "Father",
+      "category": "family",
+      "example": "Pah k'naw",
+      "example_english": "My father"
+    },
+    {
+      "word": "Mah",
+      "pronunciation": "Mah",
+      "english": "Mother",
+      "category": "family",
+      "example": "Mah k'naw",
+      "example_english": "My mother"
+    },
+    {
+      "word": "Kwa paw",
+      "pronunciation": "Kwa-paw",
+      "english": "Older brother",
+      "category": "family",
+      "example": "Kwa paw k'naw",
+      "example_english": "My older brother"
+    },
+    {
+      "word": "Mu paw",
+      "pronunciation": "Mu-paw",
+      "english": "Older sister",
+      "category": "family",
+      "example": "Mu paw k'naw",
+      "example_english": "My older sister"
+    },
+    {
+      "word": "Naw paw",
+      "pronunciation": "Naw-paw",
+      "english": "Younger sibling",
+      "category": "family",
+      "example": "Naw paw k'naw",
+      "example_english": "My younger sibling"
+    },
+    {
+      "word": "Tha la",
+      "pronunciation": "Tha-la",
+      "english": "Morning",
+      "category": "time",
+      "example": "Tha la neh",
+      "example_english": "This morning"
+    },
+    {
+      "word": "Ghaw",
+      "pronunciation": "Ghaw",
+      "english": "Afternoon",
+      "category": "time",
+      "example": "Ghaw neh",
+      "example_english": "This afternoon"
+    },
+    {
+      "word": "Ha khu",
+      "pronunciation": "Ha-khu",
+      "english": "Evening",
+      "category": "time",
+      "example": "Ha khu neh",
+      "example_english": "This evening"
+    },
+    {
+      "word": "Na",
+      "pronunciation": "Na",
+      "english": "Night",
+      "category": "time",
+      "example": "Na neh",
+      "example_english": "Tonight"
+    },
+    {
+      "word": "Ni",
+      "pronunciation": "Ni",
+      "english": "Day / Today",
+      "category": "time",
+      "example": "Ni mer deh",
+      "example_english": "Today is good"
+    },
+    {
+      "word": "Ler",
+      "pronunciation": "Ler",
+      "english": "Want / Willing",
+      "category": "adjectives",
+      "example": "K'naw ler mu",
+      "example_english": "I want to go"
+    },
+    {
+      "word": "Mer deh",
+      "pronunciation": "Mer-deh",
+      "english": "Good / Delicious",
+      "category": "adjectives",
+      "example": "Mer deh ka nay",
+      "example_english": "Very good"
+    },
+    {
+      "word": "Naw deh",
+      "pronunciation": "Naw-deh",
+      "english": "Big",
+      "category": "adjectives",
+      "example": "Naw deh pgha",
+      "example_english": "Big house"
+    },
+    {
+      "word": "Kler deh",
+      "pronunciation": "Kler-deh",
+      "english": "Small",
+      "category": "adjectives",
+      "example": "Kler deh phu",
+      "example_english": "Small bird"
+    },
+    {
+      "word": "Mu",
+      "pronunciation": "Mu",
+      "english": "To go",
+      "category": "verbs",
+      "example": "K'naw mu",
+      "example_english": "I will go"
+    },
+    {
+      "word": "Bla",
+      "pronunciation": "Bla",
+      "english": "To eat",
+      "category": "verbs",
+      "example": "K'poh bla paw",
+      "example_english": "We eat rice"
+    },
+    {
+      "word": "Ta",
+      "pronunciation": "Ta",
+      "english": "To drink",
+      "category": "verbs",
+      "example": "K'naw ta ti",
+      "example_english": "I drink water"
+    },
+    {
+      "word": "Na",
+      "pronunciation": "Na",
+      "english": "To sleep",
+      "category": "verbs",
+      "example": "Naw na",
+      "example_english": "You sleep"
+    },
+    {
+      "word": "K'ser",
+      "pronunciation": "K'ser",
+      "english": "To work",
+      "category": "verbs",
+      "example": "K'naw k'ser",
+      "example_english": "I work"
+    },
+    {
+      "word": "Pgha",
+      "pronunciation": "Pgha",
+      "english": "House / Home",
+      "category": "vocabulary",
+      "example": "Pgha k'naw",
+      "example_english": "My house"
+    },
+    {
+      "word": "Lu",
+      "pronunciation": "Lu",
+      "english": "Road / Path",
+      "category": "vocabulary",
+      "example": "Lu naw deh",
+      "example_english": "Big road"
+    },
+    {
+      "word": "Ta aw",
+      "pronunciation": "Ta-aw",
+      "english": "Forest / Tree",
+      "category": "nature",
+      "example": "Ta aw naw deh",
+      "example_english": "Big tree"
+    },
+    {
+      "word": "K'ser law",
+      "pronunciation": "K'ser-law",
+      "english": "River",
+      "category": "nature",
+      "example": "K'ser law naw deh",
+      "example_english": "Big river"
+    },
+    {
+      "word": "Mu kaw",
+      "pronunciation": "Mu-kaw",
+      "english": "Sky",
+      "category": "nature",
+      "example": "Mu kaw shu",
+      "example_english": "Clear sky"
+    },
+    {
+      "word": "K'law",
+      "pronunciation": "K'law",
+      "english": "Dog",
+      "category": "animals",
+      "example": "K'law mer deh",
+      "example_english": "Good dog"
+    },
+    {
+      "word": "Meh la",
+      "pronunciation": "Meh-la",
+      "english": "Cat",
+      "category": "animals",
+      "example": "Meh la kler deh",
+      "example_english": "Small cat"
+    },
+    {
+      "word": "Kh'ta",
+      "pronunciation": "Kh'ta",
+      "english": "Chicken",
+      "category": "animals",
+      "example": "Kh'ta mer deh",
+      "example_english": "Good chicken"
+    },
+    {
+      "word": "Kh'phu",
+      "pronunciation": "Kh'phu",
+      "english": "Pig",
+      "category": "animals",
+      "example": "Kh'phu naw deh",
+      "example_english": "Big pig"
+    },
+    {
+      "word": "Kh'cho",
+      "pronunciation": "Kh'cho",
+      "english": "Elephant",
+      "category": "animals",
+      "example": "Kh'cho naw ka nay",
+      "example_english": "Very big elephant"
+    }
   ]
 }

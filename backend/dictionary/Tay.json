@@ -2,13 +2,533 @@
   "language": "Tay",
   "local_name": "Tay",
   "entries": [
-    {"word": "Xin chào", "pronunciation": "Sin chao", "english": "Hello", "category": "greetings", "example": "Xin chào anh", "example_english": "Hello sir"},
-    {"word": "Tạm biệt", "pronunciation": "Tam biet", "english": "Goodbye", "category": "greetings", "example": "Tạm biệt nhé", "example_english": "Goodbye"},
-    {"word": "Cảm ơn", "pronunciation": "Cam on", "english": "Thank you", "category": "greetings", "example": "Cảm ơn rất nhiều", "example_english": "Thank you very much"},
-    {"word": "Tôi", "pronunciation": "Toi", "english": "I / Me", "category": "vocabulary", "example": "Tôi từ dân tộc Tày", "example_english": "I am Tay ethnic"},
-    {"word": "Bạn", "pronunciation": "Ban", "english": "You / Friend", "category": "vocabulary", "example": "Bạn tên gì?", "example_english": "What is your name?"},
-    {"word": "Được", "pronunciation": "Duoc", "english": "Yes / OK", "category": "vocabulary", "example": "Được rồi, tôi hiểu", "example_english": "OK I understand"},
-    {"word": "Không", "pronunciation": "Khong", "english": "No", "category": "vocabulary", "example": "Không, tôi không biết", "example_english": "No I don't know"},
-    {"word": "Nước", "pronunciation": "Nuoc", "english": "Water", "category": "vocabulary", "example": "Nước lạnh", "example_english": "Cold water"}
+    {
+      "word": "Chào bjoóc",
+      "pronunciation": "Chao-bjooc",
+      "english": "Hello / Good morning",
+      "category": "greetings",
+      "example": "Chào bjoóc lẻo",
+      "example_english": "Good morning to you"
+    },
+    {
+      "word": "Ơn đảy",
+      "pronunciation": "On-day",
+      "english": "Thank you",
+      "category": "greetings",
+      "example": "Ơn đảy nặm",
+      "example_english": "Thank you very much"
+    },
+    {
+      "word": "Slái pây",
+      "pronunciation": "Slai-pay",
+      "english": "Goodbye",
+      "category": "greetings",
+      "example": "Slái pây, phjặt bjoóc mự",
+      "example_english": "Goodbye, see you tomorrow"
+    },
+    {
+      "word": "Áo",
+      "pronunciation": "Ao",
+      "english": "Yes",
+      "category": "vocabulary",
+      "example": "Áo, toi nắm đặy",
+      "example_english": "Yes, I understand"
+    },
+    {
+      "word": "Bấu",
+      "pronunciation": "Bau",
+      "english": "No / Not",
+      "category": "vocabulary",
+      "example": "Bấu ơn",
+      "example_english": "No thanks"
+    },
+    {
+      "word": "Ỉnh",
+      "pronunciation": "Inh",
+      "english": "I / Me",
+      "category": "pronouns",
+      "example": "Ỉnh pên khỏn Tày",
+      "example_english": "I am Tay"
+    },
+    {
+      "word": "Mẻng",
+      "pronunciation": "Meng",
+      "english": "You",
+      "category": "pronouns",
+      "example": "Mẻng slứ khỏe bấu",
+      "example_english": "Are you well?"
+    },
+    {
+      "word": "Pỉa",
+      "pronunciation": "Pia",
+      "english": "He / She",
+      "category": "pronouns",
+      "example": "Pỉa pây hênh",
+      "example_english": "He/She went to work"
+    },
+    {
+      "word": "Hao",
+      "pronunciation": "Hao",
+      "english": "We",
+      "category": "pronouns",
+      "example": "Hao pây cùng",
+      "example_english": "We go together"
+    },
+    {
+      "word": "Nứng",
+      "pronunciation": "Nung",
+      "english": "One",
+      "category": "numbers",
+      "example": "Nứng phén",
+      "example_english": "One piece"
+    },
+    {
+      "word": "Slỏng",
+      "pronunciation": "Slong",
+      "english": "Two",
+      "category": "numbers",
+      "example": "Slỏng khỏn",
+      "example_english": "Two people"
+    },
+    {
+      "word": "Slam",
+      "pronunciation": "Slam",
+      "english": "Three",
+      "category": "numbers",
+      "example": "Slam mự",
+      "example_english": "Three days"
+    },
+    {
+      "word": "Slí",
+      "pronunciation": "Sli",
+      "english": "Four",
+      "category": "numbers",
+      "example": "Slí pý",
+      "example_english": "Four years"
+    },
+    {
+      "word": "Hả",
+      "pronunciation": "Ha",
+      "english": "Five",
+      "category": "numbers",
+      "example": "Hả phén",
+      "example_english": "Five pieces"
+    },
+    {
+      "word": "Hók",
+      "pronunciation": "Hok",
+      "english": "Six",
+      "category": "numbers",
+      "example": "Hók dương",
+      "example_english": "Six months"
+    },
+    {
+      "word": "Chet",
+      "pronunciation": "Chet",
+      "english": "Seven",
+      "category": "numbers",
+      "example": "Chet mự",
+      "example_english": "Seven days"
+    },
+    {
+      "word": "Pét",
+      "pronunciation": "Pet",
+      "english": "Eight",
+      "category": "numbers",
+      "example": "Pét khỏn",
+      "example_english": "Eight people"
+    },
+    {
+      "word": "Cẩu",
+      "pronunciation": "Cau",
+      "english": "Nine",
+      "category": "numbers",
+      "example": "Cẩu phén",
+      "example_english": "Nine pieces"
+    },
+    {
+      "word": "Síp",
+      "pronunciation": "Sip",
+      "english": "Ten",
+      "category": "numbers",
+      "example": "Síp mự",
+      "example_english": "Ten days"
+    },
+    {
+      "word": "Đỏ",
+      "pronunciation": "Do",
+      "english": "Red",
+      "category": "colors",
+      "example": "Bjoóc đỏ đây",
+      "example_english": "Beautiful red flower"
+    },
+    {
+      "word": "Vàng",
+      "pronunciation": "Vang",
+      "english": "Yellow",
+      "category": "colors",
+      "example": "Ná vàng",
+      "example_english": "Yellow rice field"
+    },
+    {
+      "word": "Khjéo",
+      "pronunciation": "Khjeo",
+      "english": "Green",
+      "category": "colors",
+      "example": "Phjia khjéo",
+      "example_english": "Green mountain"
+    },
+    {
+      "word": "Đăm",
+      "pronunciation": "Dam",
+      "english": "Black",
+      "category": "colors",
+      "example": "Phia đăm",
+      "example_english": "Black mountain"
+    },
+    {
+      "word": "Ẻn",
+      "pronunciation": "En",
+      "english": "White",
+      "category": "colors",
+      "example": "Phà ẻn",
+      "example_english": "White cloud"
+    },
+    {
+      "word": "Lam",
+      "pronunciation": "Lam",
+      "english": "Blue / Indigo",
+      "category": "colors",
+      "example": "Fà lam",
+      "example_english": "Blue sky"
+    },
+    {
+      "word": "Kháu nựa",
+      "pronunciation": "Khau-nua",
+      "english": "Cooked rice",
+      "category": "food",
+      "example": "Kháu nựa slứ kin",
+      "example_english": "The rice is ready to eat"
+    },
+    {
+      "word": "Nặm",
+      "pronunciation": "Nam",
+      "english": "Water",
+      "category": "food",
+      "example": "Nặm ín",
+      "example_english": "Clean water"
+    },
+    {
+      "word": "Pa",
+      "pronunciation": "Pa",
+      "english": "Fish",
+      "category": "food",
+      "example": "Pa pỉnh tộp",
+      "example_english": "Grilled fish"
+    },
+    {
+      "word": "Thịt",
+      "pronunciation": "Thit",
+      "english": "Meat",
+      "category": "food",
+      "example": "Thịt lợn",
+      "example_english": "Pork"
+    },
+    {
+      "word": "Phắc",
+      "pronunciation": "Phac",
+      "english": "Vegetable",
+      "category": "food",
+      "example": "Phắc slứ kin",
+      "example_english": "Fresh vegetable"
+    },
+    {
+      "word": "Mỉ",
+      "pronunciation": "Mi",
+      "english": "Hand",
+      "category": "body",
+      "example": "Mỉ khjắu",
+      "example_english": "Right hand"
+    },
+    {
+      "word": "Lắc",
+      "pronunciation": "Lac",
+      "english": "Mouth",
+      "category": "body",
+      "example": "Lắc vản",
+      "example_english": "Sweet mouth"
+    },
+    {
+      "word": "Ta",
+      "pronunciation": "Ta",
+      "english": "Eye",
+      "category": "body",
+      "example": "Ta ín",
+      "example_english": "Clear eyes"
+    },
+    {
+      "word": "Tìn",
+      "pronunciation": "Tin",
+      "english": "Foot",
+      "category": "body",
+      "example": "Tìn cẩu",
+      "example_english": "Aching foot"
+    },
+    {
+      "word": "Hua",
+      "pronunciation": "Hua",
+      "english": "Head",
+      "category": "body",
+      "example": "Hua phong",
+      "example_english": "Headache"
+    },
+    {
+      "word": "Pố",
+      "pronunciation": "Po",
+      "english": "Father",
+      "category": "family",
+      "example": "Pố ỉnh",
+      "example_english": "My father"
+    },
+    {
+      "word": "Mẹ",
+      "pronunciation": "Me",
+      "english": "Mother",
+      "category": "family",
+      "example": "Mẹ ỉnh",
+      "example_english": "My mother"
+    },
+    {
+      "word": "Ải",
+      "pronunciation": "Ai",
+      "english": "Older brother",
+      "category": "family",
+      "example": "Ải ỉnh",
+      "example_english": "My older brother"
+    },
+    {
+      "word": "Ế",
+      "pronunciation": "E",
+      "english": "Older sister",
+      "category": "family",
+      "example": "Ế ỉnh",
+      "example_english": "My older sister"
+    },
+    {
+      "word": "Noọng",
+      "pronunciation": "Noong",
+      "english": "Younger sibling",
+      "category": "family",
+      "example": "Noọng ỉnh",
+      "example_english": "My younger sibling"
+    },
+    {
+      "word": "Bjoóc sáng",
+      "pronunciation": "Bjooc-sang",
+      "english": "Morning",
+      "category": "time",
+      "example": "Bjoóc sáng nị",
+      "example_english": "This morning"
+    },
+    {
+      "word": "Ngầy",
+      "pronunciation": "Ngay",
+      "english": "Day",
+      "category": "time",
+      "example": "Ngầy nị",
+      "example_english": "Today"
+    },
+    {
+      "word": "Kham",
+      "pronunciation": "Kham",
+      "english": "Evening",
+      "category": "time",
+      "example": "Kham nị",
+      "example_english": "This evening"
+    },
+    {
+      "word": "Đêm",
+      "pronunciation": "Dem",
+      "english": "Night",
+      "category": "time",
+      "example": "Đêm nị",
+      "example_english": "Tonight"
+    },
+    {
+      "word": "Dương nị",
+      "pronunciation": "Duong-ni",
+      "english": "This month",
+      "category": "time",
+      "example": "Dương nị bặn",
+      "example_english": "This month is busy"
+    },
+    {
+      "word": "Đây",
+      "pronunciation": "Day",
+      "english": "Good / Beautiful",
+      "category": "adjectives",
+      "example": "Đây hặt",
+      "example_english": "Very good"
+    },
+    {
+      "word": "Ét",
+      "pronunciation": "Et",
+      "english": "Small",
+      "category": "adjectives",
+      "example": "Rườn ét",
+      "example_english": "Small house"
+    },
+    {
+      "word": "To",
+      "pronunciation": "To",
+      "english": "Big / Large",
+      "category": "adjectives",
+      "example": "Rườn to",
+      "example_english": "Big house"
+    },
+    {
+      "word": "Lẩu",
+      "pronunciation": "Lau",
+      "english": "Hot",
+      "category": "adjectives",
+      "example": "Mự lẩu",
+      "example_english": "Hot day"
+    },
+    {
+      "word": "Ẻn",
+      "pronunciation": "En",
+      "english": "Cool / Cold",
+      "category": "adjectives",
+      "example": "Nặm ẻn",
+      "example_english": "Cold water"
+    },
+    {
+      "word": "Kin",
+      "pronunciation": "Kin",
+      "english": "To eat",
+      "category": "verbs",
+      "example": "Hao kin kháu",
+      "example_english": "We eat rice"
+    },
+    {
+      "word": "Ẩm",
+      "pronunciation": "Am",
+      "english": "To drink",
+      "category": "verbs",
+      "example": "Ẩm nặm",
+      "example_english": "Drink water"
+    },
+    {
+      "word": "Hênh",
+      "pronunciation": "Henh",
+      "english": "To work",
+      "category": "verbs",
+      "example": "Pỉa hênh nà",
+      "example_english": "He/She works in the field"
+    },
+    {
+      "word": "Lẩu",
+      "pronunciation": "Lau",
+      "english": "To sleep",
+      "category": "verbs",
+      "example": "Noọng lẩu",
+      "example_english": "Younger sibling sleeps"
+    },
+    {
+      "word": "Pây",
+      "pronunciation": "Pay",
+      "english": "To go",
+      "category": "verbs",
+      "example": "Hao pây cùng",
+      "example_english": "We go together"
+    },
+    {
+      "word": "Rườn",
+      "pronunciation": "Ruon",
+      "english": "House / Home",
+      "category": "vocabulary",
+      "example": "Rườn ỉnh",
+      "example_english": "My house"
+    },
+    {
+      "word": "Tàng",
+      "pronunciation": "Tang",
+      "english": "Road / Path",
+      "category": "vocabulary",
+      "example": "Tàng to",
+      "example_english": "Wide road"
+    },
+    {
+      "word": "Dong",
+      "pronunciation": "Dong",
+      "english": "Forest",
+      "category": "nature",
+      "example": "Dong khjéo",
+      "example_english": "Green forest"
+    },
+    {
+      "word": "Đin",
+      "pronunciation": "Din",
+      "english": "Land / Earth",
+      "category": "nature",
+      "example": "Đin mỡ",
+      "example_english": "Fertile land"
+    },
+    {
+      "word": "Nặm",
+      "pronunciation": "Nam",
+      "english": "River / Water",
+      "category": "nature",
+      "example": "Nặm Khây",
+      "example_english": "The Cay River"
+    },
+    {
+      "word": "Phà",
+      "pronunciation": "Pha",
+      "english": "Sky / Cloud",
+      "category": "nature",
+      "example": "Phà lam",
+      "example_english": "Blue sky"
+    },
+    {
+      "word": "Ma",
+      "pronunciation": "Ma",
+      "english": "Dog",
+      "category": "animals",
+      "example": "Ma đây",
+      "example_english": "Good dog"
+    },
+    {
+      "word": "Miêu",
+      "pronunciation": "Mieu",
+      "english": "Cat",
+      "category": "animals",
+      "example": "Miêu ét",
+      "example_english": "Small cat"
+    },
+    {
+      "word": "Cáy",
+      "pronunciation": "Cay",
+      "english": "Chicken",
+      "category": "animals",
+      "example": "Cáy đây",
+      "example_english": "Good chicken"
+    },
+    {
+      "word": "Mỏ",
+      "pronunciation": "Mo",
+      "english": "Pig",
+      "category": "animals",
+      "example": "Mỏ to",
+      "example_english": "Big pig"
+    },
+    {
+      "word": "Chang",
+      "pronunciation": "Chang",
+      "english": "Elephant",
+      "category": "animals",
+      "example": "Chang to hặt",
+      "example_english": "The elephant is very big"
+    }
   ]
 }

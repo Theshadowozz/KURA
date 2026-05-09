@@ -1,14 +1,534 @@
 {
   "language": "Khmer Krom",
-  "local_name": "ខ្មែរក្រោម",
+  "local_name": "ភាសាខ្មែរក្រោម",
   "entries": [
-    {"word": "សូមស្វាគមន៍", "pronunciation": "Sum svagom", "english": "Hello / Welcome", "category": "greetings", "example": "សូមស្វាគមន៍មក​ខ្មែរក្រោម", "example_english": "Welcome to Khmer Krom"},
-    {"word": "លាសិនហើយ", "pronunciation": "La sin haey", "english": "Goodbye", "category": "greetings", "example": "លាសិនហើយ", "example_english": "Goodbye"},
-    {"word": "សូមអរគុណ", "pronunciation": "Sum orkun", "english": "Thank you", "category": "greetings", "example": "សូមអរគុណច្រើន", "example_english": "Thank you very much"},
-    {"word": "ខ្ញុំ", "pronunciation": "Khnhom", "english": "I / Me", "category": "vocabulary", "example": "ខ្ញុំមកពីខ្មែរក្រោម", "example_english": "I am from Khmer Krom"},
-    {"word": "អ្នក", "pronunciation": "Anak", "english": "You", "category": "vocabulary", "example": "អ្នកឈ្មោះថាអ្វី", "example_english": "What is your name?"},
-    {"word": "បាទ", "pronunciation": "Bat", "english": "Yes", "category": "vocabulary", "example": "បាទ ខ្ញុំយល់", "example_english": "Yes I understand"},
-    {"word": "ទេ", "pronunciation": "Te", "english": "No", "category": "vocabulary", "example": "ទេ ខ្ញុំមិនដឹង", "example_english": "No I don't know"},
-    {"word": "ទឹក", "pronunciation": "Teuk", "english": "Water", "category": "vocabulary", "example": "ទឹកត្រជាក់", "example_english": "Cold water"}
+    {
+      "word": "Chum reap suor",
+      "pronunciation": "Chum-reap-suor",
+      "english": "Hello (formal)",
+      "category": "greetings",
+      "example": "Chum reap suor, neak",
+      "example_english": "Hello to you"
+    },
+    {
+      "word": "Akun",
+      "pronunciation": "A-kun",
+      "english": "Thank you",
+      "category": "greetings",
+      "example": "Akun cher nah",
+      "example_english": "Thank you very much"
+    },
+    {
+      "word": "Lia haey",
+      "pronunciation": "Lia-haey",
+      "english": "Goodbye",
+      "category": "greetings",
+      "example": "Lia haey, chup juvob teav",
+      "example_english": "Goodbye, see you again"
+    },
+    {
+      "word": "Bat / Jah",
+      "pronunciation": "Bat / Jah",
+      "english": "Yes (male/female)",
+      "category": "vocabulary",
+      "example": "Bat, knyom deng",
+      "example_english": "Yes, I know"
+    },
+    {
+      "word": "Te",
+      "pronunciation": "Te",
+      "english": "No / Not",
+      "category": "vocabulary",
+      "example": "Te, knyom min deng te",
+      "example_english": "No, I don't know"
+    },
+    {
+      "word": "Knyom",
+      "pronunciation": "Knyom",
+      "english": "I / Me",
+      "category": "pronouns",
+      "example": "Knyom pên Khmer",
+      "example_english": "I am Khmer"
+    },
+    {
+      "word": "Neak",
+      "pronunciation": "Neak",
+      "english": "You (respectful)",
+      "category": "pronouns",
+      "example": "Neak sok sabai te",
+      "example_english": "Are you well?"
+    },
+    {
+      "word": "Ke / Vea",
+      "pronunciation": "Ke / Vea",
+      "english": "He / She",
+      "category": "pronouns",
+      "example": "Ke twer kar",
+      "example_english": "He/She works"
+    },
+    {
+      "word": "Yeung",
+      "pronunciation": "Yeung",
+      "english": "We",
+      "category": "pronouns",
+      "example": "Yeung tev chhnam",
+      "example_english": "We go to the fields"
+    },
+    {
+      "word": "Muy",
+      "pronunciation": "Muy",
+      "english": "One",
+      "category": "numbers",
+      "example": "Muy dal",
+      "example_english": "One piece"
+    },
+    {
+      "word": "Pi",
+      "pronunciation": "Pi",
+      "english": "Two",
+      "category": "numbers",
+      "example": "Pi neak",
+      "example_english": "Two people"
+    },
+    {
+      "word": "Bei",
+      "pronunciation": "Bei",
+      "english": "Three",
+      "category": "numbers",
+      "example": "Bei thngai",
+      "example_english": "Three days"
+    },
+    {
+      "word": "Buon",
+      "pronunciation": "Buon",
+      "english": "Four",
+      "category": "numbers",
+      "example": "Buon chnam",
+      "example_english": "Four years"
+    },
+    {
+      "word": "Pram",
+      "pronunciation": "Pram",
+      "english": "Five",
+      "category": "numbers",
+      "example": "Pram dal",
+      "example_english": "Five pieces"
+    },
+    {
+      "word": "Pram muy",
+      "pronunciation": "Pram-muy",
+      "english": "Six",
+      "category": "numbers",
+      "example": "Pram muy thngai",
+      "example_english": "Six days"
+    },
+    {
+      "word": "Pram pi",
+      "pronunciation": "Pram-pi",
+      "english": "Seven",
+      "category": "numbers",
+      "example": "Pram pi thngai",
+      "example_english": "Seven days"
+    },
+    {
+      "word": "Pram bei",
+      "pronunciation": "Pram-bei",
+      "english": "Eight",
+      "category": "numbers",
+      "example": "Pram bei neak",
+      "example_english": "Eight people"
+    },
+    {
+      "word": "Pram buon",
+      "pronunciation": "Pram-buon",
+      "english": "Nine",
+      "category": "numbers",
+      "example": "Pram buon thngai",
+      "example_english": "Nine days"
+    },
+    {
+      "word": "Dop",
+      "pronunciation": "Dop",
+      "english": "Ten",
+      "category": "numbers",
+      "example": "Dop thngai",
+      "example_english": "Ten days"
+    },
+    {
+      "word": "Krahorm",
+      "pronunciation": "Kra-horm",
+      "english": "Red",
+      "category": "colors",
+      "example": "Phka krahorm",
+      "example_english": "Red flower"
+    },
+    {
+      "word": "Loeung",
+      "pronunciation": "Loe-ung",
+      "english": "Yellow",
+      "category": "colors",
+      "example": "Slek loeung",
+      "example_english": "Yellow leaf"
+    },
+    {
+      "word": "Baitong",
+      "pronunciation": "Bai-tong",
+      "english": "Green",
+      "category": "colors",
+      "example": "Deum baitong",
+      "example_english": "Green tree"
+    },
+    {
+      "word": "Krohorm",
+      "pronunciation": "Kro-horm",
+      "english": "Black",
+      "category": "colors",
+      "example": "Pises krohorm",
+      "example_english": "Black special"
+    },
+    {
+      "word": "Sor",
+      "pronunciation": "Sor",
+      "english": "White",
+      "category": "colors",
+      "example": "Aow sor",
+      "example_english": "White shirt"
+    },
+    {
+      "word": "Phieak",
+      "pronunciation": "Phieak",
+      "english": "Blue",
+      "category": "colors",
+      "example": "Maek phieak",
+      "example_english": "Blue sky"
+    },
+    {
+      "word": "Bay",
+      "pronunciation": "Bay",
+      "english": "Cooked rice",
+      "category": "food",
+      "example": "Bay chhnganh",
+      "example_english": "Delicious rice"
+    },
+    {
+      "word": "Teuk",
+      "pronunciation": "Teuk",
+      "english": "Water",
+      "category": "food",
+      "example": "Teuk saat",
+      "example_english": "Clean water"
+    },
+    {
+      "word": "Trey",
+      "pronunciation": "Trey",
+      "english": "Fish",
+      "category": "food",
+      "example": "Trey ang",
+      "example_english": "Grilled fish"
+    },
+    {
+      "word": "Sach",
+      "pronunciation": "Sach",
+      "english": "Meat",
+      "category": "food",
+      "example": "Sach chrouk",
+      "example_english": "Pork"
+    },
+    {
+      "word": "Bonlae",
+      "pronunciation": "Bon-lae",
+      "english": "Vegetable",
+      "category": "food",
+      "example": "Bonlae sod",
+      "example_english": "Fresh vegetable"
+    },
+    {
+      "word": "Dai",
+      "pronunciation": "Dai",
+      "english": "Hand",
+      "category": "body",
+      "example": "Dai sdam",
+      "example_english": "Right hand"
+    },
+    {
+      "word": "Moat",
+      "pronunciation": "Moat",
+      "english": "Mouth",
+      "category": "body",
+      "example": "Moat phem",
+      "example_english": "Sweet mouth"
+    },
+    {
+      "word": "Phneak",
+      "pronunciation": "Phneak",
+      "english": "Eye",
+      "category": "body",
+      "example": "Phneak saat",
+      "example_english": "Clear eyes"
+    },
+    {
+      "word": "Cheung",
+      "pronunciation": "Cheung",
+      "english": "Foot / Leg",
+      "category": "body",
+      "example": "Cheung chhoeu",
+      "example_english": "Aching leg"
+    },
+    {
+      "word": "Kdor",
+      "pronunciation": "Kdor",
+      "english": "Head",
+      "category": "body",
+      "example": "Kdor chhoeu",
+      "example_english": "Headache"
+    },
+    {
+      "word": "Aupuk",
+      "pronunciation": "Au-puk",
+      "english": "Father",
+      "category": "family",
+      "example": "Aupuk knyom",
+      "example_english": "My father"
+    },
+    {
+      "word": "Mae",
+      "pronunciation": "Mae",
+      "english": "Mother",
+      "category": "family",
+      "example": "Mae knyom",
+      "example_english": "My mother"
+    },
+    {
+      "word": "Bong",
+      "pronunciation": "Bong",
+      "english": "Older sibling",
+      "category": "family",
+      "example": "Bong proh",
+      "example_english": "Older brother"
+    },
+    {
+      "word": "P'aun",
+      "pronunciation": "P'aun",
+      "english": "Younger sibling",
+      "category": "family",
+      "example": "P'aun srey",
+      "example_english": "Younger sister"
+    },
+    {
+      "word": "Ta / Yey",
+      "pronunciation": "Ta / Yey",
+      "english": "Grandfather / Grandmother",
+      "category": "family",
+      "example": "Ta yey knyom",
+      "example_english": "My grandparents"
+    },
+    {
+      "word": "Preuk",
+      "pronunciation": "Preuk",
+      "english": "Morning",
+      "category": "time",
+      "example": "Preuk nih",
+      "example_english": "This morning"
+    },
+    {
+      "word": "Rsel",
+      "pronunciation": "Rsel",
+      "english": "Noon / Afternoon",
+      "category": "time",
+      "example": "Rsel nih",
+      "example_english": "This afternoon"
+    },
+    {
+      "word": "Lngaich",
+      "pronunciation": "Lngaich",
+      "english": "Evening",
+      "category": "time",
+      "example": "Lngaich nih",
+      "example_english": "This evening"
+    },
+    {
+      "word": "Yup",
+      "pronunciation": "Yup",
+      "english": "Night",
+      "category": "time",
+      "example": "Yup nih",
+      "example_english": "Tonight"
+    },
+    {
+      "word": "Thngai nih",
+      "pronunciation": "Thngai-nih",
+      "english": "Today",
+      "category": "time",
+      "example": "Thngai nih la-or",
+      "example_english": "Today is good"
+    },
+    {
+      "word": "La-or",
+      "pronunciation": "La-or",
+      "english": "Good / Beautiful",
+      "category": "adjectives",
+      "example": "La-or nah",
+      "example_english": "Very good"
+    },
+    {
+      "word": "Toch",
+      "pronunciation": "Toch",
+      "english": "Small",
+      "category": "adjectives",
+      "example": "Pteah toch",
+      "example_english": "Small house"
+    },
+    {
+      "word": "Thom",
+      "pronunciation": "Thom",
+      "english": "Big / Large",
+      "category": "adjectives",
+      "example": "Pteah thom",
+      "example_english": "Big house"
+    },
+    {
+      "word": "Kdao",
+      "pronunciation": "Kdao",
+      "english": "Hot",
+      "category": "adjectives",
+      "example": "Thngai kdao",
+      "example_english": "Hot day"
+    },
+    {
+      "word": "Trocheaq",
+      "pronunciation": "Tro-cheaq",
+      "english": "Cool / Cold",
+      "category": "adjectives",
+      "example": "Teuk trocheaq",
+      "example_english": "Cold water"
+    },
+    {
+      "word": "Nham",
+      "pronunciation": "Nham",
+      "english": "To eat",
+      "category": "verbs",
+      "example": "Knyom nham bay",
+      "example_english": "I eat rice"
+    },
+    {
+      "word": "Phouk",
+      "pronunciation": "Phouk",
+      "english": "To drink",
+      "category": "verbs",
+      "example": "Phouk teuk",
+      "example_english": "Drink water"
+    },
+    {
+      "word": "Twer kar",
+      "pronunciation": "Twer-kar",
+      "english": "To work",
+      "category": "verbs",
+      "example": "Ke twer kar",
+      "example_english": "He/She works"
+    },
+    {
+      "word": "Dek lenh",
+      "pronunciation": "Dek-lenh",
+      "english": "To sleep",
+      "category": "verbs",
+      "example": "P'aun dek lenh",
+      "example_english": "Younger sibling sleeps"
+    },
+    {
+      "word": "Dor",
+      "pronunciation": "Dor",
+      "english": "To walk",
+      "category": "verbs",
+      "example": "Yeung dor",
+      "example_english": "We walk"
+    },
+    {
+      "word": "Pteah",
+      "pronunciation": "Pteah",
+      "english": "House / Home",
+      "category": "vocabulary",
+      "example": "Pteah knyom",
+      "example_english": "My house"
+    },
+    {
+      "word": "Phlov",
+      "pronunciation": "Phlov",
+      "english": "Road / Path",
+      "category": "vocabulary",
+      "example": "Phlov thom",
+      "example_english": "Wide road"
+    },
+    {
+      "word": "Prey",
+      "pronunciation": "Prey",
+      "english": "Forest",
+      "category": "nature",
+      "example": "Prey thom",
+      "example_english": "Big forest"
+    },
+    {
+      "word": "Dei",
+      "pronunciation": "Dei",
+      "english": "Land / Earth",
+      "category": "nature",
+      "example": "Dei la-or",
+      "example_english": "Good land"
+    },
+    {
+      "word": "Tonle",
+      "pronunciation": "Ton-le",
+      "english": "River / Lake",
+      "category": "nature",
+      "example": "Tonle Sap",
+      "example_english": "Tonle Sap lake"
+    },
+    {
+      "word": "Maek",
+      "pronunciation": "Maek",
+      "english": "Sky",
+      "category": "nature",
+      "example": "Maek phieak",
+      "example_english": "Blue sky"
+    },
+    {
+      "word": "Chke",
+      "pronunciation": "Chke",
+      "english": "Dog",
+      "category": "animals",
+      "example": "Chke la-or",
+      "example_english": "Good dog"
+    },
+    {
+      "word": "Mao",
+      "pronunciation": "Mao",
+      "english": "Cat",
+      "category": "animals",
+      "example": "Mao sor",
+      "example_english": "White cat"
+    },
+    {
+      "word": "Moan",
+      "pronunciation": "Moan",
+      "english": "Chicken",
+      "category": "animals",
+      "example": "Moan ang",
+      "example_english": "Grilled chicken"
+    },
+    {
+      "word": "Chrouk",
+      "pronunciation": "Chrouk",
+      "english": "Pig",
+      "category": "animals",
+      "example": "Chrouk thom",
+      "example_english": "Big pig"
+    },
+    {
+      "word": "Damrey",
+      "pronunciation": "Dam-rey",
+      "english": "Elephant",
+      "category": "animals",
+      "example": "Damrey thom",
+      "example_english": "Big elephant"
+    }
   ]
 }

@@ -2,13 +2,629 @@
   "language": "Cebuano",
   "local_name": "Cebuano",
   "entries": [
-    {"word": "Kamusta", "pronunciation": "Ka-mus-ta", "english": "Hello / How are you?", "category": "greetings", "example": "Kamusta ka?", "example_english": "How are you?"},
-    {"word": "Paalam", "pronunciation": "Pa-a-lam", "english": "Goodbye", "category": "greetings", "example": "Paalam na", "example_english": "Goodbye now"},
-    {"word": "Salamat", "pronunciation": "Sa-la-mat", "english": "Thank you", "category": "greetings", "example": "Salamat ng malaki", "example_english": "Thank you very much"},
-    {"word": "Ako", "pronunciation": "A-ko", "english": "I / Me", "category": "vocabulary", "example": "Ako taga Cebuano", "example_english": "I am from Cebuano"},
-    {"word": "Ikaw", "pronunciation": "I-kaw", "english": "You", "category": "vocabulary", "example": "Unsa ang pangalan mo?", "example_english": "What is your name?"},
-    {"word": "Oo", "pronunciation": "O-o", "english": "Yes", "category": "vocabulary", "example": "Oo, nakaintindi", "example_english": "Yes I understand"},
-    {"word": "Dili", "pronunciation": "Di-li", "english": "No", "category": "vocabulary", "example": "Dili, wala akong alam", "example_english": "No I don't know"},
-    {"word": "Tubig", "pronunciation": "Tu-big", "english": "Water", "category": "vocabulary", "example": "Tubig na malamig", "example_english": "Cold water"}
+    {
+      "word": "Maayong buntag",
+      "pronunciation": "Ma-a-yong bun-tag",
+      "english": "Good morning",
+      "category": "greetings",
+      "example": "Maayong buntag, tanan!",
+      "example_english": "Good morning, everyone!"
+    },
+    {
+      "word": "Maayong hapon",
+      "pronunciation": "Ma-a-yong ha-pon",
+      "english": "Good afternoon",
+      "category": "greetings",
+      "example": "Maayong hapon, maestra.",
+      "example_english": "Good afternoon, teacher."
+    },
+    {
+      "word": "Maayong gabii",
+      "pronunciation": "Ma-a-yong ga-bii",
+      "english": "Good evening",
+      "category": "greetings",
+      "example": "Maayong gabii, manong.",
+      "example_english": "Good evening, sir."
+    },
+    {
+      "word": "Kumusta ka?",
+      "pronunciation": "Ku-mus-ta ka",
+      "english": "How are you?",
+      "category": "greetings",
+      "example": "Kumusta ka man karon?",
+      "example_english": "How are you now?"
+    },
+    {
+      "word": "Maayong pag-abot",
+      "pronunciation": "Ma-a-yong pag-a-bot",
+      "english": "Welcome",
+      "category": "greetings",
+      "example": "Maayong pag-abot sa Cebu!",
+      "example_english": "Welcome to Cebu!"
+    },
+    {
+      "word": "Salamat",
+      "pronunciation": "Sa-la-mat",
+      "english": "Thank you",
+      "category": "greetings",
+      "example": "Salamat kaayo!",
+      "example_english": "Thank you very much!"
+    },
+    {
+      "word": "Adto na ko",
+      "pronunciation": "Ad-to na ko",
+      "english": "Goodbye (I'm going now)",
+      "category": "greetings",
+      "example": "Adto na ko. Salamat!",
+      "example_english": "I'm going now. Thank you!"
+    },
+    {
+      "word": "Okay ra",
+      "pronunciation": "O-kay ra",
+      "english": "Fine / It's okay",
+      "category": "responses",
+      "example": "Okay ra ko, salamat.",
+      "example_english": "I'm fine, thank you."
+    },
+    {
+      "word": "Way sapayan",
+      "pronunciation": "Way sa-pa-yan",
+      "english": "You're welcome",
+      "category": "responses",
+      "example": "Salamat. Way sapayan.",
+      "example_english": "Thank you. You're welcome."
+    },
+    {
+      "word": "Pasaylo-a ko",
+      "pronunciation": "Pa-say-lo-a ko",
+      "english": "Forgive me / I'm sorry",
+      "category": "responses",
+      "example": "Pasaylo-a ko, nahulog ko.",
+      "example_english": "I'm sorry, I was late."
+    },
+    {
+      "word": "Oo",
+      "pronunciation": "Oo",
+      "english": "Yes",
+      "category": "responses",
+      "example": "Oo, sakto.",
+      "example_english": "Yes, correct."
+    },
+    {
+      "word": "Dili",
+      "pronunciation": "Di-li",
+      "english": "No",
+      "category": "responses",
+      "example": "Dili, salamat.",
+      "example_english": "No, thank you."
+    },
+    {
+      "word": "Ako",
+      "pronunciation": "A-ko",
+      "english": "I / Me",
+      "category": "pronouns",
+      "example": "Ako si Juan.",
+      "example_english": "I am Juan."
+    },
+    {
+      "word": "Ikaw",
+      "pronunciation": "I-kaw",
+      "english": "You",
+      "category": "pronouns",
+      "example": "Taga-diin ikaw?",
+      "example_english": "Where are you from?"
+    },
+    {
+      "word": "Siya",
+      "pronunciation": "Si-ya",
+      "english": "He / She",
+      "category": "pronouns",
+      "example": "Siya ang akong maestro.",
+      "example_english": "He/She is my teacher."
+    },
+    {
+      "word": "Kami",
+      "pronunciation": "Ka-mi",
+      "english": "We (exclusive)",
+      "category": "pronouns",
+      "example": "Kami moadto sa dagat.",
+      "example_english": "We will go to the sea."
+    },
+    {
+      "word": "Sila",
+      "pronunciation": "Si-la",
+      "english": "They",
+      "category": "pronouns",
+      "example": "Taga-Cebu sila.",
+      "example_english": "They are from Cebu."
+    },
+    {
+      "word": "Usa",
+      "pronunciation": "U-sa",
+      "english": "One (1)",
+      "category": "numbers",
+      "example": "Usa ka pinggan og sinugba.",
+      "example_english": "One plate of grilled food."
+    },
+    {
+      "word": "Duha",
+      "pronunciation": "Du-ha",
+      "english": "Two (2)",
+      "category": "numbers",
+      "example": "Duha ka tasa sa kape.",
+      "example_english": "Two cups of coffee."
+    },
+    {
+      "word": "Tulo",
+      "pronunciation": "Tu-lo",
+      "english": "Three (3)",
+      "category": "numbers",
+      "example": "Tulo ka adlaw pa.",
+      "example_english": "Three more days."
+    },
+    {
+      "word": "Upat",
+      "pronunciation": "U-pat",
+      "english": "Four (4)",
+      "category": "numbers",
+      "example": "Upat ka tawo ang miabot.",
+      "example_english": "Four people came."
+    },
+    {
+      "word": "Lima",
+      "pronunciation": "Li-ma",
+      "english": "Five (5)",
+      "category": "numbers",
+      "example": "Lima ka piso.",
+      "example_english": "Five pesos."
+    },
+    {
+      "word": "Unom",
+      "pronunciation": "U-nom",
+      "english": "Six (6)",
+      "category": "numbers",
+      "example": "Unom ka oras.",
+      "example_english": "Six hours."
+    },
+    {
+      "word": "Pito",
+      "pronunciation": "Pi-to",
+      "english": "Seven (7)",
+      "category": "numbers",
+      "example": "Pito ka adlaw sa usa ka semana.",
+      "example_english": "Seven days in a week."
+    },
+    {
+      "word": "Walo",
+      "pronunciation": "Wa-lo",
+      "english": "Eight (8)",
+      "category": "numbers",
+      "example": "Walo ka bulan.",
+      "example_english": "Eight months."
+    },
+    {
+      "word": "Siyam",
+      "pronunciation": "Si-yam",
+      "english": "Nine (9)",
+      "category": "numbers",
+      "example": "Siyam ka bitoon.",
+      "example_english": "Nine stars."
+    },
+    {
+      "word": "Napulo",
+      "pronunciation": "Na-pu-lo",
+      "english": "Ten (10)",
+      "category": "numbers",
+      "example": "Napulo ka minuto pa.",
+      "example_english": "Ten more minutes."
+    },
+    {
+      "word": "Pula",
+      "pronunciation": "Pu-la",
+      "english": "Red",
+      "category": "colors",
+      "example": "Pula nga sinina.",
+      "example_english": "Red dress."
+    },
+    {
+      "word": "Asul",
+      "pronunciation": "A-sul",
+      "english": "Blue",
+      "category": "colors",
+      "example": "Asul ang langit.",
+      "example_english": "The sky is blue."
+    },
+    {
+      "word": "Berde",
+      "pronunciation": "Ber-de",
+      "english": "Green",
+      "category": "colors",
+      "example": "Berde nga dahon.",
+      "example_english": "Green leaves."
+    },
+    {
+      "word": "Dalag",
+      "pronunciation": "Da-lag",
+      "english": "Yellow",
+      "category": "colors",
+      "example": "Dalag ang saging.",
+      "example_english": "Yellow banana."
+    },
+    {
+      "word": "Puti",
+      "pronunciation": "Pu-ti",
+      "english": "White",
+      "category": "colors",
+      "example": "Puti nga panganod.",
+      "example_english": "White cloud."
+    },
+    {
+      "word": "Itom",
+      "pronunciation": "I-tom",
+      "english": "Black",
+      "category": "colors",
+      "example": "Itom nga iring.",
+      "example_english": "Black cat."
+    },
+    {
+      "word": "Kan-on",
+      "pronunciation": "Kan-on",
+      "english": "Cooked rice",
+      "category": "food",
+      "example": "Mokaon ko og kan-on matag adlaw.",
+      "example_english": "I eat rice every day."
+    },
+    {
+      "word": "Pansit",
+      "pronunciation": "Pan-sit",
+      "english": "Noodles",
+      "category": "food",
+      "example": "Lami ang pansit.",
+      "example_english": "Noodles are delicious."
+    },
+    {
+      "word": "Manok",
+      "pronunciation": "Ma-nok",
+      "english": "Chicken",
+      "category": "food",
+      "example": "Sinugbang manok.",
+      "example_english": "Grilled chicken."
+    },
+    {
+      "word": "Isda",
+      "pronunciation": "Is-da",
+      "english": "Fish",
+      "category": "food",
+      "example": "Presko nga isda.",
+      "example_english": "Fresh fish."
+    },
+    {
+      "word": "Utan",
+      "pronunciation": "U-tan",
+      "english": "Vegetables",
+      "category": "food",
+      "example": "Maayong pangan ang utan.",
+      "example_english": "Vegetables are good to eat."
+    },
+    {
+      "word": "Tubig",
+      "pronunciation": "Tu-big",
+      "english": "Water",
+      "category": "food",
+      "example": "Moinom ug daghang tubig.",
+      "example_english": "Drink plenty of water."
+    },
+    {
+      "word": "Kape",
+      "pronunciation": "Ka-pe",
+      "english": "Coffee",
+      "category": "food",
+      "example": "Mainit nga kape.",
+      "example_english": "Hot coffee."
+    },
+    {
+      "word": "Inahan",
+      "pronunciation": "I-na-han",
+      "english": "Mother",
+      "category": "family",
+      "example": "Ang akong inahan maayong moluto.",
+      "example_english": "My mother cooks well."
+    },
+    {
+      "word": "Amahan",
+      "pronunciation": "A-ma-han",
+      "english": "Father",
+      "category": "family",
+      "example": "Ang akong amahan matrabahoon.",
+      "example_english": "My father is hardworking."
+    },
+    {
+      "word": "Kuya / Manong",
+      "pronunciation": "Ku-ya",
+      "english": "Older brother",
+      "category": "family",
+      "example": "Naa sa Cebu ang akong kuya.",
+      "example_english": "My older brother is in Cebu."
+    },
+    {
+      "word": "Ate / Manang",
+      "pronunciation": "A-te",
+      "english": "Older sister",
+      "category": "family",
+      "example": "Doktor ang akong ate.",
+      "example_english": "My older sister is a doctor."
+    },
+    {
+      "word": "Manghud",
+      "pronunciation": "Ma-nghud",
+      "english": "Younger sibling",
+      "category": "family",
+      "example": "Estudyante pa ang akong manghud.",
+      "example_english": "My younger sibling is still a student."
+    },
+    {
+      "word": "Lolo",
+      "pronunciation": "Lo-lo",
+      "english": "Grandfather",
+      "category": "family",
+      "example": "Tigulang na ang akong lolo.",
+      "example_english": "My grandfather is already old."
+    },
+    {
+      "word": "Lola",
+      "pronunciation": "Lo-la",
+      "english": "Grandmother",
+      "category": "family",
+      "example": "Maayong moluto ang lola.",
+      "example_english": "Grandmother cooks well."
+    },
+    {
+      "word": "Ulo",
+      "pronunciation": "U-lo",
+      "english": "Head",
+      "category": "body",
+      "example": "Sakit ang akong ulo.",
+      "example_english": "My head hurts."
+    },
+    {
+      "word": "Mata",
+      "pronunciation": "Ma-ta",
+      "english": "Eyes",
+      "category": "body",
+      "example": "Kapoy ang akong mata.",
+      "example_english": "My eyes are tired."
+    },
+    {
+      "word": "Kamot",
+      "pronunciation": "Ka-mot",
+      "english": "Hand",
+      "category": "body",
+      "example": "Hugasi ang kamot sa wala pa mokaon.",
+      "example_english": "Wash hands before eating."
+    },
+    {
+      "word": "Tiil",
+      "pronunciation": "Ti-il",
+      "english": "Foot / Leg",
+      "category": "body",
+      "example": "Sakit ang akong tiil.",
+      "example_english": "My leg hurts."
+    },
+    {
+      "word": "Kasingkasing",
+      "pronunciation": "Ka-sing-ka-sing",
+      "english": "Heart",
+      "category": "body",
+      "example": "Ampingi ang imong kasingkasing.",
+      "example_english": "Take care of your heart."
+    },
+    {
+      "word": "Karon",
+      "pronunciation": "Ka-ron",
+      "english": "Today / Now",
+      "category": "time",
+      "example": "Karon init kaayo.",
+      "example_english": "Today is very hot."
+    },
+    {
+      "word": "Kagahapon",
+      "pronunciation": "Ka-ga-ha-pon",
+      "english": "Yesterday",
+      "category": "time",
+      "example": "Kagahapon naulanan.",
+      "example_english": "Yesterday it rained."
+    },
+    {
+      "word": "Ugma",
+      "pronunciation": "Ug-ma",
+      "english": "Tomorrow",
+      "category": "time",
+      "example": "Ugma moadto ko sa merkado.",
+      "example_english": "Tomorrow I will go to the market."
+    },
+    {
+      "word": "Buntag",
+      "pronunciation": "Bun-tag",
+      "english": "Morning",
+      "category": "time",
+      "example": "Presko ang hangin sa buntag.",
+      "example_english": "Morning air is fresh."
+    },
+    {
+      "word": "Gabii",
+      "pronunciation": "Ga-bii",
+      "english": "Night",
+      "category": "time",
+      "example": "Magliwanag ang mga bitoon sa gabii.",
+      "example_english": "Stars shine at night."
+    },
+    {
+      "word": "Maayo",
+      "pronunciation": "Ma-a-yo",
+      "english": "Good / Fine",
+      "category": "adjectives",
+      "example": "Maayo kaayo!",
+      "example_english": "Very good!"
+    },
+    {
+      "word": "Dako",
+      "pronunciation": "Da-ko",
+      "english": "Big",
+      "category": "adjectives",
+      "example": "Dako kaayo ang balay.",
+      "example_english": "The house is very big."
+    },
+    {
+      "word": "Gamay",
+      "pronunciation": "Ga-may",
+      "english": "Small",
+      "category": "adjectives",
+      "example": "Gamay nga iring.",
+      "example_english": "Small cat."
+    },
+    {
+      "word": "Mainit",
+      "pronunciation": "Ma-i-nit",
+      "english": "Hot",
+      "category": "adjectives",
+      "example": "Mainit karon.",
+      "example_english": "It is hot now."
+    },
+    {
+      "word": "Bugnaw",
+      "pronunciation": "Bug-naw",
+      "english": "Cold",
+      "category": "adjectives",
+      "example": "Bugnaw ang tubig sa bukid.",
+      "example_english": "Mountain water is cold."
+    },
+    {
+      "word": "Lami",
+      "pronunciation": "La-mi",
+      "english": "Delicious",
+      "category": "adjectives",
+      "example": "Lami ang pagkaon!",
+      "example_english": "The food is delicious!"
+    },
+    {
+      "word": "Mokaon",
+      "pronunciation": "Mo-ka-on",
+      "english": "To eat",
+      "category": "verbs",
+      "example": "Mokaon ko og kan-on matag buntag.",
+      "example_english": "I eat rice every morning."
+    },
+    {
+      "word": "Moinom",
+      "pronunciation": "Mo-i-nom",
+      "english": "To drink",
+      "category": "verbs",
+      "example": "Moinom siya og kape.",
+      "example_english": "He/she drinks coffee."
+    },
+    {
+      "word": "Matulog",
+      "pronunciation": "Ma-tu-log",
+      "english": "To sleep",
+      "category": "verbs",
+      "example": "Natulog na ang bata.",
+      "example_english": "The child is already asleep."
+    },
+    {
+      "word": "Moadto",
+      "pronunciation": "Mo-ad-to",
+      "english": "To go",
+      "category": "verbs",
+      "example": "Moadto kita sa baybayon.",
+      "example_english": "Let's go to the beach."
+    },
+    {
+      "word": "Mag-eskwela",
+      "pronunciation": "Mag-es-kwe-la",
+      "english": "To study",
+      "category": "verbs",
+      "example": "Nag-eskwela ko og Cebuano.",
+      "example_english": "I am studying Cebuano."
+    },
+    {
+      "word": "Dagat",
+      "pronunciation": "Da-gat",
+      "english": "Sea / Ocean",
+      "category": "nature",
+      "example": "Matahum ang dagat sa Visayas.",
+      "example_english": "The Visayas sea is beautiful."
+    },
+    {
+      "word": "Bukid",
+      "pronunciation": "Bu-kid",
+      "english": "Mountain",
+      "category": "nature",
+      "example": "Taas nga bukid.",
+      "example_english": "Tall mountain."
+    },
+    {
+      "word": "Suba",
+      "pronunciation": "Su-ba",
+      "english": "River",
+      "category": "nature",
+      "example": "Ang suba nagdagayday padulong sa dagat.",
+      "example_english": "The river flows to the sea."
+    },
+    {
+      "word": "Kalasangan",
+      "pronunciation": "Ka-la-sa-ngan",
+      "english": "Forest",
+      "category": "nature",
+      "example": "Ang kalasangan puno sa mga hayop.",
+      "example_english": "The forest is full of animals."
+    },
+    {
+      "word": "Ulan",
+      "pronunciation": "U-lan",
+      "english": "Rain",
+      "category": "nature",
+      "example": "Kusog nga ulan.",
+      "example_english": "Heavy rain."
+    },
+    {
+      "word": "Iring",
+      "pronunciation": "I-ring",
+      "english": "Cat",
+      "category": "animals",
+      "example": "Malumo ang iring.",
+      "example_english": "Cats are gentle."
+    },
+    {
+      "word": "Iro",
+      "pronunciation": "I-ro",
+      "english": "Dog",
+      "category": "animals",
+      "example": "Matinud-anon ang iro.",
+      "example_english": "Dogs are loyal."
+    },
+    {
+      "word": "Langgam",
+      "pronunciation": "Lang-gam",
+      "english": "Bird",
+      "category": "animals",
+      "example": "Nagkanta ang mga langgam sa buntag.",
+      "example_english": "Birds sing in the morning."
+    },
+    {
+      "word": "Baboy-dagat",
+      "pronunciation": "Ba-boy-da-gat",
+      "english": "Dugong (sea cow)",
+      "category": "animals",
+      "example": "Baboy-dagat sa Visayas.",
+      "example_english": "Dugong in the Visayas."
+    },
+    {
+      "word": "Baktin",
+      "pronunciation": "Bak-tin",
+      "english": "Pig",
+      "category": "animals",
+      "example": "Baktin nga gibaligya sa merkado.",
+      "example_english": "Pig sold at the market."
+    }
   ]
 }

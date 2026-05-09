@@ -2,20 +2,549 @@
   "language": "Lao",
   "local_name": "ພາສາລາວ",
   "entries": [
-    {"word": "ສະບາຍ ດີ ບໍ", "pronunciation": "Sabai dee bor", "english": "How are you?", "category": "greetings", "example": "ສະບາຍ ດີ ບໍ", "example_english": "How are you?"},
-    {"word": "ສະບາຍ ດີ", "pronunciation": "Sabai dee", "english": "I'm fine", "category": "greetings", "example": "ຂ້ອຍ ສະບາຍ ດີ", "example_english": "I'm fine"},
-    {"word": "ຍິນ ດີ ຕ້ອນ ຮັບ", "pronunciation": "Yin dee ton hap", "english": "Welcome", "category": "greetings", "example": "ຍິນ ດີ ຕ້ອນ ຮັບ", "example_english": "Welcome"},
-    {"word": "ອາຣຸນ ສະວັດ", "pronunciation": "Arun sawat", "english": "Good morning", "category": "greetings", "example": "ອາຣຸນ ສະວັດ", "example_english": "Good morning"},
-    {"word": "ລາ ກ້ອນ", "pronunciation": "La gon", "english": "Goodbye", "category": "greetings", "example": "ລາ ກ້ອນ", "example_english": "Goodbye"},
-    {"word": "ຂອບ ໃຈ", "pronunciation": "Khawp jai", "english": "Thank you", "category": "greetings", "example": "ຂອບ ໃຈ ຫຼາຍ", "example_english": "Thank you very much"},
-    {"word": "ມາ້ນ / ແດ້ະ", "pronunciation": "Maan / Deh", "english": "Yes", "category": "vocabulary", "example": "ມາ້ນ ຄ່ະບ", "example_english": "Yes"},
-    {"word": "ບໍ", "pronunciation": "Bor", "english": "No", "category": "vocabulary", "example": "ບໍ ຂອບ ໃຈ", "example_english": "No thank you"},
-    {"word": "ຂ້ອຍ", "pronunciation": "Khoi", "english": "I / Me", "category": "vocabulary", "example": "ຂ້ອຍ ມາ ຈາກ ລາວ", "example_english": "I am from Laos"},
-    {"word": "ເຈົ້າ", "pronunciation": "Jao", "english": "You", "category": "vocabulary", "example": "ເຈົ້າ ມາ ຈາກ ໃສ", "example_english": "Where are you from?"},
-    {"word": "ນໍ້າ", "pronunciation": "Nam", "english": "Water", "category": "vocabulary", "example": "ດື່ມ ນໍ້າ", "example_english": "Drink water"},
-    {"word": "ກິນ ເຂົ້າ", "pronunciation": "Kin khao", "english": "Eat rice", "category": "vocabulary", "example": "ກິນ ເຂົ້າ", "example_english": "Eat rice"},
-    {"word": "ເຫືອນ", "pronunciation": "Heuan", "english": "House", "category": "vocabulary", "example": "ນີ້ ເຫືອນ ຂອງ ຂ້ອຍ", "example_english": "This is my house"},
-    {"word": "ດີ", "pronunciation": "Dee", "english": "Good", "category": "vocabulary", "example": "ດີ ຫຼາຍ", "example_english": "Very good"},
-    {"word": "ເຂົ້າ", "pronunciation": "Khao", "english": "Rice", "category": "vocabulary", "example": "ກິນ ເຂົ້າ ໜຽວ", "example_english": "Eat sticky rice"}
+    {
+      "word": "Sabai dee",
+      "pronunciation": "Sa-bai-dee",
+      "english": "Hello / How are you",
+      "category": "greetings",
+      "example": "Sabai dee baw",
+      "example_english": "Hello, how are you?"
+    },
+    {
+      "word": "Khob jai",
+      "pronunciation": "Khob-jai",
+      "english": "Thank you",
+      "category": "greetings",
+      "example": "Khob jai lai lai",
+      "example_english": "Thank you very much"
+    },
+    {
+      "word": "Laa kon",
+      "pronunciation": "Laa-kon",
+      "english": "Goodbye",
+      "category": "greetings",
+      "example": "Laa kon, phop kan mai",
+      "example_english": "Goodbye, see you again"
+    },
+    {
+      "word": "Men",
+      "pronunciation": "Men",
+      "english": "Yes",
+      "category": "vocabulary",
+      "example": "Men, khoy hoo",
+      "example_english": "Yes, I know"
+    },
+    {
+      "word": "Baw",
+      "pronunciation": "Baw",
+      "english": "No / Not",
+      "category": "vocabulary",
+      "example": "Baw mee",
+      "example_english": "There isn't any"
+    },
+    {
+      "word": "Khoy",
+      "pronunciation": "Khoy",
+      "english": "I / Me",
+      "category": "pronouns",
+      "example": "Khoy pen khon Lao",
+      "example_english": "I am Lao"
+    },
+    {
+      "word": "Jao",
+      "pronunciation": "Jao",
+      "english": "You",
+      "category": "pronouns",
+      "example": "Jao sabai dee baw",
+      "example_english": "Are you well?"
+    },
+    {
+      "word": "Khao",
+      "pronunciation": "Khao",
+      "english": "He / She",
+      "category": "pronouns",
+      "example": "Khao pen muu ban",
+      "example_english": "He/She is a fellow villager"
+    },
+    {
+      "word": "Neung",
+      "pronunciation": "Neung",
+      "english": "One",
+      "category": "numbers",
+      "example": "Neung kip",
+      "example_english": "One kip"
+    },
+    {
+      "word": "Song",
+      "pronunciation": "Song",
+      "english": "Two",
+      "category": "numbers",
+      "example": "Song khon",
+      "example_english": "Two people"
+    },
+    {
+      "word": "Sam",
+      "pronunciation": "Sam",
+      "english": "Three",
+      "category": "numbers",
+      "example": "Sam mue",
+      "example_english": "Three days"
+    },
+    {
+      "word": "See",
+      "pronunciation": "See",
+      "english": "Four",
+      "category": "numbers",
+      "example": "See pi",
+      "example_english": "Four years"
+    },
+    {
+      "word": "Ha",
+      "pronunciation": "Ha",
+      "english": "Five",
+      "category": "numbers",
+      "example": "Ha mett",
+      "example_english": "Five seeds"
+    },
+    {
+      "word": "Hok",
+      "pronunciation": "Hok",
+      "english": "Six",
+      "category": "numbers",
+      "example": "Hok chua mong",
+      "example_english": "Six hours"
+    },
+    {
+      "word": "Jet",
+      "pronunciation": "Jet",
+      "english": "Seven",
+      "category": "numbers",
+      "example": "Jet duan",
+      "example_english": "Seven months"
+    },
+    {
+      "word": "Paet",
+      "pronunciation": "Paet",
+      "english": "Eight",
+      "category": "numbers",
+      "example": "Paet khon",
+      "example_english": "Eight people"
+    },
+    {
+      "word": "Kao",
+      "pronunciation": "Kao",
+      "english": "Nine",
+      "category": "numbers",
+      "example": "Kao baht",
+      "example_english": "Nine baht"
+    },
+    {
+      "word": "Sip",
+      "pronunciation": "Sip",
+      "english": "Ten",
+      "category": "numbers",
+      "example": "Sip wan",
+      "example_english": "Ten days"
+    },
+    {
+      "word": "Daeng",
+      "pronunciation": "Daeng",
+      "english": "Red",
+      "category": "colors",
+      "example": "Daeng ngam",
+      "example_english": "Beautiful red"
+    },
+    {
+      "word": "Leung",
+      "pronunciation": "Leung",
+      "english": "Yellow",
+      "category": "colors",
+      "example": "Leung thong",
+      "example_english": "Golden yellow"
+    },
+    {
+      "word": "Khiao",
+      "pronunciation": "Khiao",
+      "english": "Green",
+      "category": "colors",
+      "example": "Khiao pa mai",
+      "example_english": "Forest green"
+    },
+    {
+      "word": "Dam",
+      "pronunciation": "Dam",
+      "english": "Black",
+      "category": "colors",
+      "example": "Dam snik",
+      "example_english": "Deep black"
+    },
+    {
+      "word": "Khao",
+      "pronunciation": "Khao",
+      "english": "White",
+      "category": "colors",
+      "example": "Khao borisat",
+      "example_english": "Pure white"
+    },
+    {
+      "word": "Fah",
+      "pronunciation": "Fah",
+      "english": "Blue / Sky color",
+      "category": "colors",
+      "example": "Fah sai",
+      "example_english": "Clear blue"
+    },
+    {
+      "word": "Khao jao",
+      "pronunciation": "Khao-jao",
+      "english": "Rice / Glutinous rice",
+      "category": "food",
+      "example": "Khao jao aroy",
+      "example_english": "Sticky rice is delicious"
+    },
+    {
+      "word": "Nam",
+      "pronunciation": "Nam",
+      "english": "Water",
+      "category": "food",
+      "example": "Nam sai",
+      "example_english": "Clean water"
+    },
+    {
+      "word": "Laap",
+      "pronunciation": "Laap",
+      "english": "Minced meat salad",
+      "category": "food",
+      "example": "Laap sin wua",
+      "example_english": "Beef laap"
+    },
+    {
+      "word": "Tam mak hung",
+      "pronunciation": "Tam-mak-hung",
+      "english": "Papaya salad",
+      "category": "food",
+      "example": "Tam mak hung phet",
+      "example_english": "Spicy papaya salad"
+    },
+    {
+      "word": "Pa",
+      "pronunciation": "Pa",
+      "english": "Fish",
+      "category": "food",
+      "example": "Pa ping",
+      "example_english": "Grilled fish"
+    },
+    {
+      "word": "Sin",
+      "pronunciation": "Sin",
+      "english": "Meat",
+      "category": "food",
+      "example": "Sin yang",
+      "example_english": "Grilled meat"
+    },
+    {
+      "word": "Mue",
+      "pronunciation": "Mue",
+      "english": "Hand",
+      "category": "body",
+      "example": "Mue khwa",
+      "example_english": "Right hand"
+    },
+    {
+      "word": "Pak",
+      "pronunciation": "Pak",
+      "english": "Mouth",
+      "category": "body",
+      "example": "Pak waan",
+      "example_english": "Sweet mouth"
+    },
+    {
+      "word": "Ta",
+      "pronunciation": "Ta",
+      "english": "Eye",
+      "category": "body",
+      "example": "Ta sai",
+      "example_english": "Clear eyes"
+    },
+    {
+      "word": "Thao",
+      "pronunciation": "Thao",
+      "english": "Foot",
+      "category": "body",
+      "example": "Thao jep",
+      "example_english": "Sore foot"
+    },
+    {
+      "word": "Hua",
+      "pronunciation": "Hua",
+      "english": "Head",
+      "category": "body",
+      "example": "Hua jep",
+      "example_english": "Headache"
+    },
+    {
+      "word": "Pho",
+      "pronunciation": "Pho",
+      "english": "Father",
+      "category": "family",
+      "example": "Pho rak luk",
+      "example_english": "Father loves children"
+    },
+    {
+      "word": "Mae",
+      "pronunciation": "Mae",
+      "english": "Mother",
+      "category": "family",
+      "example": "Mae sabai dee baw",
+      "example_english": "Is mother well?"
+    },
+    {
+      "word": "Ai",
+      "pronunciation": "Ai",
+      "english": "Older brother",
+      "category": "family",
+      "example": "Ai saai",
+      "example_english": "Older brother"
+    },
+    {
+      "word": "Nong",
+      "pronunciation": "Nong",
+      "english": "Younger sibling",
+      "category": "family",
+      "example": "Nong saao",
+      "example_english": "Younger sister"
+    },
+    {
+      "word": "Puu",
+      "pronunciation": "Puu",
+      "english": "Grandfather",
+      "category": "family",
+      "example": "Puu khoy",
+      "example_english": "My grandfather"
+    },
+    {
+      "word": "Ton sao",
+      "pronunciation": "Ton-sao",
+      "english": "Morning",
+      "category": "time",
+      "example": "Ton sao nee",
+      "example_english": "This morning"
+    },
+    {
+      "word": "Ton bai",
+      "pronunciation": "Ton-bai",
+      "english": "Afternoon",
+      "category": "time",
+      "example": "Ton bai mue nee",
+      "example_english": "This afternoon"
+    },
+    {
+      "word": "Ton yen",
+      "pronunciation": "Ton-yen",
+      "english": "Evening",
+      "category": "time",
+      "example": "Ton yen nee",
+      "example_english": "This evening"
+    },
+    {
+      "word": "Ton kheun",
+      "pronunciation": "Ton-kheun",
+      "english": "Night",
+      "category": "time",
+      "example": "Ton kheun nee",
+      "example_english": "Tonight"
+    },
+    {
+      "word": "Mue nee",
+      "pronunciation": "Mue-nee",
+      "english": "Today",
+      "category": "time",
+      "example": "Mue nee sabai dee",
+      "example_english": "Today is good"
+    },
+    {
+      "word": "Duan",
+      "pronunciation": "Duan",
+      "english": "Month",
+      "category": "time",
+      "example": "Duan nee",
+      "example_english": "This month"
+    },
+    {
+      "word": "Dee",
+      "pronunciation": "Dee",
+      "english": "Good",
+      "category": "adjectives",
+      "example": "Dee lai",
+      "example_english": "Very good"
+    },
+    {
+      "word": "Noi",
+      "pronunciation": "Noi",
+      "english": "Small / Little",
+      "category": "adjectives",
+      "example": "Noi dee",
+      "example_english": "A little good"
+    },
+    {
+      "word": "Nyai",
+      "pronunciation": "Nyai",
+      "english": "Big / Large",
+      "category": "adjectives",
+      "example": "Nyai lai",
+      "example_english": "Very big"
+    },
+    {
+      "word": "Hon",
+      "pronunciation": "Hon",
+      "english": "Hot",
+      "category": "adjectives",
+      "example": "Hon lai",
+      "example_english": "Very hot"
+    },
+    {
+      "word": "Yen",
+      "pronunciation": "Yen",
+      "english": "Cool / Cold",
+      "category": "adjectives",
+      "example": "Yen sabai",
+      "example_english": "Comfortably cool"
+    },
+    {
+      "word": "Kin",
+      "pronunciation": "Kin",
+      "english": "To eat",
+      "category": "verbs",
+      "example": "Kin khao duay kan",
+      "example_english": "Let's eat together"
+    },
+    {
+      "word": "Deum",
+      "pronunciation": "Deum",
+      "english": "To drink",
+      "category": "verbs",
+      "example": "Deum nam yen",
+      "example_english": "Drink cold water"
+    },
+    {
+      "word": "Het ngan",
+      "pronunciation": "Het-ngan",
+      "english": "To work",
+      "category": "verbs",
+      "example": "Het ngan nak",
+      "example_english": "Work hard"
+    },
+    {
+      "word": "Non lap",
+      "pronunciation": "Non-lap",
+      "english": "To sleep",
+      "category": "verbs",
+      "example": "Non lap dee",
+      "example_english": "Sleep well"
+    },
+    {
+      "word": "Dern",
+      "pronunciation": "Dern",
+      "english": "To walk",
+      "category": "verbs",
+      "example": "Dern len",
+      "example_english": "Go for a walk"
+    },
+    {
+      "word": "An",
+      "pronunciation": "An",
+      "english": "To read",
+      "category": "verbs",
+      "example": "An nang sue",
+      "example_english": "Read a book"
+    },
+    {
+      "word": "Hean",
+      "pronunciation": "Hean",
+      "english": "House / Home",
+      "category": "vocabulary",
+      "example": "Hean khoy",
+      "example_english": "My house"
+    },
+    {
+      "word": "Thanon",
+      "pronunciation": "Tha-non",
+      "english": "Road",
+      "category": "vocabulary",
+      "example": "Thanon nyai",
+      "example_english": "Big road"
+    },
+    {
+      "word": "Pa mai",
+      "pronunciation": "Pa-mai",
+      "english": "Forest",
+      "category": "nature",
+      "example": "Pa mai nyai",
+      "example_english": "Big forest"
+    },
+    {
+      "word": "Din",
+      "pronunciation": "Din",
+      "english": "Soil / Earth",
+      "category": "nature",
+      "example": "Din dee",
+      "example_english": "Good soil"
+    },
+    {
+      "word": "Me nam",
+      "pronunciation": "Me-nam",
+      "english": "River",
+      "category": "nature",
+      "example": "Me nam Khong",
+      "example_english": "Mekong River"
+    },
+    {
+      "word": "Fa",
+      "pronunciation": "Fa",
+      "english": "Sky",
+      "category": "nature",
+      "example": "Fa sai",
+      "example_english": "Clear sky"
+    },
+    {
+      "word": "Ma",
+      "pronunciation": "Ma",
+      "english": "Dog",
+      "category": "animals",
+      "example": "Ma dee",
+      "example_english": "Good dog"
+    },
+    {
+      "word": "Maew",
+      "pronunciation": "Maew",
+      "english": "Cat",
+      "category": "animals",
+      "example": "Maew suay",
+      "example_english": "Beautiful cat"
+    },
+    {
+      "word": "Kai",
+      "pronunciation": "Kai",
+      "english": "Chicken",
+      "category": "animals",
+      "example": "Kai ping",
+      "example_english": "Grilled chicken"
+    },
+    {
+      "word": "Muu",
+      "pronunciation": "Muu",
+      "english": "Pig",
+      "category": "animals",
+      "example": "Muu yang",
+      "example_english": "Grilled pork"
+    },
+    {
+      "word": "Chang",
+      "pronunciation": "Chang",
+      "english": "Elephant",
+      "category": "animals",
+      "example": "Chang Lao",
+      "example_english": "Lao elephant"
+    }
   ]
 }
